@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2018-02-01/Microsoft.Web.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.Web.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Web",
   "description": "Microsoft Web Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -67,13 +67,204 @@
       ],
       "description": "Microsoft.Web/certificates"
     },
+    "hostingEnvironments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource Location."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the App Service Environment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AppServiceEnvironment"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of an App Service Environment."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/hostingEnvironments_multiRolePools_childResource"
+              },
+              {
+                "$ref": "#/definitions/hostingEnvironments_workerPools_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/hostingEnvironments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/hostingEnvironments"
+    },
+    "hostingEnvironments_multiRolePools": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkerPool"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Worker pool of an App Service Environment."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SkuDescription"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of a SKU for a scalable resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/hostingEnvironments/multiRolePools"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/hostingEnvironments/multiRolePools"
+    },
+    "hostingEnvironments_workerPools": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the worker pool."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkerPool"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Worker pool of an App Service Environment."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SkuDescription"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of a SKU for a scalable resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/hostingEnvironments/workerPools"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/hostingEnvironments/workerPools"
+    },
     "serverfarms": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -147,7 +338,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -190,7 +381,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -233,7 +424,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "identity": {
@@ -274,6 +465,9 @@
           "type": "array",
           "items": {
             "oneOf": [
+              {
+                "$ref": "#/definitions/sites_basicPublishingCredentialsPolicies_childResource"
+              },
               {
                 "$ref": "#/definitions/sites_config_childResource"
               },
@@ -317,6 +511,9 @@
                 "$ref": "#/definitions/sites_slots_childResource"
               },
               {
+                "$ref": "#/definitions/sites_privateEndpointConnections_childResource"
+              },
+              {
                 "$ref": "#/definitions/sites_sourcecontrols_childResource"
               },
               {
@@ -355,6 +552,102 @@
         "type"
       ],
       "description": "Microsoft.Web/sites"
+    },
+    "sites_basicPublishingCredentialsPolicies": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "description": "Kind of resource."
+            },
+            "name": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^.*/ftp$"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CsmPublishingCredentialsPoliciesEntityProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "CsmPublishingCredentialsPoliciesEntity resource specific properties"
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "description": "Kind of resource."
+            },
+            "name": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^.*/scm$"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CsmPublishingCredentialsPoliciesEntityProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "CsmPublishingCredentialsPoliciesEntity resource specific properties"
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
+        }
+      ],
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "type"
+      ],
+      "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
     },
     "sites_config": {
       "type": "object",
@@ -740,7 +1033,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "type": {
@@ -762,7 +1055,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -805,7 +1098,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -848,7 +1141,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -898,7 +1191,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -951,7 +1244,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -982,7 +1275,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1025,7 +1318,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1068,7 +1361,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1111,7 +1404,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1161,7 +1454,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1211,7 +1504,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1261,7 +1554,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1324,7 +1617,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1368,13 +1661,55 @@
       ],
       "description": "Microsoft.Web/sites/privateAccess"
     },
+    "sites_privateEndpointConnections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionApprovalRequest"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A request to approve or reject a private endpoint connection"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/sites/privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/sites/privateEndpointConnections"
+    },
     "sites_publicCertificates": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1417,7 +1752,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -1444,7 +1779,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "identity": {
@@ -1909,7 +2244,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "type": {
@@ -1931,7 +2266,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -1974,7 +2309,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2017,7 +2352,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2067,7 +2402,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2120,7 +2455,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -2151,7 +2486,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2194,7 +2529,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2237,7 +2572,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2280,7 +2615,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2330,7 +2665,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2380,7 +2715,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2443,7 +2778,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2493,7 +2828,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2536,7 +2871,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -2563,7 +2898,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2613,7 +2948,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2666,7 +3001,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2709,7 +3044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2759,7 +3094,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2812,7 +3147,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2848,6 +3183,228 @@
         "type"
       ],
       "description": "Microsoft.Web/sites/virtualNetworkConnections/gateways"
+    },
+    "staticSites": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource Location."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the static site to create or update."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/StaticSite"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A static site."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/staticSites_config_childResource"
+              },
+              {
+                "$ref": "#/definitions/staticSites_customDomains_childResource"
+              }
+            ]
+          }
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SkuDescription"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of a SKU for a scalable resource."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/staticSites"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites"
+    },
+    "staticSites_builds_config": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/functionappsettings$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/staticSites/builds/config"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites/builds/config"
+    },
+    "staticSites_config": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/functionappsettings$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/staticSites/config"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites/config"
+    },
+    "staticSites_customDomains": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The custom domain to create."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Web/staticSites/customDomains"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites/customDomains"
     }
   },
   "tenant_resourceDefinitions": {
@@ -2857,7 +3414,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2902,7 +3459,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -2951,6 +3508,16 @@
       },
       "description": "Information about the formal API definition for the app."
     },
+    "ApiManagementConfig": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "APIM-Api Identifier."
+        }
+      },
+      "description": "Azure API management (APIM) configuration linked to the app."
+    },
     "ApplicationLogsConfig": {
       "type": "object",
       "properties": {
@@ -2989,6 +3556,207 @@
         }
       },
       "description": "Application logs configuration."
+    },
+    "AppServiceEnvironment": {
+      "type": "object",
+      "properties": {
+        "apiManagementAccountId": {
+          "type": "string",
+          "description": "API Management Account associated with the App Service Environment."
+        },
+        "clusterSettings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NameValuePair"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Custom settings for changing the behavior of the App Service Environment."
+        },
+        "dnsSuffix": {
+          "type": "string",
+          "description": "DNS suffix of the App Service Environment."
+        },
+        "dynamicCacheEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "True/false indicating whether the App Service Environment is suspended. The environment can be suspended e.g. when the management endpoint is no longer available\n(most likely because NSG blocked the incoming traffic)."
+        },
+        "frontEndScaleFactor": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Scale factor for front-ends."
+        },
+        "hasLinuxWorkers": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Flag that displays whether an ASE has linux workers or not"
+        },
+        "internalLoadBalancingMode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "Web",
+                "Publishing"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment."
+        },
+        "ipsslAddressCount": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Number of IP SSL addresses reserved for the App Service Environment."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the App Service Environment, e.g. \"West US\"."
+        },
+        "multiRoleCount": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Number of front-end instances."
+        },
+        "multiSize": {
+          "type": "string",
+          "description": "Front-end VM size, e.g. \"Medium\", \"Large\"."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the App Service Environment."
+        },
+        "networkAccessControlList": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NetworkAccessControlEntry"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Access control list for controlling traffic to the App Service Environment."
+        },
+        "sslCertKeyVaultId": {
+          "type": "string",
+          "description": "Key Vault ID for ILB App Service Environment default SSL certificate"
+        },
+        "sslCertKeyVaultSecretName": {
+          "type": "string",
+          "description": "Key Vault Secret Name for ILB App Service Environment default SSL certificate"
+        },
+        "suspended": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "<code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available\n (most likely because NSG blocked the incoming traffic)."
+        },
+        "userWhitelistedIpRanges": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "User added ip ranges to whitelist on ASE db"
+        },
+        "virtualNetwork": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VirtualNetworkProfile"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specification for using a Virtual Network."
+        },
+        "vnetName": {
+          "type": "string",
+          "description": "Name of the Virtual Network for the App Service Environment."
+        },
+        "vnetResourceGroupName": {
+          "type": "string",
+          "description": "Resource group of the Virtual Network."
+        },
+        "vnetSubnetName": {
+          "type": "string",
+          "description": "Subnet of the Virtual Network."
+        },
+        "workerPools": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WorkerPool"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool."
+        }
+      },
+      "required": [
+        "location",
+        "name",
+        "virtualNetwork",
+        "workerPools"
+      ],
+      "description": "Description of an App Service Environment."
     },
     "AppServicePlanProperties": {
       "type": "object",
@@ -3526,6 +4294,10 @@
     "CertificateProperties": {
       "type": "object",
       "properties": {
+        "canonicalName": {
+          "type": "string",
+          "description": "CNAME of the certificate to be issued via free certificate"
+        },
         "hostNames": {
           "oneOf": [
             {
@@ -3787,6 +4559,26 @@
       },
       "description": "Cross-Origin Resource Sharing (CORS) settings for the app."
     },
+    "CsmPublishingCredentialsPoliciesEntityProperties": {
+      "type": "object",
+      "properties": {
+        "allow": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "<code>true</code> to allow access to a publishing method; otherwise, <code>false</code>."
+        }
+      },
+      "required": [
+        "allow"
+      ],
+      "description": "CsmPublishingCredentialsPoliciesEntity resource specific properties"
+    },
     "DatabaseBackupSetting": {
       "type": "object",
       "properties": {
@@ -4032,7 +4824,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Value indicating whether the function is disabled"
+          "description": "Gets or sets a value indicating whether the function is disabled"
         },
         "language": {
           "type": "string",
@@ -4061,26 +4853,91 @@
       },
       "description": "FunctionEnvelope resource specific properties"
     },
-    "GeoDistribution": {
+    "GitHubActionCodeConfiguration": {
       "type": "object",
       "properties": {
-        "location": {
+        "runtimeStack": {
           "type": "string",
-          "description": "Location."
+          "description": "Runtime stack is used to determine the workflow file content for code base apps."
         },
-        "numberOfWorkers": {
+        "runtimeVersion": {
+          "type": "string",
+          "description": "Runtime version is used to determine what build version to set in the workflow file."
+        }
+      },
+      "description": "The GitHub action code configuration."
+    },
+    "GitHubActionConfiguration": {
+      "type": "object",
+      "properties": {
+        "codeConfiguration": {
           "oneOf": [
             {
-              "type": "integer"
+              "$ref": "#/definitions/GitHubActionCodeConfiguration"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "NumberOfWorkers."
+          "description": "The GitHub action code configuration."
+        },
+        "containerConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GitHubActionContainerConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The GitHub action container configuration."
+        },
+        "generateWorkflowFile": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workflow option to determine whether the workflow file should be generated and written to the repository."
+        },
+        "isLinux": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This will help determine the workflow configuration to select."
         }
       },
-      "description": "A global distribution definition."
+      "description": "The GitHub action configuration."
+    },
+    "GitHubActionContainerConfiguration": {
+      "type": "object",
+      "properties": {
+        "imageName": {
+          "type": "string",
+          "description": "The image name for the build."
+        },
+        "password": {
+          "type": "string",
+          "description": "The password used to upload the image to the container registry."
+        },
+        "serverUrl": {
+          "type": "string",
+          "description": "The server URL for the container registry where the build will be hosted."
+        },
+        "username": {
+          "type": "string",
+          "description": "The username used to upload the image to the container registry."
+        }
+      },
+      "description": "The GitHub action container configuration."
     },
     "HandlerMapping": {
       "type": "object",
@@ -4109,6 +4966,116 @@
         }
       },
       "description": "Specification for an App Service Environment to use for this resource."
+    },
+    "hostingEnvironments_multiRolePools_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkerPool"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Worker pool of an App Service Environment."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SkuDescription"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of a SKU for a scalable resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "multiRolePools"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/hostingEnvironments/multiRolePools"
+    },
+    "hostingEnvironments_workerPools_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the worker pool."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkerPool"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Worker pool of an App Service Environment."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SkuDescription"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Description of a SKU for a scalable resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "workerPools"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/hostingEnvironments/workerPools"
     },
     "HostNameBindingProperties": {
       "type": "object",
@@ -4525,6 +5492,46 @@
       },
       "description": "Name value pair."
     },
+    "NetworkAccessControlEntry": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Permit",
+                "Deny"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Action object."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of network access control entry."
+        },
+        "order": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Order of precedence."
+        },
+        "remoteSubnet": {
+          "type": "string",
+          "description": "Remote subnet."
+        }
+      },
+      "description": "Network access control entry."
+    },
     "PremierAddOnProperties": {
       "type": "object",
       "properties": {
@@ -4641,6 +5648,41 @@
         }
       },
       "description": "Description of a Virtual Network that is useable for private site access."
+    },
+    "PrivateLinkConnectionApprovalRequest": {
+      "type": "object",
+      "properties": {
+        "privateLinkServiceConnectionState": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionState"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The state of a private link connection"
+        }
+      },
+      "description": "A request to approve or reject a private endpoint connection"
+    },
+    "PrivateLinkConnectionState": {
+      "type": "object",
+      "properties": {
+        "actionsRequired": {
+          "type": "string",
+          "description": "ActionsRequired for a private link connection"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of a private link connection"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of a private link connection"
+        }
+      },
+      "description": "The state of a private link connection"
     },
     "PublicCertificateProperties": {
       "type": "object",
@@ -4762,7 +5804,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>."
+          "description": "In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \\n<code>MinReroutePercentage</code> or \n<code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\\nCustom decision algorithm \ncan be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>."
         },
         "maxReroutePercentage": {
           "oneOf": [
@@ -5081,6 +6123,21 @@
     "SiteConfig": {
       "type": "object",
       "properties": {
+        "acrUseManagedIdentityCreds": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Flag to use Managed Identity Creds for ACR pull"
+        },
+        "acrUserManagedIdentityID": {
+          "type": "string",
+          "description": "If using user managed identity, the user managed identity ClientId"
+        },
         "alwaysOn": {
           "oneOf": [
             {
@@ -5102,6 +6159,17 @@
             }
           ],
           "description": "Information about the formal API definition for the app."
+        },
+        "apiManagementConfig": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ApiManagementConfig"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure API management (APIM) configuration linked to the app."
         },
         "appCommandLine": {
           "type": "string",
@@ -5146,21 +6214,6 @@
         "autoSwapSlotName": {
           "type": "string",
           "description": "Auto-swap slot name."
-        },
-        "azureStorageAccounts": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/AzureStorageInfoValue"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "User-provided Azure storage accounts."
         },
         "connectionStrings": {
           "oneOf": [
@@ -5256,6 +6309,10 @@
             }
           ],
           "description": "Handler mappings."
+        },
+        "healthCheckPath": {
+          "type": "string",
+          "description": "Health check path"
         },
         "http20Enabled": {
           "oneOf": [
@@ -5428,6 +6485,23 @@
           "type": "string",
           "description": "Version of PHP."
         },
+        "powerShellVersion": {
+          "type": "string",
+          "description": "Version of PowerShell."
+        },
+        "preWarmedInstanceCount": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Number of preWarmed instances.\nThis setting only applies to the Consumption and Elastic Plans"
+        },
         "publishingUsername": {
           "type": "string",
           "description": "Publishing user name."
@@ -5478,19 +6552,6 @@
           "format": "date-time",
           "description": "Request tracing expiration time."
         },
-        "reservedInstanceCount": {
-          "oneOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 10
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Number of reserved instances.\nThis setting only applies to the Consumption Plan"
-        },
         "scmIpSecurityRestrictions": {
           "oneOf": [
             {
@@ -5533,7 +6594,8 @@
                 "ExternalGit",
                 "ExternalHg",
                 "OneDrive",
-                "VSO"
+                "VSO",
+                "VSTSRM"
               ]
             },
             {
@@ -5766,20 +6828,6 @@
           ],
           "description": "<code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline)."
         },
-        "geoDistributions": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/GeoDistribution"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "GeoDistributions for this site"
-        },
         "hostingEnvironmentProfile": {
           "oneOf": [
             {
@@ -5929,6 +6977,28 @@
           ],
           "description": "<code>true</code> to enable deployment rollback; otherwise, <code>false</code>."
         },
+        "gitHubActionConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GitHubActionConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The GitHub action configuration."
+        },
+        "isGitHubAction": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "<code>true</code> if this is deployed via GitHub action."
+        },
         "isManualIntegration": {
           "oneOf": [
             {
@@ -5957,6 +7027,92 @@
         }
       },
       "description": "SiteSourceControl resource specific properties"
+    },
+    "sites_basicPublishingCredentialsPolicies_childResource": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "description": "Kind of resource."
+            },
+            "name": {
+              "type": "string",
+              "enum": [
+                "ftp"
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CsmPublishingCredentialsPoliciesEntityProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "CsmPublishingCredentialsPoliciesEntity resource specific properties"
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "description": "Kind of resource."
+            },
+            "name": {
+              "type": "string",
+              "enum": [
+                "scm"
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CsmPublishingCredentialsPoliciesEntityProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "CsmPublishingCredentialsPoliciesEntity resource specific properties"
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
+        }
+      ],
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "basicPublishingCredentialsPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "type"
+      ],
+      "description": "Microsoft.Web/sites/basicPublishingCredentialsPolicies"
     },
     "sites_config_childResource": {
       "type": "object",
@@ -6292,7 +7448,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "type": {
@@ -6314,7 +7470,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6357,7 +7513,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6400,7 +7556,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6445,7 +7601,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6488,7 +7644,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -6519,7 +7675,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6562,7 +7718,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6605,7 +7761,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6650,7 +7806,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6695,7 +7851,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6758,7 +7914,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6797,13 +7953,55 @@
       ],
       "description": "Microsoft.Web/sites/privateAccess"
     },
+    "sites_privateEndpointConnections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionApprovalRequest"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A request to approve or reject a private endpoint connection"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/sites/privateEndpointConnections"
+    },
     "sites_publicCertificates_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -6846,7 +8044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -6873,7 +8071,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "identity": {
@@ -7244,7 +8442,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "type": {
@@ -7266,7 +8464,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7309,7 +8507,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7352,7 +8550,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7397,7 +8595,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7440,7 +8638,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -7471,7 +8669,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7514,7 +8712,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7557,7 +8755,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7602,7 +8800,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7665,7 +8863,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7710,7 +8908,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7753,7 +8951,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "name": {
@@ -7780,7 +8978,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7825,7 +9023,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7868,7 +9066,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7911,7 +9109,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7956,7 +9154,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -7999,7 +9197,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-02-01"
+            "2019-08-01"
           ]
         },
         "kind": {
@@ -8247,6 +9445,129 @@
       },
       "description": "SourceControl resource specific properties"
     },
+    "StaticSite": {
+      "type": "object",
+      "properties": {
+        "branch": {
+          "type": "string",
+          "description": "The target branch in the repository."
+        },
+        "buildProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/StaticSiteBuildProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Build properties for the static site."
+        },
+        "repositoryToken": {
+          "type": "string",
+          "description": "A user's github repository token. This is used to setup the Github Actions workflow file and API secrets."
+        },
+        "repositoryUrl": {
+          "type": "string",
+          "description": "URL for the repository of the static site."
+        }
+      },
+      "description": "A static site."
+    },
+    "StaticSiteBuildProperties": {
+      "type": "object",
+      "properties": {
+        "apiLocation": {
+          "type": "string",
+          "description": "The path to the api code within the repository."
+        },
+        "appArtifactLocation": {
+          "type": "string",
+          "description": "The path of the app artifacts after building."
+        },
+        "appLocation": {
+          "type": "string",
+          "description": "The path to the app code within the repository."
+        }
+      },
+      "description": "Build properties for the static site."
+    },
+    "staticSites_config_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of resource."
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "functionappsettings"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "config"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites/config"
+    },
+    "staticSites_customDomains_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The custom domain to create."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "customDomains"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Web/staticSites/customDomains"
+    },
     "StatusCodesBasedTrigger": {
       "type": "object",
       "properties": {
@@ -8449,6 +9770,20 @@
       },
       "description": "Directory for virtual application."
     },
+    "VirtualNetworkProfile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource id of the Virtual Network."
+        },
+        "subnet": {
+          "type": "string",
+          "description": "Subnet within the Virtual Network."
+        }
+      },
+      "description": "Specification for using a Virtual Network."
+    },
     "VnetGatewayProperties": {
       "type": "object",
       "properties": {
@@ -8524,6 +9859,54 @@
         }
       },
       "description": "VnetRoute resource specific properties"
+    },
+    "WorkerPool": {
+      "type": "object",
+      "properties": {
+        "computeMode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Shared",
+                "Dedicated",
+                "Dynamic"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Shared or dedicated app hosting."
+        },
+        "workerCount": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Number of instances in the worker pool."
+        },
+        "workerSize": {
+          "type": "string",
+          "description": "VM size of the worker pool instances."
+        },
+        "workerSizeId": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Worker size ID for referencing this worker pool."
+        }
+      },
+      "description": "Worker pool of an App Service Environment."
     }
   }
 }
