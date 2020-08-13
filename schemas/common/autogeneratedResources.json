@@ -1544,6 +1544,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-05-01/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_replications"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-05-01/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_tasks"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-05-01/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_webhooks"
         },
         {
@@ -1565,6 +1568,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_agentPools"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_exportPipelines"
         },
         {
@@ -1578,6 +1584,18 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_replications"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_scopeMaps"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_taskRuns"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_tasks"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_tokens"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-12-01-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries_webhooks"
