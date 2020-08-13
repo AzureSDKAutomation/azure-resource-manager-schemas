@@ -1,16 +1,78 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2016-12-01/Microsoft.RecoveryServices.json#",
+  "id": "https://schema.management.azure.com/schemas/2018-12-20/Microsoft.RecoveryServices.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.RecoveryServices",
   "description": "Microsoft RecoveryServices Resource Types",
   "resourceDefinitions": {
+    "vaults_backupFabrics_backupProtectionIntent": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2018-12-20"
+          ]
+        },
+        "eTag": {
+          "type": "string",
+          "description": "Optional ETag."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location."
+        },
+        "name": {
+          "type": "string",
+          "description": "Intent object name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ProtectionIntent"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Base class for backup ProtectionIntent."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.RecoveryServices/vaults/backupFabrics/backupProtectionIntent"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.RecoveryServices/vaults/backupFabrics/backupProtectionIntent"
+    },
     "vaults_backupFabrics_protectionContainers": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-12-01"
+            "2018-12-20"
           ]
         },
         "eTag": {
@@ -72,7 +134,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-12-01"
+            "2018-12-20"
           ]
         },
         "eTag": {
@@ -182,6 +244,45 @@
       ],
       "description": "IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine."
     },
+    "AzureRecoveryServiceVaultProtectionIntent": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AzureWorkloadAutoProtectionIntent"
+        }
+      ],
+      "properties": {
+        "protectionIntentItemType": {
+          "type": "string",
+          "enum": [
+            "RecoveryServiceVaultItem"
+          ]
+        }
+      },
+      "required": [
+        "protectionIntentItemType"
+      ],
+      "description": "Azure Recovery Services Vault specific protection intent item."
+    },
+    "AzureResourceProtectionIntent": {
+      "type": "object",
+      "properties": {
+        "friendlyName": {
+          "type": "string",
+          "description": "Friendly name of the VM represented by this backup item."
+        },
+        "protectionIntentItemType": {
+          "type": "string",
+          "enum": [
+            "AzureResourceItem"
+          ]
+        }
+      },
+      "required": [
+        "protectionIntentItemType"
+      ],
+      "description": "IaaS VM specific backup protection intent item."
+    },
     "AzureSQLAGWorkloadContainerProtectionContainer": {
       "type": "object",
       "properties": {
@@ -264,6 +365,26 @@
         "containerType"
       ],
       "description": "Container for SQL workloads under Azure Virtual Machines."
+    },
+    "AzureWorkloadAutoProtectionIntent": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AzureWorkloadSQLAutoProtectionIntent"
+        }
+      ],
+      "properties": {
+        "protectionIntentItemType": {
+          "type": "string",
+          "enum": [
+            "AzureWorkloadAutoProtectionIntent"
+          ]
+        }
+      },
+      "required": [
+        "protectionIntentItemType"
+      ],
+      "description": "Azure Recovery Services Vault specific protection intent item."
     },
     "AzureWorkloadContainer": {
       "type": "object",
@@ -386,6 +507,41 @@
         }
       },
       "description": "Extended information of the container."
+    },
+    "AzureWorkloadSQLAutoProtectionIntent": {
+      "type": "object",
+      "properties": {
+        "protectionIntentItemType": {
+          "type": "string",
+          "enum": [
+            "AzureWorkloadSQLAutoProtectionIntent"
+          ]
+        },
+        "workloadItemType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Invalid",
+                "SQLInstance",
+                "SQLDataBase",
+                "SAPHanaSystem",
+                "SAPHanaDatabase",
+                "SAPAseSystem",
+                "SAPAseDatabase"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workload item type of the item for which intent is to be set."
+        }
+      },
+      "required": [
+        "protectionIntentItemType"
+      ],
+      "description": "Azure Workload SQL Auto Protection intent item."
     },
     "BackupResourceConfig": {
       "type": "object",
@@ -994,6 +1150,72 @@
         }
       },
       "description": "Base class for container with backup items. Containers with specific workloads are derived from this class."
+    },
+    "ProtectionIntent": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AzureRecoveryServiceVaultProtectionIntent"
+        },
+        {
+          "$ref": "#/definitions/AzureResourceProtectionIntent"
+        }
+      ],
+      "properties": {
+        "backupManagementType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Invalid",
+                "AzureIaasVM",
+                "MAB",
+                "DPM",
+                "AzureSql",
+                "AzureBackupServer",
+                "AzureWorkload",
+                "AzureStorage",
+                "DefaultBackup"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Type of backup management for the backed up item."
+        },
+        "itemId": {
+          "type": "string",
+          "description": "ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "ID of the backup policy with which this item is backed up."
+        },
+        "protectionState": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Invalid",
+                "NotProtected",
+                "Protecting",
+                "Protected",
+                "ProtectionFailed"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Backup state of this backup item."
+        },
+        "sourceResourceId": {
+          "type": "string",
+          "description": "ARM ID of the resource to be backed up."
+        }
+      },
+      "description": "Base class for backup ProtectionIntent."
     },
     "WorkloadInquiryDetails": {
       "type": "object",
