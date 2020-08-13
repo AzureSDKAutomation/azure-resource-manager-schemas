@@ -1,0 +1,2956 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.Security.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.Security",
+  "description": "Microsoft Security Resource Types",
+  "resourceDefinitions": {
+    "automations": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "etag": {
+          "type": "string",
+          "description": "Entity tag is used for comparing two or more entities from the same requested resource."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of the resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "The security automation name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AutomationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A set of properties that defines the behavior of the automation configuration. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A list of key value pairs that describe the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/automations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/automations"
+    },
+    "iotSecuritySolutions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "The resource location."
+        },
+        "name": {
+          "type": "string",
+          "description": "The solution manager name"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IoTSecuritySolutionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Security Solution setting data"
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/iotSecuritySolutions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/iotSecuritySolutions"
+    },
+    "locations_jitNetworkAccessPolicies": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "description": "Kind of the resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a Just-in-Time access configuration policy."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/JitNetworkAccessPolicyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/locations/jitNetworkAccessPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/locations/jitNetworkAccessPolicies"
+    }
+  },
+  "subscription_resourceDefinitions": {
+    "alertsSuppressionRules": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The unique name of the suppression alert rule"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AlertsSuppressionRuleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "describes AlertsSuppressionRule properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/alertsSuppressionRules"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/alertsSuppressionRules"
+    },
+    "autoProvisioningSettings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Auto provisioning setting key"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AutoProvisioningSettingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "describes properties of an auto provisioning setting"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/autoProvisioningSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/autoProvisioningSettings"
+    },
+    "connectors": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the cloud account connector"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConnectorSettingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes properties of an connector setting"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/connectors"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/connectors"
+    },
+    "locations_applicationWhitelistings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "enforcementMode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Audit",
+                "Enforce",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The enforcement mode of the group. Can also be defined per collection type by using ProtectionMode."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of an application control VM/server group"
+        },
+        "pathRecommendations": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PathRecommendation"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "protectionMode": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ProtectionMode"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/locations/applicationWhitelistings"
+          ]
+        },
+        "vmRecommendations": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VmRecommendation"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Security/locations/applicationWhitelistings"
+    },
+    "pricings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "name of the pricing configuration"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PricingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Pricing properties for the relevant scope"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/pricings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/pricings"
+    },
+    "securityContacts": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the security contact object"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SecurityContactProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "describes security contact properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/securityContacts"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/securityContacts"
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "kind": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "DataExportSetting",
+                "AlertSuppressionSetting"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "the kind of the settings string (DataExportSetting)."
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "MCAS",
+                "WDATP"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Name of setting: (MCAS/WDATP)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/settings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "kind",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Security/settings"
+    },
+    "workspaceSettings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the security setting"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceSettingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace setting data"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/workspaceSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/workspaceSettings"
+    }
+  },
+  "unknown_resourceDefinitions": {
+    "advancedThreatProtectionSettings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Advanced Threat Protection setting name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AdvancedThreatProtectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Advanced Threat Protection settings."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/advancedThreatProtectionSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/advancedThreatProtectionSettings"
+    },
+    "deviceSecurityGroups": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the device security group. Note that the name of the device security group is case insensitive."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeviceSecurityGroupProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "describes properties of a security group."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/deviceSecurityGroups"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/deviceSecurityGroups"
+    },
+    "informationProtectionPolicies": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-01-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "effective",
+                "custom"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Name of the information protection policy."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InformationProtectionPolicyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "describes properties of an information protection policy."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/informationProtectionPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/informationProtectionPolicies"
+    }
+  },
+  "definitions": {
+    "ActiveConnectionsNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "ActiveConnectionsNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of active connections is not in allowed range."
+    },
+    "AdvancedThreatProtectionProperties": {
+      "type": "object",
+      "properties": {
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether Advanced Threat Protection is enabled."
+        }
+      },
+      "description": "The Advanced Threat Protection settings."
+    },
+    "AlertsSuppressionRuleProperties": {
+      "type": "object",
+      "properties": {
+        "alertType": {
+          "type": "string",
+          "description": "Type of the alert to automatically suppress. For all alert types, use '*'"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Any comment regarding the rule"
+        },
+        "expirationDateUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date."
+        },
+        "reason": {
+          "type": "string",
+          "description": "The reason for dismissing the alert"
+        },
+        "state": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled",
+                "Expired"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Possible states of the rule."
+        },
+        "suppressionAlertsScope": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SuppressionAlertsScope"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "required": [
+        "alertType",
+        "reason",
+        "state"
+      ],
+      "description": "describes AlertsSuppressionRule properties"
+    },
+    "AllowlistCustomAlertRule": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ConnectionToIpNotAllowed"
+        },
+        {
+          "$ref": "#/definitions/LocalUserNotAllowed"
+        },
+        {
+          "$ref": "#/definitions/ProcessNotAllowed"
+        }
+      ],
+      "properties": {
+        "allowlistValues": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The values to allow. The format of the values depends on the rule type."
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Status of the custom alert."
+        }
+      },
+      "required": [
+        "allowlistValues",
+        "isEnabled"
+      ],
+      "description": "A custom alert rule that checks if a value (depends on the custom alert type) is allowed."
+    },
+    "AmqpC2DMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "AmqpC2DMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of cloud to device messages (AMQP protocol) is not in allowed range."
+    },
+    "AmqpC2DRejectedMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "AmqpC2DRejectedMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of rejected cloud to device messages (AMQP protocol) is not in allowed range."
+    },
+    "AmqpD2CMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "AmqpD2CMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of device to cloud messages (AMQP protocol) is not in allowed range."
+    },
+    "AuthenticationDetailsProperties": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AwsCredsAuthenticationDetailsProperties"
+        },
+        {
+          "$ref": "#/definitions/AwAssumeRoleAuthenticationDetailsProperties"
+        },
+        {
+          "$ref": "#/definitions/GcpCredentialsDetailsProperties"
+        }
+      ],
+      "properties": {},
+      "description": "Settings for cloud authentication management"
+    },
+    "AutomationAction": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AutomationActionLogicApp"
+        },
+        {
+          "$ref": "#/definitions/AutomationActionEventHub"
+        },
+        {
+          "$ref": "#/definitions/AutomationActionWorkspace"
+        }
+      ],
+      "properties": {},
+      "description": "The action that should be triggered."
+    },
+    "AutomationActionEventHub": {
+      "type": "object",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "EventHub"
+          ]
+        },
+        "connectionString": {
+          "type": "string",
+          "description": "The target Event Hub connection string (it will not be included in any response)."
+        },
+        "eventHubResourceId": {
+          "type": "string",
+          "description": "The target Event Hub Azure Resource ID."
+        }
+      },
+      "required": [
+        "actionType"
+      ],
+      "description": "The target Event Hub to which event data will be exported. To learn more about Security Center continuous export capabilities, visit https://aka.ms/ASCExportLearnMore"
+    },
+    "AutomationActionLogicApp": {
+      "type": "object",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "LogicApp"
+          ]
+        },
+        "logicAppResourceId": {
+          "type": "string",
+          "description": "The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "description": "The Logic App trigger URI endpoint (it will not be included in any response)."
+        }
+      },
+      "required": [
+        "actionType"
+      ],
+      "description": "The logic app action that should be triggered. To learn more about Security Center's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore"
+    },
+    "AutomationActionWorkspace": {
+      "type": "object",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "Workspace"
+          ]
+        },
+        "workspaceResourceId": {
+          "type": "string",
+          "description": "The fully qualified Log Analytics Workspace Azure Resource ID."
+        }
+      },
+      "required": [
+        "actionType"
+      ],
+      "description": "The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Security Center continuous export capabilities, visit https://aka.ms/ASCExportLearnMore"
+    },
+    "AutomationProperties": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AutomationAction"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true."
+        },
+        "description": {
+          "type": "string",
+          "description": "The security automation description."
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the security automation is enabled."
+        },
+        "scopes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AutomationScope"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes."
+        },
+        "sources": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AutomationSource"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A collection of the source event types which evaluate the security automation set of rules."
+        }
+      },
+      "description": "A set of properties that defines the behavior of the automation configuration. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas."
+    },
+    "AutomationRuleSet": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AutomationTriggeringRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "description": "A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions."
+    },
+    "AutomationScope": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The resources scope description."
+        },
+        "scopePath": {
+          "type": "string",
+          "description": "The resources scope path. Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)."
+        }
+      },
+      "description": "A single automation scope."
+    },
+    "AutomationSource": {
+      "type": "object",
+      "properties": {
+        "eventSource": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Assessments",
+                "Alerts"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A valid event source type."
+        },
+        "ruleSets": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AutomationRuleSet"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or')."
+        }
+      },
+      "description": "The source event types which evaluate the security automation set of rules. For example - security alerts and security assessments. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas."
+    },
+    "AutomationTriggeringRule": {
+      "type": "object",
+      "properties": {
+        "expectedValue": {
+          "type": "string",
+          "description": "The expected value."
+        },
+        "operator": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Equals",
+                "GreaterThan",
+                "GreaterThanOrEqualTo",
+                "LesserThan",
+                "LesserThanOrEqualTo",
+                "NotEquals",
+                "Contains",
+                "StartsWith",
+                "EndsWith"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType."
+        },
+        "propertyJPath": {
+          "type": "string",
+          "description": "The JPath of the entity model property that should be checked."
+        },
+        "propertyType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "String",
+                "Integer",
+                "Number",
+                "Boolean"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]."
+        }
+      },
+      "description": "A rule which is evaluated upon event interception. The rule is configured by comparing a specific value from the event model to an expected value. This comparison is done by using one of the supported operators set."
+    },
+    "AutoProvisioningSettingProperties": {
+      "type": "object",
+      "properties": {
+        "autoProvision": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes what kind of security agent provisioning action to take."
+        }
+      },
+      "required": [
+        "autoProvision"
+      ],
+      "description": "describes properties of an auto provisioning setting"
+    },
+    "AwAssumeRoleAuthenticationDetailsProperties": {
+      "type": "object",
+      "properties": {
+        "authenticationType": {
+          "type": "string",
+          "enum": [
+            "awsAssumeRole"
+          ]
+        },
+        "awsAssumeRoleArn": {
+          "type": "string",
+          "description": "Assumed role ID is an identifier that you can use to create temporary security credentials."
+        },
+        "awsExternalId": {
+          "type": "string",
+          "description": "A unique identifier that is required when you assume a role in another account."
+        }
+      },
+      "required": [
+        "authenticationType",
+        "awsAssumeRoleArn",
+        "awsExternalId"
+      ],
+      "description": "AWS cloud account connector based assume role, the role enables delegating access to your AWS resources. The role is composed of role arn and external id, for more details, refer to <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html\">Creating a Role to Delegate Permissions to an IAM User (write only)</a>"
+    },
+    "AwsCredsAuthenticationDetailsProperties": {
+      "type": "object",
+      "properties": {
+        "authenticationType": {
+          "type": "string",
+          "enum": [
+            "awsCreds"
+          ]
+        },
+        "awsAccessKeyId": {
+          "type": "string",
+          "description": "Public key element of the AWS credential object (write only)"
+        },
+        "awsSecretAccessKey": {
+          "type": "string",
+          "description": "Secret key element of the AWS credential object (write only)"
+        }
+      },
+      "required": [
+        "authenticationType",
+        "awsAccessKeyId",
+        "awsSecretAccessKey"
+      ],
+      "description": "AWS cloud account connector based credentials, the credentials is composed of access key id and secret key, for more details, refer to <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html\">Creating an IAM User in Your AWS Account (write only)</a>"
+    },
+    "ConnectionToIpNotAllowed": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "ConnectionToIpNotAllowed"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Outbound connection to an ip that isn't allowed. Allow list consists of ipv4 or ipv6 range in CIDR notation."
+    },
+    "ConnectorSettingProperties": {
+      "type": "object",
+      "properties": {
+        "authenticationDetails": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AuthenticationDetailsProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings for cloud authentication management"
+        },
+        "hybridComputeSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/HybridComputeSettingsProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings for hybrid compute management"
+        }
+      },
+      "description": "Describes properties of an connector setting"
+    },
+    "DenylistCustomAlertRule": {
+      "type": "object",
+      "properties": {
+        "denylistValues": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The values to deny. The format of the values depends on the rule type."
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Status of the custom alert."
+        }
+      },
+      "required": [
+        "denylistValues",
+        "isEnabled"
+      ],
+      "description": "A custom alert rule that checks if a value (depends on the custom alert type) is denied."
+    },
+    "DeviceSecurityGroupProperties": {
+      "type": "object",
+      "properties": {
+        "allowlistRules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AllowlistCustomAlertRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The allow-list custom alert rules."
+        },
+        "denylistRules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DenylistCustomAlertRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The deny-list custom alert rules."
+        },
+        "thresholdRules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ThresholdCustomAlertRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of custom alert threshold rules."
+        },
+        "timeWindowRules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TimeWindowCustomAlertRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of custom alert time-window rules."
+        }
+      },
+      "description": "describes properties of a security group."
+    },
+    "DirectMethodInvokesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "DirectMethodInvokesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of direct method invokes is not in allowed range."
+    },
+    "FailedLocalLoginsNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "FailedLocalLoginsNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of failed local logins is not in allowed range."
+    },
+    "FileUploadsNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "FileUploadsNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of file uploads is not in allowed range."
+    },
+    "GcpCredentialsDetailsProperties": {
+      "type": "object",
+      "properties": {
+        "authenticationType": {
+          "type": "string",
+          "enum": [
+            "gcpCredentials"
+          ]
+        },
+        "authProviderX509CertUrl": {
+          "type": "string",
+          "description": "Auth provider x509 certificate url field of the API key (write only)"
+        },
+        "authUri": {
+          "type": "string",
+          "description": "Auth Uri field of the API key (write only)"
+        },
+        "clientEmail": {
+          "type": "string",
+          "description": "Client email field of the API key (write only)"
+        },
+        "clientId": {
+          "type": "string",
+          "description": "Client Id field of the API key (write only)"
+        },
+        "clientX509CertUrl": {
+          "type": "string",
+          "description": "Client x509 certificate url field of the API key (write only)"
+        },
+        "organizationId": {
+          "type": "string",
+          "description": "The Organization ID of the GCP cloud account"
+        },
+        "privateKey": {
+          "type": "string",
+          "description": "Private key field of the API key (write only)"
+        },
+        "privateKeyId": {
+          "type": "string",
+          "description": "Private key Id field of the API key (write only)"
+        },
+        "projectId": {
+          "type": "string",
+          "description": "Project Id field of the API key (write only)"
+        },
+        "tokenUri": {
+          "type": "string",
+          "description": "Token Uri field of the API key (write only)"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type field of the API key (write only)"
+        }
+      },
+      "required": [
+        "authenticationType",
+        "authProviderX509CertUrl",
+        "authUri",
+        "clientEmail",
+        "clientId",
+        "clientX509CertUrl",
+        "organizationId",
+        "privateKey",
+        "privateKeyId",
+        "projectId",
+        "tokenUri",
+        "type"
+      ],
+      "description": "GCP cloud account connector based service to service credentials, the credentials is composed of organization id and json api key (write only)</a>"
+    },
+    "HttpC2DMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "HttpC2DMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of cloud to device messages (HTTP protocol) is not in allowed range."
+    },
+    "HttpC2DRejectedMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "HttpC2DRejectedMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of rejected cloud to device messages (HTTP protocol) is not in allowed range."
+    },
+    "HttpD2CMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "HttpD2CMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of device to cloud messages (HTTP protocol) is not in allowed range."
+    },
+    "HybridComputeSettingsProperties": {
+      "type": "object",
+      "properties": {
+        "autoProvision": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether or not to automatically install Azure Arc (hybrid compute) agents on machines."
+        },
+        "proxyServer": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ProxyServerProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use."
+        },
+        "region": {
+          "type": "string",
+          "description": "The location where the meta data of machines will be stored"
+        },
+        "resourceGroupName": {
+          "type": "string",
+          "description": "The name of the resource group where Arc (Hybrid Compute) connectors are connected."
+        },
+        "servicePrincipal": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServicePrincipalProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the service principal."
+        }
+      },
+      "required": [
+        "autoProvision"
+      ],
+      "description": "Settings for hybrid compute management"
+    },
+    "InformationProtectionKeyword": {
+      "type": "object",
+      "properties": {
+        "canBeNumeric": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the keyword can be applied on numeric types or not."
+        },
+        "custom": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the keyword is custom or not."
+        },
+        "excluded": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the keyword is excluded or not."
+        },
+        "pattern": {
+          "type": "string",
+          "description": "The keyword pattern."
+        }
+      },
+      "description": "The information type keyword."
+    },
+    "InformationProtectionPolicyProperties": {
+      "type": "object",
+      "properties": {
+        "informationTypes": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/InformationType"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The sensitivity information types."
+        },
+        "labels": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/SensitivityLabel"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Dictionary of sensitivity labels."
+        }
+      },
+      "description": "describes properties of an information protection policy."
+    },
+    "InformationType": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the information type is custom or not."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the information type."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name of the information type."
+        },
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the information type is enabled or not."
+        },
+        "keywords": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InformationProtectionKeyword"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The information type keywords."
+        },
+        "order": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The order of the information type."
+        },
+        "recommendedLabelId": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The recommended label id to be associated with this information type."
+        }
+      },
+      "description": "The information type."
+    },
+    "IoTSecuritySolutionProperties": {
+      "type": "object",
+      "properties": {
+        "disabledDataSources": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "TwinData"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Disabled data sources. Disabling these data sources compromises the system."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Resource display name."
+        },
+        "export": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "RawEvents"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of additional export to workspace data options"
+        },
+        "iotHubs": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "IoT Hub resource IDs"
+        },
+        "recommendationsConfiguration": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RecommendationConfigurationProperties"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of recommendation configuration"
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Security solution status."
+        },
+        "userDefinedResources": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserDefinedResourcesProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the solution's user defined resources."
+        },
+        "workspace": {
+          "type": "string",
+          "description": "Workspace resource ID"
+        }
+      },
+      "required": [
+        "displayName",
+        "iotHubs",
+        "workspace"
+      ],
+      "description": "Security Solution setting data"
+    },
+    "JitNetworkAccessPolicyProperties": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JitNetworkAccessRequest"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "virtualMachines": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JitNetworkAccessPolicyVirtualMachine"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Configurations for Microsoft.Compute/virtualMachines resource type."
+        }
+      },
+      "required": [
+        "virtualMachines"
+      ]
+    },
+    "JitNetworkAccessPolicyVirtualMachine": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID of the virtual machine that is linked to this policy"
+        },
+        "ports": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JitNetworkAccessPortRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Port configurations for the virtual machine"
+        },
+        "publicIpAddress": {
+          "type": "string",
+          "description": "Public IP address of the Azure Firewall that is linked to this policy, if applicable"
+        }
+      },
+      "required": [
+        "id",
+        "ports"
+      ]
+    },
+    "JitNetworkAccessPortRule": {
+      "type": "object",
+      "properties": {
+        "allowedSourceAddressPrefix": {
+          "type": "string",
+          "description": "Mutually exclusive with the \"allowedSourceAddressPrefixes\" parameter. Should be an IP address or CIDR, for example \"192.168.0.3\" or \"192.168.0.0/16\"."
+        },
+        "allowedSourceAddressPrefixes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Mutually exclusive with the \"allowedSourceAddressPrefix\" parameter."
+        },
+        "maxRequestAccessDuration": {
+          "type": "string",
+          "description": "Maximum duration requests can be made for. In ISO 8601 duration format. Minimum 5 minutes, maximum 1 day"
+        },
+        "number": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "protocol": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "TCP",
+                "UDP",
+                "*"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "required": [
+        "maxRequestAccessDuration",
+        "number",
+        "protocol"
+      ]
+    },
+    "JitNetworkAccessRequest": {
+      "type": "object",
+      "properties": {
+        "justification": {
+          "type": "string",
+          "description": "The justification for making the initiate request"
+        },
+        "requestor": {
+          "type": "string",
+          "description": "The identity of the person who made the request"
+        },
+        "startTimeUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the request in UTC"
+        },
+        "virtualMachines": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JitNetworkAccessRequestVirtualMachine"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "required": [
+        "requestor",
+        "startTimeUtc",
+        "virtualMachines"
+      ]
+    },
+    "JitNetworkAccessRequestPort": {
+      "type": "object",
+      "properties": {
+        "allowedSourceAddressPrefix": {
+          "type": "string",
+          "description": "Mutually exclusive with the \"allowedSourceAddressPrefixes\" parameter. Should be an IP address or CIDR, for example \"192.168.0.3\" or \"192.168.0.0/16\"."
+        },
+        "allowedSourceAddressPrefixes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Mutually exclusive with the \"allowedSourceAddressPrefix\" parameter."
+        },
+        "endTimeUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date & time at which the request ends in UTC"
+        },
+        "mappedPort": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The port which is mapped to this port's `number` in the Azure Firewall, if applicable"
+        },
+        "number": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Revoked",
+                "Initiated"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The status of the port."
+        },
+        "statusReason": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Expired",
+                "UserRequested",
+                "NewerRequestInitiated"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A description of why the `status` has its value."
+        }
+      },
+      "required": [
+        "endTimeUtc",
+        "number",
+        "status",
+        "statusReason"
+      ]
+    },
+    "JitNetworkAccessRequestVirtualMachine": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID of the virtual machine that is linked to this policy"
+        },
+        "ports": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JitNetworkAccessRequestPort"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The ports that were opened for the virtual machine"
+        }
+      },
+      "required": [
+        "id",
+        "ports"
+      ]
+    },
+    "LocalUserNotAllowed": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "LocalUserNotAllowed"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Login by a local user that isn't allowed. Allow list consists of login names to allow."
+    },
+    "MqttC2DMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "MqttC2DMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of cloud to device messages (MQTT protocol) is not in allowed range."
+    },
+    "MqttC2DRejectedMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "MqttC2DRejectedMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of rejected cloud to device messages (MQTT protocol) is not in allowed range."
+    },
+    "MqttD2CMessagesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "MqttD2CMessagesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of device to cloud messages (MQTT protocol) is not in allowed range."
+    },
+    "PathRecommendation": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Recommended",
+                "Add",
+                "Remove"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "common": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether the path is commonly run on the machine"
+        },
+        "configurationStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Configured",
+                "NotConfigured",
+                "InProgress",
+                "Failed",
+                "NoStatus"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "fileType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Exe",
+                "Dll",
+                "Msi",
+                "Script",
+                "Executable",
+                "Unknown"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "path": {
+          "type": "string",
+          "description": "The full path to whitelist"
+        },
+        "publisherInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PublisherInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Represents the publisher information of a process/rule"
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "File",
+                "FileHash",
+                "PublisherSignature",
+                "ProductSignature",
+                "BinarySignature",
+                "VersionAndAboveSignature",
+                "IoT_ACRAuthentication",
+                "IoT_AgentSendsUnutilizedMessages",
+                "IoT_Baseline",
+                "IoT_EdgeHubMemOptimize",
+                "IoT_EdgeLoggingOptions",
+                "IoT_InconsistentModuleSettings",
+                "IoT_InstallAgent",
+                "IoT_IPFilter_DenyAll",
+                "IoT_IPFilter_PermissiveRule",
+                "IoT_OpenPorts",
+                "IoT_PermissiveFirewallPolicy",
+                "IoT_PermissiveInputFirewallRules",
+                "IoT_PermissiveOutputFirewallRules",
+                "IoT_PrivilegedDockerOptions",
+                "IoT_SharedCredentials",
+                "IoT_VulnerableTLSCipherSuite"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "usernames": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserRecommendation"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "userSids": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "description": "Represents a path that is recommended to be allowed and its properties"
+    },
+    "PricingProperties": {
+      "type": "object",
+      "properties": {
+        "pricingTier": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Free",
+                "Standard"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The pricing tier value. Azure Security Center is provided in two pricing tiers: free and standard, with the standard tier available with a trial period. The standard tier offers advanced security capabilities, while the free tier offers basic security features."
+        }
+      },
+      "required": [
+        "pricingTier"
+      ],
+      "description": "Pricing properties for the relevant scope"
+    },
+    "ProcessNotAllowed": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "ProcessNotAllowed"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Execution of a process that isn't allowed. Allow list consists of process names to allow."
+    },
+    "ProtectionMode": {
+      "type": "object",
+      "properties": {
+        "exe": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Audit",
+                "Enforce",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "executable": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Audit",
+                "Enforce",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "msi": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Audit",
+                "Enforce",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "script": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Audit",
+                "Enforce",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "description": "The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux."
+    },
+    "ProxyServerProperties": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "description": "Proxy server IP"
+        },
+        "port": {
+          "type": "string",
+          "description": "Proxy server port"
+        }
+      },
+      "description": "For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use."
+    },
+    "PublisherInfo": {
+      "type": "object",
+      "properties": {
+        "binaryName": {
+          "type": "string",
+          "description": "The \"OriginalName\" field taken from the file's version resource"
+        },
+        "productName": {
+          "type": "string",
+          "description": "The product name taken from the file's version resource"
+        },
+        "publisherName": {
+          "type": "string",
+          "description": "The Subject field of the x.509 certificate used to sign the code, using the following fields -  O = Organization, L = Locality, S = State or Province, and C = Country"
+        },
+        "version": {
+          "type": "string",
+          "description": "The binary file version taken from the file's version resource"
+        }
+      },
+      "description": "Represents the publisher information of a process/rule"
+    },
+    "QueuePurgesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "QueuePurgesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of device queue purges is not in allowed range."
+    },
+    "RecommendationConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "recommendationType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "File",
+                "FileHash",
+                "PublisherSignature",
+                "ProductSignature",
+                "BinarySignature",
+                "VersionAndAboveSignature",
+                "IoT_ACRAuthentication",
+                "IoT_AgentSendsUnutilizedMessages",
+                "IoT_Baseline",
+                "IoT_EdgeHubMemOptimize",
+                "IoT_EdgeLoggingOptions",
+                "IoT_InconsistentModuleSettings",
+                "IoT_InstallAgent",
+                "IoT_IPFilter_DenyAll",
+                "IoT_IPFilter_PermissiveRule",
+                "IoT_OpenPorts",
+                "IoT_PermissiveFirewallPolicy",
+                "IoT_PermissiveInputFirewallRules",
+                "IoT_PermissiveOutputFirewallRules",
+                "IoT_PrivilegedDockerOptions",
+                "IoT_SharedCredentials",
+                "IoT_VulnerableTLSCipherSuite"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The recommendation type."
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Disabled",
+                "Enabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Recommendation status. The recommendation is not generated when the status is disabled."
+        }
+      },
+      "required": [
+        "recommendationType",
+        "status"
+      ],
+      "description": "Recommendation configuration"
+    },
+    "ScopeElement": {
+      "type": "object",
+      "properties": {
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Unmatched properties from the message are deserialized this collection"
+        },
+        "field": {
+          "type": "string",
+          "description": "The alert entity type to suppress by."
+        }
+      },
+      "description": "A more specific scope used to identify the alerts to suppress."
+    },
+    "SecurityContactProperties": {
+      "type": "object",
+      "properties": {
+        "alertNotifications": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether to send security alerts notifications to the security contact."
+        },
+        "alertsToAdmins": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "On",
+                "Off"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether to send security alerts notifications to subscription admins."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of this security contact"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of this security contact"
+        }
+      },
+      "required": [
+        "alertNotifications",
+        "alertsToAdmins",
+        "email"
+      ],
+      "description": "describes security contact properties"
+    },
+    "SensitivityLabel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The description of the sensitivity label."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name of the sensitivity label."
+        },
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the label is enabled or not."
+        },
+        "order": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The order of the sensitivity label."
+        },
+        "rank": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "Low",
+                "Medium",
+                "High",
+                "Critical"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The rank of the sensitivity label."
+        }
+      },
+      "description": "The sensitivity label."
+    },
+    "ServicePrincipalProperties": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "description": "Application id of service principal."
+        },
+        "secret": {
+          "type": "string",
+          "description": "A secret string that the application uses to prove its identity, also can be referred to as application password (write only)."
+        }
+      },
+      "description": "Details of the service principal."
+    },
+    "SuppressionAlertsScope": {
+      "type": "object",
+      "properties": {
+        "allOf": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ScopeElement"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "All the conditions inside need to be true in order to suppress the alert"
+        }
+      },
+      "required": [
+        "allOf"
+      ]
+    },
+    "ThresholdCustomAlertRule": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/TimeWindowCustomAlertRule"
+        }
+      ],
+      "properties": {
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Status of the custom alert."
+        },
+        "maxThreshold": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The maximum threshold."
+        },
+        "minThreshold": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The minimum threshold."
+        }
+      },
+      "required": [
+        "isEnabled",
+        "maxThreshold",
+        "minThreshold"
+      ],
+      "description": "A custom alert rule that checks if a value (depends on the custom alert type) is within the given range."
+    },
+    "TimeWindowCustomAlertRule": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ActiveConnectionsNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/AmqpC2DMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/MqttC2DMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/HttpC2DMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/AmqpC2DRejectedMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/MqttC2DRejectedMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/HttpC2DRejectedMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/AmqpD2CMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/MqttD2CMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/HttpD2CMessagesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/DirectMethodInvokesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/FailedLocalLoginsNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/FileUploadsNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/QueuePurgesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/TwinUpdatesNotInAllowedRange"
+        },
+        {
+          "$ref": "#/definitions/UnauthorizedOperationsNotInAllowedRange"
+        }
+      ],
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "TimeWindowCustomAlertRule"
+          ]
+        },
+        "timeWindowSize": {
+          "type": "string",
+          "format": "duration",
+          "description": "The time window size in iso8601 format."
+        }
+      },
+      "required": [
+        "ruleType",
+        "timeWindowSize"
+      ],
+      "description": "A custom alert rule that checks if the number of activities (depends on the custom alert type) in a time window is within the given range."
+    },
+    "TwinUpdatesNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "TwinUpdatesNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of twin updates is not in allowed range."
+    },
+    "UnauthorizedOperationsNotInAllowedRange": {
+      "type": "object",
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "UnauthorizedOperationsNotInAllowedRange"
+          ]
+        }
+      },
+      "required": [
+        "ruleType"
+      ],
+      "description": "Number of unauthorized operations is not in allowed range."
+    },
+    "UserDefinedResourcesProperties": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Azure Resource Graph query which represents the security solution's user defined resources. Required to start with \"where type != \"Microsoft.Devices/IotHubs\"\""
+        },
+        "querySubscriptions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of Azure subscription ids on which the user defined resources query should be executed."
+        }
+      },
+      "required": [
+        "query",
+        "querySubscriptions"
+      ],
+      "description": "Properties of the solution's user defined resources."
+    },
+    "UserRecommendation": {
+      "type": "object",
+      "properties": {
+        "recommendationAction": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Recommended",
+                "Add",
+                "Remove"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "username": {
+          "type": "string",
+          "description": "Represents a user that is recommended to be allowed for a certain rule"
+        }
+      },
+      "description": "Represents a user that is recommended to be allowed for a certain rule"
+    },
+    "VmRecommendation": {
+      "type": "object",
+      "properties": {
+        "configurationStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Configured",
+                "NotConfigured",
+                "InProgress",
+                "Failed",
+                "NoStatus"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "enforcementSupport": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Supported",
+                "NotSupported",
+                "Unknown"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "recommendationAction": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Recommended",
+                "Add",
+                "Remove"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "The full azure resource id of the machine"
+        }
+      },
+      "description": "Represents a machine that is part of a VM/server group"
+    },
+    "WorkspaceSettingProperties": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "string",
+          "description": "All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope"
+        },
+        "workspaceId": {
+          "type": "string",
+          "description": "The full Azure ID of the workspace to save the data in"
+        }
+      },
+      "required": [
+        "scope",
+        "workspaceId"
+      ],
+      "description": "Workspace setting data"
+    }
+  }
+}

@@ -3893,6 +3893,15 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-03-13/Microsoft.Search.json#/resourceDefinitions/searchServices_sharedPrivateLinkResources"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.Security.json#/resourceDefinitions/automations"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.Security.json#/resourceDefinitions/iotSecuritySolutions"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.Security.json#/resourceDefinitions/locations_jitNetworkAccessPolicies"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2015-08-01/Microsoft.ServiceBus.json#/resourceDefinitions/namespaces"
         },
         {
