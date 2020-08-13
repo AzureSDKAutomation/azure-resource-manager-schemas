@@ -236,6 +236,36 @@
                   },
                   {
                     "$ref": "https://schema.management.azure.com/schemas/2017-11-01-preview/Microsoft.Subscription.json#/tenant_resourceDefinitions/subscriptionDefinitions"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2015-08-01/Microsoft.Web.json#/tenant_resourceDefinitions/publishingUsers"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2015-08-01/Microsoft.Web.json#/tenant_resourceDefinitions/sourcecontrols"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2016-03-01/Microsoft.Web.json#/tenant_resourceDefinitions/publishingUsers"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2016-03-01/Microsoft.Web.json#/tenant_resourceDefinitions/sourcecontrols"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2018-02-01/Microsoft.Web.json#/tenant_resourceDefinitions/publishingUsers"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2018-02-01/Microsoft.Web.json#/tenant_resourceDefinitions/sourcecontrols"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.Web.json#/tenant_resourceDefinitions/publishingUsers"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.Web.json#/tenant_resourceDefinitions/sourcecontrols"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.Web.json#/tenant_resourceDefinitions/publishingUsers"
+                  },
+                  {
+                    "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.Web.json#/tenant_resourceDefinitions/sourcecontrols"
                   }
                 ]
               }
