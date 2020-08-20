@@ -113,15 +113,8 @@
           "description": "Friendly name of the Reservation"
         },
         "quantity": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Quantity of the SKUs that are part of the Reservation. Must be greater than zero."
+          "type": "string",
+          "description": "Quantity of the SKUs that are part of the Reservation, as a string. Must be greater than zero."
         },
         "renew": {
           "oneOf": [
@@ -158,7 +151,19 @@
                 "RedHat",
                 "SqlDataWarehouse",
                 "VMwareCloudSimple",
-                "RedHatOsa"
+                "RedHatOsa",
+                "Databricks",
+                "AppService",
+                "ManagedDisk",
+                "BlockBlob",
+                "RedisCache",
+                "AzureDataExplorer",
+                "MySql",
+                "MariaDb",
+                "PostgreSql",
+                "DedicatedHost",
+                "SapHana",
+                "SqlAzureHybridBenefit"
               ]
             },
             {
