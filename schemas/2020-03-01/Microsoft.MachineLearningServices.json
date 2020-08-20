@@ -52,6 +52,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_privateEndpointConnections_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_linkedServices_childResource"
               }
             ]
           }
@@ -176,6 +179,56 @@
         "type"
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
+    },
+    "workspaces_linkedServices": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-03-01"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Identity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity for the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the linked workspace"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LinkedServiceProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "LinkedService specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.MachineLearningServices/workspaces/linkedServices"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/linkedServices"
     },
     "workspaces_privateEndpointConnections": {
       "type": "object",
@@ -752,6 +805,20 @@
         "keyVaultArmId"
       ]
     },
+    "LinkedServiceProps": {
+      "type": "object",
+      "properties": {
+        "linkedServiceResourceId": {
+          "type": "string",
+          "description": "ResourceId of the link target of the linked service."
+        },
+        "userAssignedIdentityResourceId": {
+          "type": "string",
+          "description": "ResourceId of the user assigned identity for the linked service."
+        }
+      },
+      "description": "LinkedService specific properties."
+    },
     "PrivateEndpoint": {
       "type": "object",
       "properties": {},
@@ -1263,6 +1330,56 @@
         "type"
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
+    },
+    "workspaces_linkedServices_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-03-01"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Identity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity for the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the linked workspace"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LinkedServiceProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "LinkedService specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "linkedServices"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/linkedServices"
     },
     "workspaces_privateEndpointConnections_childResource": {
       "type": "object",
