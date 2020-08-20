@@ -154,6 +154,9 @@
                     "$ref": "https://schema.management.azure.com/schemas/2019-04-01/Microsoft.Capacity.json#/tenant_resourceDefinitions/reservationOrders"
                   },
                   {
+                    "$ref": "https://schema.management.azure.com/schemas/2019-07-19-preview/Microsoft.Capacity.json#/tenant_resourceDefinitions/reservationOrders"
+                  },
+                  {
                     "$ref": "https://schema.management.azure.com/schemas/2015-01-14-preview/Microsoft.Intune.json#/tenant_resourceDefinitions/locations_androidPolicies"
                   },
                   {
