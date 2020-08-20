@@ -844,6 +844,22 @@
           "type": "string",
           "description": "The resource identifier of the source managed instance associated with create operation of this instance."
         },
+        "storageAccountType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "GRS",
+                "LRS",
+                "ZRS"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The storage account type used to store backups for this instance. The options are LRS (LocallyRedundantStorage), ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage)."
+        },
         "storageSizeInGB": {
           "oneOf": [
             {
