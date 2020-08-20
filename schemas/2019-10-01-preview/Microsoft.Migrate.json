@@ -26,10 +26,11 @@
         },
         "location": {
           "type": "string",
-          "description": "The geo-location where the resource lives"
+          "description": "The geo-location where the resource lives."
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The Move Collection Name."
         },
         "properties": {
           "oneOf": [
@@ -92,7 +93,8 @@
           ]
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The Move Resource Name."
         },
         "properties": {
           "oneOf": [
@@ -346,7 +348,8 @@
           ]
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The Move Resource Name."
         },
         "properties": {
           "oneOf": [
@@ -386,7 +389,7 @@
           "description": "Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of\r\nthe dependent resource."
         }
       },
-      "description": "Defines the dependency of the move resource."
+      "description": "Defines the dependency override of the move resource."
     },
     "MoveResourceError": {
       "type": "object",
@@ -934,7 +937,7 @@
         },
         "targetVmSize": {
           "type": "string",
-          "description": "Gets or sets the target vm size."
+          "description": "Gets or sets the target virtual machine size."
         }
       },
       "required": [
