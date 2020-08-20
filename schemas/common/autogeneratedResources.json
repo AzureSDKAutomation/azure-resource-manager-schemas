@@ -3326,6 +3326,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_computes"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_linkedServices"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_privateEndpointConnections"
         },
         {
