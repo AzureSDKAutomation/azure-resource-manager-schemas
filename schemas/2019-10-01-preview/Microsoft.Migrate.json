@@ -391,55 +391,6 @@
       },
       "description": "Defines the dependency override of the move resource."
     },
-    "MoveResourceError": {
-      "type": "object",
-      "properties": {
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MoveResourceErrorBody"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "An error response from the Azure Migrate service."
-        }
-      },
-      "description": "An error response from the azure region move service."
-    },
-    "MoveResourceErrorBody": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string",
-          "description": "An identifier for the error. Codes are invariant and are intended to be consumed programmatically."
-        },
-        "details": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MoveResourceErrorBody"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "A list of additional details about the error."
-        },
-        "message": {
-          "type": "string",
-          "description": "A message describing the error, intended to be suitable for display in a user interface."
-        },
-        "target": {
-          "type": "string",
-          "description": "The target of the particular error. For example, the name of the property in error."
-        }
-      },
-      "description": "An error response from the Azure Migrate service."
-    },
     "MoveResourceProperties": {
       "type": "object",
       "properties": {
@@ -456,17 +407,6 @@
             }
           ],
           "description": "Gets or sets the move resource dependencies overrides."
-        },
-        "errors": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MoveResourceError"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "An error response from the azure region move service."
         },
         "existingTargetId": {
           "type": "string",
