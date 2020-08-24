@@ -1,32 +1,27 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2018-06-17-preview/microsoft.insights.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-03-18-preview/Microsoft.HybridCompute.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "microsoft.insights",
-  "description": "microsoft insights Resource Types",
+  "title": "Microsoft.HybridCompute",
+  "description": "Microsoft HybridCompute Resource Types",
   "resourceDefinitions": {
-    "workbooks": {
+    "machines": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-06-17-preview"
+            "2019-03-18-preview"
           ]
         },
-        "kind": {
+        "identity": {
           "oneOf": [
             {
-              "type": "string",
-              "enum": [
-                "user",
-                "shared"
-              ]
+              "$ref": "#/definitions/Identity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
-          ],
-          "description": "The kind of workbook. Choices are user and shared."
+          ]
         },
         "location": {
           "type": "string",
@@ -34,18 +29,18 @@
         },
         "name": {
           "type": "string",
-          "description": "The name of the Application Insights component resource."
+          "description": "The name of the hybrid machine."
         },
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/WorkbookProperties"
+              "$ref": "#/definitions/MachineProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Properties that contain a workbook."
+          "description": "Describes the properties of a hybrid machine."
         },
         "tags": {
           "oneOf": [
@@ -65,7 +60,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "microsoft.insights/workbooks"
+            "Microsoft.HybridCompute/machines"
           ]
         }
       },
@@ -76,55 +71,48 @@
         "properties",
         "type"
       ],
-      "description": "microsoft.insights/workbooks"
+      "description": "Microsoft.HybridCompute/machines"
     }
   },
   "definitions": {
-    "WorkbookProperties": {
+    "Identity": {
       "type": "object",
       "properties": {
-        "category": {
+        "type": {
           "type": "string",
-          "description": "Workbook category, as defined by the user at creation time."
-        },
-        "displayName": {
+          "description": "The identity type."
+        }
+      }
+    },
+    "MachineProperties": {
+      "type": "object",
+      "properties": {
+        "clientPublicKey": {
           "type": "string",
-          "description": "The user-defined name (display name) of the workbook."
+          "description": "Public Key that the client provides to be used during initial resource onboarding"
         },
-        "serializedData": {
-          "type": "string",
-          "description": "Configuration of this particular workbook. Configuration data is a string containing valid JSON"
-        },
-        "tags": {
+        "osProfile": {
           "oneOf": [
             {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "$ref": "#/definitions/OSProfile"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "A list of 0 or more tags that are associated with this workbook definition"
+          "description": "Specifies the operating system settings for the hybrid machine."
         },
-        "userId": {
+        "physicalLocation": {
           "type": "string",
-          "description": "Unique user id of the specific user that owns this workbook."
-        },
-        "version": {
-          "type": "string",
-          "description": "Workbook version"
+          "description": "Resource's Physical Location"
         }
       },
-      "required": [
-        "category",
-        "displayName",
-        "serializedData",
-        "userId"
-      ],
-      "description": "Properties that contain a workbook."
+      "description": "Describes the properties of a hybrid machine."
+    },
+    "OSProfile": {
+      "type": "object",
+      "properties": {},
+      "description": "Specifies the operating system settings for the hybrid machine."
     }
   }
 }
