@@ -1556,6 +1556,17 @@
             "2020-06-01"
           ]
         },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
+        },
         "id": {
           "type": "string",
           "description": "Resource ID."
@@ -1877,6 +1888,17 @@
           "enum": [
             "2020-06-01"
           ]
+        },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
         },
         "id": {
           "type": "string",
@@ -2871,6 +2893,17 @@
             "2020-06-01"
           ]
         },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
+        },
         "id": {
           "type": "string",
           "description": "Resource ID."
@@ -2957,6 +2990,17 @@
           "enum": [
             "2020-06-01"
           ]
+        },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
         },
         "id": {
           "type": "string",
@@ -3816,6 +3860,17 @@
           "enum": [
             "2020-06-01"
           ]
+        },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
         },
         "id": {
           "type": "string",
@@ -10735,6 +10790,34 @@
       },
       "description": "Properties specific to ExpressRoutePort resources."
     },
+    "ExtendedLocation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the extended location."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "EdgeZone"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of the extended location."
+        }
+      },
+      "required": [
+        "name",
+        "type"
+      ],
+      "description": "ExtendedLocation complex type."
+    },
     "firewallPolicies_ruleCollectionGroups_childResource": {
       "type": "object",
       "properties": {
@@ -15337,6 +15420,17 @@
     "PublicIPAddress": {
       "type": "object",
       "properties": {
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ExtendedLocation complex type."
+        },
         "id": {
           "type": "string",
           "description": "Resource ID."
