@@ -66,7 +66,68 @@
       "description": "Microsoft.Portal/dashboards"
     }
   },
+  "tenant_resourceDefinitions": {
+    "tenantConfiguration": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ],
+          "description": "The configuration name. Value must be 'default'"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigurationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tenant configuration Properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Portal/tenantConfiguration"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Portal/tenantConfiguration"
+    }
+  },
   "definitions": {
+    "ConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "enforcePrivateMarkdownStorage": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Flag to enforce URI storage for Markdown tiles in Private dashboards."
+        }
+      },
+      "description": "Tenant configuration Properties."
+    },
     "DashboardLens": {
       "type": "object",
       "properties": {
