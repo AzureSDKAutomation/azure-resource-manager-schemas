@@ -107,6 +107,16 @@
           ],
           "description": "The properties of a cluster"
         },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/privateClouds_clusters_vmwareDatastoreBackings_childResource"
+              }
+            ]
+          }
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -121,6 +131,70 @@
         "type"
       ],
       "description": "Microsoft.AVS/privateClouds/clusters"
+    },
+    "privateClouds_clusters_vmwareDatastoreBackings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-09-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the datastore backing (eg. remote NFS/iSCSI volumes) which is used for datastores in the private cloud"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/privateClouds_clusters_vmwareDatastoreBackings_vmwareDatastores_childResource"
+              }
+            ]
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings"
+    },
+    "privateClouds_clusters_vmwareDatastoreBackings_vmwareDatastores": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-09-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the VMWare datastore which serves as a container for storing VM files"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings/vmwareDatastores"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings/vmwareDatastores"
     }
   },
   "definitions": {
@@ -352,6 +426,60 @@
         "type"
       ],
       "description": "Microsoft.AVS/privateClouds/clusters"
+    },
+    "privateClouds_clusters_vmwareDatastoreBackings_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-09-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the datastore backing (eg. remote NFS/iSCSI volumes) which is used for datastores in the private cloud"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "vmwareDatastoreBackings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings"
+    },
+    "privateClouds_clusters_vmwareDatastoreBackings_vmwareDatastores_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-08-09-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the VMWare datastore which serves as a container for storing VM files"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "vmwareDatastores"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/vmwareDatastoreBackings/vmwareDatastores"
     },
     "Sku": {
       "type": "object",
