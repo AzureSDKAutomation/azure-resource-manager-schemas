@@ -131,9 +131,7 @@
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
-                "LessThanOrEqual",
-                "Include",
-                "Exclude"
+                "LessThanOrEqual"
               ]
             },
             {
@@ -227,11 +225,6 @@
             {
               "type": "string",
               "enum": [
-                "Equals",
-                "GreaterThan",
-                "GreaterThanOrEqual",
-                "LessThan",
-                "LessThanOrEqual",
                 "Include",
                 "Exclude"
               ]
