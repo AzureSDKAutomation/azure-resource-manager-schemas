@@ -17,13 +17,7 @@
           "$ref": "https://schema.management.azure.com/schemas/2017-06-01/Microsoft.AAD.json#/resourceDefinitions/domainServices"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2017-06-01/Microsoft.AAD.json#/resourceDefinitions/domainServices_ouContainer"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.AAD.json#/resourceDefinitions/domainServices"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.AAD.json#/resourceDefinitions/domainServices_ouContainer"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-03-01-preview/Microsoft.Aadiam.json#/resourceDefinitions/privateLinkForAzureAd"
@@ -1640,6 +1634,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters_agentPools"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-09-30-preview/Microsoft.ContainerService.json#/resourceDefinitions/openShiftManagedClusters"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-10-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters"
         },
         {
@@ -1686,15 +1683,6 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters_privateEndpointConnections"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters_agentPools"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters_privateEndpointConnections"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2018-09-01-preview/Microsoft.CustomProviders.json#/resourceDefinitions/resourceProviders"
@@ -1856,12 +1844,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DataFactory.json#/resourceDefinitions/factories_linkedservices"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DataFactory.json#/resourceDefinitions/factories_managedVirtualNetworks"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DataFactory.json#/resourceDefinitions/factories_managedVirtualNetworks_managedPrivateEndpoints"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DataFactory.json#/resourceDefinitions/factories_pipelines"
         },
         {
@@ -1997,6 +1979,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01-preview/Microsoft.DBforMariaDB.json#/resourceDefinitions/servers_virtualNetworkRules"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.DBforMariaDB.json#/resourceDefinitions/servers_securityAlertPolicies"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2017-12-01/Microsoft.DBforMySQL.json#/resourceDefinitions/servers"
         },
         {
@@ -2045,6 +2030,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.DBforMySQL.json#/resourceDefinitions/servers_keys"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.DBforMySQL.json#/resourceDefinitions/servers_securityAlertPolicies"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2017-12-01/Microsoft.DBforPostgreSQL.json#/resourceDefinitions/servers"
         },
         {
@@ -2091,6 +2079,9 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.DBforPostgreSQL.json#/resourceDefinitions/servers_keys"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.DBforPostgreSQL.json#/resourceDefinitions/servers_securityAlertPolicies"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2018-09-01-preview/Microsoft.DeploymentManager.json#/resourceDefinitions/artifactSources"
@@ -3206,12 +3197,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-12-12/Microsoft.HybridCompute.json#/resourceDefinitions/machines_extensions"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-30-preview/Microsoft.HybridCompute.json#/resourceDefinitions/machines"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-30-preview/Microsoft.HybridCompute.json#/resourceDefinitions/machines_extensions"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.HybridData.json#/resourceDefinitions/dataManagers"
         },
         {
@@ -3398,21 +3383,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_computes"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_linkedServices"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_privateEndpointConnections"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_services"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01-preview/Microsoft.Maintenance.json#/resourceDefinitions/maintenanceConfigurations"
         },
         {
@@ -3438,9 +3408,6 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-02-01-preview/Microsoft.Maps.json#/resourceDefinitions/accounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-02-01-preview/Microsoft.Maps.json#/resourceDefinitions/accounts_creators"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-02-01-preview/Microsoft.Maps.json#/resourceDefinitions/accounts_privateAtlases"
@@ -3572,27 +3539,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-02-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_capacityPools_volumes_snapshots"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_backupPolicies"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_capacityPools"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_capacityPools_volumes"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_capacityPools_volumes_backups"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_capacityPools_volumes_snapshots"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_snapshotPolicies"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2019-03-01/Microsoft.Network.FrontDoor.json#/resourceDefinitions/FrontDoorWebApplicationFirewallPolicies"
         },
         {
@@ -3683,24 +3629,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.OffAzure.json#/resourceDefinitions/VMwareSites_vCenters"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/HyperVSites"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/HyperVSites_clusters"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/HyperVSites_hosts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/MasterSites"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/VMwareSites"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-07-07/Microsoft.OffAzure.json#/resourceDefinitions/VMwareSites_vCenters"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2015-03-20/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_savedSearches"
         },
         {
@@ -3750,30 +3678,6 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-03-01-preview/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_storageInsightConfigs"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/clusters"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_dataExports"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_dataSources"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_linkedServices"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_linkedStorageAccounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_savedSearches"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.OperationalInsights.json#/resourceDefinitions/workspaces_storageInsightConfigs"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-08-01-preview/Microsoft.Peering.json#/resourceDefinitions/peerings"
@@ -3980,28 +3884,16 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-10-01-preview/Microsoft.Search.json#/resourceDefinitions/searchServices_privateEndpointConnections"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-10-01-preview/Microsoft.Search.json#/resourceDefinitions/searchServices_sharedPrivateLinkResources"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-03-13/Microsoft.Search.json#/resourceDefinitions/searchServices"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-03-13/Microsoft.Search.json#/resourceDefinitions/searchServices_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.Search.json#/resourceDefinitions/searchServices"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.Search.json#/resourceDefinitions/searchServices_privateEndpointConnections"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.Search.json#/resourceDefinitions/searchServices_sharedPrivateLinkResources"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01-preview/Microsoft.Search.json#/resourceDefinitions/searchServices"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01-preview/Microsoft.Search.json#/resourceDefinitions/searchServices_privateEndpointConnections"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-01-preview/Microsoft.Search.json#/resourceDefinitions/searchServices_sharedPrivateLinkResources"
+          "$ref": "https://schema.management.azure.com/schemas/2020-03-13/Microsoft.Search.json#/resourceDefinitions/searchServices_sharedPrivateLinkResources"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2015-08-01/Microsoft.ServiceBus.json#/resourceDefinitions/namespaces"
