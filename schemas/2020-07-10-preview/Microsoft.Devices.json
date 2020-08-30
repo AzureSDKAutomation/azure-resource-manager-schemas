@@ -274,7 +274,10 @@
         "keyVaultProperties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/KeyVaultKeyProperties"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/KeyVaultKeyProperties"
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
