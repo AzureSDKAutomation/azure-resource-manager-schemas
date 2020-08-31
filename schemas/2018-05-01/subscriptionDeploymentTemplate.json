@@ -119,6 +119,9 @@
                 "$ref": "https://schema.management.azure.com/schemas/2018-11-01-preview/Microsoft.Billing.json#/subscription_resourceDefinitions/billingAccounts_lineOfCredit"
               },
               {
+                "$ref": "https://schema.management.azure.com/schemas/2020-05-01/Microsoft.Billing.json#/subscription_resourceDefinitions/billingAccounts_lineOfCredit"
+              },
+              {
                 "$ref": "https://schema.management.azure.com/schemas/2017-11-11-preview/Microsoft.Blueprint.json#/subscription_resourceDefinitions/blueprintAssignments"
               },
               {
