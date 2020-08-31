@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-03-01-preview/Microsoft.DigitalTwins.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-10-31/Microsoft.DigitalTwins.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DigitalTwins",
   "description": "Microsoft DigitalTwins Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01-preview"
+            "2020-10-31"
           ]
         },
         "location": {
@@ -34,7 +34,7 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DigitalTwinsPropertiesModel"
+              "$ref": "#/definitions/DigitalTwinsProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -51,17 +51,6 @@
               }
             ]
           }
-        },
-        "sku": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DigitalTwinsSkuInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Information about the SKU of the DigitalTwinsInstance."
         },
         "tags": {
           "oneOf": [
@@ -100,7 +89,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01-preview"
+            "2020-10-31"
           ]
         },
         "name": {
@@ -120,7 +109,7 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DigitalTwinsEndpointResourcePropertiesModel"
+              "$ref": "#/definitions/DigitalTwinsEndpointResourceProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -145,6 +134,27 @@
     }
   },
   "definitions": {
+    "DigitalTwinsEndpointResourceProperties": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ServiceBus"
+        },
+        {
+          "$ref": "#/definitions/EventHub"
+        },
+        {
+          "$ref": "#/definitions/EventGrid"
+        }
+      ],
+      "properties": {
+        "deadLetterSecret": {
+          "type": "string",
+          "description": "Dead letter storage secret. Will be obfuscated during read."
+        }
+      },
+      "description": "Properties related to Digital Twins Endpoint"
+    },
     "DigitalTwinsEndpointResourcePropertiesModel": {
       "type": "object",
       "oneOf": [
@@ -183,7 +193,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01-preview"
+            "2020-10-31"
           ]
         },
         "name": {
@@ -203,7 +213,7 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DigitalTwinsEndpointResourcePropertiesModel"
+              "$ref": "#/definitions/DigitalTwinsEndpointResourceProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -225,6 +235,11 @@
         "type"
       ],
       "description": "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints"
+    },
+    "DigitalTwinsProperties": {
+      "type": "object",
+      "properties": {},
+      "description": "The properties of a DigitalTwinsInstance."
     },
     "DigitalTwinsPropertiesModel": {
       "type": "object",
@@ -253,6 +268,35 @@
         "name"
       ],
       "description": "Information about the SKU of the DigitalTwinsInstance."
+    },
+    "EventGrid": {
+      "type": "object",
+      "properties": {
+        "accessKey1": {
+          "type": "string",
+          "description": "EventGrid secondary accesskey. Will be obfuscated during read."
+        },
+        "accessKey2": {
+          "type": "string",
+          "description": "EventGrid secondary accesskey. Will be obfuscated during read."
+        },
+        "endpointType": {
+          "type": "string",
+          "enum": [
+            "EventGrid"
+          ]
+        },
+        "TopicEndpoint": {
+          "type": "string",
+          "description": "EventGrid Topic Endpoint"
+        }
+      },
+      "required": [
+        "accessKey1",
+        "endpointType",
+        "TopicEndpoint"
+      ],
+      "description": "Properties related to EventGrid."
     },
     "EventGridModel": {
       "type": "object",
@@ -283,6 +327,30 @@
       ],
       "description": "properties related to eventgrid."
     },
+    "EventHub": {
+      "type": "object",
+      "properties": {
+        "connectionStringPrimaryKey": {
+          "type": "string",
+          "description": "PrimaryConnectionString of the endpoint. Will be obfuscated during read."
+        },
+        "connectionStringSecondaryKey": {
+          "type": "string",
+          "description": "SecondaryConnectionString of the endpoint. Will be obfuscated during read."
+        },
+        "endpointType": {
+          "type": "string",
+          "enum": [
+            "EventHub"
+          ]
+        }
+      },
+      "required": [
+        "connectionStringPrimaryKey",
+        "endpointType"
+      ],
+      "description": "Properties related to EventHub."
+    },
     "EventHubModel": {
       "type": "object",
       "properties": {
@@ -307,6 +375,30 @@
         "endpointType"
       ],
       "description": "properties related to eventhub."
+    },
+    "ServiceBus": {
+      "type": "object",
+      "properties": {
+        "endpointType": {
+          "type": "string",
+          "enum": [
+            "ServiceBus"
+          ]
+        },
+        "primaryConnectionString": {
+          "type": "string",
+          "description": "PrimaryConnectionString of the endpoint. Will be obfuscated during read."
+        },
+        "secondaryConnectionString": {
+          "type": "string",
+          "description": "SecondaryConnectionString of the endpoint. Will be obfuscated during read."
+        }
+      },
+      "required": [
+        "endpointType",
+        "primaryConnectionString"
+      ],
+      "description": "Properties related to ServiceBus."
     },
     "ServiceBusModel": {
       "type": "object",
