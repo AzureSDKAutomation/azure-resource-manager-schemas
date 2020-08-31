@@ -986,6 +986,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_nodeConfigurations"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_privateEndpointConnections"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_python2Packages"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_runbooks"
         },
         {
@@ -993,6 +999,15 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_schedules"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_softwareUpdateConfigurations"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_sourceControls"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_sourceControls_sourceControlSyncJobs"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2015-10-31/Microsoft.Automation.json#/resourceDefinitions/automationAccounts_variables"
