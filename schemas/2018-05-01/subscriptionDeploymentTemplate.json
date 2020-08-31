@@ -116,6 +116,12 @@
                 "$ref": "https://schema.management.azure.com/schemas/2019-09-01/Microsoft.Authorization.json#/resourceDefinitions/policySetDefinitions"
               },
               {
+                "$ref": "https://schema.management.azure.com/schemas/2020-04-01-preview/Microsoft.Authorization.json#/subscription_resourceDefinitions/accessReviewScheduleDefinitions"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-04-01-preview/Microsoft.Authorization.json#/subscription_resourceDefinitions/accessReviewScheduleSettings"
+              },
+              {
                 "$ref": "https://schema.management.azure.com/schemas/2018-11-01-preview/Microsoft.Billing.json#/subscription_resourceDefinitions/billingAccounts_lineOfCredit"
               },
               {
