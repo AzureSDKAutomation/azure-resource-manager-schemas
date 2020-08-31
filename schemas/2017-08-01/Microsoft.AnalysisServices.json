@@ -145,6 +145,59 @@
       },
       "description": "Properties of Analysis Services resource."
     },
+    "AnalysisServicesServerPropertiesModel": {
+      "type": "object",
+      "properties": {
+        "asAdministrators": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServerAdministrators"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of administrator user identities."
+        },
+        "backupBlobContainerUri": {
+          "type": "string",
+          "description": "The SAS container URI to the backup container."
+        },
+        "gatewayDetails": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GatewayDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The gateway details."
+        }
+      },
+      "description": "Properties of Analysis Services resource."
+    },
+    "AnalysisServicesServerPropertiesModelModel": {
+      "type": "object",
+      "properties": {
+        "asAdministrators": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServerAdministrators"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of administrator user identities."
+        },
+        "backupBlobContainerUri": {
+          "type": "string",
+          "description": "The SAS container URI to the backup container."
+        }
+      },
+      "description": "Properties of Analysis Services resource."
+    },
     "GatewayDetails": {
       "type": "object",
       "properties": {
@@ -221,6 +274,35 @@
           ],
           "description": "The number of instances in the read only query pool."
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the SKU level."
+        },
+        "tier": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Development",
+                "Basic",
+                "Standard"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The name of the Azure pricing tier to which the SKU applies."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "description": "Represents the SKU name and Azure pricing tier for Analysis Services resource."
+    },
+    "ResourceSkuModel": {
+      "type": "object",
+      "properties": {
         "name": {
           "type": "string",
           "description": "Name of the SKU level."
