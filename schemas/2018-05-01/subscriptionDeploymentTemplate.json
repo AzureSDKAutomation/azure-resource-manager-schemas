@@ -116,6 +116,15 @@
                 "$ref": "https://schema.management.azure.com/schemas/2019-09-01/Microsoft.Authorization.json#/resourceDefinitions/policySetDefinitions"
               },
               {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Authorization.json#/subscription_resourceDefinitions/locks"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Authorization.json#/subscription_resourceDefinitions/policyDefinitions"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Authorization.json#/subscription_resourceDefinitions/policySetDefinitions"
+              },
+              {
                 "$ref": "https://schema.management.azure.com/schemas/2018-11-01-preview/Microsoft.Billing.json#/subscription_resourceDefinitions/billingAccounts_lineOfCredit"
               },
               {
@@ -288,6 +297,15 @@
               },
               {
                 "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.Resources.json#/unknown_resourceDefinitions/tags"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Resources.json#/subscription_resourceDefinitions/deployments"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Resources.json#/subscription_resourceDefinitions/resourceGroups"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Resources.json#/unknown_resourceDefinitions/tags"
               },
               {
                 "$ref": "https://schema.management.azure.com/schemas/2019-05-01-preview/Microsoft.Support.json#/subscription_resourceDefinitions/supportTickets"

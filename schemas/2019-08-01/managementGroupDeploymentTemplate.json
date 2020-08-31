@@ -104,6 +104,12 @@
                 "$ref": "https://schema.management.azure.com/schemas/2019-09-01/Microsoft.Authorization.json#/resourceDefinitions/policySetDefinitions"
               },
               {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Authorization.json#/managementGroup_resourceDefinitions/policyDefinitions"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Authorization.json#/managementGroup_resourceDefinitions/policySetDefinitions"
+              },
+              {
                 "$ref": "https://schema.management.azure.com/schemas/2017-11-11-preview/Microsoft.Blueprint.json#/managementGroup_resourceDefinitions/blueprints"
               },
               {
@@ -153,6 +159,12 @@
               },
               {
                 "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.Resources.json#/unknown_resourceDefinitions/tags"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Resources.json#/managementGroup_resourceDefinitions/deployments"
+              },
+              {
+                "$ref": "https://schema.management.azure.com/schemas/2020-08-21-preview/Microsoft.Resources.json#/unknown_resourceDefinitions/tags"
               }
             ]
           }
