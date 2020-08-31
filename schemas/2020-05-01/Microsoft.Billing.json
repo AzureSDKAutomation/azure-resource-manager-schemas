@@ -4,6 +4,54 @@
   "title": "Microsoft.Billing",
   "description": "Microsoft Billing Resource Types",
   "resourceDefinitions": {},
+  "subscription_resourceDefinitions": {
+    "billingAccounts_lineOfCredit": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LineOfCreditProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the line of credit."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/lineOfCredit"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/lineOfCredit"
+    }
+  },
   "tenant_resourceDefinitions": {
     "billingAccounts_billingProfiles": {
       "type": "object",
@@ -140,34 +188,78 @@
     },
     "billingAccounts_billingProfiles_policies": {
       "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^.*/default$"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PolicyProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "The properties of a policy."
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^.*/default$"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PolicyPropertiesModel"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "The properties of policy."
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+        }
+      ],
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
             "2020-05-01"
           ]
-        },
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^.*/default$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PolicyProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The properties of a policy."
         },
         "type": {
           "type": "string",
@@ -178,11 +270,48 @@
       },
       "required": [
         "apiVersion",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+    },
+    "billingAccounts_billingRoleAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a role assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingRoleAssignmentPropertiesModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the role assignment."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/billingRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
         "name",
         "properties",
         "type"
       ],
-      "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+      "description": "Microsoft.Billing/billingAccounts/billingRoleAssignments"
     },
     "billingAccounts_customers_policies": {
       "type": "object",
@@ -229,9 +358,172 @@
         "type"
       ],
       "description": "Microsoft.Billing/billingAccounts/customers/policies"
+    },
+    "billingAccounts_departments_billingRoleAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a role assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingRoleAssignmentPropertiesModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the role assignment."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/departments/billingRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/departments/billingRoleAssignments"
+    },
+    "billingAccounts_enrollmentAccounts_billingRoleAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a role assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingRoleAssignmentPropertiesModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the role assignment."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/enrollmentAccounts/billingRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/enrollmentAccounts/billingRoleAssignments"
+    },
+    "billingAccounts_invoiceSections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies an invoice section."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InvoiceSectionPropertiesModelModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of an InvoiceSection."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/invoiceSections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/invoiceSections"
     }
   },
   "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string",
+          "description": "Address Line1."
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Address Line1."
+        },
+        "addressLine3": {
+          "type": "string",
+          "description": "Address Line1."
+        },
+        "city": {
+          "type": "string",
+          "description": "Address City."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company Name."
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code uses ISO2, 2-digit format."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First Name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last Name."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Address Postal Code."
+        },
+        "region": {
+          "type": "string",
+          "description": "Address Region."
+        }
+      },
+      "description": "Address details."
+    },
     "AddressDetails": {
       "type": "object",
       "properties": {
@@ -293,6 +585,69 @@
         "country"
       ],
       "description": "Address details."
+    },
+    "AddressDetailsModel": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string",
+          "description": "Address line 1."
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Address line 1."
+        },
+        "addressLine3": {
+          "type": "string",
+          "description": "Address line 1."
+        },
+        "city": {
+          "type": "string",
+          "description": "Address city."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company name."
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code uses ISO2, 2-digit format."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal code."
+        },
+        "region": {
+          "type": "string",
+          "description": "Address region."
+        }
+      },
+      "description": "Address details."
+    },
+    "Amount": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Amount value."
+        }
+      },
+      "description": "The amount."
     },
     "AzurePlan": {
       "type": "object",
@@ -384,29 +739,68 @@
     },
     "billingAccounts_billingProfiles_policies_childResource": {
       "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                "default"
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PolicyProperties"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "The properties of a policy."
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                "default"
+              ]
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/PolicyPropertiesModel"
+                },
+                {
+                  "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+                }
+              ],
+              "description": "The properties of policy."
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+        }
+      ],
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
             "2020-05-01"
           ]
-        },
-        "name": {
-          "type": "string",
-          "enum": [
-            "default"
-          ]
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PolicyProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The properties of a policy."
         },
         "type": {
           "type": "string",
@@ -417,11 +811,26 @@
       },
       "required": [
         "apiVersion",
-        "name",
-        "properties",
         "type"
       ],
       "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
+    },
+    "BillingProfileModelModel": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingProfilePropertiesModelModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the billing profile."
+        }
+      },
+      "description": "A billing profile resource."
     },
     "BillingProfileProperties": {
       "type": "object",
@@ -484,6 +893,85 @@
       },
       "description": "The properties of the billing profile."
     },
+    "BillingProfilePropertiesModelModel": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Address"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Address details."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name of the billing profile."
+        },
+        "enabledAzureSKUs": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EnabledAzureSKUs"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information about the product."
+        },
+        "invoiceSections": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InvoiceSectionModelModel"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The invoice sections associated to the billing profile."
+        },
+        "poNumber": {
+          "type": "string",
+          "description": "The purchase order name that will appear on the invoices generated for the billing profile."
+        }
+      },
+      "description": "The properties of the billing profile."
+    },
+    "BillingRoleAssignmentPropertiesModel": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The principal id of the user to whom the role was assigned."
+        },
+        "principalTenantId": {
+          "type": "string",
+          "description": "The principal tenant id of the user to whom the role was assigned."
+        },
+        "roleDefinitionId": {
+          "type": "string",
+          "description": "The ID of the role definition."
+        },
+        "userAuthenticationType": {
+          "type": "string",
+          "description": "The authentication type."
+        },
+        "userEmailAddress": {
+          "type": "string",
+          "description": "The email address of the user."
+        }
+      },
+      "description": "The properties of the role assignment."
+    },
     "CustomerPolicyProperties": {
       "type": "object",
       "properties": {
@@ -504,6 +992,16 @@
         }
       },
       "description": "The properties of a customer's policy."
+    },
+    "EnabledAzureSKUs": {
+      "type": "object",
+      "properties": {
+        "skuId": {
+          "type": "string",
+          "description": "The sku id."
+        }
+      },
+      "description": "Details about the enabled azure sku."
     },
     "InstructionProperties": {
       "type": "object",
@@ -559,6 +1057,23 @@
       },
       "description": "An invoice section."
     },
+    "InvoiceSectionModelModel": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InvoiceSectionPropertiesModelModel"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of an InvoiceSection."
+        }
+      },
+      "description": "An InvoiceSection resource."
+    },
     "InvoiceSectionProperties": {
       "type": "object",
       "properties": {
@@ -584,6 +1099,30 @@
       },
       "description": "The properties of an invoice section."
     },
+    "InvoiceSectionPropertiesModelModel": {
+      "type": "object",
+      "properties": {
+        "billingProfiles": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BillingProfileModelModel"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The billing profiles associated to the billing account."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name of the invoice section."
+        }
+      },
+      "description": "The properties of an InvoiceSection."
+    },
     "InvoiceSectionsOnExpand": {
       "type": "object",
       "properties": {
@@ -603,6 +1142,38 @@
         }
       },
       "description": "The invoice sections associated to the billing profile. By default this is not populated, unless it's specified in $expand."
+    },
+    "LineOfCreditProperties": {
+      "type": "object",
+      "properties": {
+        "creditLimit": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Amount"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The amount."
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Approved",
+                "Rejected"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The line of credit status."
+        }
+      },
+      "description": "The properties of the line of credit."
     },
     "PolicyProperties": {
       "type": "object",
@@ -655,6 +1226,45 @@
         }
       },
       "description": "The properties of a policy."
+    },
+    "PolicyPropertiesModel": {
+      "type": "object",
+      "properties": {
+        "marketplacePurchasesAllowed": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The marketplacePurchasesAllowed flag."
+        },
+        "reservationPurchasesAllowed": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The reservationPurchasesAllowed flag."
+        },
+        "subscriptionOwnerCanViewCharges": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The subscriptionOwnerCanViewCharges flag."
+        }
+      },
+      "description": "The properties of policy."
     }
   }
 }
