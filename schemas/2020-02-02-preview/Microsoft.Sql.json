@@ -52,6 +52,9 @@
               },
               {
                 "$ref": "#/definitions/managedInstances_databases_childResource"
+              },
+              {
+                "$ref": "#/definitions/managedInstances_azureADOnlyAuthentications_childResource"
               }
             ]
           }
@@ -97,6 +100,53 @@
         "type"
       ],
       "description": "Microsoft.Sql/managedInstances"
+    },
+    "managedInstances_azureADOnlyAuthentications": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-02-02-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/Default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The name of server azure active directory only authentication."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedInstanceAzureADOnlyAuthProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a active directory only authentication for Managed Instance."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Sql/managedInstances/azureADOnlyAuthentications"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications"
     },
     "managedInstances_databases": {
       "type": "object",
@@ -454,6 +504,26 @@
       },
       "description": "The managed database's properties."
     },
+    "ManagedInstanceAzureADOnlyAuthProperties": {
+      "type": "object",
+      "properties": {
+        "azureADOnlyAuthentication": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure Active Directory only Authentication enabled."
+        }
+      },
+      "required": [
+        "azureADOnlyAuthentication"
+      ],
+      "description": "Properties of a active directory only authentication for Managed Instance."
+    },
     "ManagedInstanceProperties": {
       "type": "object",
       "properties": {
@@ -599,6 +669,48 @@
         }
       },
       "description": "The properties of a managed instance."
+    },
+    "managedInstances_azureADOnlyAuthentications_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-02-02-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "Default"
+          ],
+          "description": "The name of server azure active directory only authentication."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedInstanceAzureADOnlyAuthProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a active directory only authentication for Managed Instance."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "azureADOnlyAuthentications"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications"
     },
     "managedInstances_databases_childResource": {
       "type": "object",
