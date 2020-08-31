@@ -179,6 +179,11 @@
       },
       "description": "The properties of a configuration store."
     },
+    "ConfigurationStorePropertiesModel": {
+      "type": "object",
+      "properties": {},
+      "description": "The properties of a configuration store."
+    },
     "configurationStores_privateEndpointConnections_childResource": {
       "type": "object",
       "properties": {
