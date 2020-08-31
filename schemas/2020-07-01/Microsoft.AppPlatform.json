@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-05-01-preview/Microsoft.AppPlatform.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.AppPlatform.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.AppPlatform",
   "description": "Microsoft AppPlatform Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "location": {
@@ -24,7 +24,7 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/ClusterResourcePropertiesModel"
+              "$ref": "#/definitions/ClusterResourceProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -36,6 +36,12 @@
           "type": "array",
           "items": {
             "oneOf": [
+              {
+                "$ref": "#/definitions/Spring_configServers_childResource"
+              },
+              {
+                "$ref": "#/definitions/Spring_monitoringSettings_childResource"
+              },
               {
                 "$ref": "#/definitions/Spring_apps_childResource"
               },
@@ -92,7 +98,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "identity": {
@@ -162,7 +168,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -201,7 +207,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -211,13 +217,24 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DeploymentResourcePropertiesModel"
+              "$ref": "#/definitions/DeploymentResourceProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
           "description": "Deployment resource properties payload"
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of Azure Spring Cloud"
         },
         "type": {
           "type": "string",
@@ -240,7 +257,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -279,7 +296,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -311,6 +328,98 @@
         "type"
       ],
       "description": "Microsoft.AppPlatform/Spring/certificates"
+    },
+    "Spring_configServers": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-07-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigServerProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Config server git properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Spring/configServers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Spring/configServers"
+    },
+    "Spring_monitoringSettings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-07-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MonitoringSettingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Monitoring Setting properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Spring/monitoringSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Spring/monitoringSettings"
     }
   },
   "definitions": {
@@ -423,6 +532,23 @@
         "vaultUri"
       ],
       "description": "Certificate resource payload."
+    },
+    "ClusterResourceProperties": {
+      "type": "object",
+      "properties": {
+        "networkProfile": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/NetworkProfile"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Service network profile payload"
+        }
+      },
+      "description": "Service properties payload"
     },
     "ClusterResourcePropertiesModel": {
       "type": "object",
@@ -539,6 +665,34 @@
       ],
       "description": "Property of git."
     },
+    "ConfigServerProperties": {
+      "type": "object",
+      "properties": {
+        "configServer": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigServerSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The settings of config server."
+        },
+        "error": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Error"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The error code compose of code and message."
+        }
+      },
+      "description": "Config server git properties payload"
+    },
     "ConfigServerPropertiesModel": {
       "type": "object",
       "properties": {
@@ -598,6 +752,34 @@
       },
       "description": "Custom domain of app resource payload."
     },
+    "DeploymentResourceProperties": {
+      "type": "object",
+      "properties": {
+        "deploymentSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeploymentSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deployment settings payload"
+        },
+        "source": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserSourceInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Source information for a deployment"
+        }
+      },
+      "description": "Deployment resource properties payload"
+    },
     "DeploymentResourcePropertiesModel": {
       "type": "object",
       "properties": {
@@ -625,6 +807,75 @@
         }
       },
       "description": "Deployment resource properties payload"
+    },
+    "DeploymentSettings": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Required CPU, basic tier should be 1, standard tier should be in range (1, 4)"
+        },
+        "environmentVariables": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of environment variables"
+        },
+        "jvmOptions": {
+          "type": "string",
+          "description": "JVM parameter"
+        },
+        "memoryInGB": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "default": "1"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Required Memory size in GB, basic tier should be in range (1, 2), standard tier should be in range (1, 8)"
+        },
+        "netCoreMainEntryPath": {
+          "type": "string",
+          "description": "The path to the .NET executable relative to zip root"
+        },
+        "runtimeVersion": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Java_8",
+                "Java_11",
+                "NetCore_31"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Runtime version."
+        }
+      },
+      "description": "Deployment settings payload"
     },
     "DeploymentSettingsModel": {
       "type": "object",
@@ -833,6 +1084,38 @@
       },
       "description": "Managed identity properties retrieved from ARM request headers."
     },
+    "MonitoringSettingProperties": {
+      "type": "object",
+      "properties": {
+        "appInsightsInstrumentationKey": {
+          "type": "string",
+          "description": "Target application insight instrumentation key"
+        },
+        "error": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Error"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The error code compose of code and message."
+        },
+        "traceEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether enable the trace functionality"
+        }
+      },
+      "description": "Monitoring Setting properties payload"
+    },
     "NetworkProfile": {
       "type": "object",
       "properties": {
@@ -913,7 +1196,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -952,7 +1235,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "identity": {
@@ -1006,7 +1289,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -1016,13 +1299,24 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DeploymentResourcePropertiesModel"
+              "$ref": "#/definitions/DeploymentResourceProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
           "description": "Deployment resource properties payload"
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of Azure Spring Cloud"
         },
         "type": {
           "type": "string",
@@ -1045,7 +1339,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -1084,7 +1378,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-05-01-preview"
+            "2020-07-01"
           ]
         },
         "name": {
@@ -1116,6 +1410,88 @@
         "type"
       ],
       "description": "Microsoft.AppPlatform/Spring/certificates"
+    },
+    "Spring_configServers_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-07-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigServerProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Config server git properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "configServers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Spring/configServers"
+    },
+    "Spring_monitoringSettings_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-07-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MonitoringSettingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Monitoring Setting properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "monitoringSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Spring/monitoringSettings"
     },
     "TemporaryDisk": {
       "type": "object",
