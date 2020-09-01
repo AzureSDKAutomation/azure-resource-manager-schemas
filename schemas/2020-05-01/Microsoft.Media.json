@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2018-07-01/Microsoft.Media.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-05-01/Microsoft.Media.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Media",
   "description": "Microsoft Media Resource Types",
@@ -10,12 +10,22 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MediaServiceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
           ]
         },
         "location": {
           "type": "string",
-          "description": "The Azure Region of the resource."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "type": "string",
@@ -38,6 +48,9 @@
             "oneOf": [
               {
                 "$ref": "#/definitions/mediaServices_accountFilters_childResource"
+              },
+              {
+                "$ref": "#/definitions/mediaservices_privateEndpointConnections_childResource"
               },
               {
                 "$ref": "#/definitions/mediaServices_assets_childResource"
@@ -87,6 +100,7 @@
       },
       "required": [
         "apiVersion",
+        "location",
         "name",
         "properties",
         "type"
@@ -99,7 +113,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -138,7 +152,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -187,7 +201,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -226,7 +240,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -265,12 +279,12 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "location": {
           "type": "string",
-          "description": "The Azure Region of the resource."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "oneOf": [
@@ -331,6 +345,7 @@
       },
       "required": [
         "apiVersion",
+        "location",
         "name",
         "properties",
         "type"
@@ -343,7 +358,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -386,18 +401,56 @@
       ],
       "description": "Microsoft.Media/mediaservices/liveEvents/liveOutputs"
     },
+    "mediaservices_privateEndpointConnections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the PrivateEndpointConnectProperties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Media/mediaservices/privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/mediaservices/privateEndpointConnections"
+    },
     "mediaservices_streamingEndpoints": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "location": {
           "type": "string",
-          "description": "The Azure Region of the resource."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "oneOf": [
@@ -448,6 +501,7 @@
       },
       "required": [
         "apiVersion",
+        "location",
         "name",
         "properties",
         "type"
@@ -460,7 +514,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -499,7 +553,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -538,7 +592,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -587,7 +641,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -673,6 +727,39 @@
         "time"
       ],
       "description": "Specifies the clip time as an absolute time position in the media file.  The absolute time can point to a different position depending on whether the media file starts from a timestamp of zero or not."
+    },
+    "AccountEncryption": {
+      "type": "object",
+      "properties": {
+        "keyVaultProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyVaultProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemKey",
+                "CustomerKey"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of key used to encrypt the Account Key."
+        }
+      },
+      "required": [
+        "type"
+      ]
     },
     "AkamaiAccessControl": {
       "type": "object",
@@ -3031,6 +3118,15 @@
       },
       "description": "Describes the settings to produce a JPEG image from the input video."
     },
+    "KeyVaultProperties": {
+      "type": "object",
+      "properties": {
+        "keyIdentifier": {
+          "type": "string",
+          "description": "The URL of the Key Vault key used to encrypt the account. The key may either be versioned (for example https://vault/keys/mykey/version1) or reference a key without a version (for example https://vault/keys/mykey)."
+        }
+      }
+    },
     "LiveEventEncoding": {
       "type": "object",
       "properties": {
@@ -3049,11 +3145,11 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The encoding type for Live Event.  This value is specified at creation time and cannot be updated."
+          "description": "The encoding type for Live Event. This value is specified at creation time and cannot be updated. When encodingType is set to None, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bit rates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. The encodingType of Basic is obsolete – if specified, the service will treat this as a Standard Live Event."
         },
         "presetName": {
           "type": "string",
-          "description": "The encoding preset name.  This value is specified at creation time and cannot be updated."
+          "description": "The optional encoding preset name, used when encodingType is not None. This value is specified at creation time and cannot be updated. If the encodingType is set to Standard, then the default preset name is ‘Default720p’. Else if the encodingType is set to Premium1080p, the default preset is ‘Default1080p’."
         }
       },
       "description": "The Live Event encoding."
@@ -3088,7 +3184,7 @@
         },
         "accessToken": {
           "type": "string",
-          "description": "A unique identifier for a stream.  This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value."
+          "description": "A UUID in string form to uniquely identify the stream. This can be specified at creation time but cannot be updated.  If omitted, the service will generate a unique value."
         },
         "endpoints": {
           "oneOf": [
@@ -3273,9 +3369,9 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The options to use for the LiveEvent.  This value is specified at creation time and cannot be updated."
+          "description": "The options to use for the LiveEvent.  This value is specified at creation time and cannot be updated. The valid values for the array entry values are 'Default' and 'LowLatency'."
         },
-        "vanityUrl": {
+        "useStaticHostname": {
           "oneOf": [
             {
               "type": "boolean"
@@ -3383,9 +3479,42 @@
       },
       "description": "The Media Filter properties."
     },
+    "MediaServiceIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemAssigned",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity type."
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
     "MediaServiceProperties": {
       "type": "object",
       "properties": {
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccountEncryption"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
         "storageAccounts": {
           "oneOf": [
             {
@@ -3399,6 +3528,20 @@
             }
           ],
           "description": "The storage accounts for this resource."
+        },
+        "storageAuthentication": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "System",
+                "ManagedIdentity"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
         }
       },
       "description": "Properties of the Media Services account."
@@ -3409,7 +3552,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3448,7 +3591,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3487,7 +3630,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3526,7 +3669,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3565,12 +3708,12 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "location": {
           "type": "string",
-          "description": "The Azure Region of the resource."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "oneOf": [
@@ -3621,6 +3764,7 @@
       },
       "required": [
         "apiVersion",
+        "location",
         "name",
         "properties",
         "type"
@@ -3633,7 +3777,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3676,18 +3820,56 @@
       ],
       "description": "Microsoft.Media/mediaservices/liveEvents/liveOutputs"
     },
+    "mediaservices_privateEndpointConnections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the PrivateEndpointConnectProperties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/mediaservices/privateEndpointConnections"
+    },
     "mediaservices_streamingEndpoints_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "location": {
           "type": "string",
-          "description": "The Azure Region of the resource."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "oneOf": [
@@ -3738,6 +3920,7 @@
       },
       "required": [
         "apiVersion",
+        "location",
         "name",
         "properties",
         "type"
@@ -3750,7 +3933,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3789,7 +3972,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3828,7 +4011,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -3867,7 +4050,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2018-07-01"
+            "2020-05-01"
           ]
         },
         "name": {
@@ -4196,6 +4379,89 @@
       ],
       "properties": {},
       "description": "Base type for all Presets, which define the recipe or instructions on how the input media files should be processed."
+    },
+    "PrivateEndpoint": {
+      "type": "object",
+      "properties": {},
+      "description": "The Private Endpoint resource."
+    },
+    "PrivateEndpointConnectionProperties": {
+      "type": "object",
+      "properties": {
+        "privateEndpoint": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpoint"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Private Endpoint resource."
+        },
+        "privateLinkServiceConnectionState": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkServiceConnectionState"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A collection of information about the state of the connection between service consumer and provider."
+        },
+        "provisioningState": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Succeeded",
+                "Creating",
+                "Deleting",
+                "Failed"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The provisioning state of the private endpoint connection resource."
+        }
+      },
+      "required": [
+        "privateLinkServiceConnectionState"
+      ],
+      "description": "Properties of the PrivateEndpointConnectProperties."
+    },
+    "PrivateLinkServiceConnectionState": {
+      "type": "object",
+      "properties": {
+        "actionsRequired": {
+          "type": "string",
+          "description": "A message indicating if changes on the service provider require any updates on the consumer."
+        },
+        "description": {
+          "type": "string",
+          "description": "The reason for approval/rejection of the connection."
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Pending",
+                "Approved",
+                "Rejected"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+        }
+      },
+      "description": "A collection of information about the state of the connection between service consumer and provider."
     },
     "Rectangle": {
       "type": "object",
@@ -4868,7 +5134,7 @@
         "keyFrameInterval": {
           "type": "string",
           "format": "duration",
-          "description": "The distance between two key frames, thereby defining a group of pictures (GOP). The value should be a non-zero integer in the range [1, 30] seconds, specified in ISO 8601 format. The default is 2 seconds (PT2S)."
+          "description": "The distance between two key frames. The value should be non-zero in the range [0.5, 20] seconds, specified in ISO 8601 format. The default is 2 seconds(PT2S). Note that this setting is ignored if VideoSyncMode.Passthrough is set, where the KeyFrameInterval value will follow the input source setting."
         },
         "stretchMode": {
           "oneOf": [
@@ -4885,6 +5151,23 @@
             }
           ],
           "description": "The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize."
+        },
+        "syncMode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Auto",
+                "Passthrough",
+                "Cfr",
+                "Vfr"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Video Sync Mode."
         }
       },
       "required": [
