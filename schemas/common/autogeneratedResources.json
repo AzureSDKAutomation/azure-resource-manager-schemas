@@ -3395,7 +3395,16 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_connections"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_linkedServices"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_linkedWorkspaces"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_privateEndpointConnections"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_services"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces"
