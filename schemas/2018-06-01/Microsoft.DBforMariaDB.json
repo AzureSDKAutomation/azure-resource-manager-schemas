@@ -1,8 +1,8 @@
 {
   "id": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DBforMariaDB.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Microsoft.DBforMariaDB",
-  "description": "Microsoft DBforMariaDB Resource Types",
+  "title": "Microsoft.DBForMariaDB",
+  "description": "Microsoft DBForMariaDB Resource Types",
   "resourceDefinitions": {
     "servers": {
       "type": "object",
@@ -53,6 +53,9 @@
               },
               {
                 "$ref": "#/definitions/servers_securityAlertPolicies_childResource"
+              },
+              {
+                "$ref": "#/definitions/servers_keys_childResource"
               }
             ]
           }
@@ -86,7 +89,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.DBforMariaDB/servers"
+            "Microsoft.DBForMariaDB/servers"
           ]
         }
       },
@@ -97,7 +100,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers"
+      "description": "Microsoft.DBForMariaDB/servers"
     },
     "servers_configurations": {
       "type": "object",
@@ -126,7 +129,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.DBforMariaDB/servers/configurations"
+            "Microsoft.DBForMariaDB/servers/configurations"
           ]
         }
       },
@@ -136,7 +139,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/configurations"
+      "description": "Microsoft.DBForMariaDB/servers/configurations"
     },
     "servers_databases": {
       "type": "object",
@@ -165,7 +168,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.DBforMariaDB/servers/databases"
+            "Microsoft.DBForMariaDB/servers/databases"
           ]
         }
       },
@@ -175,7 +178,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/databases"
+      "description": "Microsoft.DBForMariaDB/servers/databases"
     },
     "servers_firewallRules": {
       "type": "object",
@@ -204,7 +207,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.DBforMariaDB/servers/firewallRules"
+            "Microsoft.DBForMariaDB/servers/firewallRules"
           ]
         }
       },
@@ -214,7 +217,46 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/firewallRules"
+      "description": "Microsoft.DBForMariaDB/servers/firewallRules"
+    },
+    "servers_keys": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2018-06-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the MariaDB Server key to be operated on (updated or created)."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServerKeyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties for a key execution."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DBforMariaDB/servers/keys"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DBforMariaDB/servers/keys"
     },
     "servers_privateEndpointConnections": {
       "type": "object",
@@ -329,7 +371,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.DBforMariaDB/servers/virtualNetworkRules"
+            "Microsoft.DBForMariaDB/servers/virtualNetworkRules"
           ]
         }
       },
@@ -339,7 +381,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/virtualNetworkRules"
+      "description": "Microsoft.DBForMariaDB/servers/virtualNetworkRules"
     }
   },
   "definitions": {
@@ -539,6 +581,33 @@
       ],
       "description": "Properties of a security alert policy."
     },
+    "ServerKeyProperties": {
+      "type": "object",
+      "properties": {
+        "serverKeyType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "AzureKeyVault"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The key type like  'AzureKeyVault'."
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI of the key."
+        }
+      },
+      "required": [
+        "serverKeyType"
+      ],
+      "description": "Properties for a key execution."
+    },
     "ServerPropertiesForCreate": {
       "type": "object",
       "oneOf": [
@@ -650,7 +719,7 @@
         "storageProfile": {
           "oneOf": [
             {
-              "$ref": "#/definitions/StorageProfile"
+              "$ref": "#/definitions/StorageProfileModel"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -897,7 +966,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/configurations"
+      "description": "Microsoft.DBForMariaDB/servers/configurations"
     },
     "servers_databases_childResource": {
       "type": "object",
@@ -936,7 +1005,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/databases"
+      "description": "Microsoft.DBForMariaDB/servers/databases"
     },
     "servers_firewallRules_childResource": {
       "type": "object",
@@ -975,7 +1044,46 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/firewallRules"
+      "description": "Microsoft.DBForMariaDB/servers/firewallRules"
+    },
+    "servers_keys_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2018-06-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the MariaDB Server key to be operated on (updated or created)."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServerKeyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties for a key execution."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "keys"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DBforMariaDB/servers/keys"
     },
     "servers_privateEndpointConnections_childResource": {
       "type": "object",
@@ -1095,7 +1203,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.DBforMariaDB/servers/virtualNetworkRules"
+      "description": "Microsoft.DBForMariaDB/servers/virtualNetworkRules"
     },
     "Sku": {
       "type": "object",
@@ -1141,9 +1249,70 @@
           "description": "The tier of the particular SKU, e.g. Basic."
         }
       },
+      "required": [
+        "name"
+      ],
       "description": "Billing information related properties of a server."
     },
     "StorageProfile": {
+      "type": "object",
+      "properties": {
+        "backupRetentionDays": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Backup retention days for the server."
+        },
+        "geoRedundantBackup": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enable Geo-redundant or not for server backup."
+        },
+        "storageAutogrow": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enable Storage Auto Grow."
+        },
+        "storageMB": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Max storage allowed for a server."
+        }
+      },
+      "description": "Storage Profile properties of a server"
+    },
+    "StorageProfileModel": {
       "type": "object",
       "properties": {
         "backupRetentionDays": {

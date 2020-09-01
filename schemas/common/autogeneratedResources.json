@@ -1970,6 +1970,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DBforMariaDB.json#/resourceDefinitions/servers_firewallRules"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DBforMariaDB.json#/resourceDefinitions/servers_keys"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2018-06-01/Microsoft.DBforMariaDB.json#/resourceDefinitions/servers_privateEndpointConnections"
         },
         {
