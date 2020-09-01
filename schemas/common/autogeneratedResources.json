@@ -3593,6 +3593,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.NetApp.json#/resourceDefinitions/netAppAccounts_snapshotPolicies"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2018-08-01/Microsoft.Network.FrontDoor.json#/resourceDefinitions/frontDoors"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2018-08-01/Microsoft.Network.FrontDoor.json#/resourceDefinitions/FrontDoorWebApplicationFirewallPolicies"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-03-01/Microsoft.Network.FrontDoor.json#/resourceDefinitions/FrontDoorWebApplicationFirewallPolicies"
         },
         {
