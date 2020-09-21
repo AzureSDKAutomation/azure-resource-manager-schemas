@@ -1094,6 +1094,18 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlServerRegistrations_sqlServers"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-09-08-preview/Microsoft.AzureData.json#/resourceDefinitions/dataControllers"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-09-08-preview/Microsoft.AzureData.json#/resourceDefinitions/postgresInstances"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-09-08-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlManagedInstances"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-09-08-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlServerInstances"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2017-06-01/Microsoft.AzureStack.json#/resourceDefinitions/registrations"
         },
         {
