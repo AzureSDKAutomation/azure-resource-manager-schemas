@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-01-01-preview/Microsoft.Portal.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.Portal.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Portal",
   "description": "Microsoft Portal Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-01-01-preview"
+            "2020-09-01-preview"
           ]
         },
         "location": {
@@ -73,7 +73,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-01-01-preview"
+            "2020-09-01-preview"
           ]
         },
         "name": {
@@ -161,11 +161,10 @@
         "parts": {
           "oneOf": [
             {
-              "type": "object",
-              "additionalProperties": {
+              "type": "array",
+              "items": {
                 "$ref": "#/definitions/DashboardParts"
-              },
-              "properties": {}
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -180,24 +179,29 @@
       ],
       "description": "A dashboard lens."
     },
+    "DashboardPartMetadata": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/MarkdownPartMetadata"
+        }
+      ],
+      "properties": {},
+      "description": "A dashboard part metadata."
+    },
     "DashboardParts": {
       "type": "object",
       "properties": {
         "metadata": {
           "oneOf": [
             {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "properties": {}
-              },
-              "properties": {}
+              "$ref": "#/definitions/DashboardPartMetadata"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The dashboard part's metadata."
+          "description": "A dashboard part metadata."
         },
         "position": {
           "oneOf": [
@@ -294,11 +298,10 @@
         "lenses": {
           "oneOf": [
             {
-              "type": "object",
-              "additionalProperties": {
+              "type": "array",
+              "items": {
                 "$ref": "#/definitions/DashboardLens"
-              },
-              "properties": {}
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -324,6 +327,108 @@
         }
       },
       "description": "The shared dashboard properties."
+    },
+    "MarkdownPartMetadata": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Input to dashboard part."
+        },
+        "settings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MarkdownPartMetadataSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Markdown part settings."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Extension/HubsExtension/PartType/MarkdownPart"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Markdown part metadata."
+    },
+    "MarkdownPartMetadataSettings": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MarkdownPartMetadataSettingsContent"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The content of markdown part."
+        }
+      },
+      "description": "Markdown part settings."
+    },
+    "MarkdownPartMetadataSettingsContent": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MarkdownPartMetadataSettingsContentSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The setting of the content of markdown part."
+        }
+      },
+      "description": "The content of markdown part."
+    },
+    "MarkdownPartMetadataSettingsContentSettings": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "The content of the markdown part."
+        },
+        "markdownSource": {
+          "type": "object",
+          "properties": {},
+          "description": "The source of the content of the markdown part."
+        },
+        "markdownUri": {
+          "type": "string",
+          "description": "The uri of markdown content."
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "The subtitle of the markdown part."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the markdown part."
+        }
+      },
+      "description": "The setting of the content of markdown part."
     }
   }
 }
