@@ -463,6 +463,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_sqlPools_securityAlertPolicies_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_sqlPools_workloadGroups_childResource"
               }
             ]
           }
@@ -839,6 +842,94 @@
         "type"
       ],
       "description": "Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines"
+    },
+    "workspaces_sqlPools_workloadGroups": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workload group."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkloadGroupProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workload group definition. For more information look at sys.workload_management_workload_groups (DMV)."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/workspaces_sqlPools_workloadGroups_workloadClassifiers_childResource"
+              }
+            ]
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/sqlPools/workloadGroups"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlPools/workloadGroups"
+    },
+    "workspaces_sqlPools_workloadGroups_workloadClassifiers": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workload classifier to create/update."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkloadClassifierProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workload classifier definition. For more information look at sys.workload_management_workload_classifiers (DMV)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers"
     }
   },
   "definitions": {
@@ -2479,6 +2570,111 @@
       },
       "description": "Properties of a Vulnerability Assessment recurring scans."
     },
+    "WorkloadClassifierProperties": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "The workload classifier context."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The workload classifier end time for classification."
+        },
+        "importance": {
+          "type": "string",
+          "description": "The workload classifier importance. There are five levels of importance: low, below_normal, normal, above_normal, and high."
+        },
+        "label": {
+          "type": "string",
+          "description": "The workload classifier label."
+        },
+        "memberName": {
+          "type": "string",
+          "description": "The workload classifier member name."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The workload classifier start time for classification."
+        }
+      },
+      "required": [
+        "memberName"
+      ],
+      "description": "Workload classifier definition. For more information look at sys.workload_management_workload_classifiers (DMV)."
+    },
+    "WorkloadGroupProperties": {
+      "type": "object",
+      "properties": {
+        "importance": {
+          "type": "string",
+          "description": "The workload group importance level. There are five levels of importance: low, below_normal, normal, above_normal, and high."
+        },
+        "maxResourcePercent": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workload group cap percentage resource."
+        },
+        "maxResourcePercentPerRequest": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workload group request maximum grant percentage."
+        },
+        "minResourcePercent": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workload group minimum percentage resource."
+        },
+        "minResourcePercentPerRequest": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workload group request minimum grant percentage."
+        },
+        "queryExecutionTimeout": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workload group query execution timeout in seconds."
+        }
+      },
+      "required": [
+        "maxResourcePercent",
+        "minResourcePercent",
+        "minResourcePercentPerRequest"
+      ],
+      "description": "Workload group definition. For more information look at sys.workload_management_workload_groups (DMV)."
+    },
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
@@ -3076,6 +3272,84 @@
         "type"
       ],
       "description": "Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments"
+    },
+    "workspaces_sqlPools_workloadGroups_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workload group."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkloadGroupProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workload group definition. For more information look at sys.workload_management_workload_groups (DMV)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "workloadGroups"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlPools/workloadGroups"
+    },
+    "workspaces_sqlPools_workloadGroups_workloadClassifiers_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workload classifier to create/update."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkloadClassifierProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workload classifier definition. For more information look at sys.workload_management_workload_classifiers (DMV)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "workloadClassifiers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers"
     }
   }
 }
