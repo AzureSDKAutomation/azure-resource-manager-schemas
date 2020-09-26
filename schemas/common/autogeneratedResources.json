@@ -3446,6 +3446,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-06-01/Microsoft.HybridData.json#/resourceDefinitions/dataManagers_dataStores"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.HybridNetwork.json#/resourceDefinitions/devices"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.HybridNetwork.json#/resourceDefinitions/virtualNetworkFunctions"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2016-11-01/Microsoft.ImportExport.json#/resourceDefinitions/jobs"
         },
         {
