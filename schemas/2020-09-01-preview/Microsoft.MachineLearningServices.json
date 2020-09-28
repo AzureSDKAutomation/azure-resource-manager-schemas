@@ -16,7 +16,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -65,7 +65,7 @@
         "sku": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Sku"
+              "$ref": "#/definitions/AMLSku"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -115,7 +115,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -145,7 +145,7 @@
         "sku": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Sku"
+              "$ref": "#/definitions/AMLSku"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -195,7 +195,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -249,7 +249,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -279,7 +279,7 @@
         "sku": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Sku"
+              "$ref": "#/definitions/AMLSku"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -699,7 +699,7 @@
         "sslConfiguration": {
           "oneOf": [
             {
-              "$ref": "#/definitions/SslConfiguration"
+              "$ref": "#/definitions/AMLSslConfiguration"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -1152,6 +1152,91 @@
         }
       },
       "description": "AML Compute properties"
+    },
+    "AMLIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemAssigned",
+                "SystemAssigned,UserAssigned",
+                "UserAssigned",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity type."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserAssignedIdentity"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "dictionary containing all the user assigned identities, with resourceId of the UAI as key."
+        }
+      },
+      "description": "Identity for the resource."
+    },
+    "AMLSku": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the sku"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Tier of the sku like Basic or Enterprise"
+        }
+      },
+      "description": "Sku of the resource"
+    },
+    "AMLSslConfiguration": {
+      "type": "object",
+      "properties": {
+        "cert": {
+          "type": "string",
+          "description": "Cert data"
+        },
+        "cname": {
+          "type": "string",
+          "description": "CNAME of the cert"
+        },
+        "key": {
+          "type": "string",
+          "description": "Key data"
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Disabled",
+                "Enabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enable or disable ssl for scoring."
+        }
+      },
+      "description": "The ssl configuration for scoring"
     },
     "AssignedUser": {
       "type": "object",
@@ -1810,44 +1895,6 @@
           "description": "Port open for ssh connections on the master node of the cluster."
         }
       }
-    },
-    "Identity": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "SystemAssigned",
-                "SystemAssigned,UserAssigned",
-                "UserAssigned",
-                "None"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The identity type."
-        },
-        "userAssignedIdentities": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/UserAssignedIdentity"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "dictionary containing all the user assigned identities, with resourceId of the UAI as key."
-        }
-      },
-      "description": "Identity for the resource."
     },
     "ImageAsset": {
       "type": "object",
@@ -2529,20 +2576,6 @@
       },
       "description": "Properties of a shared private link resource."
     },
-    "Sku": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name of the sku"
-        },
-        "tier": {
-          "type": "string",
-          "description": "Tier of the sku like Basic or Enterprise"
-        }
-      },
-      "description": "Sku of the resource"
-    },
     "SparkMavenPackage": {
       "type": "object",
       "properties": {
@@ -2556,39 +2589,6 @@
           "type": "string"
         }
       }
-    },
-    "SslConfiguration": {
-      "type": "object",
-      "properties": {
-        "cert": {
-          "type": "string",
-          "description": "Cert data"
-        },
-        "cname": {
-          "type": "string",
-          "description": "CNAME of the cert"
-        },
-        "key": {
-          "type": "string",
-          "description": "Key data"
-        },
-        "status": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Disabled",
-                "Enabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enable or disable ssl for scoring."
-        }
-      },
-      "description": "The ssl configuration for scoring"
     },
     "UserAccountCredentials": {
       "type": "object",
@@ -2809,7 +2809,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -2839,7 +2839,7 @@
         "sku": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Sku"
+              "$ref": "#/definitions/AMLSku"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -2889,7 +2889,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -2943,7 +2943,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Identity"
+              "$ref": "#/definitions/AMLIdentity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -2973,7 +2973,7 @@
         "sku": {
           "oneOf": [
             {
-              "$ref": "#/definitions/Sku"
+              "$ref": "#/definitions/AMLSku"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
