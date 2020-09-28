@@ -133,6 +133,9 @@
                     "$ref": "https://schema.management.azure.com/schemas/2019-10-01-preview/Microsoft.Billing.json#/tenant_resourceDefinitions/billingAccounts_billingRoleAssignments"
                   },
                   {
+                    "$ref": "https://schema.management.azure.com/schemas/2019-10-01-preview/Microsoft.Billing.json#/tenant_resourceDefinitions/billingAccounts_billingSubscriptions"
+                  },
+                  {
                     "$ref": "https://schema.management.azure.com/schemas/2019-10-01-preview/Microsoft.Billing.json#/tenant_resourceDefinitions/billingAccounts_customers_policies"
                   },
                   {
