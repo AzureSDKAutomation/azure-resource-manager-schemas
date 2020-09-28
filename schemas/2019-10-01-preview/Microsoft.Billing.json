@@ -247,6 +247,45 @@
       ],
       "description": "Microsoft.Billing/billingAccounts/billingRoleAssignments"
     },
+    "billingAccounts_billingSubscriptions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-10-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a subscription."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingSubscriptionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The billing properties of a subscription."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/billingSubscriptions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/billingSubscriptions"
+    },
     "billingAccounts_customers_policies": {
       "type": "object",
       "properties": {
@@ -565,6 +604,38 @@
         }
       },
       "description": "The properties of the role assignment."
+    },
+    "BillingSubscriptionProperties": {
+      "type": "object",
+      "properties": {
+        "costCenter": {
+          "type": "string",
+          "description": "The cost center of the subscription. This field is available only for the Enterprise Agreement Type."
+        },
+        "skuId": {
+          "type": "string",
+          "description": "The sku ID of the Azure plan for the subscription. This field is not available for the Enterprise Agreement Type."
+        },
+        "subscriptionBillingStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Active",
+                "Inactive",
+                "Abandoned",
+                "Deleted",
+                "Warning"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The current billing status of the subscription. This field is not available for the Enterprise Agreement Type."
+        }
+      },
+      "description": "The billing properties of a subscription."
     },
     "CustomerPolicyProperties": {
       "type": "object",
