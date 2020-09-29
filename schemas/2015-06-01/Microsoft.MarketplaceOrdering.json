@@ -1,0 +1,101 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2015-06-01/Microsoft.MarketplaceOrdering.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.MarketplaceOrdering",
+  "description": "Microsoft MarketplaceOrdering Resource Types",
+  "resourceDefinitions": {},
+  "subscription_resourceDefinitions": {
+    "offerTypes_publishers_offers_plans_agreements": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2015-06-01"
+          ]
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/current$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "Properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AgreementProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "Type": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.MarketplaceOrdering/offerTypes/publishers/offers/plans/agreements"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.MarketplaceOrdering/offerTypes/publishers/offers/plans/agreements"
+    }
+  },
+  "definitions": {
+    "AgreementProperties": {
+      "type": "object",
+      "properties": {
+        "Accepted": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "LicenseTextLink": {
+          "type": "string"
+        },
+        "Plan": {
+          "type": "string"
+        },
+        "PrivacyPolicyLink": {
+          "type": "string"
+        },
+        "Product": {
+          "type": "string"
+        },
+        "Publisher": {
+          "type": "string"
+        },
+        "RetrieveDatetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Signature": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
