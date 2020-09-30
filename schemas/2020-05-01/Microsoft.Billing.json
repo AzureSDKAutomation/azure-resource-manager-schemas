@@ -123,6 +123,16 @@
           ],
           "description": "The properties of an invoice section."
         },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/billingAccounts_billingProfiles_invoiceSections_transfers_childResource"
+              }
+            ]
+          }
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -137,6 +147,45 @@
         "type"
       ],
       "description": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections"
+    },
+    "billingAccounts_billingProfiles_invoiceSections_transfers": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a transfer request."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InitiateTransferProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Request parameters to initiate transfer."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/transfers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/transfers"
     },
     "billingAccounts_billingProfiles_policies": {
       "type": "object",
@@ -229,6 +278,45 @@
         "type"
       ],
       "description": "Microsoft.Billing/billingAccounts/customers/policies"
+    },
+    "billingAccounts_customers_transfers": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a transfer request."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InitiateTransferProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Request parameters to initiate transfer."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/customers/transfers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/customers/transfers"
     }
   },
   "definitions": {
@@ -382,6 +470,45 @@
       ],
       "description": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections"
     },
+    "billingAccounts_billingProfiles_invoiceSections_transfers_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-05-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a transfer request."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/InitiateTransferProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Request parameters to initiate transfer."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "transfers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/transfers"
+    },
     "billingAccounts_billingProfiles_policies_childResource": {
       "type": "object",
       "properties": {
@@ -504,6 +631,20 @@
         }
       },
       "description": "The properties of a customer's policy."
+    },
+    "InitiateTransferProperties": {
+      "type": "object",
+      "properties": {
+        "recipientEmailId": {
+          "type": "string",
+          "description": "The email ID of the recipient to whom the transfer request is sent."
+        },
+        "resellerId": {
+          "type": "string",
+          "description": "Optional MPN ID of the reseller for transfer requests that are sent from a Microsoft Partner Agreement billing account."
+        }
+      },
+      "description": "Request parameters to initiate transfer."
     },
     "InstructionProperties": {
       "type": "object",
