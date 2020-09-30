@@ -5903,6 +5903,16 @@
       ],
       "description": "Cmdkey command custom setup type properties."
     },
+    "CMKIdentityDefinition": {
+      "type": "object",
+      "properties": {
+        "userAssignedIdentity": {
+          "type": "string",
+          "description": "The resource id of the user assigned identity to authenticate to customer's key vault."
+        }
+      },
+      "description": "Managed Identity used for CMK."
+    },
     "CommonDataServiceForAppsEntityDataset": {
       "type": "object",
       "properties": {
@@ -10339,6 +10349,39 @@
       ],
       "description": "A copy activity Eloqua server source."
     },
+    "EncryptionConfiguration": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CMKIdentityDefinition"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Managed Identity used for CMK."
+        },
+        "keyName": {
+          "type": "string",
+          "description": "The name of the key in Azure Key Vault to use as Customer Managed Key."
+        },
+        "keyVersion": {
+          "type": "string",
+          "description": "The version of the key used for CMK. If not provided, latest version will be used."
+        },
+        "vaultBaseUrl": {
+          "type": "string",
+          "description": "The url of the Azure Key Vault used for CMK."
+        }
+      },
+      "required": [
+        "keyName",
+        "vaultBaseUrl"
+      ],
+      "description": "Definition of CMK for the factory."
+    },
     "EntityReference": {
       "type": "object",
       "properties": {
@@ -11448,24 +11491,50 @@
             {
               "type": "string",
               "enum": [
-                "SystemAssigned"
+                "SystemAssigned",
+                "UserAssigned",
+                "SystemAssigned,UserAssigned"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The identity type. Currently the only supported type is 'SystemAssigned'."
+          "description": "The identity type."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Definition of all user assigned identities for a factory."
         }
       },
-      "required": [
-        "type"
-      ],
       "description": "Identity properties of the factory resource."
     },
     "FactoryProperties": {
       "type": "object",
       "properties": {
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Definition of CMK for the factory."
+        },
         "globalParameters": {
           "oneOf": [
             {
@@ -11480,6 +11549,21 @@
             }
           ],
           "description": "Definition of all parameters for an entity."
+        },
+        "publicNetworkAccess": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether or not public network access is allowed for the data factory."
         },
         "repoConfiguration": {
           "oneOf": [
