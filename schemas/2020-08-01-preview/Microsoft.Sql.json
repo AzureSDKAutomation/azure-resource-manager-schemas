@@ -15,7 +15,7 @@
         },
         "location": {
           "type": "string",
-          "description": "Resource location."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "type": "string",
@@ -41,7 +41,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "An ARM Resource SKU."
+          "description": "The resource model definition representing SKU"
         },
         "tags": {
           "oneOf": [
@@ -85,7 +85,7 @@
         },
         "location": {
           "type": "string",
-          "description": "Resource location."
+          "description": "The geo-location where the resource lives"
         },
         "name": {
           "type": "string",
@@ -111,7 +111,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "An ARM Resource SKU."
+          "description": "The resource model definition representing SKU"
         },
         "tags": {
           "oneOf": [
@@ -238,7 +238,7 @@
         },
         "maintenanceConfigurationId": {
           "type": "string",
-          "description": "Maintenance configuration id assigned to the database. This configuration defines the period when the maintenance updates will be rolled out."
+          "description": "Maintenance configuration id assigned to the database. This configuration defines the period when the maintenance updates will occur."
         },
         "maxSizeBytes": {
           "oneOf": [
@@ -412,7 +412,7 @@
         },
         "maintenanceConfigurationId": {
           "type": "string",
-          "description": "Maintenance configuration id assigned to the elastic pool. This configuration defines the period when the maintenance updates will be rolled out."
+          "description": "Maintenance configuration id assigned to the elastic pool. This configuration defines the period when the maintenance updates will will occur."
         },
         "maxSizeBytes": {
           "oneOf": [
@@ -462,7 +462,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Capacity of the particular SKU."
+          "description": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
         },
         "family": {
           "type": "string",
@@ -470,21 +470,34 @@
         },
         "name": {
           "type": "string",
-          "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
+          "description": "The name of the SKU. Ex - P3. It is typically a letter+number code"
         },
         "size": {
           "type": "string",
-          "description": "Size of the particular SKU"
+          "description": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
         },
         "tier": {
-          "type": "string",
-          "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Free",
+                "Basic",
+                "Standard",
+                "Premium"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
         }
       },
       "required": [
         "name"
       ],
-      "description": "An ARM Resource SKU."
+      "description": "The resource model definition representing SKU"
     }
   }
 }
