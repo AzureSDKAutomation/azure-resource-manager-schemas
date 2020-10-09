@@ -18,9 +18,17 @@
           "description": "The resource location."
         },
         "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 64,
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$",
+              "minLength": 3,
+              "maxLength": 63
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The name of the DigitalTwinsInstance."
         },
         "properties": {
@@ -99,9 +107,9 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[A-Za-z0-9-._]{1,64}$",
-              "minLength": 1,
-              "maxLength": 64
+              "pattern": "^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{2,49}[a-zA-Z0-9]$",
+              "minLength": 2,
+              "maxLength": 49
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -182,9 +190,9 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[A-Za-z0-9-._]{1,64}$",
-              "minLength": 1,
-              "maxLength": 64
+              "pattern": "^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{2,49}[a-zA-Z0-9]$",
+              "minLength": 2,
+              "maxLength": 49
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -270,8 +278,8 @@
       },
       "required": [
         "accessKey1",
-        "accessKey2",
-        "endpointType"
+        "endpointType",
+        "TopicEndpoint"
       ],
       "description": "properties related to eventgrid."
     },
@@ -295,7 +303,6 @@
       },
       "required": [
         "connectionString-PrimaryKey",
-        "connectionString-SecondaryKey",
         "endpointType"
       ],
       "description": "properties related to eventhub."
@@ -320,8 +327,7 @@
       },
       "required": [
         "endpointType",
-        "primaryConnectionString",
-        "secondaryConnectionString"
+        "primaryConnectionString"
       ],
       "description": "properties related to servicebus."
     }
