@@ -293,6 +293,55 @@
       ],
       "description": "Microsoft.Billing/billingAccounts/customers/policies"
     },
+    "billingAccounts_departments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-10-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a department."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DepartmentProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of a department."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/billingAccounts_departments_billingRoleAssignments_childResource"
+              }
+            ]
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Billing/billingAccounts/departments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/departments"
+    },
     "billingAccounts_departments_billingRoleAssignments": {
       "type": "object",
       "properties": {
@@ -540,6 +589,45 @@
       ],
       "description": "Microsoft.Billing/billingAccounts/billingProfiles/policies"
     },
+    "billingAccounts_departments_billingRoleAssignments_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-10-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The ID that uniquely identifies a role assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BillingRoleAssignmentProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the role assignment."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "billingRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Billing/billingAccounts/departments/billingRoleAssignments"
+    },
     "BillingRoleAssignmentProperties": {
       "type": "object",
       "properties": {
@@ -586,6 +674,115 @@
         }
       },
       "description": "The properties of a customer's policy."
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DepartmentProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of a department."
+        }
+      },
+      "description": "A department."
+    },
+    "DepartmentProperties": {
+      "type": "object",
+      "properties": {
+        "costCenter": {
+          "type": "string",
+          "description": "The cost center associated with the department."
+        },
+        "departmentName": {
+          "type": "string",
+          "description": "The name of the department."
+        },
+        "enrollmentAccounts": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EnrollmentAccount"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Associated enrollment accounts. By default this is not populated, unless it's specified in $expand."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the department."
+        }
+      },
+      "description": "The properties of a department."
+    },
+    "EnrollmentAccount": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EnrollmentAccountProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of an enrollment account."
+        }
+      },
+      "description": "An enrollment account."
+    },
+    "EnrollmentAccountProperties": {
+      "type": "object",
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "description": "The name of the enrollment account."
+        },
+        "accountOwner": {
+          "type": "string",
+          "description": "The owner of the enrollment account."
+        },
+        "costCenter": {
+          "type": "string",
+          "description": "The cost center associated with the enrollment account."
+        },
+        "department": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Department"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A department."
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date of the enrollment account."
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date of the enrollment account."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the enrollment account."
+        }
+      },
+      "description": "The properties of an enrollment account."
     },
     "InstructionProperties": {
       "type": "object",
