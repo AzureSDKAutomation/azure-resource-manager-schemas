@@ -495,9 +495,38 @@
           ],
           "description": "The ring number of HostPool."
         },
+        "ssoadfsAuthority": {
+          "type": "string",
+          "description": "URL to customer ADFS server for signing WVD SSO certificates."
+        },
+        "ssoClientId": {
+          "type": "string",
+          "description": "ClientId for the registered Relying Party used to issue WVD SSO certificates."
+        },
+        "ssoClientSecretKeyVaultPath": {
+          "type": "string",
+          "description": "Path to Azure KeyVault storing the secret used for communication to ADFS."
+        },
         "ssoContext": {
           "type": "string",
           "description": "Path to keyvault containing ssoContext secret."
+        },
+        "ssoSecretType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SharedKey",
+                "Certificate",
+                "SharedKeyInKeyVault",
+                "CertificateInKeyVault"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of single sign on Secret Type."
         },
         "validationEnvironment": {
           "oneOf": [
