@@ -2210,6 +2210,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-01-23-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-01-23-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools_msixPackages"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-01-23-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/workspaces"
         },
         {
@@ -2222,6 +2225,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-09-24-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-09-24-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools_msixPackages"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-09-24-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/workspaces"
         },
         {
@@ -2232,6 +2238,9 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-12-10-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-10-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/hostPools_msixPackages"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-12-10-preview/Microsoft.DesktopVirtualization.json#/resourceDefinitions/workspaces"

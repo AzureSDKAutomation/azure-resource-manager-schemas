@@ -146,6 +146,16 @@
           ],
           "description": "Properties of HostPool."
         },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/hostPools_msixPackages_childResource"
+              }
+            ]
+          }
+        },
         "tags": {
           "oneOf": [
             {
@@ -176,6 +186,47 @@
         "type"
       ],
       "description": "Microsoft.DesktopVirtualization/hostPools"
+    },
+    "hostPools_msixPackages": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-01-23-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100,
+          "description": "The version specific package full name of the MSIX package within specified hostpool"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MSIXPackageProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Schema for MSIX Package properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DesktopVirtualization/hostPools/msixPackages"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DesktopVirtualization/hostPools/msixPackages"
     },
     "workspaces": {
       "type": "object",
@@ -321,6 +372,21 @@
     "ApplicationProperties": {
       "type": "object",
       "properties": {
+        "applicationType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "InBuilt",
+                "MsixApplication"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource Type of Application."
+        },
         "commandLineArguments": {
           "type": "string",
           "description": "Command Line Arguments for Application."
@@ -367,6 +433,14 @@
         "iconPath": {
           "type": "string",
           "description": "Path to icon."
+        },
+        "msixPackageApplicationId": {
+          "type": "string",
+          "description": "Specifies the package application Id for MSIX applications"
+        },
+        "msixPackageFamilyName": {
+          "type": "string",
+          "description": "Specifies the package family name for MSIX applications"
         },
         "showInPortal": {
           "oneOf": [
@@ -521,6 +595,200 @@
         "preferredAppGroupType"
       ],
       "description": "Properties of HostPool."
+    },
+    "hostPools_msixPackages_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-01-23-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100,
+          "description": "The version specific package full name of the MSIX package within specified hostpool"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MSIXPackageProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Schema for MSIX Package properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "msixPackages"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DesktopVirtualization/hostPools/msixPackages"
+    },
+    "MsixPackageApplications": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "description": "Package Application Id, found in appxmanifest.xml."
+        },
+        "appUserModelID": {
+          "type": "string",
+          "description": "Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of Package Application."
+        },
+        "friendlyName": {
+          "type": "string",
+          "description": "User friendly name."
+        },
+        "iconImageName": {
+          "type": "string",
+          "description": "User friendly name."
+        },
+        "rawIcon": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "the icon a 64 bit string as a byte array."
+        },
+        "rawPng": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "the icon a 64 bit string as a byte array."
+        }
+      },
+      "description": "Schema for MSIX Package Application properties."
+    },
+    "MsixPackageDependencies": {
+      "type": "object",
+      "properties": {
+        "dependencyName": {
+          "type": "string",
+          "description": "Name of package dependency."
+        },
+        "minVersion": {
+          "type": "string",
+          "description": "Dependency version required."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "Name of dependency publisher."
+        }
+      },
+      "description": "Schema for MSIX Package Dependencies properties."
+    },
+    "MSIXPackageProperties": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "User friendly Name to be displayed in the portal. "
+        },
+        "imagePath": {
+          "type": "string",
+          "description": "VHD/CIM image path on Network Share."
+        },
+        "isActive": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Make this version of the package the active one across the hostpool. "
+        },
+        "isRegularRegistration": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies how to register Package in feed."
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date Package was last updated, found in the appxmanifest.xml. "
+        },
+        "packageApplications": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MsixPackageApplications"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of package applications. "
+        },
+        "packageDependencies": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MsixPackageDependencies"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of package dependencies. "
+        },
+        "packageFamilyName": {
+          "type": "string",
+          "description": "Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. "
+        },
+        "packageName": {
+          "type": "string",
+          "description": "Package Name from appxmanifest.xml. "
+        },
+        "packageRelativePath": {
+          "type": "string",
+          "description": "Relative Path to the package inside the image. "
+        },
+        "version": {
+          "type": "string",
+          "description": "Package Version found in the appxmanifest.xml. "
+        }
+      },
+      "description": "Schema for MSIX Package properties."
     },
     "RegistrationInfo": {
       "type": "object",
