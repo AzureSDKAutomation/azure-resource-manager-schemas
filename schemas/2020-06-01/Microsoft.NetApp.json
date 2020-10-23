@@ -1730,10 +1730,7 @@
         "throughputMibps": {
           "oneOf": [
             {
-              "type": "number",
-              "multipleOf": 0.001,
-              "minimum": 1,
-              "maximum": 4500
+              "type": "number"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
