@@ -77,6 +77,12 @@
                 "$ref": "#/definitions/databaseAccounts_sqlDatabases_childResource"
               },
               {
+                "$ref": "#/definitions/databaseAccounts_sqlRoleDefinitions_childResource"
+              },
+              {
+                "$ref": "#/definitions/databaseAccounts_sqlRoleAssignments_childResource"
+              },
+              {
                 "$ref": "#/definitions/databaseAccounts_mongodbDatabases_childResource"
               },
               {
@@ -90,6 +96,9 @@
               },
               {
                 "$ref": "#/definitions/databaseAccounts_notebookWorkspaces_childResource"
+              },
+              {
+                "$ref": "#/definitions/databaseAccounts_services_childResource"
               }
             ]
           }
@@ -1098,6 +1107,52 @@
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces"
     },
+    "databaseAccounts_services": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/sqlx$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServiceResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An Azure CosmosDB Service Resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DocumentDB/databaseAccounts/services"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/services"
+    },
     "databaseAccounts_sqlDatabases": {
       "type": "object",
       "properties": {
@@ -1626,6 +1681,84 @@
         "type"
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+    },
+    "databaseAccounts_sqlRoleAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The GUID for the Role Assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlRoleAssignmentResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure Cosmos DB SQL Role Assignment resource object."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments"
+    },
+    "databaseAccounts_sqlRoleDefinitions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The GUID for the Role Definition."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlRoleDefinitionResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure Cosmos DB SQL Role Definition resource object."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions"
     },
     "databaseAccounts_tables": {
       "type": "object",
@@ -3452,6 +3585,47 @@
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces"
     },
+    "databaseAccounts_services_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "sqlx"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServiceResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An Azure CosmosDB Service Resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "services"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/services"
+    },
     "databaseAccounts_sqlDatabases_childResource": {
       "type": "object",
       "properties": {
@@ -3938,6 +4112,84 @@
         "type"
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+    },
+    "databaseAccounts_sqlRoleAssignments_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The GUID for the Role Assignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlRoleAssignmentResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure Cosmos DB SQL Role Assignment resource object."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sqlRoleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments"
+    },
+    "databaseAccounts_sqlRoleDefinitions_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The GUID for the Role Definition."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlRoleDefinitionResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure Cosmos DB SQL Role Definition resource object."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sqlRoleDefinitions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions"
     },
     "databaseAccounts_tables_childResource": {
       "type": "object",
@@ -4787,6 +5039,54 @@
       },
       "description": "Configuration values for periodic mode backup"
     },
+    "Permission": {
+      "type": "object",
+      "properties": {
+        "dataActions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of data actions that are allowed."
+        },
+        "notDataActions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of data actions that are denied."
+        }
+      },
+      "description": "The set of data plane operations permitted through this Role Definition."
+    },
+    "RegionalServiceResource": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "The location of Regional Service Resource."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the regional service."
+        }
+      },
+      "description": "Properties of a Regional Service Resource."
+    },
     "RestoreParameters": {
       "type": "object",
       "properties": {
@@ -4855,6 +5155,52 @@
         "createMode"
       ],
       "description": "Properties to restore Azure Cosmos DB database account."
+    },
+    "ServiceResource": {
+      "type": "object",
+      "properties": {
+        "instanceCount": {
+          "type": "string",
+          "description": "Instance count of the Service Resource."
+        },
+        "instanceSize": {
+          "type": "string",
+          "description": "Size of the CosmosDB Service Resource."
+        },
+        "locations": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RegionalServiceResource"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Map of a location name to Regional Service Resource."
+        },
+        "serviceType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Sqlx"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies the type of Service."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the Azure CosmosDB Service Resource."
+        }
+      },
+      "description": "An Azure CosmosDB Service Resource."
     },
     "SpatialSpec": {
       "type": "object",
@@ -5029,6 +5375,77 @@
         "id"
       ],
       "description": "Cosmos DB SQL database resource object"
+    },
+    "SqlRoleAssignmentResource": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription."
+        },
+        "roleDefinitionId": {
+          "type": "string",
+          "description": "The unique identifier for the associated Role Definition."
+        },
+        "scope": {
+          "type": "string",
+          "description": "The data plane resource path for which access is being granted through this Role Assignment."
+        }
+      },
+      "description": "Azure Cosmos DB SQL Role Assignment resource object."
+    },
+    "SqlRoleDefinitionResource": {
+      "type": "object",
+      "properties": {
+        "assignableScopes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist."
+        },
+        "permissions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Permission"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of operations allowed through this Role Definition."
+        },
+        "roleName": {
+          "type": "string",
+          "description": "A user-friendly name for the Role Definition. Must be unique for the database account."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BuiltInRole",
+                "CustomRole"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the Role Definition was built-in or user created."
+        }
+      },
+      "description": "Azure Cosmos DB SQL Role Definition resource object."
     },
     "SqlStoredProcedureCreateUpdateProperties": {
       "type": "object",
