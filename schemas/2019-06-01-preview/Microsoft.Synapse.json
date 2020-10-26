@@ -1110,6 +1110,20 @@
           "format": "date-time",
           "description": "The time when the Big Data pool was created."
         },
+        "customLibraries": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LibraryInfo"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of custom libraries/packages associated with the spark pool."
+        },
         "defaultSparkLogFolder": {
           "type": "string",
           "description": "The default folder where Spark logs will be written."
@@ -1185,6 +1199,17 @@
         "provisioningState": {
           "type": "string",
           "description": "The state of the Big Data pool."
+        },
+        "sessionLevelPackagesEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether session level library/package management is enabled or not."
         },
         "sparkConfigProperties": {
           "oneOf": [
@@ -1293,6 +1318,23 @@
         "typeProperties"
       ],
       "description": "The custom setup of installing 3rd party components."
+    },
+    "CustomerManagedKeyDetails": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceKeyDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the customer managed key associated with the workspace"
+        }
+      },
+      "description": "Details of the customer managed key associated with the workspace"
     },
     "CustomSetupBase": {
       "type": "object",
@@ -1433,6 +1475,23 @@
         "tableName"
       ],
       "description": "The properties of a Sql pool data masking rule."
+    },
+    "EncryptionDetails": {
+      "type": "object",
+      "properties": {
+        "cmk": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CustomerManagedKeyDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the customer managed key associated with the workspace"
+        }
+      },
+      "description": "Details of the encryption associated with the workspace"
     },
     "EntityReference": {
       "type": "object",
@@ -2050,6 +2109,33 @@
         }
       },
       "description": "IP firewall rule properties"
+    },
+    "LibraryInfo": {
+      "type": "object",
+      "properties": {
+        "containerName": {
+          "type": "string",
+          "description": "Storage blob container name."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the library."
+        },
+        "path": {
+          "type": "string",
+          "description": "Storage blob path of library."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the library."
+        },
+        "uploadedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last update time of the library."
+        }
+      },
+      "description": "Library/package information of a Big Data pool powered by Apache Spark"
     },
     "LibraryRequirements": {
       "type": "object",
@@ -2898,6 +2984,20 @@
       },
       "description": "Properties of a Vulnerability Assessment recurring scans."
     },
+    "WorkspaceKeyDetails": {
+      "type": "object",
+      "properties": {
+        "keyVaultUrl": {
+          "type": "string",
+          "description": "Workspace Key sub-resource key vault url"
+        },
+        "name": {
+          "type": "string",
+          "description": "Workspace Key sub-resource name"
+        }
+      },
+      "description": "Details of the customer managed key associated with the workspace"
+    },
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
@@ -2926,6 +3026,17 @@
             }
           ],
           "description": "Details of the data lake storage account associated with the workspace"
+        },
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the encryption associated with the workspace"
         },
         "managedResourceGroupName": {
           "type": "string",
