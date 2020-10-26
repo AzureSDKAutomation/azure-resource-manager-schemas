@@ -3260,6 +3260,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_notebookWorkspaces"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_services"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_sqlDatabases"
         },
         {
@@ -3279,6 +3282,12 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_sqlDatabases_throughputSettings"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_sqlRoleAssignments"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_sqlRoleDefinitions"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_tables"
