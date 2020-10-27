@@ -48,6 +48,9 @@
           "items": {
             "oneOf": [
               {
+                "$ref": "#/definitions/workspaces_connections_childResource"
+              },
+              {
                 "$ref": "#/definitions/workspaces_computes_childResource"
               },
               {
@@ -58,6 +61,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_services_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_eventGridFilters_childResource"
               }
             ]
           }
@@ -182,6 +188,119 @@
         "type"
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
+    },
+    "workspaces_connections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the workspace connection"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceConnectionProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace Connection specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.MachineLearningServices/workspaces/connections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/connections"
+    },
+    "workspaces_eventGridFilters": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01-preview"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Identity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity for the resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Specifies the location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event grid filter."
+        },
+        "properties": {
+          "type": "object",
+          "properties": {},
+          "description": "EventGridFilter properties, including filters, event types, labels."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of the resource"
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Contains resource tags defined as key/value pairs."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.MachineLearningServices/workspaces/eventGridFilters"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/eventGridFilters"
     },
     "workspaces_linkedServices": {
       "type": "object",
@@ -2711,6 +2830,28 @@
       },
       "description": "Admin credentials for virtual machine"
     },
+    "WorkspaceConnectionProps": {
+      "type": "object",
+      "properties": {
+        "authType": {
+          "type": "string",
+          "description": "Authorization type of the workspace connection."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the workspace connection."
+        },
+        "target": {
+          "type": "string",
+          "description": "Target of the workspace connection."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value details of the workspace connection."
+        }
+      },
+      "description": "Workspace Connection specific properties."
+    },
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
@@ -2876,6 +3017,119 @@
         "type"
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
+    },
+    "workspaces_connections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the workspace connection"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceConnectionProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace Connection specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "connections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/connections"
+    },
+    "workspaces_eventGridFilters_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01-preview"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Identity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity for the resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Specifies the location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event grid filter."
+        },
+        "properties": {
+          "type": "object",
+          "properties": {},
+          "description": "EventGridFilter properties, including filters, event types, labels."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of the resource"
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Contains resource tags defined as key/value pairs."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "eventGridFilters"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/eventGridFilters"
     },
     "workspaces_linkedServices_childResource": {
       "type": "object",
