@@ -226,6 +226,24 @@
       },
       "description": "Identity for the image template."
     },
+    "ImageTemplateKeyvaultProperties": {
+      "type": "object",
+      "properties": {
+        "keyName": {
+          "type": "string",
+          "description": "Name of Keyvault key."
+        },
+        "keyvaultUri": {
+          "type": "string",
+          "description": "URI of Keyvault."
+        },
+        "keyVersion": {
+          "type": "string",
+          "description": "Version of Keyvault key. Leave empty to always use the latest version of the key."
+        }
+      },
+      "description": "Specifies a key or version of a key in a Keyvault."
+    },
     "ImageTemplateManagedImageDistributor": {
       "type": "object",
       "properties": {
@@ -429,6 +447,17 @@
             }
           ],
           "description": "The distribution targets where the image output needs to go to."
+        },
+        "keyvaultProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ImageTemplateKeyvaultProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies a key or version of a key in a Keyvault."
         },
         "source": {
           "oneOf": [
