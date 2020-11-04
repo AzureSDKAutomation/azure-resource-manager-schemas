@@ -4,6 +4,236 @@
   "title": "Microsoft.Synapse",
   "description": "Microsoft Synapse Resource Types",
   "resourceDefinitions": {
+    "workspaces": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workspace managed identity"
+        },
+        "location": {
+          "type": "string",
+          "description": "The geo-location where the resource lives"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workspace"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace properties"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/workspaces_sqlPools_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_sqlDatabases_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_administrators_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_sqlAdministrators_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_managedIdentitySqlControlSettings_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces"
+    },
+    "workspaces_administrators": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/activeDirectory$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AadAdminProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace active directory administrator properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/administrators"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/administrators"
+    },
+    "workspaces_managedIdentitySqlControlSettings": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedIdentitySqlControlSettingsModelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sql Control Settings for workspace managed identity"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings"
+    },
+    "workspaces_sqlAdministrators": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/activeDirectory$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AadAdminProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace active directory administrator properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/sqlAdministrators"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlAdministrators"
+    },
     "workspaces_sqlDatabases": {
       "type": "object",
       "properties": {
@@ -135,6 +365,251 @@
     }
   },
   "definitions": {
+    "AadAdminProperties": {
+      "type": "object",
+      "properties": {
+        "administratorType": {
+          "type": "string",
+          "description": "Workspace active directory administrator type"
+        },
+        "login": {
+          "type": "string",
+          "description": "Login of the workspace active directory administrator"
+        },
+        "sid": {
+          "type": "string",
+          "description": "Object ID of the workspace active directory administrator"
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "Tenant ID of the workspace active directory administrator"
+        }
+      },
+      "description": "Workspace active directory administrator properties"
+    },
+    "BabylonConfiguration": {
+      "type": "object",
+      "properties": {
+        "babylonResourceId": {
+          "type": "string",
+          "description": "Babylon Resource ID"
+        }
+      },
+      "description": "Babylon Configuration"
+    },
+    "CustomerManagedKeyDetails": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceKeyDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the customer managed key associated with the workspace"
+        }
+      },
+      "description": "Details of the customer managed key associated with the workspace"
+    },
+    "DataLakeStorageAccountDetails": {
+      "type": "object",
+      "properties": {
+        "accountUrl": {
+          "type": "string",
+          "description": "Account URL"
+        },
+        "filesystem": {
+          "type": "string",
+          "description": "Filesystem name"
+        }
+      },
+      "description": "Details of the data lake storage account associated with the workspace"
+    },
+    "EncryptionDetails": {
+      "type": "object",
+      "properties": {
+        "cmk": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CustomerManagedKeyDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the customer managed key associated with the workspace"
+        }
+      },
+      "description": "Details of the encryption associated with the workspace"
+    },
+    "ManagedIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "SystemAssigned"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of managed identity for the workspace."
+        }
+      },
+      "description": "The workspace managed identity"
+    },
+    "ManagedIdentitySqlControlSettingsModelProperties": {
+      "type": "object",
+      "properties": {
+        "grantSqlControlToManagedIdentity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Grant sql control to managed identity"
+        }
+      },
+      "description": "Sql Control Settings for workspace managed identity"
+    },
+    "ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity": {
+      "type": "object",
+      "properties": {
+        "desiredState": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Desired state."
+        }
+      },
+      "description": "Grant sql control to managed identity"
+    },
+    "ManagedVirtualNetworkSettings": {
+      "type": "object",
+      "properties": {
+        "allowedAadTenantIdsForLinking": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allowed Aad Tenant Ids For Linking"
+        },
+        "linkedAccessCheckOnTargetResource": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Linked Access Check On Target Resource"
+        },
+        "preventDataExfiltration": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Prevent Data Exfiltration"
+        }
+      },
+      "description": "Managed Virtual Network Settings"
+    },
+    "PrivateEndpoint": {
+      "type": "object",
+      "properties": {},
+      "description": "Private endpoint details"
+    },
+    "PrivateEndpointConnection": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a private endpoint connection."
+        }
+      },
+      "description": "A private endpoint connection"
+    },
+    "PrivateEndpointConnectionProperties": {
+      "type": "object",
+      "properties": {
+        "privateEndpoint": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpoint"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Private endpoint details"
+        },
+        "privateLinkServiceConnectionState": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkServiceConnectionState"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Connection state details of the private endpoint"
+        }
+      },
+      "description": "Properties of a private endpoint connection."
+    },
+    "PrivateLinkServiceConnectionState": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The private link service connection description."
+        },
+        "status": {
+          "type": "string",
+          "description": "The private link service connection status."
+        }
+      },
+      "description": "Connection state details of the private endpoint"
+    },
     "Sku": {
       "type": "object",
       "properties": {
@@ -177,6 +652,433 @@
       "type": "object",
       "properties": {},
       "description": "The sql pool's properties."
+    },
+    "VirtualNetworkProfile": {
+      "type": "object",
+      "properties": {
+        "computeSubnetId": {
+          "type": "string",
+          "description": "Subnet ID used for computes in workspace"
+        }
+      },
+      "description": "Virtual Network Profile"
+    },
+    "WorkspaceKeyDetails": {
+      "type": "object",
+      "properties": {
+        "keyVaultUrl": {
+          "type": "string",
+          "description": "Workspace Key sub-resource key vault url"
+        },
+        "name": {
+          "type": "string",
+          "description": "Workspace Key sub-resource name"
+        }
+      },
+      "description": "Details of the customer managed key associated with the workspace"
+    },
+    "WorkspaceProperties": {
+      "type": "object",
+      "properties": {
+        "babylonConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BabylonConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Babylon Configuration"
+        },
+        "connectivityEndpoints": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Connectivity endpoints"
+        },
+        "defaultDataLakeStorage": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DataLakeStorageAccountDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the data lake storage account associated with the workspace"
+        },
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionDetails"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the encryption associated with the workspace"
+        },
+        "managedResourceGroupName": {
+          "type": "string",
+          "description": "Workspace managed resource group. The resource group name uniquely identifies the resource group within the user subscriptionId. The resource group name must be no longer than 90 characters long, and must be alphanumeric characters (Char.IsLetterOrDigit()) and '-', '_', '(', ')' and'.'. Note that the name cannot end with '.'"
+        },
+        "managedVirtualNetwork": {
+          "type": "string",
+          "description": "Setting this to 'default' will ensure that all compute for this workspace is in a virtual network managed on behalf of the user."
+        },
+        "managedVirtualNetworkSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedVirtualNetworkSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Managed Virtual Network Settings"
+        },
+        "privateEndpointConnections": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PrivateEndpointConnection"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Private endpoint connections to the workspace"
+        },
+        "sqlAdministratorLogin": {
+          "type": "string",
+          "description": "Login for workspace SQL active directory administrator"
+        },
+        "sqlAdministratorLoginPassword": {
+          "type": "string",
+          "description": "SQL administrator login password"
+        },
+        "virtualNetworkProfile": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VirtualNetworkProfile"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Virtual Network Profile"
+        },
+        "workspaceRepositoryConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceRepositoryConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Git integration settings"
+        }
+      },
+      "description": "Workspace properties"
+    },
+    "WorkspaceRepositoryConfiguration": {
+      "type": "object",
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "description": "Account name"
+        },
+        "collaborationBranch": {
+          "type": "string",
+          "description": "Collaboration branch"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "GitHub Enterprise host name. For example: https://github.mydomain.com"
+        },
+        "projectName": {
+          "type": "string",
+          "description": "VSTS project name"
+        },
+        "repositoryName": {
+          "type": "string",
+          "description": "Repository name"
+        },
+        "rootFolder": {
+          "type": "string",
+          "description": "Root folder to use in the repository"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration"
+        }
+      },
+      "description": "Git integration settings"
+    },
+    "workspaces_administrators_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "activeDirectory"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AadAdminProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace active directory administrator properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "administrators"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/administrators"
+    },
+    "workspaces_managedIdentitySqlControlSettings_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedIdentitySqlControlSettingsModelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sql Control Settings for workspace managed identity"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "managedIdentitySqlControlSettings"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings"
+    },
+    "workspaces_sqlAdministrators_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "activeDirectory"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AadAdminProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace active directory administrator properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sqlAdministrators"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlAdministrators"
+    },
+    "workspaces_sqlDatabases_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "The geo-location where the resource lives"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the sql database."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlDatabaseProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The sql database's properties."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sqlDatabases"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlDatabases"
+    },
+    "workspaces_sqlPools_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-04-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "The geo-location where the resource lives"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the sql pool."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SqlPoolProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The sql pool's properties."
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An ARM Resource SKU."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sqlPools"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/sqlPools"
     }
   }
 }
