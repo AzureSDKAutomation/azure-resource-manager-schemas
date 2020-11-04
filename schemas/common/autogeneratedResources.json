@@ -5396,6 +5396,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_privateEndpointConnections"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_sqlAdministrators"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_sqlPools"
         },
         {
@@ -5409,6 +5412,9 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_sqlPools_extendedAuditingSettings"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_sqlPools_maintenanceWindows"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_sqlPools_metadataSync"
