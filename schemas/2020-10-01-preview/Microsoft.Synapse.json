@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-10-01-preview/Microsoft.Synapse.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Synapse",
   "description": "Microsoft Synapse Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "location": {
@@ -69,7 +69,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "identity": {
@@ -129,6 +129,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_privateEndpointConnections_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_keys_childResource"
               }
             ]
           }
@@ -170,7 +173,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -216,7 +219,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "location": {
@@ -275,7 +278,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -314,7 +317,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -347,13 +350,52 @@
       ],
       "description": "Microsoft.Synapse/workspaces/integrationRuntimes"
     },
+    "workspaces_keys": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workspace key"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Key properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/keys"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/keys"
+    },
     "workspaces_managedIdentitySqlControlSettings": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -399,7 +441,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -438,7 +480,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -484,7 +526,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "location": {
@@ -582,7 +624,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -629,7 +671,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -686,7 +728,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -725,7 +767,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -772,7 +814,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -818,7 +860,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -865,7 +907,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -912,7 +954,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -959,7 +1001,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -1006,7 +1048,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -2181,6 +2223,27 @@
       },
       "description": "IP firewall rule properties"
     },
+    "KeyProperties": {
+      "type": "object",
+      "properties": {
+        "isActiveCMK": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Used to activate the workspace after a customer managed key is provided."
+        },
+        "keyVaultUrl": {
+          "type": "string",
+          "description": "The Key Vault Url of the workspace key."
+        }
+      },
+      "description": "Key properties"
+    },
     "LibraryInfo": {
       "type": "object",
       "properties": {
@@ -3174,9 +3237,54 @@
             }
           ],
           "description": "Virtual Network Profile"
+        },
+        "workspaceRepositoryConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceRepositoryConfiguration"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Git integration settings"
         }
       },
       "description": "Workspace properties"
+    },
+    "WorkspaceRepositoryConfiguration": {
+      "type": "object",
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "description": "Account name"
+        },
+        "collaborationBranch": {
+          "type": "string",
+          "description": "Collaboration branch"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "GitHub Enterprise host name. For example: https://github.mydomain.com"
+        },
+        "projectName": {
+          "type": "string",
+          "description": "VSTS project name"
+        },
+        "repositoryName": {
+          "type": "string",
+          "description": "Repository name"
+        },
+        "rootFolder": {
+          "type": "string",
+          "description": "Root folder to use in the repository"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration"
+        }
+      },
+      "description": "Git integration settings"
     },
     "workspaces_administrators_childResource": {
       "type": "object",
@@ -3184,7 +3292,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3225,7 +3333,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "location": {
@@ -3284,7 +3392,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3323,7 +3431,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3356,13 +3464,52 @@
       ],
       "description": "Microsoft.Synapse/workspaces/integrationRuntimes"
     },
+    "workspaces_keys_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the workspace key"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Key properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "keys"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/keys"
+    },
     "workspaces_managedIdentitySqlControlSettings_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3403,7 +3550,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3442,7 +3589,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3483,7 +3630,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3525,7 +3672,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "location": {
@@ -3595,7 +3742,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3637,7 +3784,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3676,7 +3823,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3718,7 +3865,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3759,7 +3906,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3801,7 +3948,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
@@ -3843,7 +3990,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-10-01-preview"
           ]
         },
         "name": {
