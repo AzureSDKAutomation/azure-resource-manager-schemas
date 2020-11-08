@@ -1694,6 +1694,48 @@
       },
       "description": "Describes the managed identities for an Azure resource."
     },
+    "NamedPartitionSchemeDescription": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The number of partitions."
+        },
+        "names": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Array of size specified by the ‘count’ parameter, for the names of the partitions."
+        },
+        "partitionScheme": {
+          "type": "string",
+          "enum": [
+            "Named"
+          ]
+        }
+      },
+      "required": [
+        "count",
+        "names",
+        "partitionScheme"
+      ],
+      "description": "Describes the named partition scheme of the service."
+    },
     "NodeTypeDescription": {
       "type": "object",
       "properties": {
@@ -1840,7 +1882,13 @@
       "type": "object",
       "oneOf": [
         {
+          "$ref": "#/definitions/NamedPartitionSchemeDescription"
+        },
+        {
           "$ref": "#/definitions/SingletonPartitionSchemeDescription"
+        },
+        {
+          "$ref": "#/definitions/UniformInt64RangePartitionSchemeDescription"
         }
       ],
       "properties": {},
@@ -2214,7 +2262,7 @@
       "required": [
         "partitionScheme"
       ],
-      "description": "SingletonPartitionSchemeDescription"
+      "description": "Describes the partition scheme of a singleton-partitioned, or non-partitioned service."
     },
     "StatefulServiceProperties": {
       "type": "object",
@@ -2311,6 +2359,43 @@
         "serviceKind"
       ],
       "description": "The properties of a stateless service resource."
+    },
+    "UniformInt64RangePartitionSchemeDescription": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The number of partitions."
+        },
+        "highKey": {
+          "type": "string",
+          "description": "String indicating the upper bound of the partition key range that\nshould be split between the partition ‘count’\n"
+        },
+        "lowKey": {
+          "type": "string",
+          "description": "String indicating the lower bound of the partition key range that\nshould be split between the partition ‘count’\n"
+        },
+        "partitionScheme": {
+          "type": "string",
+          "enum": [
+            "UniformInt64Range"
+          ]
+        }
+      },
+      "required": [
+        "count",
+        "highKey",
+        "lowKey",
+        "partitionScheme"
+      ],
+      "description": "Describes a partitioning scheme where an integer range is allocated evenly across a number of partitions."
     },
     "UserAssignedIdentity": {
       "type": "object",
