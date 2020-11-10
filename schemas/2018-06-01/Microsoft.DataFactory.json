@@ -77,6 +77,9 @@
               },
               {
                 "$ref": "#/definitions/factories_managedVirtualNetworks_childResource"
+              },
+              {
+                "$ref": "#/definitions/factories_privateEndpointConnections_childResource"
               }
             ]
           }
@@ -463,6 +466,45 @@
         "type"
       ],
       "description": "Microsoft.DataFactory/factories/pipelines"
+    },
+    "factories_privateEndpointConnections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2018-06-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The private endpoint connection name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionApprovalRequest"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A request to approve or reject a private endpoint connection"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DataFactory/factories/privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DataFactory/factories/privateEndpointConnections"
     },
     "factories_triggers": {
       "type": "object",
@@ -10659,31 +10701,14 @@
       "type": "object",
       "properties": {
         "computeType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "General",
-                "MemoryOptimized",
-                "ComputeOptimized"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Compute type of the cluster which will execute data flow job."
+          "type": "object",
+          "properties": {},
+          "description": "Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)"
         },
         "coreCount": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272."
+          "type": "object",
+          "properties": {},
+          "description": "Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)"
         }
       },
       "description": "Compute properties for data flow activity."
@@ -11419,6 +11444,45 @@
         "type"
       ],
       "description": "Microsoft.DataFactory/factories/pipelines"
+    },
+    "factories_privateEndpointConnections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2018-06-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The private endpoint connection name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionApprovalRequest"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A request to approve or reject a private endpoint connection"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DataFactory/factories/privateEndpointConnections"
     },
     "factories_triggers_childResource": {
       "type": "object",
@@ -20649,6 +20713,41 @@
         "type"
       ],
       "description": "A copy activity Presto server source."
+    },
+    "PrivateLinkConnectionApprovalRequest": {
+      "type": "object",
+      "properties": {
+        "privateLinkServiceConnectionState": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateLinkConnectionState"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The state of a private link connection"
+        }
+      },
+      "description": "A request to approve or reject a private endpoint connection"
+    },
+    "PrivateLinkConnectionState": {
+      "type": "object",
+      "properties": {
+        "actionsRequired": {
+          "type": "string",
+          "description": "ActionsRequired for a private link connection"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of a private link connection"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of a private link connection"
+        }
+      },
+      "description": "The state of a private link connection"
     },
     "QuickBooksLinkedService": {
       "type": "object",
