@@ -423,6 +423,11 @@
     }
   },
   "definitions": {
+    "ApplicationInsightsAgentVersions": {
+      "type": "object",
+      "properties": {},
+      "description": "Application Insights agent versions properties payload"
+    },
     "AppResourceProperties": {
       "type": "object",
       "properties": {
@@ -911,9 +916,33 @@
     "MonitoringSettingProperties": {
       "type": "object",
       "properties": {
+        "appInsightsAgentVersions": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ApplicationInsightsAgentVersions"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Application Insights agent versions properties payload"
+        },
         "appInsightsInstrumentationKey": {
           "type": "string",
           "description": "Target application insight instrumentation key"
+        },
+        "appInsightsSamplingRate": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]"
         },
         "error": {
           "oneOf": [
@@ -925,6 +954,20 @@
             }
           ],
           "description": "The error code compose of code and message."
+        },
+        "monitoringType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "AppInsights"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Type of the monitoring."
         },
         "traceEnabled": {
           "oneOf": [
