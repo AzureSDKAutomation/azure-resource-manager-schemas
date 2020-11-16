@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-10-19-preview/Microsoft.DesktopVirtualization.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-11-02-preview/Microsoft.DesktopVirtualization.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DesktopVirtualization",
   "description": "Microsoft DesktopVirtualization Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "location": {
@@ -81,7 +81,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "name": {
@@ -122,7 +122,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "location": {
@@ -193,7 +193,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "name": {
@@ -234,7 +234,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "location": {
@@ -334,7 +334,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "name": {
@@ -602,6 +602,17 @@
           ],
           "description": "The type of single sign on Secret Type."
         },
+        "startVMOnConnect": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The flag to turn on/off StartVMOnConnect feature."
+        },
         "validationEnvironment": {
           "oneOf": [
             {
@@ -631,7 +642,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-02-preview"
           ]
         },
         "name": {
