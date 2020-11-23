@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.DocumentDB.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-09-01/Microsoft.DocumentDB.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DocumentDB",
   "description": "Microsoft DocumentDB Resource Types",
@@ -10,19 +10,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "kind": {
           "oneOf": [
@@ -90,6 +79,9 @@
               },
               {
                 "$ref": "#/definitions/databaseAccounts_notebookWorkspaces_childResource"
+              },
+              {
+                "$ref": "#/definitions/databaseAccounts_privateEndpointConnections_childResource"
               }
             ]
           }
@@ -130,19 +122,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -212,19 +193,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -291,19 +261,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -367,19 +326,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -443,19 +391,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -525,19 +462,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -604,19 +530,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -680,19 +595,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -756,19 +660,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -838,19 +731,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -917,19 +799,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -993,19 +864,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1069,7 +929,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
         },
         "name": {
@@ -1098,25 +958,53 @@
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces"
     },
+    "databaseAccounts_privateEndpointConnections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the private endpoint connection."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a private endpoint connection."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DocumentDB/databaseAccounts/privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/privateEndpointConnections"
+    },
     "databaseAccounts_sqlDatabases": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1186,19 +1074,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1274,19 +1151,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1343,19 +1209,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1419,19 +1274,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1488,19 +1332,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1557,19 +1390,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1633,19 +1455,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1712,19 +1523,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -1918,7 +1718,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB Cassandra keyspace."
@@ -2021,7 +1820,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB Cassandra table."
@@ -2099,10 +1897,6 @@
         }
       },
       "description": "Cosmos DB Cassandra table column"
-    },
-    "Components1jq1t4ischemasmanagedserviceidentitypropertiesuserassignedidentitiesadditionalproperties": {
-      "type": "object",
-      "properties": {}
     },
     "CompositePath": {
       "type": "object",
@@ -2340,14 +2134,6 @@
     },
     "DatabaseAccountCreateUpdateProperties": {
       "type": "object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/DefaultRequestDatabaseAccountCreateUpdateProperties"
-        },
-        {
-          "$ref": "#/definitions/RestoreReqeustDatabaseAccountCreateUpdateProperties"
-        }
-      ],
       "properties": {
         "apiProperties": {
           "oneOf": [
@@ -2588,19 +2374,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -2657,19 +2432,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -2726,19 +2490,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -2797,19 +2550,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -2868,19 +2610,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -2937,19 +2668,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3006,19 +2726,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3077,19 +2786,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3148,19 +2846,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3217,19 +2904,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3286,19 +2962,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3357,19 +3022,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3428,7 +3082,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
         },
         "name": {
@@ -3452,25 +3106,53 @@
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces"
     },
+    "databaseAccounts_privateEndpointConnections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-09-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the private endpoint connection."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a private endpoint connection."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "privateEndpointConnections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DocumentDB/databaseAccounts/privateEndpointConnections"
+    },
     "databaseAccounts_sqlDatabases_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3527,19 +3209,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3596,19 +3267,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3665,19 +3325,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3736,19 +3385,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3805,19 +3443,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3874,19 +3501,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -3945,19 +3561,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -4014,19 +3619,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01-preview"
+            "2020-09-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ManagedServiceIdentity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
         },
         "location": {
           "type": "string",
@@ -4079,45 +3673,6 @@
       ],
       "description": "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings"
     },
-    "DatabaseRestoreResource": {
-      "type": "object",
-      "properties": {
-        "collectionNames": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The names of the collections to restore."
-        },
-        "databaseName": {
-          "type": "string",
-          "description": "The name of the database to restore."
-        }
-      },
-      "description": "Specific Databases to restore."
-    },
-    "DefaultRequestDatabaseAccountCreateUpdateProperties": {
-      "type": "object",
-      "properties": {
-        "createMode": {
-          "type": "string",
-          "enum": [
-            "Default"
-          ]
-        }
-      },
-      "required": [
-        "createMode"
-      ],
-      "description": "Properties for non-restore Azure Cosmos DB database account requests."
-    },
     "ExcludedPath": {
       "type": "object",
       "properties": {
@@ -4154,7 +3709,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB Gremlin database."
@@ -4199,7 +3753,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB Gremlin graph."
@@ -4487,44 +4040,6 @@
       },
       "description": "A region in which the Azure Cosmos DB database account is deployed."
     },
-    "ManagedServiceIdentity": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned,UserAssigned",
-                "None"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service."
-        },
-        "userAssignedIdentities": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/Components1jq1t4ischemasmanagedserviceidentitypropertiesuserassignedidentitiesadditionalproperties"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
-        }
-      },
-      "description": "Identity for the resource."
-    },
     "MongoDBCollectionCreateUpdateProperties": {
       "type": "object",
       "properties": {
@@ -4552,7 +4067,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB MongoDB collection."
@@ -4637,7 +4151,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB MongoDB database."
@@ -4787,74 +4300,65 @@
       },
       "description": "Configuration values for periodic mode backup"
     },
-    "RestoreParameters": {
+    "PrivateEndpointConnectionProperties": {
       "type": "object",
       "properties": {
-        "databasesToRestore": {
+        "groupId": {
+          "type": "string",
+          "description": "Group id of the private endpoint."
+        },
+        "privateEndpoint": {
           "oneOf": [
             {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/DatabaseRestoreResource"
-              }
+              "$ref": "#/definitions/PrivateEndpointProperty"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "List of specific databases to restore."
+          "description": "Private endpoint which the connection belongs to."
         },
-        "restoreMode": {
+        "privateLinkServiceConnectionState": {
           "oneOf": [
             {
-              "type": "string",
-              "enum": [
-                "PointInTime"
-              ]
+              "$ref": "#/definitions/PrivateLinkServiceConnectionStateProperty"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Describes the mode of the restore."
+          "description": "Connection State of the Private Endpoint Connection."
         },
-        "restoreSource": {
+        "provisioningState": {
           "type": "string",
-          "description": "The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}"
-        },
-        "restoreTimestampInUtc": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time to which the account has to be restored (ISO-8601 format)."
+          "description": "Provisioning state of the private endpoint."
         }
       },
-      "description": "Parameters to indicate the information about the restore."
+      "description": "Properties of a private endpoint connection."
     },
-    "RestoreReqeustDatabaseAccountCreateUpdateProperties": {
+    "PrivateEndpointProperty": {
       "type": "object",
       "properties": {
-        "createMode": {
+        "id": {
           "type": "string",
-          "enum": [
-            "Restore"
-          ]
-        },
-        "restoreParameters": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/RestoreParameters"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Parameters to indicate the information about the restore."
+          "description": "Resource id of the private endpoint."
         }
       },
-      "required": [
-        "createMode"
-      ],
-      "description": "Properties to restore Azure Cosmos DB database account."
+      "description": "Private endpoint which the connection belongs to."
+    },
+    "PrivateLinkServiceConnectionStateProperty": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The private link service connection description."
+        },
+        "status": {
+          "type": "string",
+          "description": "The private link service connection status."
+        }
+      },
+      "description": "Connection State of the Private Endpoint Connection."
     },
     "SpatialSpec": {
       "type": "object",
@@ -4912,7 +4416,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB container."
@@ -4920,6 +4423,17 @@
     "SqlContainerResource": {
       "type": "object",
       "properties": {
+        "analyticalStorageTtl": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Analytical TTL."
+        },
         "conflictResolutionPolicy": {
           "oneOf": [
             {
@@ -5012,7 +4526,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB SQL database."
@@ -5057,7 +4570,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB storedProcedure."
@@ -5106,7 +4618,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB trigger."
@@ -5188,7 +4699,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB userDefinedFunction."
@@ -5237,7 +4747,6 @@
         }
       },
       "required": [
-        "options",
         "resource"
       ],
       "description": "Properties to create and update Azure Cosmos DB Table."
