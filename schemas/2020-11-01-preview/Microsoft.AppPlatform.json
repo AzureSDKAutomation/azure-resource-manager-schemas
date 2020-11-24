@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.AppPlatform.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-11-01-preview/Microsoft.AppPlatform.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.AppPlatform",
   "description": "Microsoft AppPlatform Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "location": {
@@ -98,7 +98,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "identity": {
@@ -168,7 +168,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -207,7 +207,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -257,7 +257,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -296,7 +296,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -335,7 +335,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -381,7 +381,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -423,6 +423,11 @@
     }
   },
   "definitions": {
+    "ApplicationInsightsAgentVersions": {
+      "type": "object",
+      "properties": {},
+      "description": "Application Insights agent versions properties payload"
+    },
     "AppResourceProperties": {
       "type": "object",
       "properties": {
@@ -911,9 +916,33 @@
     "MonitoringSettingProperties": {
       "type": "object",
       "properties": {
-        "appInsightsInstrumentationKey": {
+        "applicationInsightsAgentVersions": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ApplicationInsightsAgentVersions"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Application Insights agent versions properties payload"
+        },
+        "applicationInsightsInstrumentationKey": {
           "type": "string",
           "description": "Target application insight instrumentation key"
+        },
+        "applicationInsightsSamplingRate": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]"
         },
         "error": {
           "oneOf": [
@@ -925,17 +954,6 @@
             }
           ],
           "description": "The error code compose of code and message."
-        },
-        "traceEnabled": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Indicates whether enable the trace functionality"
         }
       },
       "description": "Monitoring Setting properties payload"
@@ -1020,7 +1038,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -1059,7 +1077,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "identity": {
@@ -1113,7 +1131,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -1163,7 +1181,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -1202,7 +1220,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -1241,7 +1259,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
@@ -1282,7 +1300,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2020-11-01-preview"
           ]
         },
         "name": {
