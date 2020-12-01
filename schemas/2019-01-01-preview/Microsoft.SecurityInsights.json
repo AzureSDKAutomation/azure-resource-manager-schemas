@@ -610,7 +610,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Threat intelligence indicator name field."
+          "description": "Threat Intelligence Identifier"
         },
         "properties": {
           "oneOf": [
