@@ -1675,6 +1675,17 @@
     "EncryptionProperty": {
       "type": "object",
       "properties": {
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IdentityForCmk"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity that will be used to access key vault for encryption at rest"
+        },
         "keyVaultProperties": {
           "oneOf": [
             {
@@ -1702,6 +1713,7 @@
         }
       },
       "required": [
+        "identity",
         "keyVaultProperties",
         "status"
       ]
@@ -1890,6 +1902,19 @@
         }
       },
       "description": "Identity for the resource."
+    },
+    "IdentityForCmk": {
+      "type": "object",
+      "properties": {
+        "userAssignedIdentity": {
+          "type": "string",
+          "description": "The ArmId of the user assigned identity that will be used to access the customer managed key vault"
+        }
+      },
+      "required": [
+        "userAssignedIdentity"
+      ],
+      "description": "Identity that will be used to access key vault for encryption at rest"
     },
     "ImageAsset": {
       "type": "object",
