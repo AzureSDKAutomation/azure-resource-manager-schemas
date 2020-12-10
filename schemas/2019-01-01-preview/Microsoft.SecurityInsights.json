@@ -366,6 +366,9 @@
         },
         {
           "$ref": "#/definitions/TiTaxiiDataConnector"
+        },
+        {
+          "$ref": "#/definitions/MsTiDataConnector"
         }
       ],
       "properties": {
@@ -2156,6 +2159,133 @@
         "productFilter"
       ],
       "description": "MicrosoftSecurityIncidentCreation rule property bag."
+    },
+    "MsTiDataConnector": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "MicrosoftThreatIntelligence"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MsTiDataConnectorProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Microsoft Threat Intelligence data connector properties."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "description": "Represents Microsoft Threat Intelligence data connector."
+    },
+    "MsTiDataConnectorDataTypes": {
+      "type": "object",
+      "properties": {
+        "bingSafetyPhishingURL": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MsTiDataConnectorDataTypesBingSafetyPhishingURL"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Bing Safety Phishing URL feed."
+        },
+        "microsoftEmergingThreatFeed": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MsTiDataConnectorDataTypesMicrosoftEmergingThreatFeed"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Microsoft Emerging Threat feed"
+        }
+      },
+      "description": "The available data types for Microsoft Threat Intelligence data connector."
+    },
+    "MsTiDataConnectorDataTypesBingSafetyPhishingURL": {
+      "type": "object",
+      "properties": {
+        "lookbackPeriod": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The lookback period for the feed to be imported."
+        },
+        "state": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describe whether this feed is enabled or not."
+        }
+      },
+      "description": "Bing Safety Phishing URL feed."
+    },
+    "MsTiDataConnectorDataTypesMicrosoftEmergingThreatFeed": {
+      "type": "object",
+      "properties": {
+        "lookbackPeriod": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The lookback period for the feed to be imported."
+        },
+        "state": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describe whether this feed is enabled or not."
+        }
+      },
+      "description": "Microsoft Emerging Threat feed"
+    },
+    "MsTiDataConnectorProperties": {
+      "type": "object",
+      "properties": {
+        "dataTypes": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MsTiDataConnectorDataTypes"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The available data types for Microsoft Threat Intelligence data connector."
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant id to connect to, and get the data from."
+        }
+      },
+      "description": "Microsoft Threat Intelligence data connector properties."
     },
     "OfficeATPDataConnector": {
       "type": "object",
