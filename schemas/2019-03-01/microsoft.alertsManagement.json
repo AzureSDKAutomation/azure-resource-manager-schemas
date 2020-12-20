@@ -1,8 +1,8 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-06-01/Microsoft.AlertsManagement.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-03-01/microsoft.alertsManagement.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Microsoft.AlertsManagement",
-  "description": "Microsoft AlertsManagement Resource Types",
+  "title": "microsoft.alertsManagement",
+  "description": "microsoft alertsManagement Resource Types",
   "resourceDefinitions": {
     "smartDetectorAlertRules": {
       "type": "object",
@@ -10,13 +10,8 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01"
+            "2019-03-01"
           ]
-        },
-        "location": {
-          "type": "string",
-          "default": "global",
-          "description": "The resource location."
         },
         "name": {
           "type": "string",
@@ -33,15 +28,10 @@
           ],
           "description": "The alert rule properties."
         },
-        "tags": {
-          "type": "object",
-          "properties": {},
-          "description": "The resource tags."
-        },
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.AlertsManagement/smartDetectorAlertRules"
+            "microsoft.alertsManagement/smartDetectorAlertRules"
           ]
         }
       },
@@ -51,7 +41,7 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.AlertsManagement/smartDetectorAlertRules"
+      "description": "microsoft.alertsManagement/smartDetectorAlertRules"
     }
   },
   "definitions": {
