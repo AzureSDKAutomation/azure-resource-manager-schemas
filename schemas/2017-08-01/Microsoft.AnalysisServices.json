@@ -127,6 +127,17 @@
           ],
           "description": "An array of firewall rules."
         },
+        "managedMode": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The managed mode of the server (0 = not managed, 1 = managed)."
+        },
         "querypoolConnectionMode": {
           "oneOf": [
             {
