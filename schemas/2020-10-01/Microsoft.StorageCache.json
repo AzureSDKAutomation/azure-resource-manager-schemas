@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.StorageCache.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-10-01/Microsoft.StorageCache.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.StorageCache",
   "description": "Microsoft StorageCache Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2020-10-01"
           ]
         },
         "identity": {
@@ -38,7 +38,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Name of Cache. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class."
+          "description": "Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class."
         },
         "properties": {
           "oneOf": [
@@ -98,7 +98,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2020-10-01"
           ]
         },
         "name": {
@@ -111,7 +111,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Name of the Storage Target. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class."
+          "description": "Name of the Storage Target. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class."
         },
         "properties": {
           "oneOf": [
@@ -141,6 +141,103 @@
     }
   },
   "definitions": {
+    "CacheActiveDirectorySettings": {
+      "type": "object",
+      "properties": {
+        "cacheNetBiosName": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[-0-9a-zA-Z]{1,15}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z]."
+        },
+        "credentials": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CacheActiveDirectorySettingsCredentials"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Active Directory admin credentials used to join the HPC Cache to a domain."
+        },
+        "domainName": {
+          "type": "string",
+          "description": "The fully qualified domain name of the Active Directory domain controller."
+        },
+        "domainNetBiosName": {
+          "type": "string",
+          "description": "The Active Directory domain's NetBIOS name."
+        },
+        "primaryDnsIpAddress": {
+          "type": "string",
+          "description": "Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name."
+        },
+        "secondaryDnsIpAddress": {
+          "type": "string",
+          "description": "Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name."
+        }
+      },
+      "required": [
+        "cacheNetBiosName",
+        "domainName",
+        "domainNetBiosName",
+        "primaryDnsIpAddress"
+      ],
+      "description": "Active Directory settings used to join a cache to a domain."
+    },
+    "CacheActiveDirectorySettingsCredentials": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response."
+        },
+        "username": {
+          "type": "string",
+          "description": "Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response."
+        }
+      },
+      "required": [
+        "password",
+        "username"
+      ],
+      "description": "Active Directory admin credentials used to join the HPC Cache to a domain."
+    },
+    "CacheDirectorySettings": {
+      "type": "object",
+      "properties": {
+        "activeDirectory": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CacheActiveDirectorySettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Active Directory settings used to join a cache to a domain."
+        },
+        "usernameDownload": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CacheUsernameDownloadSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings for Extended Groups username and group download."
+        }
+      },
+      "description": "Cache Directory Services settings."
+    },
     "CacheEncryptionSettings": {
       "type": "object",
       "properties": {
@@ -212,6 +309,17 @@
             }
           ],
           "description": "The size of this Cache, in GB."
+        },
+        "directoryServicesSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CacheDirectorySettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Cache Directory Services settings."
         },
         "encryptionSettings": {
           "oneOf": [
@@ -286,16 +394,19 @@
     "CacheSecuritySettings": {
       "type": "object",
       "properties": {
-        "rootSquash": {
+        "accessPolicies": {
           "oneOf": [
             {
-              "type": "boolean"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NfsAccessPolicy"
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "root squash of cache property."
+          "description": "NFS access policies defined for this cache."
         }
       },
       "description": "Cache security settings."
@@ -316,7 +427,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2020-10-01"
           ]
         },
         "name": {
@@ -329,7 +440,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Name of the Storage Target. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class."
+          "description": "Name of the Storage Target. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class."
         },
         "properties": {
           "oneOf": [
@@ -362,6 +473,118 @@
       "properties": {},
       "description": "Properties describing the software upgrade state of the Cache."
     },
+    "CacheUsernameDownloadSettings": {
+      "type": "object",
+      "properties": {
+        "autoDownloadCertificate": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true."
+        },
+        "caCertificateURI": {
+          "type": "string",
+          "description": "The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true."
+        },
+        "credentials": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CacheUsernameDownloadSettingsCredentials"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "When present, these are the credentials for the secure LDAP connection."
+        },
+        "encryptLdapConnection": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether or not the LDAP connection should be encrypted."
+        },
+        "extendedGroupsEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether or not Extended Groups is enabled."
+        },
+        "groupFileURI": {
+          "type": "string",
+          "description": "The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'."
+        },
+        "ldapBaseDn": {
+          "type": "string",
+          "description": "The base distinguished name for the LDAP domain."
+        },
+        "ldapServer": {
+          "type": "string",
+          "description": "The fully qualified domain name or IP address of the LDAP server to use."
+        },
+        "requireValidCertificate": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided."
+        },
+        "userFileURI": {
+          "type": "string",
+          "description": "The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'."
+        },
+        "usernameSource": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "AD",
+                "LDAP",
+                "File",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This setting determines how the cache gets username and group names for clients."
+        }
+      },
+      "description": "Settings for Extended Groups username and group download."
+    },
+    "CacheUsernameDownloadSettingsCredentials": {
+      "type": "object",
+      "properties": {
+        "bindDn": {
+          "type": "string",
+          "description": "The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response."
+        },
+        "bindPassword": {
+          "type": "string",
+          "description": "The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response."
+        }
+      },
+      "description": "When present, these are the credentials for the secure LDAP connection."
+    },
     "ClfsTarget": {
       "type": "object",
       "properties": {
@@ -370,7 +593,7 @@
           "description": "A fully qualified URL."
         }
       },
-      "description": "Properties pertained to ClfsTarget"
+      "description": "Properties pertaining to the ClfsTarget"
     },
     "ClfsTargetProperties": {
       "type": "object",
@@ -429,6 +652,10 @@
           "type": "string",
           "description": "Namespace path on a Cache for a Storage Target."
         },
+        "nfsAccessPolicy": {
+          "type": "string",
+          "description": "Name of the access policy applied to this junction."
+        },
         "nfsExport": {
           "type": "string",
           "description": "NFS export where targetPath exists."
@@ -457,10 +684,10 @@
         },
         "usageModel": {
           "type": "string",
-          "description": "Identifies the primary usage model to be used for this Storage Target. Get choices from .../usageModels"
+          "description": "Identifies the usage model to be used for this Storage Target. Get choices from .../usageModels"
         }
       },
-      "description": "Properties pertained to Nfs3Target"
+      "description": "Properties pertaining to the Nfs3Target"
     },
     "Nfs3TargetProperties": {
       "type": "object",
@@ -476,6 +703,123 @@
         "targetType"
       ],
       "description": "An NFSv3 mount point for use as a Storage Target."
+    },
+    "NfsAccessPolicy": {
+      "type": "object",
+      "properties": {
+        "accessRules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NfsAccessRule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of rules describing client accesses allowed under this policy."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name identifying this policy. Access Policy names are not case sensitive."
+        }
+      },
+      "required": [
+        "accessRules",
+        "name"
+      ],
+      "description": "A set of rules describing access policies applied to NFSv3 clients of the cache."
+    },
+    "NfsAccessRule": {
+      "type": "object",
+      "properties": {
+        "access": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "no",
+                "ro",
+                "rw"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Access allowed by this rule."
+        },
+        "anonymousGID": {
+          "type": "string",
+          "default": "-2",
+          "description": "GID value that replaces 0 when rootSquash is true."
+        },
+        "anonymousUID": {
+          "type": "string",
+          "default": "-2",
+          "description": "UID value that replaces 0 when rootSquash is true."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied."
+        },
+        "rootSquash": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Map root accesses to anonymousUID and anonymousGID."
+        },
+        "scope": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "default",
+                "network",
+                "host"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Scope for this rule. The scope and filter determine which clients match the rule."
+        },
+        "submountAccess": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'."
+        },
+        "suid": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allow SUID semantics."
+        }
+      },
+      "required": [
+        "access",
+        "scope"
+      ],
+      "description": "Rule to place restrictions on portions of the cache namespace being presented to clients."
     },
     "StorageTargetProperties": {
       "type": "object",
@@ -500,7 +844,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Properties pertained to ClfsTarget"
+          "description": "Properties pertaining to the ClfsTarget"
         },
         "junctions": {
           "oneOf": [
@@ -525,7 +869,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Properties pertained to Nfs3Target"
+          "description": "Properties pertaining to the Nfs3Target"
         },
         "provisioningState": {
           "oneOf": [
@@ -555,7 +899,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Properties pertained to UnknownTarget"
+          "description": "Properties pertaining to the UnknownTarget"
         }
       },
       "description": "Properties of the Storage Target."
@@ -579,7 +923,7 @@
           "description": "Properties of an unknown type of Storage Target."
         }
       },
-      "description": "Properties pertained to UnknownTarget"
+      "description": "Properties pertaining to the UnknownTarget"
     },
     "UnknownTargetProperties": {
       "type": "object",
