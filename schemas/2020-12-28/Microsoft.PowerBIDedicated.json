@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2017-10-01/Microsoft.PowerBIDedicated.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-12-28/Microsoft.PowerBIDedicated.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.PowerBIDedicated",
   "description": "Microsoft PowerBIDedicated Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-10-01"
+            "2020-12-28"
           ]
         },
         "location": {
@@ -52,6 +52,17 @@
             }
           ],
           "description": "Represents the SKU name and Azure pricing tier for PowerBI Dedicated resource."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "tags": {
           "oneOf": [
@@ -136,7 +147,9 @@
             {
               "type": "string",
               "enum": [
-                "PBIE_Azure"
+                "PBIE_Azure",
+                "Premium",
+                "AutoPremiumHost"
               ]
             },
             {
@@ -150,6 +163,64 @@
         "name"
       ],
       "description": "Represents the SKU name and Azure pricing tier for PowerBI Dedicated resource."
+    },
+    "SystemData": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "An identifier for the identity that created the resource"
+        },
+        "createdByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that created the resource."
+        },
+        "lastModifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource last modification (UTC)"
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "An identifier for the identity that last modified the resource"
+        },
+        "lastModifiedByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that last modified the resource."
+        }
+      },
+      "description": "Metadata pertaining to creation and last modification of the resource."
     }
   }
 }
