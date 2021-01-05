@@ -16,7 +16,7 @@
         "identity": {
           "oneOf": [
             {
-              "$ref": "#/definitions/MachineIdentity"
+              "$ref": "#/definitions/Identity"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -34,13 +34,13 @@
         "properties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/MachinePropertiesModel"
+              "$ref": "#/definitions/MachineProperties"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Hybrid Compute Machine properties"
+          "description": "Describes the properties of a hybrid machine."
         },
         "resources": {
           "type": "array",
@@ -109,7 +109,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Describes Machine Extension Properties."
+          "description": "Describes the properties of a Machine Extension."
         },
         "tags": {
           "oneOf": [
@@ -144,6 +144,15 @@
     }
   },
   "definitions": {
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The identity type."
+        }
+      }
+    },
     "LocationData": {
       "type": "object",
       "properties": {
@@ -169,6 +178,23 @@
         "name"
       ],
       "description": "Metadata pertaining to the geographic location of the resource."
+    },
+    "MachineExtensionInstanceView": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MachineExtensionInstanceViewStatus"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Instance view status."
+        }
+      },
+      "description": "Describes the Machine Extension Instance View."
     },
     "MachineExtensionInstanceViewStatus": {
       "type": "object",
@@ -196,13 +222,13 @@
         "instanceView": {
           "oneOf": [
             {
-              "$ref": "#/definitions/MachineExtensionPropertiesInstanceView"
+              "$ref": "#/definitions/MachineExtensionInstanceView"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The machine extension instance view."
+          "description": "Describes the Machine Extension Instance View."
         },
         "protectedSettings": {
           "type": "object",
@@ -227,35 +253,9 @@
           "description": "Specifies the version of the script handler."
         }
       },
-      "description": "Describes Machine Extension Properties."
+      "description": "Describes the properties of a Machine Extension."
     },
-    "MachineExtensionPropertiesInstanceView": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MachineExtensionInstanceViewStatus"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Instance view status."
-        }
-      },
-      "description": "The machine extension instance view."
-    },
-    "MachineIdentity": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "The identity type."
-        }
-      }
-    },
-    "MachinePropertiesModel": {
+    "MachineProperties": {
       "type": "object",
       "properties": {
         "clientPublicKey": {
@@ -276,7 +276,7 @@
         "osProfile": {
           "oneOf": [
             {
-              "$ref": "#/definitions/MachinePropertiesOsProfile"
+              "$ref": "#/definitions/OSProfile"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -289,12 +289,7 @@
           "description": "Specifies the hybrid machine unique ID."
         }
       },
-      "description": "Hybrid Compute Machine properties"
-    },
-    "MachinePropertiesOsProfile": {
-      "type": "object",
-      "properties": {},
-      "description": "Specifies the operating system settings for the hybrid machine."
+      "description": "Describes the properties of a hybrid machine."
     },
     "machines_extensions_childResource": {
       "type": "object",
@@ -322,7 +317,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Describes Machine Extension Properties."
+          "description": "Describes the properties of a Machine Extension."
         },
         "tags": {
           "oneOf": [
@@ -354,6 +349,11 @@
         "type"
       ],
       "description": "Microsoft.HybridCompute/machines/extensions"
+    },
+    "OSProfile": {
+      "type": "object",
+      "properties": {},
+      "description": "Specifies the operating system settings for the hybrid machine."
     }
   }
 }
