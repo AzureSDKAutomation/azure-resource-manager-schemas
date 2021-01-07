@@ -190,6 +190,119 @@
       "properties": {},
       "description": "The Managed Identity details for storage account."
     },
+    "ManagedServicesEncryptionEntities": {
+      "type": "object",
+      "properties": {
+        "managedServices": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedServicesEncryptionEntitiesManagedServices"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Encryption details for managed services"
+        }
+      },
+      "description": "Provides the details for the encryption of the entities owned by the service. E.g: notebooks."
+    },
+    "ManagedServicesEncryptionEntitiesManagedServices": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedServicesEncryptionEntitiesManagedServicesIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity used to access the secret from the keyvault for encryption."
+        },
+        "keySource": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Default",
+                "Microsoft.Keyvault"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault."
+        },
+        "keyVaultProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedServicesEncryptionEntitiesManagedServicesKeyVaultProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of the keyvault from which to fetch the encryption keys"
+        }
+      },
+      "required": [
+        "keySource"
+      ],
+      "description": "Encryption details for managed services"
+    },
+    "ManagedServicesEncryptionEntitiesManagedServicesIdentity": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "string",
+          "description": "The resource id of the identity to be used."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "UserAssigned"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity to be used."
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Identity used to access the secret from the keyvault for encryption."
+    },
+    "ManagedServicesEncryptionEntitiesManagedServicesKeyVaultProperties": {
+      "type": "object",
+      "properties": {
+        "keyName": {
+          "type": "string",
+          "description": "The name of KeyVault key."
+        },
+        "keyVaultUri": {
+          "type": "string",
+          "description": "The Uri of KeyVault."
+        },
+        "keyVersion": {
+          "type": "string",
+          "description": "The version of KeyVault key."
+        }
+      },
+      "required": [
+        "keyName",
+        "keyVaultUri"
+      ],
+      "description": "Details of the keyvault from which to fetch the encryption keys"
+    },
     "Sku": {
       "type": "object",
       "properties": {
@@ -486,6 +599,17 @@
     "WorkspaceEncryptionParameter": {
       "type": "object",
       "properties": {
+        "entities": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedServicesEncryptionEntities"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Provides the details for the encryption of the entities owned by the service. E.g: notebooks."
+        },
         "type": {
           "oneOf": [
             {
