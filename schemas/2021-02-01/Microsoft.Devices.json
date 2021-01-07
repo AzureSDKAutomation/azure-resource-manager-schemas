@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Devices.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-02-01/Microsoft.Devices.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Devices",
   "description": "Microsoft Devices Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2021-02-01"
           ]
         },
         "etag": {
@@ -42,6 +42,9 @@
             "oneOf": [
               {
                 "$ref": "#/definitions/provisioningServices_certificates_childResource"
+              },
+              {
+                "$ref": "#/definitions/provisioningServices_certificateAuthorities_childResource"
               },
               {
                 "$ref": "#/definitions/provisioningServices_privateEndpointConnections_childResource"
@@ -92,13 +95,44 @@
       ],
       "description": "Microsoft.Devices/provisioningServices"
     },
+    "provisioningServices_certificateAuthorities": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-02-01"
+          ]
+        },
+        "certificate": {
+          "type": "string",
+          "description": "Base-64 representation of the X509 leaf certificate .cer file or just .pem file content."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the certificate create or update."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Devices/provisioningServices/certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Devices/provisioningServices/certificateAuthorities"
+    },
     "provisioningServices_certificates": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2021-02-01"
           ]
         },
         "certificate": {
@@ -129,7 +163,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -498,13 +532,44 @@
       ],
       "description": "The current state of a private endpoint connection"
     },
+    "provisioningServices_certificateAuthorities_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-02-01"
+          ]
+        },
+        "certificate": {
+          "type": "string",
+          "description": "Base-64 representation of the X509 leaf certificate .cer file or just .pem file content."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the certificate create or update."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Devices/provisioningServices/certificateAuthorities"
+    },
     "provisioningServices_certificates_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2021-02-01"
           ]
         },
         "certificate": {
@@ -535,7 +600,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-01"
+            "2021-02-01"
           ]
         },
         "name": {
