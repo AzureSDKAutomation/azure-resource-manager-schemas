@@ -43,6 +43,72 @@
         "type"
       ],
       "description": "Microsoft.Subscription/aliases"
+    },
+    "policies": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2019-10-01-preview"
+          ]
+        },
+        "blockSubscriptionsIntoTenant": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Blocks the entering of subscriptions into user's tenant."
+        },
+        "blockSubscriptionsLeavingTenant": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Blocks the leaving of subscriptions from user's tenant."
+        },
+        "exemptedPrincipals": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant."
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Subscription/policies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Subscription/policies"
     }
   },
   "definitions": {
