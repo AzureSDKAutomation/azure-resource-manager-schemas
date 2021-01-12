@@ -2501,6 +2501,11 @@
           ],
           "description": "The base definition of a secret type."
         },
+        "authentication": {
+          "type": "object",
+          "properties": {},
+          "description": "Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string)."
+        },
         "domain": {
           "type": "object",
           "properties": {},
@@ -2603,10 +2608,14 @@
           "type": "object",
           "properties": {},
           "description": "If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string)."
+        },
+        "workspaceResourceId": {
+          "type": "object",
+          "properties": {},
+          "description": "Workspace resource id for databricks REST API. Type: string (or Expression with resultType string)."
         }
       },
       "required": [
-        "accessToken",
         "domain"
       ],
       "description": "Azure Databricks linked service properties."
@@ -15790,6 +15799,10 @@
         "catalogServerEndpoint": {
           "type": "string",
           "description": "The catalog database server URL."
+        },
+        "dualStandbyPairName": {
+          "type": "string",
+          "description": "The dual standby pair name of Azure-SSIS Integration Runtimes to support SSISDB failover."
         }
       },
       "description": "Catalog information for managed dedicated integration runtime."
@@ -17137,6 +17150,17 @@
     "ManagedIntegrationRuntime": {
       "type": "object",
       "properties": {
+        "managedVirtualNetwork": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ManagedVirtualNetworkReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Managed Virtual Network reference type."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -17265,6 +17289,34 @@
         }
       },
       "description": "A managed Virtual Network associated with the Azure Data Factory"
+    },
+    "ManagedVirtualNetworkReference": {
+      "type": "object",
+      "properties": {
+        "referenceName": {
+          "type": "string",
+          "description": "Reference ManagedVirtualNetwork name."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ManagedVirtualNetworkReference"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Managed Virtual Network reference type."
+        }
+      },
+      "required": [
+        "referenceName",
+        "type"
+      ],
+      "description": "Managed Virtual Network reference type."
     },
     "MappingDataFlow": {
       "type": "object",
