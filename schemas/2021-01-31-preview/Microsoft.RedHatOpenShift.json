@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-04-30/Microsoft.RedHatOpenShift.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-01-31-preview/Microsoft.RedHatOpenShift.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.RedHatOpenShift",
   "description": "Microsoft RedHatOpenShift Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-04-30"
+            "2021-01-31-preview"
           ]
         },
         "location": {
@@ -70,11 +70,11 @@
       "properties": {
         "ip": {
           "type": "string",
-          "description": "The IP of the cluster API server (immutable)."
+          "description": "The IP of the cluster API server."
         },
         "url": {
           "type": "string",
-          "description": "The URL to access the cluster API server (immutable)."
+          "description": "The URL to access the cluster API server."
         },
         "visibility": {
           "oneOf": [
@@ -89,7 +89,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "API server visibility (immutable)."
+          "description": "API server visibility."
         }
       },
       "description": "APIServerProfile represents an API server profile."
@@ -99,19 +99,19 @@
       "properties": {
         "domain": {
           "type": "string",
-          "description": "The domain for the cluster (immutable)."
+          "description": "The domain for the cluster."
         },
         "pullSecret": {
           "type": "string",
-          "description": "The pull secret for the cluster (immutable)."
+          "description": "The pull secret for the cluster."
         },
         "resourceGroupId": {
           "type": "string",
-          "description": "The ID of the cluster resource group (immutable)."
+          "description": "The ID of the cluster resource group."
         },
         "version": {
           "type": "string",
-          "description": "The version of the cluster (immutable)."
+          "description": "The version of the cluster."
         }
       },
       "description": "ClusterProfile represents a cluster profile."
@@ -121,7 +121,7 @@
       "properties": {
         "url": {
           "type": "string",
-          "description": "The URL to access the cluster console (immutable)."
+          "description": "The URL to access the cluster console."
         }
       },
       "description": "ConsoleProfile represents a console profile."
@@ -131,11 +131,11 @@
       "properties": {
         "ip": {
           "type": "string",
-          "description": "The IP of the ingress (immutable)."
+          "description": "The IP of the ingress."
         },
         "name": {
           "type": "string",
-          "description": "The ingress profile name.  Must be \"default\" (immutable)."
+          "description": "The ingress profile name."
         },
         "visibility": {
           "oneOf": [
@@ -150,7 +150,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Ingress visibility (immutable)."
+          "description": "Ingress visibility."
         }
       },
       "description": "IngressProfile represents an ingress profile."
@@ -158,25 +158,58 @@
     "MasterProfile": {
       "type": "object",
       "properties": {
-        "subnetId": {
+        "diskEncryptionSetId": {
           "type": "string",
-          "description": "The Azure resource ID of the master subnet (immutable)."
+          "description": "The resource ID of an associated DiskEncryptionSet, if applicable."
         },
-        "vmSize": {
+        "encryptionAtHost": {
           "oneOf": [
             {
               "type": "string",
               "enum": [
-                "Standard_D2s_v3",
-                "Standard_D4s_v3",
-                "Standard_D8s_v3"
+                "Disabled",
+                "Enabled"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The size of the master VMs (immutable)."
+          "description": "Whether master virtual machines are encrypted at host."
+        },
+        "subnetId": {
+          "type": "string",
+          "description": "The Azure resource ID of the master subnet."
+        },
+        "vmSize": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Standard_D16as_v4",
+                "Standard_D16s_v3",
+                "Standard_D2s_v3",
+                "Standard_D32as_v4",
+                "Standard_D32s_v3",
+                "Standard_D4as_v4",
+                "Standard_D4s_v3",
+                "Standard_D8as_v4",
+                "Standard_D8s_v3",
+                "Standard_E16s_v3",
+                "Standard_E32s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3",
+                "Standard_F16s_v2",
+                "Standard_F32s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The size of the master VMs."
         }
       },
       "description": "MasterProfile represents a master profile."
@@ -186,11 +219,26 @@
       "properties": {
         "podCidr": {
           "type": "string",
-          "description": "The CIDR used for OpenShift/Kubernetes Pods (immutable)."
+          "description": "The CIDR used for OpenShift/Kubernetes Pods."
+        },
+        "sdnProvider": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "OVNKubernetes",
+                "OpenShiftSDN"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The SDN plugin used in the cluster."
         },
         "serviceCidr": {
           "type": "string",
-          "description": "The CIDR used for OpenShift/Kubernetes Services (immutable)."
+          "description": "The CIDR used for OpenShift/Kubernetes Services."
         }
       },
       "description": "NetworkProfile represents a network profile."
@@ -284,7 +332,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The cluster provisioning state (immutable)."
+          "description": "The cluster provisioning state."
         },
         "servicePrincipalProfile": {
           "oneOf": [
@@ -319,11 +367,11 @@
       "properties": {
         "clientId": {
           "type": "string",
-          "description": "The client ID used for the cluster (immutable)."
+          "description": "The client ID used for the cluster."
         },
         "clientSecret": {
           "type": "string",
-          "description": "The client secret used for the cluster (immutable)."
+          "description": "The client secret used for the cluster."
         }
       },
       "description": "ServicePrincipalProfile represents a service principal profile."
@@ -340,7 +388,11 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The number of worker VMs.  Must be between 3 and 20 (immutable)."
+          "description": "The number of worker VMs."
+        },
+        "diskEncryptionSetId": {
+          "type": "string",
+          "description": "The resource ID of an associated DiskEncryptionSet, if applicable."
         },
         "diskSizeGB": {
           "oneOf": [
@@ -351,31 +403,60 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The disk size of the worker VMs.  Must be 128 or greater (immutable)."
+          "description": "The disk size of the worker VMs."
         },
-        "name": {
-          "type": "string",
-          "description": "The worker profile name.  Must be \"worker\" (immutable)."
-        },
-        "subnetId": {
-          "type": "string",
-          "description": "The Azure resource ID of the worker subnet (immutable)."
-        },
-        "vmSize": {
+        "encryptionAtHost": {
           "oneOf": [
             {
               "type": "string",
               "enum": [
-                "Standard_D2s_v3",
-                "Standard_D4s_v3",
-                "Standard_D8s_v3"
+                "Disabled",
+                "Enabled"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The size of the worker VMs (immutable)."
+          "description": "Whether master virtual machines are encrypted at host."
+        },
+        "name": {
+          "type": "string",
+          "description": "The worker profile name."
+        },
+        "subnetId": {
+          "type": "string",
+          "description": "The Azure resource ID of the worker subnet."
+        },
+        "vmSize": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Standard_D16as_v4",
+                "Standard_D16s_v3",
+                "Standard_D2s_v3",
+                "Standard_D32as_v4",
+                "Standard_D32s_v3",
+                "Standard_D4as_v4",
+                "Standard_D4s_v3",
+                "Standard_D8as_v4",
+                "Standard_D8s_v3",
+                "Standard_E16s_v3",
+                "Standard_E32s_v3",
+                "Standard_E4s_v3",
+                "Standard_E8s_v3",
+                "Standard_F16s_v2",
+                "Standard_F32s_v2",
+                "Standard_F4s_v2",
+                "Standard_F8s_v2"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The size of the worker VMs."
         }
       },
       "description": "WorkerProfile represents a worker profile."
