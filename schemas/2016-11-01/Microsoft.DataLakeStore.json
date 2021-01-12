@@ -616,9 +616,6 @@
           "description": "The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'."
         }
       },
-      "required": [
-        "type"
-      ],
       "description": "The encryption configuration for the account."
     },
     "EncryptionIdentity": {
