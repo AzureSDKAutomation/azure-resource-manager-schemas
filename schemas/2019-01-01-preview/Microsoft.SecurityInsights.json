@@ -3004,7 +3004,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Threat Intelligence Platforms data connector properties."
+          "description": "TI (Threat Intelligence) data connector properties."
         }
       },
       "required": [
@@ -3067,9 +3067,14 @@
         "tenantId": {
           "type": "string",
           "description": "The tenant id to connect to, and get the data from."
+        },
+        "tipLookbackPeriod": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The lookback period for the feed to be imported."
         }
       },
-      "description": "Threat Intelligence Platforms data connector properties."
+      "description": "TI (Threat Intelligence) data connector properties."
     },
     "TiTaxiiDataConnector": {
       "type": "object",
