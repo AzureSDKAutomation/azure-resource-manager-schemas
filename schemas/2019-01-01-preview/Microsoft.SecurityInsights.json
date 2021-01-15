@@ -3161,6 +3161,27 @@
           "type": "string",
           "description": "The password for the TAXII server."
         },
+        "pollingFrequency": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "OnceAMinute",
+                "OnceAnHour",
+                "OnceADay"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The polling frequency for the TAXII server."
+        },
+        "taxiiLookbackPeriod": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The lookback period for the TAXII server."
+        },
         "taxiiServer": {
           "type": "string",
           "description": "The API root for the TAXII server."
