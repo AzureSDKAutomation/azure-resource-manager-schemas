@@ -727,6 +727,7 @@
         "criteria",
         "enabled",
         "evaluationFrequency",
+        "scopes",
         "severity",
         "windowSize"
       ],
