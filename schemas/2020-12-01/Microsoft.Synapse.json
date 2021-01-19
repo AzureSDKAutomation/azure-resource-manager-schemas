@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-06-01-preview/Microsoft.Synapse.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Synapse.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Synapse",
   "description": "Microsoft Synapse Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "location": {
@@ -69,7 +69,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "identity": {
@@ -141,6 +141,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_vulnerabilityAssessments_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_encryptionProtector_childResource"
               }
             ]
           }
@@ -182,7 +185,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -228,7 +231,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -275,7 +278,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "location": {
@@ -328,13 +331,60 @@
       ],
       "description": "Microsoft.Synapse/workspaces/bigDataPools"
     },
+    "workspaces_encryptionProtector": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/current$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The name of the encryption protector."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionProtectorProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties for an encryption protector execution."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/encryptionProtector"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/encryptionProtector"
+    },
     "workspaces_extendedAuditingSettings": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -381,7 +431,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -420,7 +470,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -459,7 +509,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -505,7 +555,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -544,7 +594,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -591,7 +641,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -637,7 +687,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "location": {
@@ -665,9 +715,6 @@
             "oneOf": [
               {
                 "$ref": "#/definitions/workspaces_sqlPools_metadataSync_childResource"
-              },
-              {
-                "$ref": "#/definitions/workspaces_sqlPools_geoBackupPolicies_childResource"
               },
               {
                 "$ref": "#/definitions/workspaces_sqlPools_maintenancewindows_childResource"
@@ -744,7 +791,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -791,7 +838,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -848,7 +895,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -887,7 +934,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -928,60 +975,13 @@
       ],
       "description": "Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings"
     },
-    "workspaces_sqlPools_geoBackupPolicies": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2019-06-01-preview"
-          ]
-        },
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^.*/Default$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The name of the geo backup policy."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/GeoBackupPolicyProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The properties of the geo backup policy."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Synapse/workspaces/sqlPools/geoBackupPolicies"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.Synapse/workspaces/sqlPools/geoBackupPolicies"
-    },
     "workspaces_sqlPools_maintenancewindows": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1027,7 +1027,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1073,7 +1073,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1120,7 +1120,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1167,7 +1167,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1214,7 +1214,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1261,7 +1261,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1311,7 +1311,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1360,7 +1360,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1399,7 +1399,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1556,36 +1556,28 @@
           ],
           "description": "Auto-scaling properties of a Big Data pool powered by Apache Spark"
         },
-        "cacheSize": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The cache size"
-        },
         "creationDate": {
           "type": "string",
           "format": "date-time",
           "description": "The time when the Big Data pool was created."
         },
-        "defaultSparkLogFolder": {
-          "type": "string",
-          "description": "The default folder where Spark logs will be written."
-        },
-        "dynamicExecutorAllocation": {
+        "customLibraries": {
           "oneOf": [
             {
-              "$ref": "#/definitions/DynamicExecutorAllocation"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LibraryInfo"
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Dynamic Executor Allocation Properties"
+          "description": "List of custom libraries/packages associated with the spark pool."
+        },
+        "defaultSparkLogFolder": {
+          "type": "string",
+          "description": "The default folder where Spark logs will be written."
         },
         "isComputeIsolationEnabled": {
           "oneOf": [
@@ -1597,6 +1589,11 @@
             }
           ],
           "description": "Whether compute isolation is required or not."
+        },
+        "lastSucceededTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the Big Data pool was updated successfully."
         },
         "libraryRequirements": {
           "oneOf": [
@@ -1935,23 +1932,6 @@
       ],
       "description": "The properties of a Sql pool data masking rule."
     },
-    "DynamicExecutorAllocation": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Indicates whether Dynamic Executor Allocation is enabled or not."
-        }
-      },
-      "description": "Dynamic Executor Allocation Properties"
-    },
     "EncryptionDetails": {
       "type": "object",
       "properties": {
@@ -1968,6 +1948,34 @@
         }
       },
       "description": "Details of the encryption associated with the workspace"
+    },
+    "EncryptionProtectorProperties": {
+      "type": "object",
+      "properties": {
+        "serverKeyName": {
+          "type": "string",
+          "description": "The name of the server key."
+        },
+        "serverKeyType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ServiceManaged",
+                "AzureKeyVault"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The encryption protector type like 'ServiceManaged', 'AzureKeyVault'."
+        }
+      },
+      "required": [
+        "serverKeyType"
+      ],
+      "description": "Properties for an encryption protector execution."
     },
     "EntityReference": {
       "type": "object",
@@ -2250,30 +2258,6 @@
         "state"
       ],
       "description": "Properties of an extended Sql pool blob auditing policy."
-    },
-    "GeoBackupPolicyProperties": {
-      "type": "object",
-      "properties": {
-        "state": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Disabled",
-                "Enabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of the geo backup policy."
-        }
-      },
-      "required": [
-        "state"
-      ],
-      "description": "The properties of the geo backup policy."
     },
     "IntegrationRuntime": {
       "type": "object",
@@ -2715,6 +2699,33 @@
         }
       },
       "description": "IP firewall rule properties"
+    },
+    "LibraryInfo": {
+      "type": "object",
+      "properties": {
+        "containerName": {
+          "type": "string",
+          "description": "Storage blob container name."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the library."
+        },
+        "path": {
+          "type": "string",
+          "description": "Storage blob path of library."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the library."
+        },
+        "uploadedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last update time of the library."
+        }
+      },
+      "description": "Library/package information of a Big Data pool powered by Apache Spark"
     },
     "LibraryRequirements": {
       "type": "object",
@@ -3309,23 +3320,6 @@
         "labelName": {
           "type": "string",
           "description": "The label name."
-        },
-        "rank": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "None",
-                "Low",
-                "Medium",
-                "High",
-                "Critical"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
         }
       },
       "description": "Properties of a sensitivity label."
@@ -4111,10 +4105,6 @@
           "type": "string",
           "description": "GitHub Enterprise host name. For example: https://github.mydomain.com"
         },
-        "lastCommitId": {
-          "type": "string",
-          "description": "The last commit ID"
-        },
         "projectName": {
           "type": "string",
           "description": "VSTS project name"
@@ -4126,18 +4116,6 @@
         "rootFolder": {
           "type": "string",
           "description": "Root folder to use in the repository"
-        },
-        "tenantId": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The VSTS tenant ID"
         },
         "type": {
           "type": "string",
@@ -4152,7 +4130,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4193,7 +4171,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4235,7 +4213,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "location": {
@@ -4288,13 +4266,55 @@
       ],
       "description": "Microsoft.Synapse/workspaces/bigDataPools"
     },
+    "workspaces_encryptionProtector_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "current"
+          ],
+          "description": "The name of the encryption protector."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionProtectorProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties for an encryption protector execution."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "encryptionProtector"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/encryptionProtector"
+    },
     "workspaces_extendedAuditingSettings_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4336,7 +4356,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4375,7 +4395,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4414,7 +4434,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4455,7 +4475,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4494,7 +4514,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4536,7 +4556,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4577,7 +4597,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4619,7 +4639,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "location": {
@@ -4689,7 +4709,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4731,7 +4751,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4770,7 +4790,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4806,55 +4826,13 @@
       ],
       "description": "Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings"
     },
-    "workspaces_sqlPools_geoBackupPolicies_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2019-06-01-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "enum": [
-            "Default"
-          ],
-          "description": "The name of the geo backup policy."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/GeoBackupPolicyProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The properties of the geo backup policy."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "geoBackupPolicies"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.Synapse/workspaces/sqlPools/geoBackupPolicies"
-    },
     "workspaces_sqlPools_maintenancewindows_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4895,7 +4873,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4936,7 +4914,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4978,7 +4956,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5020,7 +4998,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5062,7 +5040,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5101,7 +5079,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5140,7 +5118,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-06-01-preview"
+            "2020-12-01"
           ]
         },
         "name": {
