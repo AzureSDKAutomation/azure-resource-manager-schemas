@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-10-19-preview/Microsoft.DesktopVirtualization.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-11-10-preview/Microsoft.DesktopVirtualization.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DesktopVirtualization",
   "description": "Microsoft DesktopVirtualization Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "location": {
@@ -81,7 +81,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "name": {
@@ -122,7 +122,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "location": {
@@ -193,7 +193,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "name": {
@@ -228,13 +228,74 @@
       ],
       "description": "Microsoft.DesktopVirtualization/hostPools/msixPackages"
     },
+    "scalingPlans": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-11-10-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "The geo-location where the resource lives"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 24,
+          "description": "The name of the scaling plan."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScalingPlanProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Scaling plan properties."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DesktopVirtualization/scalingPlans"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DesktopVirtualization/scalingPlans"
+    },
     "workspaces": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "location": {
@@ -334,7 +395,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "name": {
@@ -581,10 +642,6 @@
           "type": "string",
           "description": "Path to Azure KeyVault storing the secret used for communication to ADFS."
         },
-        "ssoContext": {
-          "type": "string",
-          "description": "Path to keyvault containing ssoContext secret."
-        },
         "ssoSecretType": {
           "oneOf": [
             {
@@ -601,6 +658,17 @@
             }
           ],
           "description": "The type of single sign on Secret Type."
+        },
+        "startVMOnConnect": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The flag to turn on/off StartVMOnConnect feature."
         },
         "validationEnvironment": {
           "oneOf": [
@@ -631,7 +699,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-19-preview"
+            "2020-11-10-preview"
           ]
         },
         "name": {
@@ -849,6 +917,298 @@
         }
       },
       "description": "Represents a RegistrationInfo definition."
+    },
+    "ScalingHostPoolReference": {
+      "type": "object",
+      "properties": {
+        "hostPoolArmPath": {
+          "type": "string",
+          "description": "Arm path of referenced hostpool."
+        },
+        "scalingPlanEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Is the scaling plan enabled for this hostpool."
+        }
+      },
+      "description": "Scaling plan reference to hostpool."
+    },
+    "ScalingPlanProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of scaling plan."
+        },
+        "exclusionTag": {
+          "type": "string",
+          "description": "Exclusion tag for scaling plan."
+        },
+        "friendlyName": {
+          "type": "string",
+          "description": "User friendly name of scaling plan."
+        },
+        "hostPoolReferences": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ScalingHostPoolReference"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of ScalingHostPoolReference definitions."
+        },
+        "hostPoolType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Personal",
+                "Pooled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "HostPool type for scaling plan."
+        },
+        "schedules": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ScalingSchedule"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of ScalingSchedule definitions."
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "Timezone of the scaling plan."
+        }
+      },
+      "description": "Scaling plan properties."
+    },
+    "ScalingSchedule": {
+      "type": "object",
+      "properties": {
+        "daysOfWeek": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Sunday",
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Set of days of the week on which this schedule is active."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the scaling schedule."
+        },
+        "offPeakLoadBalancingAlgorithm": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BreadthFirst",
+                "DepthFirst"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Load balancing algorithm for off-peak period."
+        },
+        "offPeakStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Starting time for off-peak period."
+        },
+        "peakLoadBalancingAlgorithm": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BreadthFirst",
+                "DepthFirst"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Load balancing algorithm for peak period."
+        },
+        "peakStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Starting time for peak period."
+        },
+        "rampDownCapacityThresholdPct": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Capacity threshold for ramp down period."
+        },
+        "rampDownForceLogoffUsers": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Should users be logged off forcefully from hosts."
+        },
+        "rampDownLoadBalancingAlgorithm": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BreadthFirst",
+                "DepthFirst"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Load balancing algorithm for ramp down period."
+        },
+        "rampDownMinimumHostsPct": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Minimum host percentage for ramp down period."
+        },
+        "rampDownNotificationMessage": {
+          "type": "string",
+          "description": "Notification message for users during ramp down period."
+        },
+        "rampDownNotificationMinutes": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Number of minutes to wait to stop hosts during ramp down period."
+        },
+        "rampDownStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Starting time for ramp down period."
+        },
+        "rampDownStopHostsWhen": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ZeroSessions",
+                "ZeroActiveSessions"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies when to stop hosts during ramp down period."
+        },
+        "rampUpAlgorithm": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BreadthFirst",
+                "DepthFirst"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Load balancing algorithm for ramp up period."
+        },
+        "rampUpCapacityThresholdPct": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Capacity threshold for ramp up period."
+        },
+        "rampUpMinimumHostPct": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Minimum host percentage for ramp up period."
+        },
+        "rampUpStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Starting time for ramp up period."
+        }
+      },
+      "description": "Scaling plan schedule."
     },
     "WorkspaceProperties": {
       "type": "object",
