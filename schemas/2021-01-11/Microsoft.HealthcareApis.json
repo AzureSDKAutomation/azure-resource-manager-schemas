@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-03-30/Microsoft.HealthcareApis.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-01-11/Microsoft.HealthcareApis.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.HealthcareApis",
   "description": "Microsoft HealthcareApis Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-30"
+            "2021-01-11"
           ]
         },
         "etag": {
@@ -75,6 +75,17 @@
             ]
           }
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "tags": {
           "oneOf": [
             {
@@ -113,7 +124,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-30"
+            "2021-01-11"
           ]
         },
         "name": {
@@ -269,6 +280,26 @@
       ],
       "description": "An access policy entry."
     },
+    "ServiceAcrConfigurationInfo": {
+      "type": "object",
+      "properties": {
+        "loginServers": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of the ACR login servers."
+        }
+      },
+      "description": "Azure container registry configuration information"
+    },
     "ServiceAuthenticationConfigurationInfo": {
       "type": "object",
       "properties": {
@@ -416,6 +447,17 @@
           ],
           "description": "The access policies of the service instance."
         },
+        "acrConfiguration": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ServiceAcrConfigurationInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Azure container registry configuration information"
+        },
         "authenticationConfiguration": {
           "oneOf": [
             {
@@ -519,7 +561,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-03-30"
+            "2021-01-11"
           ]
         },
         "name": {
@@ -551,6 +593,64 @@
         "type"
       ],
       "description": "Microsoft.HealthcareApis/services/privateEndpointConnections"
+    },
+    "SystemData": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "The identity that created the resource."
+        },
+        "createdByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that created the resource."
+        },
+        "lastModifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The type of identity that last modified the resource."
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "The identity that last modified the resource."
+        },
+        "lastModifiedByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that last modified the resource."
+        }
+      },
+      "description": "Metadata pertaining to creation and last modification of the resource."
     }
   }
 }
