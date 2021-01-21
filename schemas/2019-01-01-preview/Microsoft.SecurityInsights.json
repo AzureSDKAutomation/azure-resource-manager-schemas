@@ -1084,6 +1084,11 @@
           "type": "string",
           "description": "The display name of the bookmark"
         },
+        "eventTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The bookmark event time"
+        },
         "incidentInfo": {
           "oneOf": [
             {
@@ -1117,9 +1122,19 @@
           "type": "string",
           "description": "The query of the bookmark."
         },
+        "queryEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time for the query"
+        },
         "queryResult": {
           "type": "string",
           "description": "The query result of the bookmark."
+        },
+        "queryStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time for the query"
         },
         "updated": {
           "type": "string",
@@ -1766,12 +1781,6 @@
           "description": "The title of the incident"
         }
       },
-      "required": [
-        "incidentId",
-        "relationName",
-        "severity",
-        "title"
-      ],
       "description": "Describes related incident information for the bookmark"
     },
     "IncidentLabel": {
