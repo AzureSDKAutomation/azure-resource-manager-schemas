@@ -230,6 +230,29 @@
           ],
           "description": "Include or exclude system databases from auto backup."
         },
+        "daysOfWeek": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Days of the week for the backups when FullBackupFrequency is set to Weekly."
+        },
         "enable": {
           "oneOf": [
             {
@@ -536,6 +559,7 @@
             {
               "type": "string",
               "enum": [
+                "None",
                 "SystemAssigned"
               ]
             },
