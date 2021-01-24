@@ -1897,6 +1897,14 @@
           ],
           "description": "Information on the user an incident is assigned to"
         },
+        "providerIncidentId": {
+          "type": "string",
+          "description": "The incident ID assigned by the incident provider"
+        },
+        "providerName": {
+          "type": "string",
+          "description": "The name of the source provider that generated the incident"
+        },
         "severity": {
           "oneOf": [
             {
