@@ -9,6 +9,9 @@
       "type": "object",
       "oneOf": [
         {
+          "$ref": "#/definitions/MLBehaviorAnalyticsAlertRule"
+        },
+        {
           "$ref": "#/definitions/FusionAlertRule"
         },
         {
@@ -2299,6 +2302,57 @@
       ],
       "description": "MicrosoftSecurityIncidentCreation rule property bag."
     },
+    "MLBehaviorAnalyticsAlertRule": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "MLBehaviorAnalytics"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MLBehaviorAnalyticsAlertRuleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "MLBehaviorAnalytics alert rule base property bag."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "description": "Represents MLBehaviorAnalytics alert rule."
+    },
+    "MLBehaviorAnalyticsAlertRuleProperties": {
+      "type": "object",
+      "properties": {
+        "alertRuleTemplateName": {
+          "type": "string",
+          "description": "The Name of the alert rule template used to create this rule."
+        },
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines whether this alert rule is enabled or disabled."
+        }
+      },
+      "required": [
+        "alertRuleTemplateName",
+        "enabled"
+      ],
+      "description": "MLBehaviorAnalytics alert rule base property bag."
+    },
     "OfficeATPDataConnector": {
       "type": "object",
       "properties": {
@@ -3439,6 +3493,10 @@
           ],
           "description": "User information that made some action"
         },
+        "uploadStatus": {
+          "type": "string",
+          "description": "The status of the Watchlist upload : New, InProgress or Complete. Pls note : When a Watchlist upload status is equal to InProgress, the Watchlist cannot be deleted"
+        },
         "watchlistAlias": {
           "type": "string",
           "description": "The alias of the watchlist"
@@ -3446,6 +3504,17 @@
         "watchlistId": {
           "type": "string",
           "description": "The id (a Guid) of the watchlist"
+        },
+        "watchlistItemsCount": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The number of Watchlist Items in the Watchlist"
         },
         "watchlistType": {
           "type": "string",
