@@ -719,7 +719,7 @@
           ],
           "description": "Number of agents"
         },
-        "agentVMSize": {
+        "agentVmSize": {
           "type": "string",
           "description": "Agent virtual machine size"
         },
@@ -1325,6 +1325,17 @@
             }
           ],
           "description": "Settings for a personal compute instance."
+        },
+        "setupScripts": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SetupScripts"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Details of customized scripts to execute for setting up the cluster."
         },
         "sshSettings": {
           "oneOf": [
@@ -2515,6 +2526,73 @@
       ],
       "description": "scale settings for AML Compute"
     },
+    "ScriptReference": {
+      "type": "object",
+      "properties": {
+        "scriptArguments": {
+          "type": "string",
+          "description": "Optional command line arguments passed to the script to run."
+        },
+        "scriptData": {
+          "type": "string",
+          "description": "The location of scripts in the mounted volume."
+        },
+        "scriptSource": {
+          "type": "string",
+          "description": "The storage source of the script: inline, workspace."
+        },
+        "timeout": {
+          "type": "string",
+          "description": "Optional time period passed to timeout command."
+        }
+      },
+      "description": "Script reference"
+    },
+    "ScriptsToExecute": {
+      "type": "object",
+      "properties": {
+        "creationScript": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScriptReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Script reference"
+        },
+        "startupScript": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScriptReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Script reference"
+        }
+      },
+      "description": "Customized setup scripts"
+    },
+    "SetupScripts": {
+      "type": "object",
+      "properties": {
+        "scripts": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScriptsToExecute"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Customized setup scripts"
+        }
+      },
+      "description": "Details of customized scripts to execute for setting up the cluster."
+    },
     "SharedPrivateLinkResource": {
       "type": "object",
       "properties": {
@@ -2620,7 +2698,8 @@
               "type": "string",
               "enum": [
                 "Disabled",
-                "Enabled"
+                "Enabled",
+                "Auto"
               ]
             },
             {
