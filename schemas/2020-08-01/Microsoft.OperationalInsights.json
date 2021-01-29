@@ -305,8 +305,19 @@
           "description": "The name of the datasource resource."
         },
         "properties": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "JSON object"
         },
         "tags": {
@@ -549,9 +560,81 @@
     }
   },
   "definitions": {
+    "AssociatedWorkspace": {
+      "type": "object",
+      "properties": {},
+      "description": "The list of Log Analytics workspaces associated with the cluster."
+    },
+    "CapacityReservationProperties": {
+      "type": "object",
+      "properties": {},
+      "description": "The Capacity Reservation properties."
+    },
     "ClusterProperties": {
       "type": "object",
       "properties": {
+        "associatedWorkspaces": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssociatedWorkspace"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of Log Analytics workspaces associated with the cluster"
+        },
+        "billingType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Cluster",
+                "Workspaces"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Configures whether billing will be only on the cluster or each workspace will be billed by its proportional use. This does not change the overall billing, only how it will be distributed. Default value is 'Cluster'."
+        },
+        "capacityReservationProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CapacityReservationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Capacity Reservation properties."
+        },
+        "isAvailabilityZonesEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones."
+        },
+        "isDoubleEncryptionEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'"
+        },
         "keyVaultProperties": {
           "oneOf": [
             {
@@ -562,10 +645,6 @@
             }
           ],
           "description": "The key vault properties."
-        },
-        "nextLink": {
-          "type": "string",
-          "description": "The link used to get the next page of recommendations."
         }
       },
       "description": "Cluster properties."
@@ -701,6 +780,7 @@
               "type": "string",
               "enum": [
                 "SystemAssigned",
+                "UserAssigned",
                 "None"
               ]
             },
@@ -708,7 +788,22 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The identity type."
+          "description": "The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserIdentityProperties"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
         }
       },
       "required": [
@@ -722,6 +817,17 @@
         "keyName": {
           "type": "string",
           "description": "The name of the key associated with the Log Analytics cluster."
+        },
+        "keyRsaSize": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Selected key minimum required size."
         },
         "keyVaultUri": {
           "type": "string",
@@ -737,26 +843,13 @@
     "LinkedServiceProperties": {
       "type": "object",
       "properties": {
-        "provisioningState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Succeeded",
-                "Deleting",
-                "ProvisioningAccount",
-                "Updating"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The provisioning state of the linked service."
-        },
         "resourceId": {
           "type": "string",
           "description": "The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access"
+        },
+        "resourceMetadata": {
+          "type": "string",
+          "description": "Custom metadata. See specific documentation for this linked service."
         },
         "writeAccessResourceId": {
           "type": "string",
@@ -825,7 +918,8 @@
         "version": {
           "oneOf": [
             {
-              "type": "integer"
+              "type": "integer",
+              "default": "2"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -854,8 +948,7 @@
         }
       },
       "required": [
-        "id",
-        "key"
+        "id"
       ],
       "description": "Describes a storage account connection."
     },
@@ -925,6 +1018,11 @@
       ],
       "description": "A tag of a saved search."
     },
+    "UserIdentityProperties": {
+      "type": "object",
+      "properties": {},
+      "description": "User assigned identity properties."
+    },
     "WorkspaceCapping": {
       "type": "object",
       "properties": {
@@ -945,6 +1043,33 @@
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
+        "features": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace features."
+        },
+        "forceCmkForQuery": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether customer managed storage is mandatory for query management."
+        },
         "provisioningState": {
           "oneOf": [
             {
@@ -998,15 +1123,13 @@
         "retentionInDays": {
           "oneOf": [
             {
-              "type": "integer",
-              "minimum": 30,
-              "maximum": 730
+              "type": "integer"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The workspace data retention in days, between 30 and 730."
+          "description": "The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details."
         },
         "sku": {
           "oneOf": [
@@ -1058,7 +1181,8 @@
                 "PerNode",
                 "PerGB2018",
                 "Standalone",
-                "CapacityReservation"
+                "CapacityReservation",
+                "LACluster"
               ]
             },
             {
@@ -1185,8 +1309,19 @@
           "description": "The name of the datasource resource."
         },
         "properties": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "JSON object"
         },
         "tags": {
