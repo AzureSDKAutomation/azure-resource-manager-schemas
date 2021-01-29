@@ -851,13 +851,16 @@
         "keyVaultProperties": {
           "oneOf": [
             {
-              "$ref": "#/definitions/KeyVaultProperties"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/KeyVaultProperties"
+              }
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Properties to configure keyVault Properties"
+          "description": "Properties of KeyVault"
         }
       },
       "description": "Properties to configure Encryption"
