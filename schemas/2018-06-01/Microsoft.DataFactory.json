@@ -2746,10 +2746,7 @@
       },
       "required": [
         "database",
-        "endpoint",
-        "servicePrincipalId",
-        "servicePrincipalKey",
-        "tenant"
+        "endpoint"
       ],
       "description": "Azure Data Explorer (Kusto) linked service properties."
     },
