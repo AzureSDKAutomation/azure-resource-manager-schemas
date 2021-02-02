@@ -27423,11 +27423,16 @@
         },
         "type": {
           "type": "string",
-          "description": "Web activity authentication (Basic/ClientCertificate/MSI)"
+          "description": "Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)"
         },
         "username": {
           "type": "string",
-          "description": "Web activity authentication user name for basic authentication."
+          "description": "Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal"
+        },
+        "userTenant": {
+          "type": "object",
+          "properties": {},
+          "description": "TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string)."
         }
       },
       "required": [
