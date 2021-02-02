@@ -6073,8 +6073,18 @@
           "description": "The base definition of a secret type."
         },
         "servicePrincipalCredentialType": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ServicePrincipalKey",
+                "ServicePrincipalCert"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string)."
         },
         "servicePrincipalId": {
@@ -8601,8 +8611,18 @@
       "type": "object",
       "properties": {
         "level": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Optimal",
+                "Fastest"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The Deflate compression level."
         },
         "type": {
@@ -8631,8 +8651,18 @@
       "type": "object",
       "properties": {
         "level": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Optimal",
+                "Fastest"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The GZip compression level."
         },
         "type": {
@@ -8826,8 +8856,18 @@
       "type": "object",
       "properties": {
         "level": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Optimal",
+                "Fastest"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The TarGZip compression level."
         },
         "type": {
@@ -8846,8 +8886,18 @@
       "type": "object",
       "properties": {
         "level": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Optimal",
+                "Fastest"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The ZipDeflate compression level."
         },
         "type": {
@@ -9170,8 +9220,18 @@
           ]
         },
         "compressionLevel": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Optimal",
+                "Fastest"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The data compression method used for DelimitedText."
         },
         "encodingName": {
@@ -10004,8 +10064,18 @@
           "description": "The base definition of a secret type."
         },
         "servicePrincipalCredentialType": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ServicePrincipalKey",
+                "ServicePrincipalCert"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string)."
         },
         "servicePrincipalId": {
@@ -10245,8 +10315,18 @@
           "description": "The base definition of a secret type."
         },
         "servicePrincipalCredentialType": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ServicePrincipalKey",
+                "ServicePrincipalCert"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string)."
         },
         "servicePrincipalId": {
@@ -16238,8 +16318,18 @@
           "description": "The code page name of the preferred encoding. If not provided, the default value is 'utf-8', unless the byte order mark (BOM) denotes another Unicode encoding. The full list of supported values can be found in the 'Name' column of the table of encodings in the following reference: https://go.microsoft.com/fwlink/?linkid=861078. Type: string (or Expression with resultType string)."
         },
         "filePattern": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "setOfObjects",
+                "arrayOfObjects"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive."
         },
         "jsonNodeReference": {
@@ -23381,8 +23471,19 @@
           "description": "The parameters for the script action."
         },
         "roles": {
-          "type": "object",
-          "properties": {},
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Headnode",
+                "Workernode",
+                "Zookeeper"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The node types on which the script action should be executed."
         },
         "uri": {
