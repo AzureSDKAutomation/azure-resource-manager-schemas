@@ -1225,6 +1225,9 @@
               },
               {
                 "$ref": "#/definitions/service_gateways_apis_childResource"
+              },
+              {
+                "$ref": "#/definitions/service_gateways_certificateAuthorities_childResource"
               }
             ]
           }
@@ -1284,6 +1287,55 @@
         "type"
       ],
       "description": "Microsoft.ApiManagement/service/gateways/apis"
+    },
+    "service_gateways_certificateAuthorities": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[^*#&+:<>?]+$",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identifier of the certificate entity. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GatewayCertificateAuthorityContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Gateway certificate authority details."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
     },
     "service_gateways_hostnameConfigurations": {
       "type": "object",
@@ -3932,6 +3984,23 @@
       },
       "description": "Email Template Update Contract properties."
     },
+    "GatewayCertificateAuthorityContractProperties": {
+      "type": "object",
+      "properties": {
+        "isTrusted": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines whether certificate authority is trusted."
+        }
+      },
+      "description": "Gateway certificate authority details."
+    },
     "GatewayContractProperties": {
       "type": "object",
       "properties": {
@@ -6130,6 +6199,55 @@
         "type"
       ],
       "description": "Microsoft.ApiManagement/service/gateways/apis"
+    },
+    "service_gateways_certificateAuthorities_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[^*#&+:<>?]+$",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identifier of the certificate entity. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GatewayCertificateAuthorityContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Gateway certificate authority details."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
     },
     "service_gateways_childResource": {
       "type": "object",
