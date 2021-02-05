@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-07-17-preview/Microsoft.AVS.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-01-01-preview/Microsoft.AVS.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.AVS",
   "description": "Microsoft AVS Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "location": {
@@ -102,7 +102,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -141,7 +141,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -168,7 +168,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -185,6 +185,16 @@
             }
           ],
           "description": "The properties of a cluster"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/privateClouds_clusters_datastores_childResource"
+              }
+            ]
+          }
         },
         "sku": {
           "oneOf": [
@@ -213,13 +223,40 @@
       ],
       "description": "Microsoft.AVS/privateClouds/clusters"
     },
+    "privateClouds_clusters_datastores": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the datastore in the private cloud cluster"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AVS/privateClouds/clusters/datastores"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/datastores"
+    },
     "privateClouds_globalReachConnections": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -258,7 +295,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -285,7 +322,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -324,7 +361,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -363,7 +400,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -402,7 +439,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -441,7 +478,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -480,7 +517,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -728,7 +765,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -767,7 +804,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -794,7 +831,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -839,13 +876,40 @@
       ],
       "description": "Microsoft.AVS/privateClouds/clusters"
     },
+    "privateClouds_clusters_datastores_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-01-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the datastore in the private cloud cluster"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "datastores"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.AVS/privateClouds/clusters/datastores"
+    },
     "privateClouds_globalReachConnections_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
@@ -884,7 +948,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-17-preview"
+            "2021-01-01-preview"
           ]
         },
         "name": {
