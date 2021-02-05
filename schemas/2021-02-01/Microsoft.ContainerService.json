@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.ContainerService.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-02-01/Microsoft.ContainerService.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.ContainerService",
   "description": "Microsoft ContainerService Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "identity": {
@@ -116,7 +116,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -155,7 +155,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -194,7 +194,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -823,7 +823,8 @@
             {
               "type": "string",
               "enum": [
-                "OS"
+                "OS",
+                "Temporary"
               ]
             },
             {
@@ -917,6 +918,10 @@
             }
           ],
           "description": "Agent pool node labels to be persisted across all nodes in agent pool."
+        },
+        "nodePublicIPPrefixID": {
+          "type": "string",
+          "description": "Public IP Prefix ID. VM nodes use IPs assigned from this Public IP Prefix."
         },
         "nodeTaints": {
           "oneOf": [
@@ -1344,7 +1349,8 @@
             {
               "type": "string",
               "enum": [
-                "OS"
+                "OS",
+                "Temporary"
               ]
             },
             {
@@ -1426,6 +1432,10 @@
             }
           ],
           "description": "Agent pool node labels to be persisted across all nodes in agent pool."
+        },
+        "nodePublicIPPrefixID": {
+          "type": "string",
+          "description": "Public IP Prefix ID. VM nodes use IPs assigned from this Public IP Prefix."
         },
         "nodeTaints": {
           "oneOf": [
@@ -2073,6 +2083,17 @@
     "ManagedClusterPodIdentityProfile": {
       "type": "object",
       "properties": {
+        "allowNetworkPluginKubenet": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Customer consent for enabling AAD pod identity addon in cluster using Kubenet network plugin."
+        },
         "enabled": {
           "oneOf": [
             {
@@ -2219,6 +2240,10 @@
             }
           ],
           "description": "Whether to enable Kubernetes Role-Based Access Control."
+        },
+        "fqdnSubdomain": {
+          "type": "string",
+          "description": "FQDN subdomain specified when creating private cluster with custom private dns zone."
         },
         "identityProfile": {
           "oneOf": [
@@ -2427,7 +2452,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -2466,7 +2491,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
@@ -2505,7 +2530,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-12-01"
+            "2021-02-01"
           ]
         },
         "name": {
