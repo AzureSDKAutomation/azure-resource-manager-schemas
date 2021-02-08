@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.NetApp.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-05-01/Microsoft.NetApp.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.NetApp",
   "description": "Microsoft NetApp Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -85,7 +85,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -144,7 +144,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -223,7 +223,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -305,7 +305,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -349,7 +349,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -393,7 +393,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -482,17 +482,6 @@
           "maxLength": 64,
           "description": "Name of the active directory machine. This optional parameter is used only while creating kerberos volume"
         },
-        "aesEncryption": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "If enabled, AES encryption will be enabled for SMB communication."
-        },
         "backupOperators": {
           "oneOf": [
             {
@@ -535,17 +524,6 @@
           ],
           "description": "kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume."
         },
-        "ldapSigning": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies whether or not the LDAP traffic needs to be signed."
-        },
         "organizationalUnit": {
           "type": "string",
           "default": "CN=Computers",
@@ -555,12 +533,6 @@
           "type": "string",
           "description": "Plain text password of Active Directory domain administrator, value is masked in the response"
         },
-        "serverRootCACertificate": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 10240,
-          "description": "When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes."
-        },
         "site": {
           "type": "string",
           "description": "The Active Directory site the service will limit Domain Controller discovery to"
@@ -568,6 +540,10 @@
         "smbServerName": {
           "type": "string",
           "description": "NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the Active Directory"
         },
         "username": {
           "type": "string",
@@ -861,7 +837,8 @@
         "unixReadOnly": {
           "oneOf": [
             {
-              "type": "boolean"
+              "type": "boolean",
+              "default": false
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -982,7 +959,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1041,7 +1018,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1110,7 +1087,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1154,7 +1131,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1223,7 +1200,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1267,7 +1244,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-08-01"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -1323,21 +1300,6 @@
     "PoolProperties": {
       "type": "object",
       "properties": {
-        "qosType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Auto",
-                "Manual"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The qos type of the pool."
-        },
         "serviceLevel": {
           "oneOf": [
             {
@@ -1651,21 +1613,6 @@
           ],
           "description": "Set of protocol types, default NFSv3, CIFS for SMB protocol"
         },
-        "securityStyle": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "ntfs",
-                "unix"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The security style of volume, default unix, ntfs for dual protocol or CIFS protocol."
-        },
         "serviceLevel": {
           "oneOf": [
             {
@@ -1685,8 +1632,7 @@
         "snapshotDirectoryVisible": {
           "oneOf": [
             {
-              "type": "boolean",
-              "default": true
+              "type": "boolean"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -1711,20 +1657,6 @@
         "subnetId": {
           "type": "string",
           "description": "The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes"
-        },
-        "throughputMibps": {
-          "oneOf": [
-            {
-              "type": "number",
-              "multipleOf": 0.001,
-              "minimum": 0,
-              "maximum": 4500,
-              "default": 0.0
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
         },
         "usageThreshold": {
           "oneOf": [
