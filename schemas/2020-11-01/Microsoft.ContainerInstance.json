@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-12-01/Microsoft.ContainerInstance.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-11-01/Microsoft.ContainerInstance.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.ContainerInstance",
   "description": "Microsoft ContainerInstance Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-11-01"
           ]
         },
         "identity": {
@@ -395,6 +395,17 @@
     "ContainerHttpGet": {
       "type": "object",
       "properties": {
+        "httpHeaders": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/HttpHeaders"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The HTTP headers."
+        },
         "path": {
           "type": "string",
           "description": "The path to probe."
@@ -785,6 +796,20 @@
       ],
       "description": "The GPU resource."
     },
+    "HttpHeaders": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The header name."
+        },
+        "value": {
+          "type": "string",
+          "description": "The header value."
+        }
+      },
+      "description": "The HTTP headers."
+    },
     "ImageRegistryCredential": {
       "type": "object",
       "properties": {
@@ -971,6 +996,21 @@
         "workspaceKey": {
           "type": "string",
           "description": "The workspace key for log analytics"
+        },
+        "workspaceResourceId": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The workspace resource id for log analytics"
         }
       },
       "required": [
