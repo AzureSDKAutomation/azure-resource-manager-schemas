@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.EventGrid.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-10-15-preview/Microsoft.EventGrid.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.EventGrid",
   "description": "Microsoft EventGrid Resource Types",
@@ -10,8 +10,19 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IdentityInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity information for the resource."
         },
         "location": {
           "type": "string",
@@ -44,6 +55,17 @@
               }
             ]
           }
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceSku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes an EventGrid Resource Sku."
         },
         "tags": {
           "oneOf": [
@@ -82,7 +104,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -121,7 +143,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -142,14 +164,376 @@
       ],
       "description": "Microsoft.EventGrid/domains/topics"
     },
+    "partnerNamespaces": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the partner namespace."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PartnerNamespaceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the partner namespace."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/partnerNamespaces_eventChannels_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tags of the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/partnerNamespaces"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/partnerNamespaces"
+    },
+    "partnerNamespaces_eventChannels": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event channel."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventChannelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Event Channel."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/partnerNamespaces/eventChannels"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/partnerNamespaces/eventChannels"
+    },
+    "partnerRegistrations": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the partner registration."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PartnerRegistrationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the partner registration."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tags of the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/partnerRegistrations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/partnerRegistrations"
+    },
+    "partnerTopics_eventSubscriptions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Event Subscription."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/partnerTopics/eventSubscriptions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/partnerTopics/eventSubscriptions"
+    },
+    "systemTopics": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IdentityInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity information for the resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the system topic."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemTopicProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the System Topic."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/systemTopics_eventSubscriptions_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tags of the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/systemTopics"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/systemTopics"
+    },
+    "systemTopics_eventSubscriptions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Event Subscription."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.EventGrid/systemTopics/eventSubscriptions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/systemTopics/eventSubscriptions"
+    },
     "topics": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
+        },
+        "extendedLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExtendedLocation"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Definition of an Extended Location"
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IdentityInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity information for the resource."
+        },
+        "kind": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Azure",
+                "AzureArc"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kind of the resource."
         },
         "location": {
           "type": "string",
@@ -179,6 +563,17 @@
               }
             ]
           }
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceSku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes an EventGrid Resource Sku."
         },
         "tags": {
           "oneOf": [
@@ -217,7 +612,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -258,7 +653,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -331,6 +726,27 @@
         },
         {
           "$ref": "#/definitions/StringContainsAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/NumberInRangeAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/NumberNotInRangeAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/StringNotBeginsWithAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/StringNotEndsWithAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/StringNotContainsAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/IsNullOrUndefinedAdvancedFilter"
+        },
+        {
+          "$ref": "#/definitions/IsNotNullAdvancedFilter"
         }
       ],
       "properties": {
@@ -370,6 +786,20 @@
     "AzureFunctionEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
+        },
         "maxEventsPerBatch": {
           "oneOf": [
             {
@@ -466,6 +896,80 @@
       "properties": {},
       "description": "Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class."
     },
+    "DeadLetterWithResourceIdentity": {
+      "type": "object",
+      "properties": {
+        "deadLetterDestination": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeadLetterDestination"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class."
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity information with the event subscription."
+        }
+      },
+      "description": "Information about the deadletter destination with resource identity."
+    },
+    "DeliveryAttributeMapping": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/StaticDeliveryAttributeMapping"
+        },
+        {
+          "$ref": "#/definitions/DynamicDeliveryAttributeMapping"
+        }
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the delivery attribute or header."
+        }
+      },
+      "description": "Delivery attribute mapping details."
+    },
+    "DeliveryWithResourceIdentity": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionDestination"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information about the destination for an event subscription."
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity information with the event subscription."
+        }
+      },
+      "description": "Information about the delivery for an event subscription with resource identity."
+    },
     "DomainProperties": {
       "type": "object",
       "properties": {
@@ -548,7 +1052,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -587,7 +1091,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -607,6 +1111,149 @@
         "type"
       ],
       "description": "Microsoft.EventGrid/domains/topics"
+    },
+    "DynamicDeliveryAttributeMapping": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DynamicDeliveryAttributeMappingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of dynamic delivery attribute mapping."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Dynamic"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Dynamic delivery attribute mapping details."
+    },
+    "DynamicDeliveryAttributeMappingProperties": {
+      "type": "object",
+      "properties": {
+        "sourceField": {
+          "type": "string",
+          "description": "JSON path in the event which contains attribute value."
+        }
+      },
+      "description": "Properties of dynamic delivery attribute mapping."
+    },
+    "EventChannelDestination": {
+      "type": "object",
+      "properties": {
+        "azureSubscriptionId": {
+          "type": "string",
+          "description": "Azure subscription ID of the customer creating the event channel. The partner topic\r\nassociated with the event channel will be created under this Azure subscription."
+        },
+        "partnerTopicName": {
+          "type": "string",
+          "description": "Name of the partner topic associated with the event channel."
+        },
+        "resourceGroup": {
+          "type": "string",
+          "description": "Azure Resource Group of the customer creating the event channel. The partner topic\r\nassociated with the event channel will be created under this resource group."
+        }
+      },
+      "description": "Properties of the destination of an event channel."
+    },
+    "EventChannelFilter": {
+      "type": "object",
+      "properties": {
+        "advancedFilters": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdvancedFilter"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of advanced filters that are used for filtering event channels."
+        },
+        "enableAdvancedFilteringOnArrays": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allows advanced filters to be evaluated against an array of values instead of expecting a singular value."
+        }
+      },
+      "description": "Filter for the Event Channel."
+    },
+    "EventChannelProperties": {
+      "type": "object",
+      "properties": {
+        "destination": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventChannelDestination"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the destination of an event channel."
+        },
+        "expirationTimeIfNotActivatedUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Expiration time of the event channel. If this timer expires while the corresponding partner topic is never activated,\r\nthe event channel and corresponding partner topic are deleted."
+        },
+        "filter": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventChannelFilter"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Filter for the Event Channel."
+        },
+        "partnerTopicFriendlyDescription": {
+          "type": "string",
+          "description": "Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.\r\nThis will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer."
+        },
+        "source": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventChannelSource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the source of an event channel."
+        }
+      },
+      "description": "Properties of the Event Channel."
+    },
+    "EventChannelSource": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "The identifier of the resource that's the source of the events.\r\nThis represents a unique resource in the partner's resource model."
+        }
+      },
+      "description": "Properties of the source of an event channel."
     },
     "EventHubEventSubscriptionDestination": {
       "type": "object",
@@ -637,6 +1284,20 @@
     "EventHubEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
+        },
         "resourceId": {
           "type": "string",
           "description": "The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription."
@@ -689,6 +1350,17 @@
           ],
           "description": "An array of advanced filters that are used for filtering event subscriptions."
         },
+        "enableAdvancedFilteringOnArrays": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allows advanced filters to be evaluated against an array of values instead of expecting a singular value."
+        },
         "includedEventTypes": {
           "oneOf": [
             {
@@ -726,6 +1398,31 @@
       },
       "description": "Filter for the Event Subscription."
     },
+    "EventSubscriptionIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemAssigned",
+                "UserAssigned"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity."
+        },
+        "userAssignedIdentity": {
+          "type": "string",
+          "description": "The user identity associated with the resource."
+        }
+      },
+      "description": "The identity information with the event subscription."
+    },
     "EventSubscriptionProperties": {
       "type": "object",
       "properties": {
@@ -739,6 +1436,28 @@
             }
           ],
           "description": "Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class."
+        },
+        "deadLetterWithResourceIdentity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeadLetterWithResourceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information about the deadletter destination with resource identity."
+        },
+        "deliveryWithResourceIdentity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeliveryWithResourceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information about the delivery for an event subscription with resource identity."
         },
         "destination": {
           "oneOf": [
@@ -811,6 +1530,20 @@
       },
       "description": "Properties of the Event Subscription."
     },
+    "ExtendedLocation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Fully qualified name of the extended location."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the extended location."
+        }
+      },
+      "description": "Definition of an Extended Location"
+    },
     "HybridConnectionEventSubscriptionDestination": {
       "type": "object",
       "properties": {
@@ -840,12 +1573,72 @@
     "HybridConnectionEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
+        },
         "resourceId": {
           "type": "string",
           "description": "The Azure Resource ID of an hybrid connection that is the destination of an event subscription."
         }
       },
       "description": "The properties for a hybrid connection destination."
+    },
+    "IdentityInfo": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The principal ID of resource identity."
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant ID of resource."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "SystemAssigned",
+                "UserAssigned",
+                "SystemAssigned, UserAssigned"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserIdentityProperties"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\r\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.\r\nThis property is currently not used and reserved for future usage."
+        }
+      },
+      "description": "The identity information for the resource."
     },
     "InboundIpRule": {
       "type": "object",
@@ -879,6 +1672,36 @@
       ],
       "properties": {},
       "description": "By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only supported type of InputSchemaMapping is 'JsonInputSchemaMapping'."
+    },
+    "IsNotNullAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "IsNotNull"
+          ]
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "IsNotNull Advanced Filter."
+    },
+    "IsNullOrUndefinedAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "IsNullOrUndefined"
+          ]
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "IsNullOrUndefined Advanced Filter."
     },
     "JsonField": {
       "type": "object",
@@ -1083,6 +1906,38 @@
       ],
       "description": "NumberIn Advanced Filter."
     },
+    "NumberInRangeAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "NumberInRange"
+          ]
+        },
+        "values": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of filter values."
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "NumberInRange Advanced Filter."
+    },
     "NumberLessThanAdvancedFilter": {
       "type": "object",
       "properties": {
@@ -1163,6 +2018,163 @@
         "operatorType"
       ],
       "description": "NumberNotIn Advanced Filter."
+    },
+    "NumberNotInRangeAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "NumberNotInRange"
+          ]
+        },
+        "values": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of filter values."
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "NumberNotInRange Advanced Filter."
+    },
+    "PartnerNamespaceProperties": {
+      "type": "object",
+      "properties": {
+        "partnerRegistrationFullyQualifiedId": {
+          "type": "string",
+          "description": "The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:\r\n/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}."
+        }
+      },
+      "description": "Properties of the partner namespace."
+    },
+    "partnerNamespaces_eventChannels_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event channel."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventChannelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Event Channel."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "eventChannels"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/partnerNamespaces/eventChannels"
+    },
+    "PartnerRegistrationProperties": {
+      "type": "object",
+      "properties": {
+        "authorizedAzureSubscriptionIds": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of Azure subscription Ids that are authorized to create a partner namespace\r\nassociated with this partner registration. This is an optional property. Creating\r\npartner namespaces is always permitted under the same Azure subscription as the one used\r\nfor creating the partner registration."
+        },
+        "customerServiceUri": {
+          "type": "string",
+          "description": "The extension of the customer service URI of the publisher."
+        },
+        "logoUri": {
+          "type": "string",
+          "description": "URI of the logo."
+        },
+        "longDescription": {
+          "type": "string",
+          "description": "Long description for the custom scenarios and integration to be displayed in the portal if needed.\r\nLength of this description should not exceed 2048 characters."
+        },
+        "partnerCustomerServiceExtension": {
+          "type": "string",
+          "description": "The extension of the customer service number of the publisher. Only digits are allowed and number of digits should not exceed 10."
+        },
+        "partnerCustomerServiceNumber": {
+          "type": "string",
+          "description": "The customer service number of the publisher. The expected phone format should start with a '+' sign \r\nfollowed by the country code. The remaining digits are then followed. Only digits and spaces are allowed and its\r\nlength cannot exceed 16 digits including country code. Examples of valid phone numbers are: +1 515 123 4567 and\r\n+966 7 5115 2471. Examples of invalid phone numbers are: +1 (515) 123-4567, 1 515 123 4567 and +966 121 5115 24 7 551 1234 43"
+        },
+        "partnerName": {
+          "type": "string",
+          "description": "Official name of the partner name. For example: \"Contoso\"."
+        },
+        "partnerResourceTypeDescription": {
+          "type": "string",
+          "description": "Short description of the partner resource type. The length of this description should not exceed 256 characters."
+        },
+        "partnerResourceTypeDisplayName": {
+          "type": "string",
+          "description": "Display name of the partner resource type."
+        },
+        "partnerResourceTypeName": {
+          "type": "string",
+          "description": "Name of the partner resource type."
+        },
+        "setupUri": {
+          "type": "string",
+          "description": "URI of the partner website that can be used by Azure customers to setup Event Grid\r\nintegration on an event source."
+        },
+        "visibilityState": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Hidden",
+                "PublicPreview",
+                "GenerallyAvailable"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Visibility state of the partner registration."
+        }
+      },
+      "description": "Properties of the partner registration."
     },
     "PrivateEndpoint": {
       "type": "object",
@@ -1251,6 +2263,27 @@
       },
       "description": "Properties of the private endpoint connection resource."
     },
+    "ResourceSku": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Basic",
+                "Premium"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Sku name of the resource. The possible values are: Basic or Premium."
+        }
+      },
+      "description": "Describes an EventGrid Resource Sku."
+    },
     "RetryPolicy": {
       "type": "object",
       "properties": {
@@ -1308,6 +2341,20 @@
     "ServiceBusQueueEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
+        },
         "resourceId": {
           "type": "string",
           "description": "The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription."
@@ -1344,12 +2391,73 @@
     "ServiceBusTopicEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
+        },
         "resourceId": {
           "type": "string",
           "description": "The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription."
         }
       },
       "description": "The properties that represent the Service Bus Topic destination of an event subscription."
+    },
+    "StaticDeliveryAttributeMapping": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/StaticDeliveryAttributeMappingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of static delivery attribute mapping."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Static"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Static delivery attribute mapping details."
+    },
+    "StaticDeliveryAttributeMappingProperties": {
+      "type": "object",
+      "properties": {
+        "isSecret": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Boolean flag to tell if the attribute contains sensitive information ."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value of the delivery attribute."
+        }
+      },
+      "description": "Properties of static delivery attribute mapping."
     },
     "StorageBlobDeadLetterDestination": {
       "type": "object",
@@ -1420,6 +2528,17 @@
     "StorageQueueEventSubscriptionDestinationProperties": {
       "type": "object",
       "properties": {
+        "queueMessageTimeToLiveInSeconds": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Storage queue message time to live in seconds."
+        },
         "queueName": {
           "type": "string",
           "description": "The name of the Storage queue under a storage account that is the destination of an event subscription."
@@ -1547,6 +2666,93 @@
       ],
       "description": "StringIn Advanced Filter."
     },
+    "StringNotBeginsWithAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "StringNotBeginsWith"
+          ]
+        },
+        "values": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of filter values."
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "StringNotBeginsWith Advanced Filter."
+    },
+    "StringNotContainsAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "StringNotContains"
+          ]
+        },
+        "values": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of filter values."
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "StringNotContains Advanced Filter."
+    },
+    "StringNotEndsWithAdvancedFilter": {
+      "type": "object",
+      "properties": {
+        "operatorType": {
+          "type": "string",
+          "enum": [
+            "StringNotEndsWith"
+          ]
+        },
+        "values": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The set of filter values."
+        }
+      },
+      "required": [
+        "operatorType"
+      ],
+      "description": "StringNotEndsWith Advanced Filter."
+    },
     "StringNotInAdvancedFilter": {
       "type": "object",
       "properties": {
@@ -1575,6 +2781,59 @@
         "operatorType"
       ],
       "description": "StringNotIn Advanced Filter."
+    },
+    "SystemTopicProperties": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Source for the system topic."
+        },
+        "topicType": {
+          "type": "string",
+          "description": "TopicType for the system topic."
+        }
+      },
+      "description": "Properties of the System Topic."
+    },
+    "systemTopics_eventSubscriptions_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-10-15-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EventSubscriptionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Event Subscription."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "eventSubscriptions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.EventGrid/systemTopics/eventSubscriptions"
     },
     "TopicProperties": {
       "type": "object",
@@ -1657,7 +2916,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-01"
+            "2020-10-15-preview"
           ]
         },
         "name": {
@@ -1689,6 +2948,20 @@
         "type"
       ],
       "description": "Microsoft.EventGrid/topics/privateEndpointConnections"
+    },
+    "UserIdentityProperties": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "The client id of user assigned identity."
+        },
+        "principalId": {
+          "type": "string",
+          "description": "The principal id of user assigned identity."
+        }
+      },
+      "description": "The information about the user identity."
     },
     "WebHookEventSubscriptionDestination": {
       "type": "object",
@@ -1726,6 +2999,20 @@
         "azureActiveDirectoryTenantId": {
           "type": "string",
           "description": "The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests."
+        },
+        "deliveryAttributeMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryAttributeMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Delivery attribute details."
         },
         "endpointUrl": {
           "type": "string",
