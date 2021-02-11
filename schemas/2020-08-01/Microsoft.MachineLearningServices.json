@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.MachineLearningServices.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.MachineLearningServices.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.MachineLearningServices",
   "description": "Microsoft MachineLearningServices Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-01-01"
+            "2020-08-01"
           ]
         },
         "identity": {
@@ -47,6 +47,9 @@
           "type": "array",
           "items": {
             "oneOf": [
+              {
+                "$ref": "#/definitions/workspaces_connections_childResource"
+              },
               {
                 "$ref": "#/definitions/workspaces_computes_childResource"
               },
@@ -103,7 +106,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-01-01"
+            "2020-08-01"
           ]
         },
         "identity": {
@@ -177,29 +180,53 @@
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
     },
+    "workspaces_connections": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-08-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the workspace connection"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceConnectionProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace Connection specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.MachineLearningServices/workspaces/connections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/connections"
+    },
     "workspaces_privateEndpointConnections": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-01-01"
+            "2020-08-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Identity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
-        },
-        "location": {
-          "type": "string",
-          "description": "Specifies the location of the resource."
         },
         "name": {
           "type": "string",
@@ -215,32 +242,6 @@
             }
           ],
           "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "sku": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Sku"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Sku of the resource"
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Contains resource tags defined as key/value pairs."
         },
         "type": {
           "type": "string",
@@ -346,7 +347,7 @@
           ],
           "description": "Number of agents"
         },
-        "agentVMSize": {
+        "agentVmSize": {
           "type": "string",
           "description": "Agent virtual machine size"
         },
@@ -408,6 +409,21 @@
     "AmlComputeProperties": {
       "type": "object",
       "properties": {
+        "osType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Linux",
+                "Windows"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Compute OS Type."
+        },
         "remoteLoginPortPublicAccess": {
           "oneOf": [
             {
@@ -479,6 +495,28 @@
       },
       "description": "AML Compute properties"
     },
+    "AssignedUser": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string",
+          "description": "User’s AAD Object Id."
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "User’s AAD Tenant Id."
+        }
+      },
+      "required": [
+        "objectId",
+        "tenantId"
+      ],
+      "description": "A user that can be assigned to a compute instance."
+    },
+    "Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties": {
+      "type": "object",
+      "properties": {}
+    },
     "Compute": {
       "type": "object",
       "oneOf": [
@@ -487,6 +525,9 @@
         },
         {
           "$ref": "#/definitions/AmlCompute"
+        },
+        {
+          "$ref": "#/definitions/ComputeInstance"
         },
         {
           "$ref": "#/definitions/VirtualMachine"
@@ -519,6 +560,129 @@
         }
       },
       "description": "Machine Learning compute object."
+    },
+    "ComputeInstance": {
+      "type": "object",
+      "properties": {
+        "computeType": {
+          "type": "string",
+          "enum": [
+            "ComputeInstance"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ComputeInstanceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Compute Instance properties"
+        }
+      },
+      "required": [
+        "computeType"
+      ],
+      "description": "An Azure Machine Learning compute instance."
+    },
+    "ComputeInstanceProperties": {
+      "type": "object",
+      "properties": {
+        "applicationSharingPolicy": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Personal",
+                "Shared"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role."
+        },
+        "computeInstanceAuthorizationType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "personal"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The Compute Instance Authorization type. Available values are personal (default)."
+        },
+        "personalComputeInstanceSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PersonalComputeInstanceSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Settings for a personal compute instance."
+        },
+        "sshSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ComputeInstanceSshSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies policy and settings for SSH access."
+        },
+        "subnet": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceId"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet."
+        },
+        "vmSize": {
+          "type": "string",
+          "description": "Virtual Machine Size"
+        }
+      },
+      "description": "Compute Instance properties"
+    },
+    "ComputeInstanceSshSettings": {
+      "type": "object",
+      "properties": {
+        "adminPublicKey": {
+          "type": "string",
+          "description": "Specifies the SSH rsa public key file as a string. Use \"ssh-keygen -t rsa -b 2048\" to generate your SSH key pairs."
+        },
+        "sshPublicAccess": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable."
+        }
+      },
+      "description": "Specifies policy and settings for SSH access."
     },
     "Databricks": {
       "type": "object",
@@ -701,7 +865,10 @@
             {
               "type": "string",
               "enum": [
-                "SystemAssigned"
+                "SystemAssigned",
+                "SystemAssigned,UserAssigned",
+                "UserAssigned",
+                "None"
               ]
             },
             {
@@ -709,8 +876,26 @@
             }
           ],
           "description": "The identity type."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
         }
       },
+      "required": [
+        "type"
+      ],
       "description": "Identity for the resource."
     },
     "KeyVaultProperties": {
@@ -733,6 +918,23 @@
         "keyIdentifier",
         "keyVaultArmId"
       ]
+    },
+    "PersonalComputeInstanceSettings": {
+      "type": "object",
+      "properties": {
+        "assignedUser": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AssignedUser"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A user that can be assigned to a compute instance."
+        }
+      },
+      "description": "Settings for a personal compute instance."
     },
     "PrivateEndpoint": {
       "type": "object",
@@ -790,7 +992,7 @@
     "PrivateLinkServiceConnectionState": {
       "type": "object",
       "properties": {
-        "actionRequired": {
+        "actionsRequired": {
           "type": "string",
           "description": "A message indicating if changes on the service provider require any updates on the consumer."
         },
@@ -805,7 +1007,9 @@
               "enum": [
                 "Pending",
                 "Approved",
-                "Rejected"
+                "Rejected",
+                "Disconnected",
+                "Timeout"
               ]
             },
             {
@@ -859,13 +1063,69 @@
         "nodeIdleTimeBeforeScaleDown": {
           "type": "string",
           "format": "duration",
-          "description": "Node Idle Time before scaling down amlCompute"
+          "description": "Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format."
         }
       },
       "required": [
         "maxNodeCount"
       ],
       "description": "scale settings for AML Compute"
+    },
+    "SharedPrivateLinkResource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Unique name of the private link."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SharedPrivateLinkResourceProperty"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of a shared private link resource."
+        }
+      }
+    },
+    "SharedPrivateLinkResourceProperty": {
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "description": "The private link resource group id."
+        },
+        "privateLinkResourceId": {
+          "type": "string",
+          "description": "The resource id that private link links to."
+        },
+        "requestMessage": {
+          "type": "string",
+          "description": "Request message."
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Pending",
+                "Approved",
+                "Rejected",
+                "Disconnected",
+                "Timeout"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+        }
+      },
+      "description": "Properties of a shared private link resource."
     },
     "Sku": {
       "type": "object",
@@ -902,7 +1162,8 @@
               "type": "string",
               "enum": [
                 "Disabled",
-                "Enabled"
+                "Enabled",
+                "Auto"
               ]
             },
             {
@@ -1017,9 +1278,43 @@
       },
       "description": "Admin credentials for virtual machine"
     },
+    "WorkspaceConnectionProps": {
+      "type": "object",
+      "properties": {
+        "authType": {
+          "type": "string",
+          "description": "Authorization type of the workspace connection."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the workspace connection."
+        },
+        "target": {
+          "type": "string",
+          "description": "Target of the workspace connection."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value details of the workspace connection."
+        }
+      },
+      "description": "Workspace Connection specific properties."
+    },
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
+        "allowPublicAccessWhenBehindVnet": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The flag to indicate whether to allow public access when behind VNet."
+        },
         "applicationInsights": {
           "type": "string",
           "description": "ARM id of the application insights associated with this workspace. This cannot be changed once the workspace has been created"
@@ -1062,9 +1357,27 @@
           ],
           "description": "The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service"
         },
+        "imageBuildCompute": {
+          "type": "string",
+          "description": "The compute name for image build"
+        },
         "keyVault": {
           "type": "string",
           "description": "ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created"
+        },
+        "sharedPrivateLinkResources": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SharedPrivateLinkResource"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of shared private link resources in this workspace."
         },
         "storageAccount": {
           "type": "string",
@@ -1079,7 +1392,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-01-01"
+            "2020-08-01"
           ]
         },
         "identity": {
@@ -1153,29 +1466,53 @@
       ],
       "description": "Microsoft.MachineLearningServices/workspaces/computes"
     },
+    "workspaces_connections_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-08-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Friendly name of the workspace connection"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/WorkspaceConnectionProps"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Workspace Connection specific properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "connections"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.MachineLearningServices/workspaces/connections"
+    },
     "workspaces_privateEndpointConnections_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-01-01"
+            "2020-08-01"
           ]
-        },
-        "identity": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Identity"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Identity for the resource."
-        },
-        "location": {
-          "type": "string",
-          "description": "Specifies the location of the resource."
         },
         "name": {
           "type": "string",
@@ -1191,32 +1528,6 @@
             }
           ],
           "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "sku": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Sku"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Sku of the resource"
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Contains resource tags defined as key/value pairs."
         },
         "type": {
           "type": "string",
