@@ -214,6 +214,14 @@
           ],
           "description": "(Personalization Only) The flag to enable statistics of Bing Search."
         },
+        "qnaAzureSearchEndpointId": {
+          "type": "string",
+          "description": "(QnAMaker Only) The Azure Search endpoint id of QnAMaker."
+        },
+        "qnaAzureSearchEndpointKey": {
+          "type": "string",
+          "description": "(QnAMaker Only) The Azure Search endpoint key of QnAMaker."
+        },
         "qnaRuntimeEndpoint": {
           "type": "string",
           "description": "(QnAMaker Only) The runtime endpoint of QnAMaker."
