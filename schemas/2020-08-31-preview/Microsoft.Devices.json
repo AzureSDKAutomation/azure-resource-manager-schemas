@@ -232,7 +232,7 @@
     "ArmIdentity": {
       "type": "object",
       "properties": {
-        "identityType": {
+        "type": {
           "type": "string",
           "description": "Identity type. Only allowed values are SystemAssigned and UserAssigned. Comma separated if both for ex: SystemAssigned,UserAssigned"
         },
