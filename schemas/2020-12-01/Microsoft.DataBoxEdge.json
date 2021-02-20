@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.DataBoxEdge.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.DataBoxEdge.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DataBoxEdge",
   "description": "Microsoft DataBoxEdge Resource Types",
@@ -10,12 +10,23 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "etag": {
           "type": "string",
           "description": "The etag for the devices."
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Msi identity details of the resource"
         },
         "location": {
           "type": "string",
@@ -24,17 +35,6 @@
         "name": {
           "type": "string",
           "description": "The device name."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DataBoxEdgeDeviceProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The properties of the Data Box Edge/Gateway device."
         },
         "resources": {
           "type": "array",
@@ -78,6 +78,17 @@
           ],
           "description": "The SKU type."
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "tags": {
           "oneOf": [
             {
@@ -104,7 +115,6 @@
         "apiVersion",
         "location",
         "name",
-        "properties",
         "type"
       ],
       "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices"
@@ -115,7 +125,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -132,6 +142,17 @@
             }
           ],
           "description": "The properties of the bandwidth schedule."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -154,7 +175,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -198,19 +219,52 @@
       "type": "object",
       "oneOf": [
         {
+          "$ref": "#/definitions/CloudEdgeManagementRole"
+        },
+        {
           "$ref": "#/definitions/IoTRole"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRole"
+        },
+        {
+          "$ref": "#/definitions/MECRole"
         }
       ],
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
           "type": "string",
           "description": "The role name."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/dataBoxEdgeDevices_roles_addons_childResource"
+              },
+              {
+                "$ref": "#/definitions/dataBoxEdgeDevices_roles_monitoringConfig_childResource"
+              }
+            ]
+          }
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -226,13 +280,105 @@
       ],
       "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles"
     },
+    "dataBoxEdgeDevices_roles_addons": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ArcAddon"
+        },
+        {
+          "$ref": "#/definitions/IoTAddon"
+        }
+      ],
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The addon name."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons"
+    },
+    "dataBoxEdgeDevices_roles_monitoringConfig": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MonitoringMetricConfigurationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metrics properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig"
+    },
     "dataBoxEdgeDevices_shares": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -249,6 +395,17 @@
             }
           ],
           "description": "The share properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -271,7 +428,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -288,6 +445,17 @@
             }
           ],
           "description": "The storage account credential properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -310,7 +478,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -338,6 +506,17 @@
             ]
           }
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -359,7 +538,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -376,6 +555,17 @@
             }
           ],
           "description": "The container properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -406,12 +596,23 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
           "type": "string",
           "description": "The trigger name."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -433,7 +634,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -450,6 +651,17 @@
             }
           ],
           "description": "The user properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -501,13 +713,64 @@
         }
       },
       "required": [
-        "addressLine1",
-        "city",
-        "country",
-        "postalCode",
-        "state"
+        "country"
       ],
       "description": "The shipping address of the customer."
+    },
+    "ArcAddon": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "ArcForKubernetes"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ArcAddonProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Arc addon properties."
+        }
+      },
+      "required": [
+        "kind",
+        "properties"
+      ],
+      "description": "Arc Addon."
+    },
+    "ArcAddonProperties": {
+      "type": "object",
+      "properties": {
+        "resourceGroupName": {
+          "type": "string",
+          "description": "Arc resource group name"
+        },
+        "resourceLocation": {
+          "type": "string",
+          "description": "Arc resource location"
+        },
+        "resourceName": {
+          "type": "string",
+          "description": "Arc resource Name"
+        },
+        "subscriptionId": {
+          "type": "string",
+          "description": "Arc resource subscription Id"
+        }
+      },
+      "required": [
+        "resourceGroupName",
+        "resourceLocation",
+        "resourceName",
+        "subscriptionId"
+      ],
+      "description": "Arc addon properties."
     },
     "AsymmetricEncryptedSecret": {
       "type": "object",
@@ -679,6 +942,88 @@
       ],
       "description": "The mapping between a particular client IP and the type of access client has on the NFS share."
     },
+    "CloudEdgeManagementRole": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "CloudEdgeManagement"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CloudEdgeManagementRoleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "CloudEdgeManagement Role properties."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "description": "CloudEdgeManagementRole role."
+    },
+    "CloudEdgeManagementRoleProperties": {
+      "type": "object",
+      "properties": {
+        "roleStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role status."
+        }
+      },
+      "required": [
+        "roleStatus"
+      ],
+      "description": "CloudEdgeManagement Role properties."
+    },
+    "ComputeResource": {
+      "type": "object",
+      "properties": {
+        "memoryInGB": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Memory in GB"
+        },
+        "processorCount": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Processor count"
+        }
+      },
+      "required": [
+        "memoryInGB",
+        "processorCount"
+      ],
+      "description": "Compute infrastructure Resource"
+    },
     "ContactDetails": {
       "type": "object",
       "properties": {
@@ -742,51 +1087,13 @@
       ],
       "description": "The container properties."
     },
-    "DataBoxEdgeDeviceProperties": {
-      "type": "object",
-      "properties": {
-        "dataBoxEdgeDeviceStatus": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "ReadyToSetup",
-                "Online",
-                "Offline",
-                "NeedsAttention",
-                "Disconnected",
-                "PartiallyDisconnected",
-                "Maintenance"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The status of the Data Box Edge/Gateway device."
-        },
-        "description": {
-          "type": "string",
-          "description": "The Description of the Data Box Edge/Gateway device."
-        },
-        "friendlyName": {
-          "type": "string",
-          "description": "The Data Box Edge/Gateway device name."
-        },
-        "modelDescription": {
-          "type": "string",
-          "description": "The description of the Data Box Edge/Gateway device model."
-        }
-      },
-      "description": "The properties of the Data Box Edge/Gateway device."
-    },
     "dataBoxEdgeDevices_bandwidthSchedules_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -803,6 +1110,17 @@
             }
           ],
           "description": "The properties of the bandwidth schedule."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -825,7 +1143,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -860,23 +1178,89 @@
       ],
       "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders"
     },
-    "dataBoxEdgeDevices_roles_childResource": {
+    "dataBoxEdgeDevices_roles_addons_childResource": {
       "type": "object",
       "oneOf": [
         {
-          "$ref": "#/definitions/IoTRole"
+          "$ref": "#/definitions/ArcAddon"
+        },
+        {
+          "$ref": "#/definitions/IoTAddon"
         }
       ],
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The addon name."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "addons"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons"
+    },
+    "dataBoxEdgeDevices_roles_childResource": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/CloudEdgeManagementRole"
+        },
+        {
+          "$ref": "#/definitions/IoTRole"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRole"
+        },
+        {
+          "$ref": "#/definitions/MECRole"
+        }
+      ],
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
           ]
         },
         "name": {
           "type": "string",
           "description": "The role name."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -892,13 +1276,54 @@
       ],
       "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles"
     },
+    "dataBoxEdgeDevices_roles_monitoringConfig_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MonitoringMetricConfigurationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metrics properties"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "monitoringConfig"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig"
+    },
     "dataBoxEdgeDevices_shares_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -915,6 +1340,17 @@
             }
           ],
           "description": "The share properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -937,7 +1373,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -954,6 +1390,17 @@
             }
           ],
           "description": "The storage account credential properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -976,7 +1423,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -993,6 +1440,17 @@
             }
           ],
           "description": "The storage account properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -1015,7 +1473,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1032,6 +1490,17 @@
             }
           ],
           "description": "The container properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -1062,12 +1531,23 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
           "type": "string",
           "description": "The trigger name."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -1089,7 +1569,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-08-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1106,6 +1586,17 @@
             }
           ],
           "description": "The user properties."
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -1167,6 +1658,7 @@
       "properties": {
         "customContextTag": {
           "type": "string",
+          "maxLength": 192,
           "description": "A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module."
         },
         "sinkInfo": {
@@ -1197,6 +1689,94 @@
         "sourceInfo"
       ],
       "description": "File trigger properties."
+    },
+    "ImageRepositoryCredential": {
+      "type": "object",
+      "properties": {
+        "imageRepositoryUrl": {
+          "type": "string",
+          "description": "Image repository url (e.g.: mcr.microsoft.com)."
+        },
+        "password": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AsymmetricEncryptedSecret"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Represent the secrets intended for encryption with asymmetric key pair."
+        },
+        "userName": {
+          "type": "string",
+          "description": "Repository user name."
+        }
+      },
+      "required": [
+        "imageRepositoryUrl",
+        "userName"
+      ],
+      "description": "Image repository credential."
+    },
+    "IoTAddon": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "IotEdge"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IoTAddonProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "IoT addon properties."
+        }
+      },
+      "required": [
+        "kind",
+        "properties"
+      ],
+      "description": "IoT Addon."
+    },
+    "IoTAddonProperties": {
+      "type": "object",
+      "properties": {
+        "ioTDeviceDetails": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IoTDeviceInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata of IoT device/IoT Edge device to be configured."
+        },
+        "ioTEdgeDeviceDetails": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IoTDeviceInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata of IoT device/IoT Edge device to be configured."
+        }
+      },
+      "required": [
+        "ioTDeviceDetails",
+        "ioTEdgeDeviceDetails"
+      ],
+      "description": "IoT addon properties."
     },
     "IoTDeviceInfo": {
       "type": "object",
@@ -1231,6 +1811,35 @@
       ],
       "description": "Metadata of IoT device/IoT Edge device to be configured."
     },
+    "IoTEdgeAgentInfo": {
+      "type": "object",
+      "properties": {
+        "imageName": {
+          "type": "string",
+          "description": "Name of the IoT edge agent image."
+        },
+        "imageRepository": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ImageRepositoryCredential"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Image repository credential."
+        },
+        "tag": {
+          "type": "string",
+          "description": "Image Tag."
+        }
+      },
+      "required": [
+        "imageName",
+        "tag"
+      ],
+      "description": "IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified."
+    },
     "IoTRole": {
       "type": "object",
       "properties": {
@@ -1260,6 +1869,17 @@
     "IoTRoleProperties": {
       "type": "object",
       "properties": {
+        "computeResource": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ComputeResource"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Compute infrastructure Resource"
+        },
         "hostPlatform": {
           "oneOf": [
             {
@@ -1285,6 +1905,17 @@
             }
           ],
           "description": "Metadata of IoT device/IoT Edge device to be configured."
+        },
+        "ioTEdgeAgentInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IoTEdgeAgentInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified."
         },
         "ioTEdgeDeviceDetails": {
           "oneOf": [
@@ -1335,6 +1966,379 @@
       ],
       "description": "IoT role properties."
     },
+    "KubernetesClusterInfo": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Kubernetes cluster version"
+        }
+      },
+      "required": [
+        "version"
+      ],
+      "description": "Kubernetes cluster configuration"
+    },
+    "KubernetesRole": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "Kubernetes"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KubernetesRoleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kubernetes role properties."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "description": "Kubernetes role."
+    },
+    "KubernetesRoleCompute": {
+      "type": "object",
+      "properties": {
+        "vmProfile": {
+          "type": "string",
+          "description": "VM profile"
+        }
+      },
+      "required": [
+        "vmProfile"
+      ],
+      "description": "Kubernetes role compute resource"
+    },
+    "KubernetesRoleProperties": {
+      "type": "object",
+      "properties": {
+        "hostPlatform": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Windows",
+                "Linux"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Host OS supported by the Kubernetes role."
+        },
+        "kubernetesClusterInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KubernetesClusterInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kubernetes cluster configuration"
+        },
+        "kubernetesRoleResources": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KubernetesRoleResources"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kubernetes role resources"
+        },
+        "roleStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role status."
+        }
+      },
+      "required": [
+        "hostPlatform",
+        "kubernetesClusterInfo",
+        "kubernetesRoleResources",
+        "roleStatus"
+      ],
+      "description": "Kubernetes role properties."
+    },
+    "KubernetesRoleResources": {
+      "type": "object",
+      "properties": {
+        "compute": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KubernetesRoleCompute"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kubernetes role compute resource"
+        },
+        "storage": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KubernetesRoleStorage"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Kubernetes role storage resource"
+        }
+      },
+      "required": [
+        "compute"
+      ],
+      "description": "Kubernetes role resources"
+    },
+    "KubernetesRoleStorage": {
+      "type": "object",
+      "properties": {
+        "endpoints": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MountPointMap"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Mount points of shares in role(s)."
+        }
+      },
+      "description": "Kubernetes role storage resource"
+    },
+    "MECRole": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "MEC"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MECRoleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "MEC role properties."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "description": "MEC role."
+    },
+    "MECRoleProperties": {
+      "type": "object",
+      "properties": {
+        "connectionString": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AsymmetricEncryptedSecret"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Represent the secrets intended for encryption with asymmetric key pair."
+        },
+        "roleStatus": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role status."
+        }
+      },
+      "required": [
+        "roleStatus"
+      ],
+      "description": "MEC role properties."
+    },
+    "MetricConfiguration": {
+      "type": "object",
+      "properties": {
+        "counterSets": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricCounterSet"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Host name for the IoT hub associated to the device."
+        },
+        "mdmAccount": {
+          "type": "string",
+          "description": "The MDM account to which the counters should be pushed."
+        },
+        "metricNameSpace": {
+          "type": "string",
+          "description": "The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified"
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "The Resource ID on which the metrics should be pushed."
+        }
+      },
+      "required": [
+        "counterSets",
+        "resourceId"
+      ],
+      "description": "Metric configuration."
+    },
+    "MetricCounter": {
+      "type": "object",
+      "properties": {
+        "additionalDimensions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricDimension"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The additional dimensions to be added to metric."
+        },
+        "dimensionFilter": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricDimension"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The dimension filter."
+        },
+        "instance": {
+          "type": "string",
+          "description": "The instance from which counter should be collected."
+        },
+        "name": {
+          "type": "string",
+          "description": "The counter name."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "description": "The metric counter"
+    },
+    "MetricCounterSet": {
+      "type": "object",
+      "properties": {
+        "counters": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricCounter"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The counters that should be collected in this set."
+        }
+      },
+      "required": [
+        "counters"
+      ],
+      "description": "The metric counter set"
+    },
+    "MetricDimension": {
+      "type": "object",
+      "properties": {
+        "sourceName": {
+          "type": "string",
+          "description": "The dimension value."
+        },
+        "sourceType": {
+          "type": "string",
+          "description": "The dimension type."
+        }
+      },
+      "required": [
+        "sourceName",
+        "sourceType"
+      ],
+      "description": "The metric dimension"
+    },
+    "MonitoringMetricConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "metricConfigurations": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricConfiguration"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The metrics configuration details"
+        }
+      },
+      "required": [
+        "metricConfigurations"
+      ],
+      "description": "Metrics properties"
+    },
     "MountPointMap": {
       "type": "object",
       "properties": {
@@ -1362,16 +2366,21 @@
           ],
           "description": "Contains all the contact details of the customer."
         },
-        "currentStatus": {
+        "shipmentType": {
           "oneOf": [
             {
-              "$ref": "#/definitions/OrderStatus"
+              "type": "string",
+              "enum": [
+                "NotApplicable",
+                "ShippedToCustomer",
+                "SelfPickup"
+              ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Represents a single status change."
+          "description": "ShipmentType of the order."
         },
         "shippingAddress": {
           "oneOf": [
@@ -1386,50 +2395,9 @@
         }
       },
       "required": [
-        "contactInformation",
-        "shippingAddress"
+        "contactInformation"
       ],
       "description": "Order properties."
-    },
-    "OrderStatus": {
-      "type": "object",
-      "properties": {
-        "comments": {
-          "type": "string",
-          "description": "Comments related to this status change."
-        },
-        "status": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Untracked",
-                "AwaitingFulfilment",
-                "AwaitingPreparation",
-                "AwaitingShipment",
-                "Shipped",
-                "Arriving",
-                "Delivered",
-                "ReplacementRequested",
-                "LostDevice",
-                "Declined",
-                "ReturnInitiated",
-                "AwaitingReturnShipment",
-                "ShippedBack",
-                "CollectedAtMicrosoft"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Status of the order as per the allowed status types."
-        }
-      },
-      "required": [
-        "status"
-      ],
-      "description": "Represents a single status change."
     },
     "PeriodicTimerEventTrigger": {
       "type": "object",
@@ -1463,6 +2431,7 @@
       "properties": {
         "customContextTag": {
           "type": "string",
+          "maxLength": 192,
           "description": "A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module."
         },
         "sinkInfo": {
@@ -1540,6 +2509,28 @@
       },
       "description": "Fields for tracking refresh job on the share or container."
     },
+    "ResourceIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "SystemAssigned",
+                "UserAssigned"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity type."
+        }
+      },
+      "description": "Msi identity details of the resource"
+    },
     "RoleSinkInfo": {
       "type": "object",
       "properties": {
@@ -1552,36 +2543,6 @@
         "roleId"
       ],
       "description": "Compute role against which events will be raised."
-    },
-    "ShareAccessRight": {
-      "type": "object",
-      "properties": {
-        "accessType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Change",
-                "Read",
-                "Custom"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Type of access to be allowed on the share for this user."
-        },
-        "shareId": {
-          "type": "string",
-          "description": "The share ID."
-        }
-      },
-      "required": [
-        "accessType",
-        "shareId"
-      ],
-      "description": "Specifies the mapping between this particular user and the type of access he has on shares on this device."
     },
     "ShareProperties": {
       "type": "object",
@@ -1727,7 +2688,19 @@
                 "TEA_1Node_UPS_Heater",
                 "TEA_4Node_Heater",
                 "TEA_4Node_UPS_Heater",
-                "TMA"
+                "TMA",
+                "TDC",
+                "TCA_Small",
+                "GPU",
+                "TCA_Large",
+                "EdgeP_Base",
+                "EdgeP_High",
+                "EdgePR_Base",
+                "EdgePR_Base_UPS",
+                "EdgeMR_Mini",
+                "RCA_Small",
+                "RCA_Large",
+                "RDC"
               ]
             },
             {
@@ -1870,6 +2843,9 @@
           "description": "Current status of the storage account."
         }
       },
+      "required": [
+        "dataPolicy"
+      ],
       "description": "The storage account properties."
     },
     "SymmetricKey": {
@@ -1888,6 +2864,64 @@
         }
       },
       "description": "Symmetric key for authentication."
+    },
+    "SystemData": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "The identity that created the resource."
+        },
+        "createdByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that created the resource."
+        },
+        "lastModifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The type of identity that last modified the resource."
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "The identity that last modified the resource."
+        },
+        "lastModifiedByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that last modified the resource."
+        }
+      },
+      "description": "Metadata pertaining to creation and last modification of the resource."
     },
     "UserAccessRight": {
       "type": "object",
@@ -1932,20 +2966,6 @@
             }
           ],
           "description": "Represent the secrets intended for encryption with asymmetric key pair."
-        },
-        "shareAccessRights": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ShareAccessRight"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "List of shares that the user has rights on. This field should not be specified during user creation."
         },
         "userType": {
           "oneOf": [
