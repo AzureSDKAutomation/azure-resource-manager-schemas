@@ -102,8 +102,11 @@
       },
       "required": [
         "apiVersion",
+        "kind",
+        "location",
         "name",
         "properties",
+        "sku",
         "type"
       ],
       "description": "Microsoft.CognitiveServices/accounts"
