@@ -21,7 +21,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
+              "pattern": "^[-\\w\\._\\(\\)À-ÿ]+$",
               "minLength": 1,
               "maxLength": 64
             },
@@ -62,16 +62,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "The resource group to deploy to",
-          "pattern": "^[-\\w\\._\\(\\)]+$",
-          "maxLength": 90
         }
       },
       "required": [
@@ -169,7 +159,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
+              "pattern": "^[-\\w\\._\\(\\)À-ÿ]+$",
               "minLength": 1,
               "maxLength": 64
             },
@@ -210,146 +200,10 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "The resource group to deploy to",
-          "pattern": "^[-\\w\\._\\(\\)]+$",
-          "maxLength": 90
         }
       },
       "required": [
         "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.Resources/deployments"
-    },
-    "resourceGroups": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
-              "maxLength": 90,
-              "description": "the resource group name"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Resources/resourceGroups"
-          ]
-        },
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "location": {
-          "type": "string",
-          "description": "the resource group location"
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The resource group tags."
-        }
-      },
-      "required": [
-        "name",
-        "type",
-        "apiVersion",
-        "location"
-      ],
-      "description": "Microsoft.Resources/resourceGroups"
-    }
-  },
-  "managementGroup_resourceDefinitions": {
-    "deployments": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "location": {
-          "type": "string",
-          "description": "The location to store the deployment data."
-        },
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
-              "minLength": 1,
-              "maxLength": 64
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The name of the deployment."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DeploymentProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Deployment properties."
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Deployment tags"
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Resources/deployments"
-          ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
-        }
-      },
-      "required": [
-        "apiVersion",
-        "location",
         "name",
         "properties",
         "type"
@@ -375,7 +229,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
+              "pattern": "^[-\\w\\._\\(\\)À-ÿ]+$",
               "minLength": 1,
               "maxLength": 64
             },
@@ -416,10 +270,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
         }
       },
       "required": [
@@ -450,7 +300,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
+              "pattern": "^[-\\w\\._\\(\\)À-ÿ]+$",
               "minLength": 1,
               "maxLength": 64
             },
