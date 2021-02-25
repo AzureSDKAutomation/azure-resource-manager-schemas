@@ -401,7 +401,8 @@
         }
       },
       "required": [
-        "logicAppResourceId"
+        "logicAppResourceId",
+        "triggerUri"
       ],
       "description": "Action property bag."
     },
