@@ -98,6 +98,9 @@
           "$ref": "#/definitions/ImageTemplateRestartCustomizer"
         },
         {
+          "$ref": "#/definitions/ImageTemplateWindowsUpdateCustomizer"
+        },
+        {
           "$ref": "#/definitions/ImageTemplatePowerShellCustomizer"
         },
         {
@@ -168,6 +171,7 @@
         },
         "sha256Checksum": {
           "type": "string",
+          "default": "",
           "description": "SHA256 checksum of the file provided in the sourceUri field above"
         },
         "sourceUri": {
@@ -315,7 +319,7 @@
         },
         "version": {
           "type": "string",
-          "description": "Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages)."
+          "description": "Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted. Specifying 'latest' could cause ROUNDTRIP_INCONSISTENT_PROPERTY issue which will be fixed."
         }
       },
       "required": [
@@ -343,7 +347,8 @@
         "runElevated": {
           "oneOf": [
             {
-              "type": "boolean"
+              "type": "boolean",
+              "default": false
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -357,6 +362,7 @@
         },
         "sha256Checksum": {
           "type": "string",
+          "default": "",
           "description": "SHA256 checksum of the power shell script provided in the scriptUri field above"
         },
         "type": {
@@ -393,7 +399,8 @@
             {
               "type": "integer",
               "minimum": 0,
-              "maximum": 960
+              "maximum": 960,
+              "default": "0"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -563,6 +570,7 @@
         },
         "sha256Checksum": {
           "type": "string",
+          "default": "",
           "description": "SHA256 checksum of the shell script provided in the scriptUri field"
         },
         "type": {
@@ -614,12 +622,100 @@
     "ImageTemplateVmProfile": {
       "type": "object",
       "properties": {
+        "osDiskSizeGB": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "default": "0"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size."
+        },
         "vmSize": {
           "type": "string",
+          "default": "",
           "description": "Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2)."
+        },
+        "vnetConfig": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VirtualNetworkConfig"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Virtual Network configuration."
         }
       },
       "description": "Describes the virtual machine used to build, customize and capture images"
+    },
+    "ImageTemplateWindowsUpdateCustomizer": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Array of filters to select updates to apply. Omit or specify empty array to use the default (no filter).  Refer to above link for examples and detailed description of this field."
+        },
+        "searchCriteria": {
+          "type": "string",
+          "description": "Criteria to search updates. Omit or specify empty string to use the default (search all).  Refer to above link for examples and detailed description of this field."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "WindowsUpdate"
+          ]
+        },
+        "updateLimit": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Maximum number of updates to apply at a time. Omit or specify 0 to use the default (1000)"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Installs Windows Updates. Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update)"
+    },
+    "VirtualNetworkConfig": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of a pre-existing virtual network."
+        },
+        "resourceGroupName": {
+          "type": "string",
+          "description": "Name of the resource group containing the specified virtual network. Must be specified if and only if 'name' is specified."
+        },
+        "subnetName": {
+          "type": "string",
+          "description": "Name of the subnet within the specified virtual network. Must be specified if and only if 'name' is specified."
+        }
+      },
+      "description": "Virtual Network configuration."
     }
   }
 }
