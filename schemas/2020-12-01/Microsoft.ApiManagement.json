@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-12-01/Microsoft.ApiManagement.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.ApiManagement.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.ApiManagement",
   "description": "Microsoft ApiManagement Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "identity": {
@@ -112,6 +112,9 @@
                 "$ref": "#/definitions/service_policies_childResource"
               },
               {
+                "$ref": "#/definitions/service_portalRevisions_childResource"
+              },
+              {
                 "$ref": "#/definitions/service_portalsettings_childResource"
               },
               {
@@ -119,6 +122,9 @@
               },
               {
                 "$ref": "#/definitions/service_subscriptions_childResource"
+              },
+              {
+                "$ref": "#/definitions/service_tenant_childResource"
               },
               {
                 "$ref": "#/definitions/service_users_childResource"
@@ -157,6 +163,20 @@
           "enum": [
             "Microsoft.ApiManagement/service"
           ]
+        },
+        "zones": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A list of availability zones denoting where the resource needs to come from."
         }
       },
       "required": [
@@ -175,7 +195,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -247,7 +267,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -296,7 +316,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -358,7 +378,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -407,7 +427,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -456,7 +476,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -510,7 +530,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -557,7 +577,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -594,7 +614,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -641,7 +661,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -690,7 +710,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -739,7 +759,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -788,7 +808,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -825,7 +845,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -874,7 +894,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -923,7 +943,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -964,7 +984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1013,7 +1033,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1062,7 +1082,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1101,7 +1121,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1130,7 +1150,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1179,7 +1199,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1208,6 +1228,9 @@
               },
               {
                 "$ref": "#/definitions/service_gateways_apis_childResource"
+              },
+              {
+                "$ref": "#/definitions/service_gateways_certificateAuthorities_childResource"
               }
             ]
           }
@@ -1233,7 +1256,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1268,13 +1291,62 @@
       ],
       "description": "Microsoft.ApiManagement/service/gateways/apis"
     },
+    "service_gateways_certificateAuthorities": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[^*#&+:<>?]+$",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identifier of the certificate entity. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GatewayCertificateAuthorityContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Gateway certificate authority details."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
+    },
     "service_gateways_hostnameConfigurations": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1315,7 +1387,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1366,7 +1438,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1395,7 +1467,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1449,7 +1521,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1497,7 +1569,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1545,7 +1617,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1601,7 +1673,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1628,7 +1700,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1657,7 +1729,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1705,7 +1777,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1745,6 +1817,46 @@
         "type"
       ],
       "description": "Microsoft.ApiManagement/service/policies"
+    },
+    "service_portalRevisions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "description": "Portal revision identifier. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PortalRevisionContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.ApiManagement/service/portalRevisions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/portalRevisions"
     },
     "service_portalsettings": {
       "type": "object",
@@ -1850,7 +1962,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "type": {
@@ -1872,7 +1984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1932,7 +2044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1961,7 +2073,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -1990,7 +2102,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2037,7 +2149,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2074,7 +2186,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2122,7 +2234,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2171,7 +2283,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2227,13 +2339,63 @@
       ],
       "description": "Microsoft.ApiManagement/service/templates"
     },
+    "service_tenant": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "access",
+                "getAccess"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identifier of the Access configuration."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccessInformationCreateParameterProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tenant access information update parameters of the API Management service"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.ApiManagement/service/tenant"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/tenant"
+    },
     "service_users": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -2270,6 +2432,35 @@
     }
   },
   "definitions": {
+    "AccessInformationCreateParameterProperties": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines whether direct access is enabled."
+        },
+        "primaryKey": {
+          "type": "string",
+          "description": "Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value."
+        },
+        "principalId": {
+          "type": "string",
+          "description": "Principal (User) Identifier."
+        },
+        "secondaryKey": {
+          "type": "string",
+          "description": "Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value."
+        }
+      },
+      "description": "Tenant access information update parameters of the API Management service"
+    },
     "AdditionalLocation": {
       "type": "object",
       "properties": {
@@ -2310,6 +2501,20 @@
             }
           ],
           "description": "Configuration of a virtual network to which API Management service is deployed."
+        },
+        "zones": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A list of availability zones denoting where the resource needs to come from."
         }
       },
       "required": [
@@ -2629,7 +2834,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br></br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1st 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of next ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:</br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</br>TLS_RSA_WITH_AES_128_GCM_SHA256</br>TLS_RSA_WITH_AES_256_CBC_SHA256<br/>TLS_RSA_WITH_AES_128_CBC_SHA256<br/>TLS_RSA_WITH_AES_256_CBC_SHA<br/>TLS_RSA_WITH_AES_128_CBC_SHA.<br/><br/>For example: `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for all of them.<br/><br/>Note: next ciphers can't be disabled since they are required by Azure CloudService internal components:<br/>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br/>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br/>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br/>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br/>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br/>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br/>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br/>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br/>TLS_RSA_WITH_AES_256_GCM_SHA384"
+          "description": "Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1st 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of next ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.  Note: next ciphers can't be disabled since they are required by Azure CloudService internal components: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384"
         },
         "disableGateway": {
           "oneOf": [
@@ -2683,6 +2888,18 @@
           "type": "string",
           "maxLength": 100,
           "description": "Publisher name."
+        },
+        "restore": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Undelete Api Management Service if it was previously soft-deleted. If this flag is specified and set to True all other properties will be ignored."
         },
         "virtualNetworkConfiguration": {
           "oneOf": [
@@ -2741,7 +2958,8 @@
                 "Standard",
                 "Premium",
                 "Basic",
-                "Consumption"
+                "Consumption",
+                "Isolated"
               ]
             },
             {
@@ -3220,7 +3438,21 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "List of Client Certificate Thumbprint."
+          "description": "List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided."
+        },
+        "certificateIds": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of Client Certificate Ids."
         },
         "header": {
           "oneOf": [
@@ -3304,9 +3536,13 @@
     "BackendServiceFabricClusterProperties": {
       "type": "object",
       "properties": {
+        "clientCertificateId": {
+          "type": "string",
+          "description": "The client certificate id for the management endpoint."
+        },
         "clientCertificatethumbprint": {
           "type": "string",
-          "description": "The client certificate thumbprint for the management endpoint."
+          "description": "The client certificate thumbprint for the management endpoint. Will be ignored if certificatesIds are provided"
         },
         "managementEndpoints": {
           "oneOf": [
@@ -3363,7 +3599,6 @@
         }
       },
       "required": [
-        "clientCertificatethumbprint",
         "managementEndpoints"
       ],
       "description": "Properties of the Service Fabric Type Backend."
@@ -3433,10 +3668,16 @@
           "type": "string",
           "maxLength": 2000,
           "description": "Original uri of entity in external system cache points to"
+        },
+        "useFromLocation": {
+          "type": "string",
+          "maxLength": 256,
+          "description": "Location identifier to use cache from (should be either 'default' or valid Azure region identifier)"
         }
       },
       "required": [
-        "connectionString"
+        "connectionString",
+        "useFromLocation"
       ],
       "description": "Properties of the Cache contract."
     },
@@ -3490,15 +3731,22 @@
           "type": "string",
           "description": "Base 64 encoded certificate using the application/x-pkcs12 representation."
         },
+        "keyVault": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyVaultContractCreateProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Create keyVault contract details."
+        },
         "password": {
           "type": "string",
           "description": "Password for the Certificate"
         }
       },
-      "required": [
-        "data",
-        "password"
-      ],
       "description": "Parameters supplied to the CreateOrUpdate certificate operation."
     },
     "CertificateInformation": {
@@ -3524,6 +3772,63 @@
         "thumbprint"
       ],
       "description": "SSL certificate information."
+    },
+    "DataMasking": {
+      "type": "object",
+      "properties": {
+        "headers": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DataMaskingEntity"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Masking settings for headers"
+        },
+        "queryParams": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DataMaskingEntity"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Masking settings for Url query parameters"
+        }
+      }
+    },
+    "DataMaskingEntity": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Mask",
+                "Hide"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Data masking mode."
+        },
+        "value": {
+          "type": "string",
+          "description": "The name of an entity to mask (e.g. a name of a header or a query parameter)."
+        }
+      }
     },
     "DiagnosticContractProperties": {
       "type": "object",
@@ -3594,6 +3899,21 @@
         "loggerId": {
           "type": "string",
           "description": "Resource Id of a target logger."
+        },
+        "operationNameFormat": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Name",
+                "Url"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The format of the Operation Name for Application Insights telemetries. Default is Name."
         },
         "sampling": {
           "oneOf": [
@@ -3707,6 +4027,23 @@
       },
       "description": "Email Template Update Contract properties."
     },
+    "GatewayCertificateAuthorityContractProperties": {
+      "type": "object",
+      "properties": {
+        "isTrusted": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines whether certificate authority is trusted."
+        }
+      },
+      "description": "Gateway certificate authority details."
+    },
     "GatewayContractProperties": {
       "type": "object",
       "properties": {
@@ -3740,6 +4077,17 @@
           "type": "string",
           "description": "Hostname value. Supports valid domain name, partial or full wildcard"
         },
+        "http2Enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies if HTTP/2.0 is supported"
+        },
         "negotiateClientCertificate": {
           "oneOf": [
             {
@@ -3750,6 +4098,28 @@
             }
           ],
           "description": "Determines whether gateway requests client certificate"
+        },
+        "tls10Enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies if TLS 1.0 is supported"
+        },
+        "tls11Enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies if TLS 1.1 is supported"
         }
       },
       "description": "Gateway hostname configuration details."
@@ -3831,9 +4201,13 @@
           "type": "string",
           "description": "Hostname to configure on the Api Management service."
         },
+        "identityClientId": {
+          "type": "string",
+          "description": "System or User Assigned Managed identity clientId as generated by Azure AD, which has GET access to the keyVault containing the SSL certificate."
+        },
         "keyVaultId": {
           "type": "string",
-          "description": "Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with MSI. The secret should be of type *application/x-pkcs12*"
+          "description": "Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type *application/x-pkcs12*"
         },
         "negotiateClientCertificate": {
           "oneOf": [
@@ -3885,6 +4259,16 @@
             }
           ],
           "description": "Body logging settings."
+        },
+        "dataMasking": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DataMasking"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
         },
         "headers": {
           "oneOf": [
@@ -4080,6 +4464,20 @@
       ],
       "description": "Issue contract Properties."
     },
+    "KeyVaultContractCreateProperties": {
+      "type": "object",
+      "properties": {
+        "identityClientId": {
+          "type": "string",
+          "description": "SystemAssignedIdentity or UserAssignedIdentity Client Id which will be used to access key vault secret."
+        },
+        "secretIdentifier": {
+          "type": "string",
+          "description": "Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires Api Management service to be configured with aka.ms/apimmsi"
+        }
+      },
+      "description": "Create keyVault contract details."
+    },
     "LoggerContractProperties": {
       "type": "object",
       "properties": {
@@ -4120,7 +4518,8 @@
               "type": "string",
               "enum": [
                 "azureEventHub",
-                "applicationInsights"
+                "applicationInsights",
+                "azureMonitor"
               ]
             },
             {
@@ -4135,7 +4534,6 @@
         }
       },
       "required": [
-        "credentials",
         "loggerType"
       ],
       "description": "The Logger entity in API Management represents an event sink that you can use to log API Management events. Currently the Logger entity supports logging API Management events to Azure Event Hubs."
@@ -4156,6 +4554,17 @@
             }
           ],
           "description": "Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters."
+        },
+        "keyVault": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyVaultContractCreateProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Create keyVault contract details."
         },
         "secret": {
           "oneOf": [
@@ -4184,14 +4593,12 @@
         },
         "value": {
           "type": "string",
-          "minLength": 1,
           "maxLength": 4096,
           "description": "Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value."
         }
       },
       "required": [
-        "displayName",
-        "value"
+        "displayName"
       ],
       "description": "NamedValue Contract properties."
     },
@@ -4489,6 +4896,27 @@
       },
       "description": "Delegation settings contract properties."
     },
+    "PortalRevisionContractProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Portal revision description."
+        },
+        "isCurrent": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates if the Portal Revision is public."
+        }
+      }
+    },
     "PortalSigninSettingProperties": {
       "type": "object",
       "properties": {
@@ -4546,11 +4974,11 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of true."
+          "description": "whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false."
         },
         "description": {
           "type": "string",
-          "minLength": 1,
+          "minLength": 0,
           "maxLength": 1000,
           "description": "Product description. May include HTML formatting tags."
         },
@@ -4595,7 +5023,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of true."
+          "description": "Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false."
         },
         "terms": {
           "type": "string",
@@ -4874,7 +5302,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4915,7 +5343,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -4964,7 +5392,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5013,7 +5441,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5062,7 +5490,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5111,7 +5539,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5152,7 +5580,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5194,7 +5622,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5231,7 +5659,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5273,7 +5701,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5322,7 +5750,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5371,7 +5799,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5420,7 +5848,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5457,7 +5885,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5506,7 +5934,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5555,7 +5983,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5596,7 +6024,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5645,7 +6073,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5694,7 +6122,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5723,7 +6151,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5752,7 +6180,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5801,7 +6229,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5836,13 +6264,62 @@
       ],
       "description": "Microsoft.ApiManagement/service/gateways/apis"
     },
+    "service_gateways_certificateAuthorities_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[^*#&+:<>?]+$",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identifier of the certificate entity. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GatewayCertificateAuthorityContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Gateway certificate authority details."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "certificateAuthorities"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/gateways/certificateAuthorities"
+    },
     "service_gateways_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5883,7 +6360,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5924,7 +6401,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5965,7 +6442,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -5994,7 +6471,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6048,7 +6525,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6096,7 +6573,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6144,7 +6621,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6187,7 +6664,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6214,7 +6691,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6243,7 +6720,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6291,7 +6768,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6326,6 +6803,46 @@
         "type"
       ],
       "description": "Microsoft.ApiManagement/service/policies"
+    },
+    "service_portalRevisions_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "description": "Portal revision identifier. Must be unique in the current API Management service instance."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/PortalRevisionContractProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "portalRevisions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/portalRevisions"
     },
     "service_portalsettings_childResource": {
       "type": "object",
@@ -6416,7 +6933,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "type": {
@@ -6438,7 +6955,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6467,7 +6984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6508,7 +7025,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6537,7 +7054,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6579,7 +7096,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6616,7 +7133,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6664,7 +7181,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6713,7 +7230,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
@@ -6769,13 +7286,63 @@
       ],
       "description": "Microsoft.ApiManagement/service/templates"
     },
+    "service_tenant_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "access",
+                "getAccess"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identifier of the Access configuration."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccessInformationCreateParameterProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tenant access information update parameters of the API Management service"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "tenant"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.ApiManagement/service/tenant"
+    },
     "service_users_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-12-01"
+            "2020-12-01"
           ]
         },
         "name": {
