@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.RecoveryServices.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-01-01/Microsoft.RecoveryServices.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.RecoveryServices",
   "description": "Microsoft RecoveryServices Resource Types",
@@ -10,10 +10,10 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-06-01"
+            "2021-01-01"
           ]
         },
-        "eTag": {
+        "etag": {
           "type": "string",
           "description": "Optional ETag."
         },
@@ -71,6 +71,17 @@
           ],
           "description": "Identifies the unique system identifier for each Azure resource."
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "tags": {
           "oneOf": [
             {
@@ -108,7 +119,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-06-01"
+            "2021-01-01"
           ]
         },
         "name": {
@@ -147,10 +158,10 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-06-01"
+            "2021-01-01"
           ]
         },
-        "eTag": {
+        "etag": {
           "type": "string",
           "description": "Optional ETag."
         },
@@ -193,6 +204,37 @@
     }
   },
   "definitions": {
+    "CmkKekIdentity": {
+      "type": "object",
+      "properties": {
+        "userAssignedIdentity": {
+          "type": "string",
+          "description": "The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned"
+        },
+        "useSystemAssignedIdentity": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field"
+        }
+      },
+      "description": "The details of the identity used for CMK"
+    },
+    "CmkKeyVaultProperties": {
+      "type": "object",
+      "properties": {
+        "keyUri": {
+          "type": "string",
+          "description": "The key uri of the Customer Managed Key"
+        }
+      },
+      "description": "The properties of the Key Vault which hosts CMK"
+    },
     "IdentityData": {
       "type": "object",
       "properties": {
@@ -202,14 +244,31 @@
               "type": "string",
               "enum": [
                 "SystemAssigned",
-                "None"
+                "None",
+                "UserAssigned",
+                "SystemAssigned, UserAssigned"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The identity type."
+          "description": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserIdentity"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
         }
       },
       "required": [
@@ -270,6 +329,10 @@
             }
           ],
           "description": "The Sku name."
+        },
+        "tier": {
+          "type": "string",
+          "description": "The Sku tier."
         }
       },
       "required": [
@@ -277,10 +340,73 @@
       ],
       "description": "Identifies the unique system identifier for each Azure resource."
     },
+    "SystemData": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "The identity that created the resource."
+        },
+        "createdByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that created the resource."
+        },
+        "lastModifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The type of identity that last modified the resource."
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "The identity that last modified the resource."
+        },
+        "lastModifiedByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that last modified the resource."
+        }
+      },
+      "description": "Metadata pertaining to creation and last modification of the resource."
+    },
     "UpgradeDetails": {
       "type": "object",
       "properties": {},
       "description": "Details for upgrading vault."
+    },
+    "UserIdentity": {
+      "type": "object",
+      "properties": {},
+      "description": "A resource identity that is managed by the user of the service."
     },
     "VaultExtendedInfo": {
       "type": "object",
@@ -307,6 +433,17 @@
     "VaultProperties": {
       "type": "object",
       "properties": {
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VaultPropertiesEncryption"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Customer Managed Key details of the resource."
+        },
         "upgradeDetails": {
           "oneOf": [
             {
@@ -321,13 +458,56 @@
       },
       "description": "Properties of the vault."
     },
+    "VaultPropertiesEncryption": {
+      "type": "object",
+      "properties": {
+        "infrastructureEncryption": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enabling/Disabling the Double Encryption state."
+        },
+        "kekIdentity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CmkKekIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The details of the identity used for CMK"
+        },
+        "keyVaultProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CmkKeyVaultProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the Key Vault which hosts CMK"
+        }
+      },
+      "description": "Customer Managed Key details of the resource."
+    },
     "vaults_certificates_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-06-01"
+            "2021-01-01"
           ]
         },
         "name": {
@@ -366,10 +546,10 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2016-06-01"
+            "2021-01-01"
           ]
         },
-        "eTag": {
+        "etag": {
           "type": "string",
           "description": "Optional ETag."
         },
