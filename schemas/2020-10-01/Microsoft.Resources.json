@@ -62,16 +62,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "The resource group to deploy to",
-          "pattern": "^[-\\w\\._\\(\\)]+$",
-          "maxLength": 90
         }
       },
       "required": [
@@ -210,12 +200,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "The resource group to deploy to",
-          "pattern": "^[-\\w\\._\\(\\)]+$",
-          "maxLength": 90
         }
       },
       "required": [
@@ -225,61 +209,6 @@
         "type"
       ],
       "description": "Microsoft.Resources/deployments"
-    },
-    "resourceGroups": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^[-\\w\\._\\(\\)]+$",
-              "maxLength": 90,
-              "description": "the resource group name"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Resources/resourceGroups"
-          ]
-        },
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "location": {
-          "type": "string",
-          "description": "the resource group location"
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The resource group tags."
-        }
-      },
-      "required": [
-        "name",
-        "type",
-        "apiVersion",
-        "location"
-      ],
-      "description": "Microsoft.Resources/resourceGroups"
     }
   },
   "managementGroup_resourceDefinitions": {
@@ -341,10 +270,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
         }
       },
       "required": [
@@ -416,10 +341,6 @@
           "enum": [
             "Microsoft.Resources/deployments"
           ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "The subscription to deploy to"
         }
       },
       "required": [
@@ -634,7 +555,7 @@
         "retentionInterval": {
           "type": "string",
           "format": "duration",
-          "description": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P7D means one week)."
+          "description": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day)."
         },
         "scriptContent": {
           "type": "string",
@@ -769,7 +690,7 @@
         "retentionInterval": {
           "type": "string",
           "format": "duration",
-          "description": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P7D means one week)."
+          "description": "Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day)."
         },
         "scriptContent": {
           "type": "string",
