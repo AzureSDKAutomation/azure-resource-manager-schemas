@@ -665,6 +665,45 @@
       ],
       "description": "Microsoft.Compute/virtualMachineScaleSets"
     },
+    "virtualMachineScaleSets_extensions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the VM scale set extension."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VirtualMachineScaleSetExtensionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of a Virtual Machine Scale Set Extension."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Compute/virtualMachineScaleSets/extensions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Compute/virtualMachineScaleSets/extensions"
+    },
     "virtualMachineScaleSets_virtualmachines": {
       "type": "object",
       "properties": {
@@ -845,6 +884,65 @@
         "type"
       ],
       "description": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands"
+    },
+    "virtualMachines_extensions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-12-01"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the virtual machine extension."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VirtualMachineExtensionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of a Virtual Machine Extension."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Compute/virtualMachines/extensions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Compute/virtualMachines/extensions"
     },
     "virtualMachines_runCommands": {
       "type": "object",
@@ -1805,7 +1903,9 @@
                 "Standard_LRS",
                 "Premium_LRS",
                 "StandardSSD_LRS",
-                "UltraSSD_LRS"
+                "UltraSSD_LRS",
+                "Premium_ZRS",
+                "StandardSSD_ZRS"
               ]
             },
             {
@@ -1923,7 +2023,9 @@
                 "Standard_LRS",
                 "Premium_LRS",
                 "StandardSSD_LRS",
-                "UltraSSD_LRS"
+                "UltraSSD_LRS",
+                "Premium_ZRS",
+                "StandardSSD_ZRS"
               ]
             },
             {
@@ -2233,7 +2335,9 @@
                 "Standard_LRS",
                 "Premium_LRS",
                 "StandardSSD_LRS",
-                "UltraSSD_LRS"
+                "UltraSSD_LRS",
+                "Premium_ZRS",
+                "StandardSSD_ZRS"
               ]
             },
             {
@@ -3613,113 +3717,15 @@
           "description": "The name of the extension."
         },
         "properties": {
-          "anyOf": [
+          "oneOf": [
             {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/genericExtension"
+              "$ref": "#/definitions/VirtualMachineScaleSetExtensionProperties"
             },
             {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/iaaSDiagnostics"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/iaaSAntimalware"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScriptExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScriptForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/linuxDiagnostic"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/vmAccessForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bgInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/vmAccessAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dscExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/acronisBackupLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/acronisBackup"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/linuxChefClient"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/chefClient"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/datadogLinuxAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/datadogWindowsAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dockerExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dynatraceLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dynatraceWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/eset"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/hpeSecurityApplicationDefender"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/puppetAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7LinuxServerExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7WindowsServerExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7ApmInsightExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/trendMicroDSALinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/trendMicroDSA"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bmcCtmAgentLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bmcCtmAgentWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/OSPatchingForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/VMSnapshot"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/VMSnapshotLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScript"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/networkWatcherAgentWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/networkWatcherAgentLinux"
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
-          ]
+          ],
+          "description": "Describes the properties of a Virtual Machine Scale Set Extension."
         }
       },
       "description": "Describes a Virtual Machine Scale Set Extension."
@@ -4032,7 +4038,9 @@
                 "Standard_LRS",
                 "Premium_LRS",
                 "StandardSSD_LRS",
-                "UltraSSD_LRS"
+                "UltraSSD_LRS",
+                "Premium_ZRS",
+                "StandardSSD_ZRS"
               ]
             },
             {
@@ -5215,113 +5223,15 @@
           "description": "The name of the virtual machine extension."
         },
         "properties": {
-          "anyOf": [
+          "oneOf": [
             {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/genericExtension"
+              "$ref": "#/definitions/VirtualMachineExtensionProperties"
             },
             {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/iaaSDiagnostics"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/iaaSAntimalware"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScriptExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScriptForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/linuxDiagnostic"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/vmAccessForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bgInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/vmAccessAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dscExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/acronisBackupLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/acronisBackup"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/linuxChefClient"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/chefClient"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/datadogLinuxAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/datadogWindowsAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dockerExtension"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dynatraceLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/dynatraceWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/eset"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/hpeSecurityApplicationDefender"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/puppetAgent"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7LinuxServerExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7WindowsServerExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/site24x7ApmInsightExtn"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/trendMicroDSALinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/trendMicroDSA"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bmcCtmAgentLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/bmcCtmAgentWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/OSPatchingForLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/VMSnapshot"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/VMSnapshotLinux"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/customScript"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/networkWatcherAgentWindows"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.Compute.Extensions.json#/definitions/networkWatcherAgentLinux"
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
-          ]
+          ],
+          "description": "Describes the properties of a Virtual Machine Extension."
         },
         "tags": {
           "oneOf": [
