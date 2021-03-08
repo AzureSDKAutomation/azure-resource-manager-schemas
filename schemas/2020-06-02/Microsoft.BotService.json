@@ -428,6 +428,17 @@
           ],
           "description": "Whether Cmek is enabled"
         },
+        "isIsolated": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether the bot is in an isolated network"
+        },
         "luisAppIds": {
           "oneOf": [
             {
