@@ -7000,6 +7000,26 @@
           ],
           "description": "The base definition of a secret type."
         },
+        "azureCloudType": {
+          "type": "object",
+          "properties": {},
+          "description": "Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string)."
+        },
+        "connectionMode": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Gateway",
+                "Direct"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The connection mode used to access CosmosDB account. Type: string (or Expression with resultType string)."
+        },
         "connectionString": {
           "type": "object",
           "properties": {},
@@ -7014,6 +7034,42 @@
           "type": "object",
           "properties": {},
           "description": "The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string (or Expression with resultType string)."
+        },
+        "servicePrincipalCredential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SecretBase"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The base definition of a secret type."
+        },
+        "servicePrincipalCredentialType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ServicePrincipalKey",
+                "ServicePrincipalCert"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string)."
+        },
+        "servicePrincipalId": {
+          "type": "object",
+          "properties": {},
+          "description": "The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string)."
+        },
+        "tenant": {
+          "type": "object",
+          "properties": {},
+          "description": "The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string)."
         }
       },
       "description": "CosmosDB linked service properties."
@@ -14879,6 +14935,11 @@
           ],
           "description": "The authentication type to be used to connect to the HTTP server."
         },
+        "authHeaders": {
+          "type": "object",
+          "properties": {},
+          "description": "The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object)."
+        },
         "certThumbprint": {
           "type": "object",
           "properties": {},
@@ -18766,6 +18827,11 @@
           ],
           "description": "Type of authentication used to connect to the OData service."
         },
+        "authHeaders": {
+          "type": "object",
+          "properties": {},
+          "description": "The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object)."
+        },
         "azureCloudType": {
           "type": "object",
           "properties": {},
@@ -21595,6 +21661,11 @@
           ],
           "description": "Type of authentication used to connect to the REST service."
         },
+        "authHeaders": {
+          "type": "object",
+          "properties": {},
+          "description": "The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object)."
+        },
         "azureCloudType": {
           "type": "object",
           "properties": {},
@@ -23884,7 +23955,8 @@
               "type": "string",
               "enum": [
                 "Basic",
-                "SshPublicKey"
+                "SshPublicKey",
+                "MultiFactor"
               ]
             },
             {
