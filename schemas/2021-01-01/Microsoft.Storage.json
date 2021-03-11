@@ -146,6 +146,7 @@
         "kind",
         "location",
         "name",
+        "properties",
         "sku",
         "type"
       ],
@@ -203,6 +204,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/blobServices"
@@ -239,6 +241,9 @@
             "oneOf": [
               {
                 "$ref": "#/definitions/storageAccounts_blobServices_containers_immutabilityPolicies_childResource"
+              },
+              {
+                "$ref": "#/definitions/storageAccounts_blobServices_containers_migrate_childResource"
               }
             ]
           }
@@ -253,6 +258,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/blobServices/containers"
@@ -299,9 +305,44 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
+    },
+    "storageAccounts_blobServices_containers_migrate": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-01-01"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/migrate$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/migrate"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Storage/storageAccounts/blobServices/containers/migrate"
     },
     "storageAccounts_encryptionScopes": {
       "type": "object",
@@ -339,6 +380,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/encryptionScopes"
@@ -395,6 +437,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/fileServices"
@@ -435,6 +478,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/fileServices/shares"
@@ -492,6 +536,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/inventoryPolicies"
@@ -538,6 +583,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/managementPolicies"
@@ -577,6 +623,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/objectReplicationPolicies"
@@ -615,6 +662,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/privateEndpointConnections"
@@ -671,6 +719,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/queueServices"
@@ -718,6 +767,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/queueServices/queues"
@@ -774,6 +824,7 @@
       "required": [
         "apiVersion",
         "name",
+        "properties",
         "type"
       ],
       "description": "Microsoft.Storage/storageAccounts/tableServices"
@@ -1258,6 +1309,17 @@
             }
           ],
           "description": "Specifies whether data in the container may be accessed publicly and the level of access."
+        },
+        "versionLevelWorm": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VersionLevelWorm"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Version level worm properties of the container."
         }
       },
       "description": "The properties of a container."
@@ -3147,6 +3209,35 @@
       ],
       "description": "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
     },
+    "storageAccounts_blobServices_containers_migrate_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-01-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "migrate"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "migrate"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Storage/storageAccounts/blobServices/containers/migrate"
+    },
     "storageAccounts_encryptionScopes_childResource": {
       "type": "object",
       "properties": {
@@ -3720,6 +3811,23 @@
       "type": "object",
       "properties": {},
       "description": "UserAssignedIdentity for the resource."
+    },
+    "VersionLevelWorm": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This is an immutable property, when set to true enables version level worm at the container level."
+        }
+      },
+      "description": "Version level worm properties of the container."
     },
     "VirtualNetworkRule": {
       "type": "object",
