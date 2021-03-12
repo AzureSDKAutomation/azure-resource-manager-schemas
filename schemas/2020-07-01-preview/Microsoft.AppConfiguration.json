@@ -192,6 +192,17 @@
     "ConfigurationStoreProperties": {
       "type": "object",
       "properties": {
+        "disableLocalAuth": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Disables all authentication methods other than AAD authentication."
+        },
         "encryption": {
           "oneOf": [
             {
