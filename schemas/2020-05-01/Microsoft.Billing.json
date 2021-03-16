@@ -580,6 +580,21 @@
             }
           ],
           "description": "Dictionary of metadata associated with the invoice section."
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tags associated with the invoice section."
         }
       },
       "description": "The properties of an invoice section."

@@ -400,6 +400,10 @@
           "type": "string",
           "description": "Country code uses ISO2, 2-digit format."
         },
+        "email": {
+          "type": "string",
+          "description": "Email address."
+        },
         "firstName": {
           "type": "string",
           "description": "First name."
@@ -407,6 +411,10 @@
         "lastName": {
           "type": "string",
           "description": "Last name."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Phone number."
         },
         "postalCode": {
           "type": "string",
@@ -627,6 +635,21 @@
     "PolicyProperties": {
       "type": "object",
       "properties": {
+        "invoiceSectionLabelManagement": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Allowed",
+                "NotAllowed"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The policy that controls whether Invoice Section label management are allowed for a billing profile."
+        },
         "marketplacePurchases": {
           "oneOf": [
             {
