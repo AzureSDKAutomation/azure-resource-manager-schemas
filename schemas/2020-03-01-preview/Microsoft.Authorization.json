@@ -1,0 +1,408 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2020-03-01-preview/Microsoft.Authorization.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.Authorization",
+  "description": "Microsoft Authorization Resource Types",
+  "resourceDefinitions": {},
+  "unknown_resourceDefinitions": {
+    "denyAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the deny assignment. It can be any valid GUID."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DenyAssignmentProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deny assignment properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Authorization/denyAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Authorization/denyAssignments"
+    },
+    "roleAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the role assignment. It can be any valid GUID."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RoleAssignmentProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role assignment properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Authorization/roleAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Authorization/roleAssignments"
+    },
+    "roleDefinitions": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the role definition to delete."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RoleDefinitionProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role definition properties."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Authorization/roleDefinitions"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Authorization/roleDefinitions"
+    }
+  },
+  "definitions": {
+    "DenyAssignmentProperties": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string",
+          "description": "The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'"
+        },
+        "conditionVersion": {
+          "type": "string",
+          "description": "Version of the condition. Currently accepted value is '2.0'"
+        },
+        "denyAssignmentName": {
+          "type": "string",
+          "description": "The display name of the deny assignment."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the deny assignment."
+        },
+        "doNotApplyToChildScopes": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines if the deny assignment applies to child scopes. Default value is false."
+        },
+        "excludePrincipals": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Principal"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Array of principals to which the deny assignment does not apply."
+        },
+        "isSystemProtected": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Specifies whether this deny assignment was created by Azure and cannot be edited or deleted."
+        },
+        "permissions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Permission"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "An array of permissions that are denied by the deny assignment."
+        },
+        "principals": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Principal"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Array of principals to which the deny assignment applies."
+        },
+        "scope": {
+          "type": "string",
+          "description": "The deny assignment scope."
+        }
+      },
+      "required": [
+        "permissions",
+        "principals"
+      ],
+      "description": "Deny assignment properties."
+    },
+    "Permission": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allowed actions."
+        },
+        "dataActions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Allowed Data actions."
+        },
+        "notActions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Denied actions."
+        },
+        "notDataActions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Denied Data actions."
+        }
+      },
+      "description": "Role definition permissions."
+    },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Object ID of the Azure AD principal (user, group, or service principal) to which the deny assignment applies. An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of object represented by principal id (user, group, or service principal). An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals."
+        }
+      },
+      "description": "Deny assignment principal."
+    },
+    "RoleAssignmentProperties": {
+      "type": "object",
+      "properties": {
+        "canDelegate": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The delegation flag used for creating a role assignment"
+        },
+        "condition": {
+          "type": "string",
+          "description": "The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'"
+        },
+        "conditionVersion": {
+          "type": "string",
+          "description": "Version of the condition. Currently accepted value is '2.0'"
+        },
+        "delegatedManagedIdentityResourceId": {
+          "type": "string",
+          "description": "Id of the delegated managed identity resource"
+        },
+        "principalId": {
+          "type": "string",
+          "description": "The principal ID."
+        },
+        "principalType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Group",
+                "ServicePrincipal",
+                "Unknown",
+                "DirectoryRoleTemplate",
+                "ForeignGroup",
+                "Application",
+                "MSI",
+                "DirectoryObjectOrGroup",
+                "Everyone"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The principal type of the assigned principal ID."
+        },
+        "roleDefinitionId": {
+          "type": "string",
+          "description": "The role definition ID."
+        }
+      },
+      "required": [
+        "principalId",
+        "roleDefinitionId"
+      ],
+      "description": "Role assignment properties."
+    },
+    "RoleDefinitionProperties": {
+      "type": "object",
+      "properties": {
+        "assignableScopes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role definition assignable scopes."
+        },
+        "description": {
+          "type": "string",
+          "description": "The role definition description."
+        },
+        "permissions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Permission"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Role definition permissions."
+        },
+        "roleName": {
+          "type": "string",
+          "description": "The role name."
+        },
+        "type": {
+          "type": "string",
+          "description": "The role type."
+        }
+      },
+      "description": "Role definition properties."
+    }
+  }
+}
