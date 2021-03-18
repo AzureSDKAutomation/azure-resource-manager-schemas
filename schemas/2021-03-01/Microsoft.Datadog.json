@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-02-01-preview/Microsoft.Datadog.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-03-01/Microsoft.Datadog.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Datadog",
   "description": "Microsoft Datadog Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "identity": {
@@ -27,15 +27,7 @@
           "type": "string"
         },
         "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^[a-zA-Z0-9_-]+$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
+          "type": "string",
           "description": "Monitor resource name"
         },
         "properties": {
@@ -108,7 +100,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "name": {
@@ -146,7 +138,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "name": {
@@ -187,7 +179,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "name": {
@@ -614,7 +606,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "name": {
@@ -652,7 +644,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-02-01-preview"
+            "2021-03-01"
           ]
         },
         "name": {
