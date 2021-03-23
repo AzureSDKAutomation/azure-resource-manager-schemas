@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-11-01/Microsoft.Network.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-10-01/Microsoft.Network.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Network",
   "description": "Microsoft Network Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-11-01"
+            "2019-10-01"
           ]
         },
         "etag": {
@@ -36,17 +36,6 @@
             }
           ],
           "description": "Defines web application firewall policy properties."
-        },
-        "sku": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Sku"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The pricing tier of the web application firewall policy."
         },
         "tags": {
           "oneOf": [
@@ -225,8 +214,7 @@
                 "RequestHeaderNames",
                 "RequestCookieNames",
                 "QueryStringArgNames",
-                "RequestBodyPostArgNames",
-                "RequestBodyJsonArgNames"
+                "RequestBodyPostArgNames"
               ]
             },
             {
@@ -395,21 +383,6 @@
             }
           ],
           "description": "Defines the rule group overrides to apply to the rule set."
-        },
-        "ruleSetAction": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Block",
-                "Log",
-                "Redirect"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
         },
         "ruleSetType": {
           "type": "string",
@@ -614,46 +587,9 @@
         "redirectUrl": {
           "type": "string",
           "description": "If action type is redirect, this field represents redirect URL for the client."
-        },
-        "requestBodyCheck": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Disabled",
-                "Enabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Describes if policy managed rules will inspect the request body content."
         }
       },
       "description": "Defines top-level WebApplicationFirewallPolicy configuration settings."
-    },
-    "Sku": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Classic_AzureFrontDoor",
-                "Standard_AzureFrontDoor",
-                "Premium_AzureFrontDoor"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Name of the pricing tier."
-        }
-      },
-      "description": "The pricing tier of the web application firewall policy."
     },
     "WebApplicationFirewallPolicyProperties": {
       "type": "object",
