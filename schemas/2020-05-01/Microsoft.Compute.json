@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-06-30/Microsoft.Compute.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-05-01/Microsoft.Compute.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Compute",
   "description": "Microsoft Compute Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -68,7 +68,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2020-05-01"
           ]
         },
         "identity": {
@@ -137,7 +137,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -221,7 +221,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2020-05-01"
           ]
         },
         "location": {
@@ -332,17 +332,6 @@
           ],
           "description": "The source image used for creating the disk."
         },
-        "logicalSectorSize": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default."
-        },
         "sourceResourceId": {
           "type": "string",
           "description": "If createOption is Copy, this is the ARM id of the source snapshot or disk."
@@ -449,25 +438,6 @@
           ],
           "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
         },
-        "diskState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Unattached",
-                "Attached",
-                "Reserved",
-                "ActiveSAS",
-                "ReadyToUpload",
-                "ActiveUpload"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of the disk."
-        },
         "encryption": {
           "oneOf": [
             {
@@ -545,10 +515,6 @@
             }
           ],
           "description": "The Operating System type."
-        },
-        "tier": {
-          "type": "string",
-          "description": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
         }
       },
       "required": [
@@ -643,6 +609,7 @@
             {
               "type": "string",
               "enum": [
+                "EncryptionAtRestWithPlatformKey",
                 "EncryptionAtRestWithCustomerKey",
                 "EncryptionAtRestWithPlatformAndCustomerKeys"
               ]
@@ -822,25 +789,6 @@
             }
           ],
           "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
-        },
-        "diskState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Unattached",
-                "Attached",
-                "Reserved",
-                "ActiveSAS",
-                "ReadyToUpload",
-                "ActiveUpload"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of the snapshot."
         },
         "encryption": {
           "oneOf": [

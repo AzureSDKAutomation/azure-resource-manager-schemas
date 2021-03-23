@@ -1,74 +1,16 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-06-30/Microsoft.Compute.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-11-01/Microsoft.Compute.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Compute",
   "description": "Microsoft Compute Resource Types",
   "resourceDefinitions": {
-    "diskAccesses": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-06-30"
-          ]
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location"
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DiskAccessProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Resource tags"
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Compute/diskAccesses"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "location",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.Compute/diskAccesses"
-    },
     "diskEncryptionSets": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2019-11-01"
           ]
         },
         "identity": {
@@ -137,7 +79,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2019-11-01"
           ]
         },
         "location": {
@@ -221,7 +163,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-06-30"
+            "2019-11-01"
           ]
         },
         "location": {
@@ -332,17 +274,6 @@
           ],
           "description": "The source image used for creating the disk."
         },
-        "logicalSectorSize": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default."
-        },
         "sourceResourceId": {
           "type": "string",
           "description": "If createOption is Copy, this is the ARM id of the source snapshot or disk."
@@ -372,10 +303,6 @@
       ],
       "description": "Data used when creating a disk."
     },
-    "DiskAccessProperties": {
-      "type": "object",
-      "properties": {}
-    },
     "DiskProperties": {
       "type": "object",
       "properties": {
@@ -389,10 +316,6 @@
             }
           ],
           "description": "Data used when creating a disk."
-        },
-        "diskAccessId": {
-          "type": "string",
-          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
         },
         "diskIOPSReadOnly": {
           "oneOf": [
@@ -449,25 +372,6 @@
           ],
           "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
         },
-        "diskState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Unattached",
-                "Attached",
-                "Reserved",
-                "ActiveSAS",
-                "ReadyToUpload",
-                "ActiveUpload"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of the disk."
-        },
         "encryption": {
           "oneOf": [
             {
@@ -516,21 +420,6 @@
           ],
           "description": "The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time."
         },
-        "networkAccessPolicy": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "AllowAll",
-                "AllowPrivate",
-                "DenyAll"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
         "osType": {
           "oneOf": [
             {
@@ -545,10 +434,6 @@
             }
           ],
           "description": "The Operating System type."
-        },
-        "tier": {
-          "type": "string",
-          "description": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
         }
       },
       "required": [
@@ -592,14 +477,14 @@
               "type": "string",
               "enum": [
                 "EncryptionAtRestWithPlatformKey",
-                "EncryptionAtRestWithCustomerKey",
-                "EncryptionAtRestWithPlatformAndCustomerKeys"
+                "EncryptionAtRestWithCustomerKey"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
-          ]
+          ],
+          "description": "The type of key used to encrypt the data of the disk."
         }
       },
       "description": "Encryption at rest settings for disk or snapshot"
@@ -637,20 +522,6 @@
             }
           ],
           "description": "Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey"
-        },
-        "encryptionType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "EncryptionAtRestWithCustomerKey",
-                "EncryptionAtRestWithPlatformAndCustomerKeys"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
         }
       }
     },
@@ -808,10 +679,6 @@
           ],
           "description": "Data used when creating a disk."
         },
-        "diskAccessId": {
-          "type": "string",
-          "description": "ARM id of the DiskAccess resource for using private endpoints on disks."
-        },
         "diskSizeGB": {
           "oneOf": [
             {
@@ -822,25 +689,6 @@
             }
           ],
           "description": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
-        },
-        "diskState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Unattached",
-                "Attached",
-                "Reserved",
-                "ActiveSAS",
-                "ReadyToUpload",
-                "ActiveUpload"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of the snapshot."
         },
         "encryption": {
           "oneOf": [
@@ -889,21 +737,6 @@
             }
           ],
           "description": "Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed."
-        },
-        "networkAccessPolicy": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "AllowAll",
-                "AllowPrivate",
-                "DenyAll"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
         },
         "osType": {
           "oneOf": [
