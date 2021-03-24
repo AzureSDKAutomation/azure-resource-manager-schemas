@@ -262,6 +262,10 @@
             "2020-01-01"
           ]
         },
+        "etag": {
+          "type": "string",
+          "description": "Etag of the azure resource"
+        },
         "name": {
           "type": "string",
           "description": "Incident comment ID"
@@ -993,6 +997,10 @@
           "enum": [
             "2020-01-01"
           ]
+        },
+        "etag": {
+          "type": "string",
+          "description": "Etag of the azure resource"
         },
         "name": {
           "type": "string",
