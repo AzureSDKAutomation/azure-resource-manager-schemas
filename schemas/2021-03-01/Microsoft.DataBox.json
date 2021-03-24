@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-04-01/Microsoft.DataBox.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-03-01/Microsoft.DataBox.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DataBox",
   "description": "Microsoft DataBox Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-04-01"
+            "2021-03-01"
           ]
         },
         "identity": {
@@ -406,6 +406,27 @@
       ],
       "description": "Details of the data to be used for importing data to azure."
     },
+    "EncryptionPreferences": {
+      "type": "object",
+      "properties": {
+        "doubleEncryption": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Defines secondary layer of software-based encryption enablement."
+        }
+      },
+      "description": "Preferences related to the Encryption."
+    },
     "FilterFileDetails": {
       "type": "object",
       "properties": {
@@ -434,6 +455,27 @@
         "filterFileType"
       ],
       "description": "Details of the filter files to be used for data transfer."
+    },
+    "IdentityProperties": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Managed service identity type."
+        },
+        "userAssigned": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserAssignedProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "User assigned identity properties."
+        }
+      },
+      "description": "Managed identity properties."
     },
     "JobDeliveryInfo": {
       "type": "object",
@@ -509,6 +551,17 @@
             }
           ],
           "description": "The expected size of the data, which needs to be transferred in this job, in terabytes."
+        },
+        "keyEncryptionKey": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyEncryptionKey"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Encryption key containing details about key to encrypt different keys."
         },
         "preferences": {
           "oneOf": [
@@ -599,6 +652,49 @@
       ],
       "description": "Job Properties"
     },
+    "KeyEncryptionKey": {
+      "type": "object",
+      "properties": {
+        "identityProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IdentityProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Managed identity properties."
+        },
+        "kekType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "MicrosoftManaged",
+                "CustomerManaged"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Type of encryption key used for key encryption."
+        },
+        "kekUrl": {
+          "type": "string",
+          "description": "Key encryption key. It is required in case of Customer managed KekType."
+        },
+        "kekVaultResourceID": {
+          "type": "string",
+          "description": "Kek vault resource id. It is required in case of Customer managed KekType."
+        }
+      },
+      "required": [
+        "kekType"
+      ],
+      "description": "Encryption key containing details about key to encrypt different keys."
+    },
     "ManagedDiskDetails": {
       "type": "object",
       "properties": {
@@ -668,6 +764,17 @@
     "Preferences": {
       "type": "object",
       "properties": {
+        "encryptionPreferences": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EncryptionPreferences"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Preferences related to the Encryption."
+        },
         "preferredDataCenterRegion": {
           "oneOf": [
             {
@@ -701,7 +808,23 @@
       "properties": {
         "type": {
           "type": "string",
+          "default": "None",
           "description": "Identity type"
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserAssignedIdentity"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "User Assigned Identities"
         }
       },
       "description": "Msi identity details of the resource"
@@ -764,7 +887,6 @@
       },
       "required": [
         "country",
-        "postalCode",
         "streetAddress1"
       ],
       "description": "Shipping address where customer wishes to receive the device."
@@ -1031,6 +1153,21 @@
         "preferredShipmentType"
       ],
       "description": "Preferences related to the shipment logistics of the sku"
+    },
+    "UserAssignedIdentity": {
+      "type": "object",
+      "properties": {},
+      "description": "Class defining User assigned identity details."
+    },
+    "UserAssignedProperties": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "Arm resource id for user assigned identity to be used to fetch MSI token."
+        }
+      },
+      "description": "User assigned identity properties."
     }
   }
 }
