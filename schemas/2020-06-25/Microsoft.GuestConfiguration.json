@@ -166,17 +166,13 @@
         "allowModuleOverwrite": {
           "oneOf": [
             {
-              "type": "string",
-              "enum": [
-                "True",
-                "False"
-              ]
+              "type": "boolean"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false."
+          "description": "If true - new configurations downloaded from the pull service are allowed to overwrite the old ones on the target node. Otherwise, false"
         },
         "configurationMode": {
           "oneOf": [
@@ -198,7 +194,7 @@
           "oneOf": [
             {
               "type": "number",
-              "default": 15
+              "default": 15.0
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -209,11 +205,7 @@
         "rebootIfNeeded": {
           "oneOf": [
             {
-              "type": "string",
-              "enum": [
-                "True",
-                "False"
-              ]
+              "type": "boolean"
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
@@ -225,7 +217,7 @@
           "oneOf": [
             {
               "type": "number",
-              "default": 30
+              "default": 30.0
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
