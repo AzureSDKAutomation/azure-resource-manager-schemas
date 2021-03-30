@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-07-01-preview/Microsoft.SignalRService.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.SignalRService.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.SignalRService",
   "description": "Microsoft SignalRService Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "identity": {
@@ -45,7 +45,7 @@
         },
         "name": {
           "type": "string",
-          "description": "The name of the SignalR resource."
+          "description": "The name of the resource."
         },
         "properties": {
           "oneOf": [
@@ -64,6 +64,9 @@
             "oneOf": [
               {
                 "$ref": "#/definitions/signalR_privateEndpointConnections_childResource"
+              },
+              {
+                "$ref": "#/definitions/signalR_sharedPrivateLinkResources_childResource"
               }
             ]
           }
@@ -115,12 +118,12 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
           "type": "string",
-          "description": "The name of the private endpoint connection associated with the SignalR resource."
+          "description": "The name of the private endpoint connection"
         },
         "properties": {
           "oneOf": [
@@ -147,6 +150,45 @@
         "type"
       ],
       "description": "Microsoft.SignalRService/signalR/privateEndpointConnections"
+    },
+    "signalR_sharedPrivateLinkResources": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-04-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the shared private link resource"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SharedPrivateLinkResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of an existing Shared Private Link Resource"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.SignalRService/signalR/sharedPrivateLinkResources"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.SignalRService/signalR/sharedPrivateLinkResources"
     }
   },
   "definitions": {
@@ -209,7 +251,8 @@
                 "enum": [
                   "ClientConnection",
                   "ServerConnection",
-                  "RESTAPI"
+                  "RESTAPI",
+                  "Trace"
                 ]
               }
             },
@@ -228,7 +271,8 @@
                 "enum": [
                   "ClientConnection",
                   "ServerConnection",
-                  "RESTAPI"
+                  "RESTAPI",
+                  "Trace"
                 ]
               }
             },
@@ -263,7 +307,8 @@
                 "enum": [
                   "ClientConnection",
                   "ServerConnection",
-                  "RESTAPI"
+                  "RESTAPI",
+                  "Trace"
                 ]
               }
             },
@@ -282,7 +327,8 @@
                 "enum": [
                   "ClientConnection",
                   "ServerConnection",
-                  "RESTAPI"
+                  "RESTAPI",
+                  "Trace"
                 ]
               }
             },
@@ -373,7 +419,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Optional, integer. The unit count of SignalR resource. 1 by default.\r\n\r\nIf present, following values are allowed:\r\n    Free: 1\r\n    Standard: 1,2,5,10,20,50,100"
+          "description": "Optional, integer. The unit count of the resource. 1 by default.\r\n\r\nIf present, following values are allowed:\r\n    Free: 1\r\n    Standard: 1,2,5,10,20,50,100"
         },
         "name": {
           "type": "string",
@@ -422,6 +468,28 @@
       },
       "description": "The settings for the Upstream when the service is in server-less mode."
     },
+    "SharedPrivateLinkResourceProperties": {
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "description": "The group id from the provider of resource the shared private link resource is for"
+        },
+        "privateLinkResourceId": {
+          "type": "string",
+          "description": "The resource id of the resource the shared private link resource is for"
+        },
+        "requestMessage": {
+          "type": "string",
+          "description": "The request message for requesting approval of the shared private link resource"
+        }
+      },
+      "required": [
+        "groupId",
+        "privateLinkResourceId"
+      ],
+      "description": "Describes the properties of an existing Shared Private Link Resource"
+    },
     "SignalRCorsSettings": {
       "type": "object",
       "properties": {
@@ -452,14 +520,15 @@
               "enum": [
                 "ServiceMode",
                 "EnableConnectivityLogs",
-                "EnableMessagingLogs"
+                "EnableMessagingLogs",
+                "EnableLiveTrace"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "FeatureFlags is the supported features of Azure SignalR service.\r\n- ServiceMode: Flag for backend server for SignalR service. Values allowed: \"Default\": have your own backend server; \"Serverless\": your application doesn't have a backend server; \"Classic\": for backward compatibility. Support both Default and Serverless mode but not recommended; \"PredefinedOnly\": for future use.\r\n- EnableConnectivityLogs: \"true\"/\"false\", to enable/disable the connectivity log category respectively."
+          "description": "FeatureFlags is the supported features of Azure SignalR service.\r\n- ServiceMode: Flag for backend server for SignalR service. Values allowed: \"Default\": have your own backend server; \"Serverless\": your application doesn't have a backend server; \"Classic\": for backward compatibility. Support both Default and Serverless mode but not recommended; \"PredefinedOnly\": for future use.\r\n- EnableConnectivityLogs: \"true\"/\"false\", to enable/disable the connectivity log category respectively.\r\n- EnableMessagingLogs: \"true\"/\"false\", to enable/disable the connectivity log category respectively.\r\n- EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: \"true\"/\"false\", to enable/disable live trace feature."
         },
         "properties": {
           "oneOf": [
@@ -561,7 +630,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "List of SignalR featureFlags. e.g. ServiceMode.\r\n\r\nFeatureFlags that are not included in the parameters for the update operation will not be modified.\r\nAnd the response will only include featureFlags that are explicitly set. \r\nWhen a featureFlag is not explicitly set, SignalR service will use its globally default value. \r\nBut keep in mind, the default value doesn't mean \"false\". It varies in terms of different FeatureFlags."
+          "description": "List of the featureFlags.\r\n\r\nFeatureFlags that are not included in the parameters for the update operation will not be modified.\r\nAnd the response will only include featureFlags that are explicitly set. \r\nWhen a featureFlag is not explicitly set, its globally default value will be used\r\nBut keep in mind, the default value doesn't mean \"false\". It varies in terms of different FeatureFlags."
         },
         "networkACLs": {
           "oneOf": [
@@ -622,12 +691,12 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
           "type": "string",
-          "description": "The name of the private endpoint connection associated with the SignalR resource."
+          "description": "The name of the private endpoint connection"
         },
         "properties": {
           "oneOf": [
@@ -654,6 +723,45 @@
         "type"
       ],
       "description": "Microsoft.SignalRService/signalR/privateEndpointConnections"
+    },
+    "signalR_sharedPrivateLinkResources_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-04-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the shared private link resource"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SharedPrivateLinkResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of an existing Shared Private Link Resource"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "sharedPrivateLinkResources"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.SignalRService/signalR/sharedPrivateLinkResources"
     },
     "UpstreamAuthSettings": {
       "type": "object",
