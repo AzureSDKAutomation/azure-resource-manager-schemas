@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2017-12-01/Microsoft.BotService.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-03-01/Microsoft.BotService.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.BotService",
   "description": "Microsoft BotService Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-12-01"
+            "2021-03-01"
           ]
         },
         "etag": {
@@ -25,7 +25,8 @@
                 "sdk",
                 "designer",
                 "bot",
-                "function"
+                "function",
+                "azurebot"
               ]
             },
             {
@@ -71,7 +72,7 @@
                 "$ref": "#/definitions/botServices_channels_childResource"
               },
               {
-                "$ref": "#/definitions/botServices_Connections_childResource"
+                "$ref": "#/definitions/botServices_connections_childResource"
               }
             ]
           }
@@ -123,7 +124,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-12-01"
+            "2021-03-01"
           ]
         },
         "etag": {
@@ -138,7 +139,8 @@
                 "sdk",
                 "designer",
                 "bot",
-                "function"
+                "function",
+                "azurebot"
               ]
             },
             {
@@ -156,6 +158,7 @@
             {
               "type": "string",
               "enum": [
+                "AlexaChannel",
                 "FacebookChannel",
                 "EmailChannel",
                 "KikChannel",
@@ -165,7 +168,9 @@
                 "SkypeChannel",
                 "WebChatChannel",
                 "DirectLineChannel",
-                "SmsChannel"
+                "SmsChannel",
+                "LineChannel",
+                "DirectLineSpeechChannel"
               ]
             },
             {
@@ -226,13 +231,13 @@
       ],
       "description": "Microsoft.BotService/botServices/channels"
     },
-    "botServices_Connections": {
+    "botServices_connections": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-12-01"
+            "2021-03-01"
           ]
         },
         "etag": {
@@ -247,7 +252,8 @@
                 "sdk",
                 "designer",
                 "bot",
-                "function"
+                "function",
+                "azurebot"
               ]
             },
             {
@@ -264,7 +270,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+              "pattern": "^[a-zA-Z0-9][\\sa-zA-Z0-9_.-]*$",
               "minLength": 2,
               "maxLength": 64
             },
@@ -272,7 +278,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The name of the Bot Service Connection Setting resource"
+          "description": "The name of the Bot Service Connection Setting resource."
         },
         "properties": {
           "oneOf": [
@@ -314,7 +320,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Microsoft.BotService/botServices/Connections"
+            "Microsoft.BotService/botServices/connections"
           ]
         }
       },
@@ -324,13 +330,68 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.BotService/botServices/Connections"
+      "description": "Microsoft.BotService/botServices/connections"
     }
   },
   "definitions": {
+    "AlexaChannel": {
+      "type": "object",
+      "properties": {
+        "channelName": {
+          "type": "string",
+          "enum": [
+            "AlexaChannel"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AlexaChannelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The parameters to provide for the Alexa channel."
+        }
+      },
+      "required": [
+        "channelName"
+      ],
+      "description": "Alexa channel definition"
+    },
+    "AlexaChannelProperties": {
+      "type": "object",
+      "properties": {
+        "alexaSkillId": {
+          "type": "string",
+          "description": "The Alexa skill Id"
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "required": [
+        "alexaSkillId",
+        "isEnabled"
+      ],
+      "description": "The parameters to provide for the Alexa channel."
+    },
     "BotProperties": {
       "type": "object",
       "properties": {
+        "cmekKeyVaultUrl": {
+          "type": "string",
+          "description": "The CMK Url"
+        },
         "description": {
           "type": "string",
           "description": "The description of the bot"
@@ -358,6 +419,17 @@
         "iconUrl": {
           "type": "string",
           "description": "The Icon Url of the bot"
+        },
+        "isCmekEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether Cmek is enabled"
         },
         "luisAppIds": {
           "oneOf": [
@@ -395,7 +467,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-12-01"
+            "2021-03-01"
           ]
         },
         "etag": {
@@ -410,7 +482,8 @@
                 "sdk",
                 "designer",
                 "bot",
-                "function"
+                "function",
+                "azurebot"
               ]
             },
             {
@@ -428,6 +501,7 @@
             {
               "type": "string",
               "enum": [
+                "AlexaChannel",
                 "FacebookChannel",
                 "EmailChannel",
                 "KikChannel",
@@ -437,7 +511,9 @@
                 "SkypeChannel",
                 "WebChatChannel",
                 "DirectLineChannel",
-                "SmsChannel"
+                "SmsChannel",
+                "LineChannel",
+                "DirectLineSpeechChannel"
               ]
             },
             {
@@ -498,13 +574,13 @@
       ],
       "description": "Microsoft.BotService/botServices/channels"
     },
-    "botServices_Connections_childResource": {
+    "botServices_connections_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2017-12-01"
+            "2021-03-01"
           ]
         },
         "etag": {
@@ -519,7 +595,8 @@
                 "sdk",
                 "designer",
                 "bot",
-                "function"
+                "function",
+                "azurebot"
               ]
             },
             {
@@ -536,7 +613,7 @@
           "oneOf": [
             {
               "type": "string",
-              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+              "pattern": "^[a-zA-Z0-9][\\sa-zA-Z0-9_.-]*$",
               "minLength": 2,
               "maxLength": 64
             },
@@ -544,7 +621,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The name of the Bot Service Connection Setting resource"
+          "description": "The name of the Bot Service Connection Setting resource."
         },
         "properties": {
           "oneOf": [
@@ -586,7 +663,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "Connections"
+            "connections"
           ]
         }
       },
@@ -596,11 +673,14 @@
         "properties",
         "type"
       ],
-      "description": "Microsoft.BotService/botServices/Connections"
+      "description": "Microsoft.BotService/botServices/connections"
     },
     "Channel": {
       "type": "object",
       "oneOf": [
+        {
+          "$ref": "#/definitions/AlexaChannel"
+        },
         {
           "$ref": "#/definitions/FacebookChannel"
         },
@@ -630,6 +710,12 @@
         },
         {
           "$ref": "#/definitions/SlackChannel"
+        },
+        {
+          "$ref": "#/definitions/LineChannel"
+        },
+        {
+          "$ref": "#/definitions/DirectLineSpeechChannel"
         }
       ],
       "properties": {},
@@ -747,7 +833,18 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Whether this site is enabled for DirectLine channel"
+          "description": "Whether this site is enabled for DirectLine channel."
+        },
+        "isSecureSiteEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether this site is enabled for authentication with Bot Framework."
         },
         "isV1Enabled": {
           "oneOf": [
@@ -758,7 +855,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Whether this site is enabled for Bot Framework V1 protocol"
+          "description": "Whether this site is enabled for Bot Framework V1 protocol."
         },
         "isV3Enabled": {
           "oneOf": [
@@ -769,11 +866,25 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Whether this site is enabled for Bot Framework V1 protocol"
+          "description": "Whether this site is enabled for Bot Framework V1 protocol."
         },
         "siteName": {
           "type": "string",
           "description": "Site name"
+        },
+        "trustedOrigins": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True."
         }
       },
       "required": [
@@ -783,6 +894,75 @@
         "siteName"
       ],
       "description": "A site for the Direct Line channel"
+    },
+    "DirectLineSpeechChannel": {
+      "type": "object",
+      "properties": {
+        "channelName": {
+          "type": "string",
+          "enum": [
+            "DirectLineSpeechChannel"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DirectLineSpeechChannelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The parameters to provide for the DirectLine Speech channel."
+        }
+      },
+      "required": [
+        "channelName"
+      ],
+      "description": "DirectLine Speech channel definition"
+    },
+    "DirectLineSpeechChannelProperties": {
+      "type": "object",
+      "properties": {
+        "cognitiveServicesSubscriptionId": {
+          "type": "string",
+          "description": "The cognitive service subscription ID to use with this channel registration."
+        },
+        "customSpeechModelId": {
+          "type": "string",
+          "description": "Custom voice deployment id (optional)."
+        },
+        "customVoiceDeploymentId": {
+          "type": "string",
+          "description": "Custom speech model id (optional)."
+        },
+        "isDefaultBotForCogSvcAccount": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Make this a default bot for chosen cognitive service account."
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether this channel is enabled or not."
+        }
+      },
+      "required": [
+        "cognitiveServicesSubscriptionId"
+      ],
+      "description": "The parameters to provide for the DirectLine Speech channel."
     },
     "EmailChannel": {
       "type": "object",
@@ -835,8 +1015,7 @@
       },
       "required": [
         "emailAddress",
-        "isEnabled",
-        "password"
+        "isEnabled"
       ],
       "description": "The parameters to provide for the Email channel."
     },
@@ -905,7 +1084,6 @@
       },
       "required": [
         "appId",
-        "appSecret",
         "isEnabled"
       ],
       "description": "The parameters to provide for the Facebook channel."
@@ -923,7 +1101,6 @@
         }
       },
       "required": [
-        "accessToken",
         "id"
       ],
       "description": "A Facebook page for Facebook channel registration"
@@ -989,11 +1166,73 @@
         }
       },
       "required": [
-        "apiKey",
         "isEnabled",
         "userName"
       ],
       "description": "The parameters to provide for the Kik channel."
+    },
+    "LineChannel": {
+      "type": "object",
+      "properties": {
+        "channelName": {
+          "type": "string",
+          "enum": [
+            "LineChannel"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LineChannelProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The parameters to provide for the Line channel."
+        }
+      },
+      "required": [
+        "channelName"
+      ],
+      "description": "Line channel definition"
+    },
+    "LineChannelProperties": {
+      "type": "object",
+      "properties": {
+        "lineRegistrations": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LineRegistration"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of line channel registrations"
+        }
+      },
+      "required": [
+        "lineRegistrations"
+      ],
+      "description": "The parameters to provide for the Line channel."
+    },
+    "LineRegistration": {
+      "type": "object",
+      "properties": {
+        "channelAccessToken": {
+          "type": "string",
+          "description": "Access token for the line channel registration"
+        },
+        "channelSecret": {
+          "type": "string",
+          "description": "Secret for the line channel registration"
+        }
+      },
+      "description": "The properties corresponding to a line channel registration"
     },
     "MsTeamsChannel": {
       "type": "object",
@@ -1024,9 +1263,9 @@
     "MsTeamsChannelProperties": {
       "type": "object",
       "properties": {
-        "callMode": {
+        "callingWebHook": {
           "type": "string",
-          "description": "Enable messaging for Microsoft Teams channel"
+          "description": "Webhook for Microsoft Teams channel calls"
         },
         "enableCalling": {
           "oneOf": [
@@ -1038,39 +1277,6 @@
             }
           ],
           "description": "Enable calling for Microsoft Teams channel"
-        },
-        "enableMediaCards": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enable media cards for Microsoft Teams channel"
-        },
-        "enableMessaging": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enable messaging for Microsoft Teams channel"
-        },
-        "enableVideo": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enable video for Microsoft Teams channel"
         },
         "isEnabled": {
           "oneOf": [
@@ -1285,16 +1491,17 @@
           "type": "string",
           "description": "The Slack landing page Url"
         },
+        "signingSecret": {
+          "type": "string",
+          "description": "The Slack signing secret."
+        },
         "verificationToken": {
           "type": "string",
           "description": "The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty."
         }
       },
       "required": [
-        "clientId",
-        "clientSecret",
-        "isEnabled",
-        "verificationToken"
+        "isEnabled"
       ],
       "description": "The parameters to provide for the Slack channel."
     },
@@ -1364,7 +1571,6 @@
       },
       "required": [
         "accountSID",
-        "authToken",
         "isEnabled",
         "phone"
       ],
@@ -1427,7 +1633,6 @@
         }
       },
       "required": [
-        "accessToken",
         "isEnabled"
       ],
       "description": "The parameters to provide for the Telegram channel."
