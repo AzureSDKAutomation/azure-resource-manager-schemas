@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-10-01/Microsoft.RecoveryServices.json#",
+  "id": "https://schema.management.azure.com/schemas/2019-06-15/Microsoft.RecoveryServices.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.RecoveryServices",
   "description": "Microsoft RecoveryServices Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-01"
+            "2019-06-15"
           ]
         },
         "eTag": {
@@ -73,153 +73,13 @@
       ],
       "description": "Microsoft.RecoveryServices/vaults/backupconfig"
     },
-    "vaults_backupEncryptionConfigs": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "eTag": {
-          "type": "string",
-          "description": "Optional ETag."
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location."
-        },
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^.*/backupResourceEncryptionConfig$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/BackupResourceEncryptionConfig"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Resource tags."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.RecoveryServices/vaults/backupEncryptionConfigs"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.RecoveryServices/vaults/backupEncryptionConfigs"
-    },
-    "vaults_backupFabrics_protectionContainers": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "eTag": {
-          "type": "string",
-          "description": "Optional ETag."
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the container to be registered."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ProtectionContainer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Base class for container with backup items. Containers with specific workloads are derived from this class."
-        },
-        "resources": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/definitions/vaults_backupFabrics_protectionContainers_protectedItems_childResource"
-              }
-            ]
-          }
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Resource tags."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers"
-    },
     "vaults_backupFabrics_protectionContainers_protectedItems": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-01"
+            "2019-06-15"
           ]
         },
         "eTag": {
@@ -281,7 +141,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-10-01"
+            "2019-06-15"
           ]
         },
         "eTag": {
@@ -336,86 +196,9 @@
         "type"
       ],
       "description": "Microsoft.RecoveryServices/vaults/backupPolicies"
-    },
-    "vaults_privateEndpointConnections": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "eTag": {
-          "type": "string",
-          "description": "Optional ETag."
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the private endpoint connection."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnection"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Private Endpoint Connection Response Properties"
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Resource tags."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.RecoveryServices/vaults/privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.RecoveryServices/vaults/privateEndpointConnections"
     }
   },
   "definitions": {
-    "AzureBackupServerContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "AzureBackupServerContainer"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "AzureBackupServer (DPMVenus) workload-specific protection container."
-    },
     "AzureFileshareProtectedItem": {
       "type": "object",
       "properties": {
@@ -588,21 +371,6 @@
       ],
       "description": "AzureStorage backup policy."
     },
-    "AzureIaaSClassicComputeVMContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "Microsoft.ClassicCompute/virtualMachines"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "IaaS VM workload-specific backup item representing a classic virtual machine."
-    },
     "AzureIaaSClassicComputeVMProtectedItem": {
       "type": "object",
       "properties": {
@@ -617,21 +385,6 @@
         "protectedItemType"
       ],
       "description": "IaaS VM workload-specific backup item representing the Classic Compute VM."
-    },
-    "AzureIaaSComputeVMContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "Microsoft.Compute/virtualMachines"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine."
     },
     "AzureIaaSComputeVMProtectedItem": {
       "type": "object",
@@ -883,36 +636,6 @@
       ],
       "description": "IaaS VM workload-specific backup policy."
     },
-    "AzureSQLAGWorkloadContainerProtectionContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "SQLAGWorkLoadContainer"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Container for SQL workloads under SQL Availability Group."
-    },
-    "AzureSqlContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "AzureSqlContainer"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Azure Sql workload-specific container."
-    },
     "AzureSqlProtectedItem": {
       "type": "object",
       "properties": {
@@ -1013,59 +736,6 @@
         "backupManagementType"
       ],
       "description": "Azure SQL workload-specific backup policy."
-    },
-    "AzureStorageContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "StorageContainer"
-          ]
-        },
-        "protectedItemCount": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Number of items backed up in this container."
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "Resource group name of Recovery Services Vault."
-        },
-        "sourceResourceId": {
-          "type": "string",
-          "description": "Fully qualified ARM url."
-        },
-        "storageAccountVersion": {
-          "type": "string",
-          "description": "Storage account version."
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Azure Storage Account workload-specific container."
-    },
-    "AzureVMAppContainerProtectionContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "VMAppContainer"
-          ]
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Container for SQL workloads under Azure Virtual Machines."
     },
     "AzureVmWorkloadProtectedItem": {
       "type": "object",
@@ -1363,190 +1033,6 @@
       ],
       "description": "Azure VM workload-specific protected item representing SQL Database."
     },
-    "AzureWorkloadContainer": {
-      "type": "object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AzureSQLAGWorkloadContainerProtectionContainer"
-        },
-        {
-          "$ref": "#/definitions/AzureVMAppContainerProtectionContainer"
-        }
-      ],
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "AzureWorkloadContainer"
-          ]
-        },
-        "extendedInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/AzureWorkloadContainerExtendedInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Extended information of the container."
-        },
-        "lastUpdatedTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time stamp when this container was updated."
-        },
-        "operationType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "Register",
-                "Reregister"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Re-Do Operation."
-        },
-        "sourceResourceId": {
-          "type": "string",
-          "description": "ARM ID of the virtual machine represented by this Azure Workload Container"
-        },
-        "workloadType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "VM",
-                "FileFolder",
-                "AzureSqlDb",
-                "SQLDB",
-                "Exchange",
-                "Sharepoint",
-                "VMwareVM",
-                "SystemState",
-                "Client",
-                "GenericDataSource",
-                "SQLDataBase",
-                "AzureFileShare",
-                "SAPHanaDatabase",
-                "SAPAseDatabase"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Workload type for which registration was sent."
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Container for the workloads running inside Azure Compute or Classic Compute."
-    },
-    "AzureWorkloadContainerExtendedInfo": {
-      "type": "object",
-      "properties": {
-        "hostServerName": {
-          "type": "string",
-          "description": "Host Os Name in case of Stand Alone and Cluster Name in case of distributed container."
-        },
-        "inquiryInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/InquiryInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Details about inquired protectable items under a given container."
-        },
-        "nodesList": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/DistributedNodesInfo"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "List of the nodes in case of distributed container."
-        }
-      },
-      "description": "Extended information of the container."
-    },
-    "BackupResourceEncryptionConfig": {
-      "type": "object",
-      "properties": {
-        "encryptionAtRestType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "MicrosoftManaged",
-                "CustomerManaged"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Encryption At Rest Type."
-        },
-        "infrastructureEncryptionState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "Disabled",
-                "Enabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "keyUri": {
-          "type": "string",
-          "description": "Key Vault Key URI"
-        },
-        "lastUpdateStatus": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "NotEnabled",
-                "PartiallySucceeded",
-                "PartiallyFailed",
-                "Failed",
-                "Succeeded"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "subscriptionId": {
-          "type": "string",
-          "description": "Key Vault Subscription Id"
-        }
-      }
-    },
     "BackupResourceVaultConfig": {
       "type": "object",
       "properties": {
@@ -1589,9 +1075,7 @@
               "enum": [
                 "Invalid",
                 "GeoRedundant",
-                "LocallyRedundant",
-                "ZoneRedundant",
-                "ReadAccessGeoZoneRedundant"
+                "LocallyRedundant"
               ]
             },
             {
@@ -1607,9 +1091,7 @@
               "enum": [
                 "Invalid",
                 "GeoRedundant",
-                "LocallyRedundant",
-                "ZoneRedundant",
-                "ReadAccessGeoZoneRedundant"
+                "LocallyRedundant"
               ]
             },
             {
@@ -1636,28 +1118,6 @@
         }
       },
       "description": "Backup resource vault config details."
-    },
-    "ContainerIdentityInfo": {
-      "type": "object",
-      "properties": {
-        "aadTenantId": {
-          "type": "string",
-          "description": "Protection container identity - AAD Tenant"
-        },
-        "audience": {
-          "type": "string",
-          "description": "Protection container identity - Audience"
-        },
-        "servicePrincipalClientId": {
-          "type": "string",
-          "description": "Protection container identity - AAD Service Principal"
-        },
-        "uniqueName": {
-          "type": "string",
-          "description": "Unique name of the container"
-        }
-      },
-      "description": "Container identity information"
     },
     "DailyRetentionFormat": {
       "type": "object",
@@ -1767,132 +1227,6 @@
           "description": "Flag to indicate whether DiskLunList is to be included/ excluded from backup."
         }
       }
-    },
-    "DistributedNodesInfo": {
-      "type": "object",
-      "properties": {
-        "errorDetail": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ErrorDetail"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Error Detail class which encapsulates Code, Message and Recommendations."
-        },
-        "nodeName": {
-          "type": "string",
-          "description": "Name of the node under a distributed container."
-        },
-        "status": {
-          "type": "string",
-          "description": "Status of this Node.\r\nFailed | Succeeded"
-        }
-      },
-      "description": "This is used to represent the various nodes of the distributed container."
-    },
-    "DpmContainer": {
-      "type": "object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AzureBackupServerContainer"
-        }
-      ],
-      "properties": {
-        "canReRegister": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies whether the container is re-registrable."
-        },
-        "containerId": {
-          "type": "string",
-          "description": "ID of container."
-        },
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "DPMContainer"
-          ]
-        },
-        "dpmAgentVersion": {
-          "type": "string",
-          "description": "Backup engine Agent version"
-        },
-        "dpmServers": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "List of BackupEngines protecting the container"
-        },
-        "extendedInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DPMContainerExtendedInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Additional information of the DPMContainer."
-        },
-        "protectedItemCount": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Number of protected items in the BackupEngine"
-        },
-        "protectionStatus": {
-          "type": "string",
-          "description": "Protection status of the container."
-        },
-        "upgradeAvailable": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "To check if upgrade available"
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "DPM workload-specific protection container."
-    },
-    "DPMContainerExtendedInfo": {
-      "type": "object",
-      "properties": {
-        "lastRefreshedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Last refresh time of the DPMContainer."
-        }
-      },
-      "description": "Additional information of the DPMContainer."
     },
     "DPMProtectedItem": {
       "type": "object",
@@ -2080,72 +1414,6 @@
       },
       "description": "Extended Properties for Azure IaasVM Backup."
     },
-    "GenericContainer": {
-      "type": "object",
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "GenericContainer"
-          ]
-        },
-        "extendedInformation": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/GenericContainerExtendedInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Container extended information"
-        },
-        "fabricName": {
-          "type": "string",
-          "description": "Name of the container's fabric"
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Base class for generic container of backup items"
-    },
-    "GenericContainerExtendedInfo": {
-      "type": "object",
-      "properties": {
-        "containerIdentityInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ContainerIdentityInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Container identity information"
-        },
-        "rawCertData": {
-          "type": "string",
-          "description": "Public key of container cert"
-        },
-        "serviceEndpoints": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Azure Backup Service Endpoints for the container"
-        }
-      },
-      "description": "Container extended information"
-    },
     "GenericProtectedItem": {
       "type": "object",
       "properties": {
@@ -2254,97 +1522,6 @@
         "backupManagementType"
       ],
       "description": "Azure VM (Mercury) workload-specific backup policy."
-    },
-    "IaaSVMContainer": {
-      "type": "object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AzureIaaSClassicComputeVMContainer"
-        },
-        {
-          "$ref": "#/definitions/AzureIaaSComputeVMContainer"
-        }
-      ],
-      "properties": {
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "IaaSVMContainer"
-          ]
-        },
-        "resourceGroup": {
-          "type": "string",
-          "description": "Resource group name of Recovery Services Vault."
-        },
-        "virtualMachineId": {
-          "type": "string",
-          "description": "Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container."
-        },
-        "virtualMachineVersion": {
-          "type": "string",
-          "description": "Specifies whether the container represents a Classic or an Azure Resource Manager VM."
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "IaaS VM workload-specific container."
-    },
-    "InquiryInfo": {
-      "type": "object",
-      "properties": {
-        "errorDetail": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ErrorDetail"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Error Detail class which encapsulates Code, Message and Recommendations."
-        },
-        "inquiryDetails": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/WorkloadInquiryDetails"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Inquiry Details which will have workload specific details.\r\nFor e.g. - For SQL and oracle this will contain different details."
-        },
-        "status": {
-          "type": "string",
-          "description": "Inquiry Status for this container such as\r\nInProgress | Failed | Succeeded"
-        }
-      },
-      "description": "Details about inquired protectable items under a given container."
-    },
-    "InquiryValidation": {
-      "type": "object",
-      "properties": {
-        "errorDetail": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ErrorDetail"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Error Detail class which encapsulates Code, Message and Recommendations."
-        },
-        "status": {
-          "type": "string",
-          "description": "Status for the Inquiry Validation."
-        }
-      },
-      "description": "Validation for inquired protectable items under a given container."
     },
     "InstantRPAdditionalDetails": {
       "type": "object",
@@ -2495,187 +1672,6 @@
         "schedulePolicyType"
       ],
       "description": "Long term policy schedule."
-    },
-    "MabContainer": {
-      "type": "object",
-      "properties": {
-        "agentVersion": {
-          "type": "string",
-          "description": "Agent version of this container."
-        },
-        "canReRegister": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Can the container be registered one more time."
-        },
-        "containerHealthState": {
-          "type": "string",
-          "description": "Health state of mab container."
-        },
-        "containerId": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "ContainerID represents the container."
-        },
-        "containerType": {
-          "type": "string",
-          "enum": [
-            "Windows"
-          ]
-        },
-        "extendedInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MabContainerExtendedInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Additional information of the container."
-        },
-        "mabContainerHealthDetails": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MABContainerHealthDetails"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Health details on this mab container."
-        },
-        "protectedItemCount": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Number of items backed up in this container."
-        }
-      },
-      "required": [
-        "containerType"
-      ],
-      "description": "Container with items backed up using MAB backup engine."
-    },
-    "MabContainerExtendedInfo": {
-      "type": "object",
-      "properties": {
-        "backupItems": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "List of backup items associated with this container."
-        },
-        "backupItemType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "VM",
-                "FileFolder",
-                "AzureSqlDb",
-                "SQLDB",
-                "Exchange",
-                "Sharepoint",
-                "VMwareVM",
-                "SystemState",
-                "Client",
-                "GenericDataSource",
-                "SQLDataBase",
-                "AzureFileShare",
-                "SAPHanaDatabase",
-                "SAPAseDatabase"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Type of backup items associated with this container."
-        },
-        "lastBackupStatus": {
-          "type": "string",
-          "description": "Latest backup status of this container."
-        },
-        "lastRefreshedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time stamp when this container was refreshed."
-        },
-        "policyName": {
-          "type": "string",
-          "description": "Backup policy associated with this container."
-        }
-      },
-      "description": "Additional information of the container."
-    },
-    "MABContainerHealthDetails": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Health Code"
-        },
-        "message": {
-          "type": "string",
-          "description": "Health Message"
-        },
-        "recommendations": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Health Recommended Actions"
-        },
-        "title": {
-          "type": "string",
-          "description": "Health Title"
-        }
-      },
-      "description": "MAB workload-specific Health Details."
     },
     "MabFileFolderProtectedItem": {
       "type": "object",
@@ -2868,92 +1864,6 @@
       },
       "description": "Monthly retention schedule."
     },
-    "PrivateEndpoint": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Gets or sets id"
-        }
-      },
-      "description": "The Private Endpoint network resource that is linked to the Private Endpoint connection"
-    },
-    "PrivateEndpointConnection": {
-      "type": "object",
-      "properties": {
-        "privateEndpoint": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpoint"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The Private Endpoint network resource that is linked to the Private Endpoint connection"
-        },
-        "privateLinkServiceConnectionState": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateLinkServiceConnectionState"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Private Link Service Connection State"
-        },
-        "provisioningState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Succeeded",
-                "Deleting",
-                "Failed",
-                "Pending"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Gets or sets provisioning state of the private endpoint connection."
-        }
-      },
-      "description": "Private Endpoint Connection Response Properties"
-    },
-    "PrivateLinkServiceConnectionState": {
-      "type": "object",
-      "properties": {
-        "actionRequired": {
-          "type": "string",
-          "description": "Gets or sets actions required"
-        },
-        "description": {
-          "type": "string",
-          "description": "Gets or sets description"
-        },
-        "status": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Gets or sets the status."
-        }
-      },
-      "description": "Private Link Service Connection State"
-    },
     "ProtectedItem": {
       "type": "object",
       "oneOf": [
@@ -3111,69 +2021,6 @@
         }
       },
       "description": "Base class for backup items."
-    },
-    "ProtectionContainer": {
-      "type": "object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AzureSqlContainer"
-        },
-        {
-          "$ref": "#/definitions/AzureStorageContainer"
-        },
-        {
-          "$ref": "#/definitions/AzureWorkloadContainer"
-        },
-        {
-          "$ref": "#/definitions/DpmContainer"
-        },
-        {
-          "$ref": "#/definitions/GenericContainer"
-        },
-        {
-          "$ref": "#/definitions/IaaSVMContainer"
-        },
-        {
-          "$ref": "#/definitions/MabContainer"
-        }
-      ],
-      "properties": {
-        "backupManagementType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Invalid",
-                "AzureIaasVM",
-                "MAB",
-                "DPM",
-                "AzureBackupServer",
-                "AzureSql",
-                "AzureStorage",
-                "AzureWorkload",
-                "DefaultBackup"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Type of backup management for the container."
-        },
-        "friendlyName": {
-          "type": "string",
-          "description": "Friendly name of the container."
-        },
-        "healthStatus": {
-          "type": "string",
-          "description": "Status of health of the container."
-        },
-        "registrationStatus": {
-          "type": "string",
-          "description": "Status of registration of the container with the Recovery Services Vault."
-        }
-      },
-      "description": "Base class for container with backup items. Containers with specific workloads are derived from this class."
     },
     "ProtectionPolicy": {
       "type": "object",
@@ -3430,8 +2277,7 @@
                 "Full",
                 "Differential",
                 "Log",
-                "CopyOnlyFull",
-                "Incremental"
+                "CopyOnlyFull"
               ]
             },
             {
@@ -3464,68 +2310,6 @@
         }
       },
       "description": "Sub-protection policy which includes schedule and retention"
-    },
-    "vaults_backupFabrics_protectionContainers_protectedItems_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2020-10-01"
-          ]
-        },
-        "eTag": {
-          "type": "string",
-          "description": "Optional ETag."
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location."
-        },
-        "name": {
-          "type": "string",
-          "description": "Item name to be backed up."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ProtectedItem"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Base class for backup items."
-        },
-        "tags": {
-          "oneOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {}
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Resource tags."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "protectedItems"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems"
     },
     "WeeklyRetentionFormat": {
       "type": "object",
@@ -3631,38 +2415,6 @@
         }
       },
       "description": "Weekly retention schedule."
-    },
-    "WorkloadInquiryDetails": {
-      "type": "object",
-      "properties": {
-        "inquiryValidation": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/InquiryValidation"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Validation for inquired protectable items under a given container."
-        },
-        "itemCount": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Contains the protectable item Count inside this Container."
-        },
-        "type": {
-          "type": "string",
-          "description": "Type of the Workload such as SQL, Oracle etc."
-        }
-      },
-      "description": "Details of an inquired protectable item."
     },
     "YearlyRetentionSchedule": {
       "type": "object",
