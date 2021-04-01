@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2021-02-01-preview/Microsoft.DesktopVirtualization.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-03-09-preview/Microsoft.DesktopVirtualization.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DesktopVirtualization",
   "description": "Microsoft DesktopVirtualization Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "identity": {
@@ -126,7 +126,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "name": {
@@ -167,7 +167,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "identity": {
@@ -283,7 +283,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "name": {
@@ -324,7 +324,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "identity": {
@@ -430,7 +430,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "identity": {
@@ -586,7 +586,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "name": {
@@ -902,7 +902,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-02-01-preview"
+            "2021-03-09-preview"
           ]
         },
         "name": {
@@ -1311,17 +1311,6 @@
             }
           ],
           "description": "HostPool type for desktop."
-        },
-        "ring": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The ring number of scaling plan."
         },
         "schedules": {
           "oneOf": [
