@@ -124,6 +124,10 @@
     "DataCollectionRuleAssociationProxyOnlyResourceProperties": {
       "type": "object",
       "properties": {
+        "dataCollectionEndpointId": {
+          "type": "string",
+          "description": "The resource ID of the data collection endpoint that is to be associated."
+        },
         "dataCollectionRuleId": {
           "type": "string",
           "description": "The resource ID of the data collection rule that is to be associated."
