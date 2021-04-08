@@ -1,0 +1,740 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2021-05-01-preview/Microsoft.Media.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.Media",
+  "description": "Microsoft Media Resource Types",
+  "resourceDefinitions": {
+    "videoAnalyzers": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VideoAnalyzerIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The identity for the Video Analyzer resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "The geo-location where the resource lives"
+        },
+        "name": {
+          "type": "string",
+          "description": "The Video Analyzer account name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VideoAnalyzerProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Properties of the Video Analyzer account."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/videoAnalyzers_edgeModules_childResource"
+              },
+              {
+                "$ref": "#/definitions/videoAnalyzers_videos_childResource"
+              },
+              {
+                "$ref": "#/definitions/videoAnalyzers_accessPolicies_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Resource tags."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Media/videoAnalyzers"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "location",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers"
+    },
+    "videoAnalyzers_accessPolicies": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Access Policy name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccessPolicyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of an access policy."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Media/videoAnalyzers/accessPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/accessPolicies"
+    },
+    "videoAnalyzers_edgeModules": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Edge Module name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EdgeModuleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the Edge Module."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Media/videoAnalyzers/edgeModules"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/edgeModules"
+    },
+    "videoAnalyzers_videos": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Video name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VideoProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of a video."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Media/videoAnalyzers/videos"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/videos"
+    }
+  },
+  "definitions": {
+    "AccessPolicyProperties": {
+      "type": "object",
+      "properties": {
+        "authentication": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Authentication"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Base entity for access policy authentication."
+        },
+        "role": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Reader"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Access policy role"
+        }
+      },
+      "required": [
+        "authentication",
+        "role"
+      ],
+      "description": "Describes the properties of an access policy."
+    },
+    "AccountEncryption": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "keyVaultProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyVaultProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemKey",
+                "CustomerKey"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of key used to encrypt the Account Key."
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "Authentication": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/JwtAuthentication"
+        }
+      ],
+      "properties": {},
+      "description": "Base entity for access policy authentication."
+    },
+    "Claim": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Claim name."
+        },
+        "value": {
+          "type": "string",
+          "description": "Claim value."
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "description": "Claim entity."
+    },
+    "EccTokenKey": {
+      "type": "object",
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "enum": [
+            "#Microsoft.Media.EccTokenKey"
+          ]
+        },
+        "alg": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "ES256",
+                "ES384",
+                "ES512"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "ECC algorithm."
+        },
+        "x": {
+          "type": "string",
+          "description": "X value."
+        },
+        "y": {
+          "type": "string",
+          "description": "Y value."
+        }
+      },
+      "required": [
+        "@odata.type",
+        "alg",
+        "x",
+        "y"
+      ],
+      "description": "Ecc token key."
+    },
+    "EdgeModuleProperties": {
+      "type": "object",
+      "properties": {},
+      "description": "The properties of the Edge Module."
+    },
+    "JwtAuthentication": {
+      "type": "object",
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "enum": [
+            "#Microsoft.Media.JwtAuthentication"
+          ]
+        },
+        "audiences": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of audiences."
+        },
+        "claims": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Claim"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of additional claims."
+        },
+        "issuers": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of issuers."
+        },
+        "keys": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TokenKey"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of keys."
+        }
+      },
+      "required": [
+        "@odata.type",
+        "audiences",
+        "issuers",
+        "keys"
+      ],
+      "description": "Access policy JWT authentication."
+    },
+    "KeyVaultProperties": {
+      "type": "object",
+      "properties": {
+        "keyIdentifier": {
+          "type": "string",
+          "description": "The URL of the Key Vault key used to encrypt the account. The key may either be versioned (for example https://vault/keys/mykey/version1) or reference a key without a version (for example https://vault/keys/mykey)."
+        }
+      },
+      "required": [
+        "keyIdentifier"
+      ]
+    },
+    "ResourceIdentity": {
+      "type": "object",
+      "properties": {
+        "userAssignedIdentity": {
+          "type": "string",
+          "description": "The user assigned managed identity's ARM ID to use when accessing a resource."
+        }
+      },
+      "required": [
+        "userAssignedIdentity"
+      ]
+    },
+    "RsaTokenKey": {
+      "type": "object",
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "enum": [
+            "#Microsoft.Media.RsaTokenKey"
+          ]
+        },
+        "alg": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "RS256",
+                "RS384",
+                "RS512"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "RSA algorithm."
+        },
+        "e": {
+          "type": "string",
+          "description": "E value."
+        },
+        "n": {
+          "type": "string",
+          "description": "N value."
+        }
+      },
+      "required": [
+        "@odata.type",
+        "alg",
+        "e",
+        "n"
+      ],
+      "description": "Rsa token key."
+    },
+    "StorageAccount": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the storage account resource. Video Analyzer relies on tables and queues as well as blobs, so the primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage)."
+        },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceIdentity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        }
+      },
+      "description": "The storage account details."
+    },
+    "TokenKey": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/RsaTokenKey"
+        },
+        {
+          "$ref": "#/definitions/EccTokenKey"
+        }
+      ],
+      "properties": {
+        "kid": {
+          "type": "string",
+          "description": "Key id."
+        }
+      },
+      "required": [
+        "kid"
+      ],
+      "description": "Base entity for token key which is a public key."
+    },
+    "UserAssignedManagedIdentity": {
+      "type": "object",
+      "properties": {}
+    },
+    "VideoAnalyzerIdentity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The identity type."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/UserAssignedManagedIdentity"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The User Assigned Managed Identities."
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "The identity for the Video Analyzer resource."
+    },
+    "VideoAnalyzerProperties": {
+      "type": "object",
+      "properties": {
+        "encryption": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccountEncryption"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "storageAccounts": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/StorageAccount"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The storage accounts for this resource."
+        }
+      },
+      "description": "Properties of the Video Analyzer account."
+    },
+    "videoAnalyzers_accessPolicies_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Access Policy name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AccessPolicyProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of an access policy."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "accessPolicies"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/accessPolicies"
+    },
+    "videoAnalyzers_edgeModules_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Edge Module name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EdgeModuleProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The properties of the Edge Module."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "edgeModules"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/edgeModules"
+    },
+    "videoAnalyzers_videos_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-05-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Video name."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/VideoProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the properties of a video."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "videos"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Media/videoAnalyzers/videos"
+    },
+    "VideoProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A video description."
+        },
+        "title": {
+          "type": "string",
+          "description": "A video title."
+        }
+      },
+      "description": "Describes the properties of a video."
+    }
+  }
+}
