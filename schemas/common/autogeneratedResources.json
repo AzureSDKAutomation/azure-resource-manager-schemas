@@ -4454,9 +4454,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-09-01-preview/Microsoft.EngagementFabric.json#/resourceDefinitions/Accounts_Channels"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-12-03/Microsoft.EnterpriseKnowledgeGraph.json#/resourceDefinitions/services"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2017-06-15-preview/Microsoft.EventGrid.json#/resourceDefinitions/topics"
         },
         {
