@@ -199,42 +199,6 @@
                 "$ref": "https://schema.management.azure.com/schemas/2021-03-01/Microsoft.Datadog.json#/subscription_resourceDefinitions/agreements"
               },
               {
-                "$ref": "https://schema.management.azure.com/schemas/2017-06-15-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2017-09-15-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2018-01-01/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2018-05-01-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2018-09-15-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2019-01-01/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2019-02-01-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2019-06-01/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2020-04-01-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2020-06-01/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
-                "$ref": "https://schema.management.azure.com/schemas/2020-10-15-preview/Microsoft.EventGrid.json#/unknown_resourceDefinitions/eventSubscriptions"
-              },
-              {
                 "$ref": "https://schema.management.azure.com/schemas/2020-01-01-preview/Microsoft.HybridNetwork.json#/subscription_resourceDefinitions/locations_vendors_networkFunctions"
               },
               {
