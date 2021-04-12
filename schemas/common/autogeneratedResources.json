@@ -1610,24 +1610,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlServerRegistrations_sqlServers"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2016-01-01/Microsoft.AzureStack.json#/resourceDefinitions/registrations"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-06-01/Microsoft.AzureStack.json#/resourceDefinitions/registrations"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-06-01/Microsoft.AzureStack.json#/resourceDefinitions/registrations_customerSubscriptions"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.AzureStack.json#/resourceDefinitions/linkedSubscriptions"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.AzureStack.json#/resourceDefinitions/registrations"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-06-01-preview/Microsoft.AzureStack.json#/resourceDefinitions/registrations_customerSubscriptions"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2015-12-01/Microsoft.Batch.json#/resourceDefinitions/batchAccounts"
         },
         {
