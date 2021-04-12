@@ -2099,15 +2099,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-09-01/Microsoft.Cdn.json#/resourceDefinitions/profiles_securityPolicies"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2016-02-01-preview/Microsoft.CognitiveServices.json#/resourceDefinitions/accounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-04-18/Microsoft.CognitiveServices.json#/resourceDefinitions/accounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-04-18/Microsoft.CognitiveServices.json#/resourceDefinitions/accounts_privateEndpointConnections"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2020-08-20/Microsoft.Communication.json#/resourceDefinitions/communicationServices"
         },
         {
