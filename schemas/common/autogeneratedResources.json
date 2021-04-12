@@ -4706,15 +4706,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-01-01-preview/Microsoft.EventHub.json#/resourceDefinitions/namespaces_virtualnetworkrules"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2017-11-03-preview/Microsoft.HanaOnAzure.json#/resourceDefinitions/hanaInstances"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-02-07-preview/Microsoft.HanaOnAzure.json#/resourceDefinitions/sapMonitors"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-02-07-preview/Microsoft.HanaOnAzure.json#/resourceDefinitions/sapMonitors_providerInstances"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2018-10-31-preview/Microsoft.HardwareSecurityModules.json#/resourceDefinitions/dedicatedHSMs"
         },
         {
