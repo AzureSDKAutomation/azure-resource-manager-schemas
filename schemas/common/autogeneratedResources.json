@@ -2681,12 +2681,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-12-01/Microsoft.DataBoxEdge.json#/resourceDefinitions/dataBoxEdgeDevices_users"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-04-01/Microsoft.Databricks.json#/resourceDefinitions/workspaces"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-04-01/Microsoft.Databricks.json#/resourceDefinitions/workspaces_virtualNetworkPeerings"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2016-03-30/Microsoft.DataCatalog.json#/resourceDefinitions/catalogs"
         },
         {
