@@ -5042,24 +5042,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.Kubernetes.json#/resourceDefinitions/connectedClusters"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts_galleryimages"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts_labs"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts_labs_environmentsettings"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts_labs_environmentsettings_environments"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-15/Microsoft.LabServices.json#/resourceDefinitions/labaccounts_labs_users"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2016-04-01/Microsoft.MachineLearning.json#/resourceDefinitions/workspaces"
         },
         {
