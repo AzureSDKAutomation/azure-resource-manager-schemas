@@ -4964,9 +4964,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-10-01/Microsoft.Insights.json#/resourceDefinitions/activityLogAlerts"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-09-01/Microsoft.IotCentral.json#/resourceDefinitions/iotApps"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2017-10-01-preview/Microsoft.IoTSpaces.json#/resourceDefinitions/Graph"
         },
         {
