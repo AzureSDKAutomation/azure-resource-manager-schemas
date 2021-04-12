@@ -2450,9 +2450,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-02-01/Microsoft.ContainerService.json#/resourceDefinitions/managedClusters_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-09-01-preview/Microsoft.CustomProviders.json#/resourceDefinitions/resourceProviders"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2018-01-01/Microsoft.DataBox.json#/resourceDefinitions/jobs"
         },
         {
