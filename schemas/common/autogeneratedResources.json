@@ -1808,12 +1808,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-05-01/Microsoft.BatchAI.json#/resourceDefinitions/workspaces_fileServers"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-06-01-preview/Microsoft.Blockchain.json#/resourceDefinitions/blockchainMembers"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-06-01-preview/Microsoft.Blockchain.json#/resourceDefinitions/blockchainMembers_transactionNodes"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2017-12-01/Microsoft.BotService.json#/resourceDefinitions/botServices"
         },
         {
