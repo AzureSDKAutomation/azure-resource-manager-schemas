@@ -5075,12 +5075,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-10-01/Microsoft.MachineLearning.json#/resourceDefinitions/workspaces"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2017-06-01-preview/Microsoft.MachineLearningCompute.json#/resourceDefinitions/operationalizationClusters"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-08-01-preview/Microsoft.MachineLearningCompute.json#/resourceDefinitions/operationalizationClusters"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2017-05-01-preview/Microsoft.MachineLearningExperimentation.json#/resourceDefinitions/accounts"
         },
         {
