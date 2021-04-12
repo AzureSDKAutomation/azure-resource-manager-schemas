@@ -50,15 +50,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-08-04-preview/Microsoft.AlertsManagement.json#/resourceDefinitions/resourceHealthAlertRules"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2016-05-16/Microsoft.AnalysisServices.json#/resourceDefinitions/servers"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-07-14/Microsoft.AnalysisServices.json#/resourceDefinitions/servers"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2017-08-01/Microsoft.AnalysisServices.json#/resourceDefinitions/servers"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2016-07-07/Microsoft.ApiManagement.json#/resourceDefinitions/service"
         },
         {
