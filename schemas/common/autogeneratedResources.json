@@ -5906,18 +5906,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-01-01/Microsoft.PolicyInsights.json#/resourceDefinitions/attestations"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2015-08-01-preview/Microsoft.Portal.json#/resourceDefinitions/dashboards"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2018-10-01-preview/Microsoft.Portal.json#/resourceDefinitions/dashboards"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2019-01-01-preview/Microsoft.Portal.json#/resourceDefinitions/dashboards"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-09-01-preview/Microsoft.Portal.json#/resourceDefinitions/dashboards"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2016-01-29/Microsoft.PowerBI.json#/resourceDefinitions/workspaceCollections"
         },
         {
