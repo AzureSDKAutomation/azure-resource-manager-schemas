@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2020-07-01/Microsoft.AppPlatform.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-03-03-preview/Microsoft.AppPlatform.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.AppPlatform",
   "description": "Microsoft AppPlatform Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "location": {
@@ -98,7 +98,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "identity": {
@@ -168,7 +168,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -207,7 +207,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -257,7 +257,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -296,7 +296,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -335,7 +335,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -381,7 +381,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -423,12 +423,28 @@
     }
   },
   "definitions": {
+    "ApplicationInsightsAgentVersions": {
+      "type": "object",
+      "properties": {},
+      "description": "Application Insights agent versions properties payload"
+    },
     "AppResourceProperties": {
       "type": "object",
       "properties": {
         "activeDeploymentName": {
           "type": "string",
           "description": "Name of the active deployment of the App"
+        },
+        "enableEndToEndTLS": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicate if end to end TLS is enabled."
         },
         "fqdn": {
           "type": "string",
@@ -726,7 +742,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Required CPU, basic tier should be 1, standard tier should be in range (1, 4)"
+          "description": "Required CPU. This should be 1 for Basic tier, and in range [1, 4] for Standard tier. This is deprecated starting from API version 2020-03-03-preview. Please use the resourceRequests field to set the CPU size."
         },
         "environmentVariables": {
           "oneOf": [
@@ -757,11 +773,22 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Required Memory size in GB, basic tier should be in range (1, 2), standard tier should be in range (1, 8)"
+          "description": "Required Memory size in GB. This should be in range [1, 2] for Basic tier, and in range [1, 8] for Standard tier. This is deprecated starting from API version 2020-03-03-preview. Please use the resourceRequests field to set the the memory size."
         },
         "netCoreMainEntryPath": {
           "type": "string",
           "description": "The path to the .NET executable relative to zip root"
+        },
+        "resourceRequests": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ResourceRequests"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deployment resource request payload"
         },
         "runtimeVersion": {
           "oneOf": [
@@ -911,9 +938,33 @@
     "MonitoringSettingProperties": {
       "type": "object",
       "properties": {
+        "appInsightsAgentVersions": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ApplicationInsightsAgentVersions"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Application Insights agent versions properties payload"
+        },
         "appInsightsInstrumentationKey": {
           "type": "string",
-          "description": "Target application insight instrumentation key"
+          "description": "Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings"
+        },
+        "appInsightsSamplingRate": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]"
         },
         "error": {
           "oneOf": [
@@ -935,14 +986,35 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Indicates whether enable the trace functionality"
+          "description": "Indicates whether enable the trace functionality, which will be deprecated since api version 2021-03-03-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not"
         }
       },
       "description": "Monitoring Setting properties payload"
     },
     "NetworkProfile": {
       "type": "object",
-      "properties": {},
+      "properties": {
+        "appNetworkResourceGroup": {
+          "type": "string",
+          "description": "Name of the resource group containing network resources of Azure Spring Cloud Apps"
+        },
+        "appSubnetId": {
+          "type": "string",
+          "description": "Fully qualified resource Id of the subnet to host Azure Spring Cloud Apps"
+        },
+        "serviceCidr": {
+          "type": "string",
+          "description": "Azure Spring Cloud service reserved CIDR"
+        },
+        "serviceRuntimeNetworkResourceGroup": {
+          "type": "string",
+          "description": "Name of the resource group containing network resources of Azure Spring Cloud Service Runtime"
+        },
+        "serviceRuntimeSubnetId": {
+          "type": "string",
+          "description": "Fully qualified resource Id of the subnet to host Azure Spring Cloud Service Runtime"
+        }
+      },
       "description": "Service network profile payload"
     },
     "PersistentDisk": {
@@ -968,6 +1040,20 @@
       },
       "description": "Persistent disk payload"
     },
+    "ResourceRequests": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "type": "string",
+          "description": "Required CPU. 1 core can be represented by 1 or 1000m. This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier."
+        },
+        "memory": {
+          "type": "string",
+          "description": "Required memory. 1 GB can be represented by 1Gi or 1024Mi. This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier."
+        }
+      },
+      "description": "Deployment resource request payload"
+    },
     "Sku": {
       "type": "object",
       "properties": {
@@ -984,10 +1070,12 @@
         },
         "name": {
           "type": "string",
+          "default": "S0",
           "description": "Name of the Sku"
         },
         "tier": {
           "type": "string",
+          "default": "Standard",
           "description": "Tier of the Sku"
         }
       },
@@ -999,7 +1087,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -1038,7 +1126,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "identity": {
@@ -1092,7 +1180,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -1142,7 +1230,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -1181,7 +1269,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -1220,7 +1308,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
@@ -1261,7 +1349,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2020-07-01"
+            "2021-03-03-preview"
           ]
         },
         "name": {
