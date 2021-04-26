@@ -154,6 +154,23 @@
           ],
           "description": "Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component."
         },
+        "Type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "query",
+                "function",
+                "folder",
+                "recent"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enum indicating the type of the Analytics item."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -434,6 +451,23 @@
             }
           ],
           "description": "Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component."
+        },
+        "Type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "query",
+                "function",
+                "folder",
+                "recent"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enum indicating the type of the Analytics item."
         },
         "type": {
           "type": "string",
@@ -1053,6 +1087,23 @@
           ],
           "description": "Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component."
         },
+        "Type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "query",
+                "function",
+                "folder",
+                "recent"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enum indicating the type of the Analytics item."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -1377,6 +1428,23 @@
             }
           ],
           "description": "Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component."
+        },
+        "Type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "query",
+                "function",
+                "folder",
+                "recent"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Enum indicating the type of the Analytics item."
         },
         "type": {
           "type": "string",
