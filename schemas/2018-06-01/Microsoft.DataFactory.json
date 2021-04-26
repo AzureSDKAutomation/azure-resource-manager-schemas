@@ -6984,12 +6984,6 @@
           "$ref": "#/definitions/SalesforceServiceCloudSink"
         },
         {
-          "$ref": "#/definitions/MongoDbAtlasSink"
-        },
-        {
-          "$ref": "#/definitions/MongoDbV2Sink"
-        },
-        {
           "$ref": "#/definitions/CosmosDbMongoDbApiSink"
         }
       ],
@@ -10820,7 +10814,8 @@
               "type": "string",
               "enum": [
                 "IntegrationRuntimeReference",
-                "LinkedServiceReference"
+                "LinkedServiceReference",
+                "CredentialReference"
               ]
             },
             {
@@ -10943,15 +10938,19 @@
           "properties": {},
           "description": "The partial data of one sheet. Type: string (or Expression with resultType string)."
         },
+        "sheetIndex": {
+          "type": "object",
+          "properties": {},
+          "description": "The sheet index of excel file and default value is 0. Type: integer (or Expression with resultType integer)"
+        },
         "sheetName": {
           "type": "object",
           "properties": {},
-          "description": "The sheet of excel file. Type: string (or Expression with resultType string)."
+          "description": "The sheet name of excel file. Type: string (or Expression with resultType string)."
         }
       },
       "required": [
-        "location",
-        "sheetName"
+        "location"
       ],
       "description": "Excel dataset properties."
     },
@@ -16328,6 +16327,17 @@
           ],
           "description": "License type for bringing your own license scenario."
         },
+        "managedCredential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EntityReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The entity reference."
+        },
         "packageStores": {
           "oneOf": [
             {
@@ -18308,26 +18318,6 @@
       ],
       "description": "MongoDB Atlas linked service properties."
     },
-    "MongoDbAtlasSink": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "MongoDbAtlasSink"
-          ]
-        },
-        "writeBehavior": {
-          "type": "object",
-          "properties": {},
-          "description": "Specifies whether the document with same key to be overwritten (upsert) rather than throw exception (insert). The default value is \"insert\". Type: string (or Expression with resultType string). Type: string (or Expression with resultType string)."
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "description": "A copy activity MongoDB Atlas sink."
-    },
     "MongoDbAtlasSource": {
       "type": "object",
       "properties": {
@@ -18690,26 +18680,6 @@
         "database"
       ],
       "description": "MongoDB linked service properties."
-    },
-    "MongoDbV2Sink": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "MongoDbV2Sink"
-          ]
-        },
-        "writeBehavior": {
-          "type": "object",
-          "properties": {},
-          "description": "Specifies whether the document with same key to be overwritten (upsert) rather than throw exception (insert). The default value is \"insert\". Type: string (or Expression with resultType string). Type: string (or Expression with resultType string)."
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "description": "A copy activity MongoDB sink."
     },
     "MongoDbV2Source": {
       "type": "object",
