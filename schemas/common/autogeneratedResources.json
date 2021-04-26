@@ -3638,18 +3638,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-11-04/Microsoft.Devices.json#/resourceDefinitions/IotHubs_eventHubEndpoints_ConsumerGroups"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Devices.json#/resourceDefinitions/IotHubs"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Devices.json#/resourceDefinitions/IotHubs_certificates"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Devices.json#/resourceDefinitions/IotHubs_eventHubEndpoints_ConsumerGroups"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Devices.json#/resourceDefinitions/iotHubs_privateEndpointConnections"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2020-04-01/Microsoft.Devices.json#/resourceDefinitions/IotHubs"
         },
         {
@@ -3698,18 +3686,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-08-01/Microsoft.Devices.json#/resourceDefinitions/iotHubs_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs_certificates"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs_eventHubEndpoints_ConsumerGroups"
-        },
-        {
-          "$ref": "https://schema.management.azure.com/schemas/2020-08-31/Microsoft.Devices.json#/resourceDefinitions/iotHubs_privateEndpointConnections"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2020-08-31-preview/Microsoft.Devices.json#/resourceDefinitions/IotHubs"
         },
         {
@@ -3744,6 +3720,18 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2021-03-03-preview/Microsoft.Devices.json#/resourceDefinitions/iotHubs_privateEndpointConnections"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-03-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-03-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs_certificates"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-03-31/Microsoft.Devices.json#/resourceDefinitions/IotHubs_eventHubEndpoints_ConsumerGroups"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-03-31/Microsoft.Devices.json#/resourceDefinitions/iotHubs_privateEndpointConnections"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2017-08-21-preview/Microsoft.Devices.Provisioning.json#/resourceDefinitions/provisioningServices"
