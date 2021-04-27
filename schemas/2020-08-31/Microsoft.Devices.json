@@ -305,6 +305,9 @@
           "description": "EventHub consumer group name"
         }
       },
+      "required": [
+        "name"
+      ],
       "description": "The EventHub consumer group name."
     },
     "EventHubProperties": {
