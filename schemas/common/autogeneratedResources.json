@@ -5732,6 +5732,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-02-01-preview/Microsoft.Maps.json#/resourceDefinitions/accounts_privateAtlases"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-02-01/Microsoft.Maps.json#/resourceDefinitions/accounts"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-02-01/Microsoft.Maps.json#/resourceDefinitions/accounts_creators"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2018-02-02/Microsoft.Migrate.json#/resourceDefinitions/projects"
         },
         {
