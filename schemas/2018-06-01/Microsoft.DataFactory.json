@@ -2298,7 +2298,8 @@
           "description": "SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference."
         },
         "serviceEndpoint": {
-          "type": "string",
+          "type": "object",
+          "properties": {},
           "description": "Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property."
         },
         "servicePrincipalId": {
@@ -5737,7 +5738,8 @@
           "description": "If set to true, blobs with zero bytes will be ignored."
         },
         "scope": {
-          "type": "string",
+          "type": "object",
+          "properties": {},
           "description": "The ARM resource ID of the Storage Account."
         }
       },
@@ -9614,17 +9616,8 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
+          "type": "object",
+          "properties": {},
           "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
         },
         "formatSettings": {
@@ -10820,7 +10813,8 @@
               "type": "string",
               "enum": [
                 "IntegrationRuntimeReference",
-                "LinkedServiceReference"
+                "LinkedServiceReference",
+                "CredentialReference"
               ]
             },
             {
@@ -10943,15 +10937,19 @@
           "properties": {},
           "description": "The partial data of one sheet. Type: string (or Expression with resultType string)."
         },
+        "sheetIndex": {
+          "type": "object",
+          "properties": {},
+          "description": "The sheet index of excel file and default value is 0. Type: integer (or Expression with resultType integer)"
+        },
         "sheetName": {
           "type": "object",
           "properties": {},
-          "description": "The sheet of excel file. Type: string (or Expression with resultType string)."
+          "description": "The sheet name of excel file. Type: string (or Expression with resultType string)."
         }
       },
       "required": [
-        "location",
-        "sheetName"
+        "location"
       ],
       "description": "Excel dataset properties."
     },
@@ -16328,6 +16326,17 @@
           ],
           "description": "License type for bringing your own license scenario."
         },
+        "managedCredential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EntityReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The entity reference."
+        },
         "packageStores": {
           "oneOf": [
             {
@@ -20152,20 +20161,8 @@
           "description": "Dataset location."
         },
         "orcCompressionCodec": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "none",
-                "zlib",
-                "snappy",
-                "lzo"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
+          "type": "object",
+          "properties": {}
         }
       },
       "required": [
