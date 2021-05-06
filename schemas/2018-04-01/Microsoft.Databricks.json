@@ -13,6 +13,17 @@
             "2018-04-01"
           ]
         },
+        "identity": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Identity"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Identity for the resource."
+        },
         "location": {
           "type": "string",
           "description": "The geo-location where the resource lives"
@@ -147,6 +158,10 @@
       },
       "description": "AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network."
     },
+    "Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties": {
+      "type": "object",
+      "properties": {}
+    },
     "CreatedBy": {
       "type": "object",
       "properties": {},
@@ -184,6 +199,42 @@
         }
       },
       "description": "The object that contains details of encryption used on the workspace."
+    },
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "UserAssigned",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity for workspace. The type 'None' will remove any identities assigned to workspace."
+        },
+        "userAssignedIdentities": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+        }
+      },
+      "description": "Identity for the resource."
     },
     "ManagedIdentityConfiguration": {
       "type": "object",
