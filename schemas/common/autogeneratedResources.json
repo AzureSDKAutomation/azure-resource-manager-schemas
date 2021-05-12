@@ -9437,6 +9437,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_kustoPools"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_kustoPools_attachedDatabaseConfigurations"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.Synapse.json#/resourceDefinitions/workspaces_kustoPools_databases"
         },
         {
