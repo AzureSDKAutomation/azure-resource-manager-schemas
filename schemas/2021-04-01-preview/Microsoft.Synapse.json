@@ -585,6 +585,9 @@
               },
               {
                 "$ref": "#/definitions/workspaces_kustoPools_principalAssignments_childResource"
+              },
+              {
+                "$ref": "#/definitions/workspaces_kustoPools_attachedDatabaseConfigurations_childResource"
               }
             ]
           }
@@ -631,6 +634,49 @@
         "type"
       ],
       "description": "Microsoft.Synapse/workspaces/kustoPools"
+    },
+    "workspaces_kustoPools_attachedDatabaseConfigurations": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-04-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attached database configuration."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AttachedDatabaseConfigurationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Class representing the an attached database configuration properties of kind specific."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations"
     },
     "workspaces_kustoPools_databases": {
       "type": "object",
@@ -1811,6 +1857,72 @@
         }
       },
       "description": "Workspace active directory administrator properties"
+    },
+    "AttachedDatabaseConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "clusterResourceId": {
+          "type": "string",
+          "description": "The resource id of the cluster where the databases you would like to attach reside."
+        },
+        "databaseName": {
+          "type": "string",
+          "description": "The name of the database which you would like to attach, use * if you want to follow all current and future databases."
+        },
+        "defaultPrincipalsModificationKind": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Union",
+                "Replace",
+                "None"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The default principals modification kind."
+        },
+        "provisioningState": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Running",
+                "Creating",
+                "Deleting",
+                "Succeeded",
+                "Failed",
+                "Moving",
+                "Canceled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The provisioned state of the resource."
+        },
+        "tableLevelSharingProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TableLevelSharingProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tables that will be included and excluded in the follower database"
+        }
+      },
+      "required": [
+        "clusterResourceId",
+        "databaseName",
+        "defaultPrincipalsModificationKind"
+      ],
+      "description": "Class representing the an attached database configuration properties of kind specific."
     },
     "AutoPauseProperties": {
       "type": "object",
@@ -4973,6 +5085,96 @@
       ],
       "description": "Properties of a Sql pool vulnerability assessment rule baseline."
     },
+    "TableLevelSharingProperties": {
+      "type": "object",
+      "properties": {
+        "externalTablesToExclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of external tables exclude from the follower database"
+        },
+        "externalTablesToInclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of external tables to include in the follower database"
+        },
+        "materializedViewsToExclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of materialized views exclude from the follower database"
+        },
+        "materializedViewsToInclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of materialized views to include in the follower database"
+        },
+        "tablesToExclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of tables to exclude from the follower database"
+        },
+        "tablesToInclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of tables to include in the follower database"
+        }
+      },
+      "description": "Tables that will be included and excluded in the follower database"
+    },
     "TransparentDataEncryptionProperties": {
       "type": "object",
       "properties": {
@@ -5688,6 +5890,49 @@
         "type"
       ],
       "description": "Microsoft.Synapse/workspaces/keys"
+    },
+    "workspaces_kustoPools_attachedDatabaseConfigurations_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-04-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the attached database configuration."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AttachedDatabaseConfigurationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Class representing the an attached database configuration properties of kind specific."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "attachedDatabaseConfigurations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations"
     },
     "workspaces_kustoPools_childResource": {
       "type": "object",
