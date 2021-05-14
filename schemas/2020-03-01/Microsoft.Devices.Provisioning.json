@@ -188,7 +188,7 @@
             {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/SharedAccessSignatureAuthorizationRuleAccessRightsDescription"
+                "$ref": "#/definitions/SharedAccessSignatureAuthorizationRule"
               }
             },
             {
@@ -568,7 +568,7 @@
       ],
       "description": "Microsoft.Devices/provisioningServices/privateEndpointConnections"
     },
-    "SharedAccessSignatureAuthorizationRuleAccessRightsDescription": {
+    "SharedAccessSignatureAuthorizationRule": {
       "type": "object",
       "properties": {
         "keyName": {
