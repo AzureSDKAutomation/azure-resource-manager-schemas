@@ -785,18 +785,6 @@
     "DeploymentSettings": {
       "type": "object",
       "properties": {
-        "cpu": {
-          "oneOf": [
-            {
-              "type": "integer",
-              "default": "1"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Required CPU. This should be 1 for Basic tier, and in range [1, 4] for Standard tier. This is deprecated starting from API version 2021-06-01-preview. Please use the resourceRequests field to set the CPU size."
-        },
         "environmentVariables": {
           "oneOf": [
             {
@@ -815,18 +803,6 @@
         "jvmOptions": {
           "type": "string",
           "description": "JVM parameter"
-        },
-        "memoryInGB": {
-          "oneOf": [
-            {
-              "type": "integer",
-              "default": "1"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Required Memory size in GB. This should be in range [1, 2] for Basic tier, and in range [1, 8] for Standard tier. This is deprecated starting from API version 2021-06-01-preview. Please use the resourceRequests field to set the the memory size."
         },
         "netCoreMainEntryPath": {
           "type": "string",
