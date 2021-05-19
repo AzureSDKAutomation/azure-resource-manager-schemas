@@ -871,6 +871,10 @@
           ],
           "description": "Properties for arm migration."
         },
+        "newProperty": {
+          "type": "string",
+          "description": "Description of HostPool."
+        },
         "personalDesktopAssignmentType": {
           "oneOf": [
             {
