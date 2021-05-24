@@ -1,0 +1,766 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2021-03-01-preview/Microsoft.AppPlatform.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.AppPlatform",
+  "description": "Microsoft AppPlatform Resource Types",
+  "resourceDefinitions": {
+    "Tanzu": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "The GEO location of the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Service resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TanzuClusterResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tanzu Service properties payload"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/Tanzu_apps_childResource"
+              },
+              {
+                "$ref": "#/definitions/Tanzu_configurationServices_childResource"
+              }
+            ]
+          }
+        },
+        "tags": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Tags of the service which is a list of key value pairs that describe the resource."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Tanzu"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu"
+    },
+    "Tanzu_apps": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the App resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AppResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "App resource properties payload"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/Tanzu_apps_deployments_childResource"
+              }
+            ]
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Tanzu/apps"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/apps"
+    },
+    "Tanzu_apps_deployments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Deployment resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeploymentResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deployment resource properties payload"
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of Azure Spring Cloud Tanzu"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Tanzu/apps/deployments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/apps/deployments"
+    },
+    "Tanzu_buildservice_builds": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the build resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BuildProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Build resource properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Tanzu/buildservice/builds"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/buildservice/builds"
+    },
+    "Tanzu_configurationServices": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^.*/default$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigurationServiceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Application Configuration Service properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.AppPlatform/Tanzu/configurationServices"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/configurationServices"
+    }
+  },
+  "definitions": {
+    "AddonProfile": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether the add-on is enabled or not"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Key-value pairs for configurations of add-on"
+        }
+      },
+      "description": "Deployment addon profile"
+    },
+    "AppResourceProperties": {
+      "type": "object",
+      "properties": {
+        "addonConfig": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/AddonProfile"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of addons"
+        },
+        "public": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the App exposes public endpoint"
+        }
+      },
+      "description": "App resource properties payload"
+    },
+    "BuildProperties": {
+      "type": "object",
+      "properties": {
+        "builder": {
+          "type": "string",
+          "description": "The name of builder to build the source code"
+        },
+        "env": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The environment variables for this build"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of this build"
+        },
+        "relativePath": {
+          "type": "string",
+          "description": "The relative path of source code"
+        },
+        "triggeredBuildResult": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TriggeredBuildResult"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The build result triggered by a build"
+        }
+      },
+      "description": "Build resource properties payload"
+    },
+    "ConfigurationServiceProperties": {
+      "type": "object",
+      "properties": {
+        "configurationServiceSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigurationServiceSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The settings of Application Configuration Service."
+        },
+        "runtimeState": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigurationServiceRuntimeState"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Runtime state of the Application Configuration Service"
+        }
+      },
+      "description": "Application Configuration Service properties payload"
+    },
+    "ConfigurationServiceRuntimeState": {
+      "type": "object",
+      "properties": {},
+      "description": "Runtime state of the Application Configuration Service"
+    },
+    "ConfigurationServiceSettings": {
+      "type": "object",
+      "properties": {
+        "gitProperties": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GitPatternRepository"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Property of git environment."
+        }
+      },
+      "description": "The settings of Application Configuration Service."
+    },
+    "DeploymentResourceProperties": {
+      "type": "object",
+      "properties": {
+        "deploymentSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeploymentSettings"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deployment settings payload"
+        },
+        "source": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserSourceInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Source information for a deployment"
+        }
+      },
+      "description": "Deployment resource properties payload"
+    },
+    "DeploymentSettings": {
+      "type": "object",
+      "properties": {
+        "addonConfig": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/AddonProfile"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of addons"
+        },
+        "cpu": {
+          "type": "string",
+          "description": "Required CPU, basic tier should be 1, standard tier should be in range (1, 4)"
+        },
+        "environmentVariables": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of environment variables"
+        },
+        "memory": {
+          "type": "string",
+          "description": "Required Memory, (1Gi, 2Gi, ..., 8Gi) for Tanzu"
+        },
+        "serveTraffic": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the Deployment serves traffic for App"
+        }
+      },
+      "description": "Deployment settings payload"
+    },
+    "GitPatternRepository": {
+      "type": "object",
+      "properties": {
+        "hostKey": {
+          "type": "string",
+          "description": "Public sshKey of git repository."
+        },
+        "hostKeyAlgorithm": {
+          "type": "string",
+          "description": "SshKey algorithm of git repository."
+        },
+        "label": {
+          "type": "string",
+          "description": "Label of the repository"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password of git repository basic auth."
+        },
+        "patterns": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of patterns of the repository, such as {application}/{profile}"
+        },
+        "privateKey": {
+          "type": "string",
+          "description": "Private sshKey algorithm of git repository."
+        },
+        "searchPaths": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Searching path of the repository"
+        },
+        "strictHostKeyChecking": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Strict host key checking or not."
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI of the repository"
+        },
+        "username": {
+          "type": "string",
+          "description": "Username of git repository basic auth."
+        }
+      },
+      "required": [
+        "patterns",
+        "uri"
+      ],
+      "description": "Git pattern repository property payload"
+    },
+    "Sku": {
+      "type": "object",
+      "properties": {
+        "capacity": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Current capacity of the target resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the Sku"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Tier of the Sku"
+        }
+      },
+      "description": "Sku of Azure Spring Cloud Tanzu"
+    },
+    "TanzuClusterResourceProperties": {
+      "type": "object",
+      "properties": {},
+      "description": "Tanzu Service properties payload"
+    },
+    "Tanzu_apps_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the App resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AppResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "App resource properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "apps"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/apps"
+    },
+    "Tanzu_apps_deployments_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Deployment resource."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DeploymentResourceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Deployment resource properties payload"
+        },
+        "sku": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Sku"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Sku of Azure Spring Cloud Tanzu"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "deployments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/apps/deployments"
+    },
+    "Tanzu_configurationServices_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-03-01-preview"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ConfigurationServiceProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Application Configuration Service properties payload"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "configurationServices"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.AppPlatform/Tanzu/configurationServices"
+    },
+    "TriggeredBuildResult": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique build id of this build result"
+        }
+      },
+      "description": "The build result triggered by a build"
+    },
+    "UserSourceInfo": {
+      "type": "object",
+      "properties": {
+        "buildResultId": {
+          "type": "string",
+          "description": "Resource id of a succeeded build result to deploy to this deployment."
+        }
+      },
+      "description": "Source information for a deployment"
+    }
+  }
+}
