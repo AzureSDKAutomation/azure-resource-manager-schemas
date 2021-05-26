@@ -796,6 +796,27 @@
       ],
       "description": "The properties of the export pipeline target."
     },
+    "ExportPolicy": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "enabled",
+                "disabled"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The value that indicates whether the policy is enabled or not."
+        }
+      },
+      "description": "The export policy for a container registry."
+    },
     "IdentityProperties": {
       "type": "object",
       "properties": {
@@ -1239,6 +1260,17 @@
     "Policies": {
       "type": "object",
       "properties": {
+        "exportPolicy": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExportPolicy"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The export policy for a container registry."
+        },
         "quarantinePolicy": {
           "oneOf": [
             {
