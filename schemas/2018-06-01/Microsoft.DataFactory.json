@@ -11892,6 +11892,21 @@
     "FactoryGitHubConfiguration": {
       "type": "object",
       "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "GitHub bring your own app client id."
+        },
+        "clientSecret": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GitHubClientSecret"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Client secret information for factory's bring your own app repository configuration."
+        },
         "hostName": {
           "type": "string",
           "description": "GitHub Enterprise host name. For example: https://github.mydomain.com"
@@ -12815,6 +12830,20 @@
         "dataset"
       ],
       "description": "GetMetadata activity properties."
+    },
+    "GitHubClientSecret": {
+      "type": "object",
+      "properties": {
+        "byoaSecretAkvUrl": {
+          "type": "string",
+          "description": "Bring your own app client secret AKV URL."
+        },
+        "byoaSecretName": {
+          "type": "string",
+          "description": "Bring your own app client secret name in AKV."
+        }
+      },
+      "description": "Client secret information for factory's bring your own app repository configuration."
     },
     "GlobalParameterSpecification": {
       "type": "object",
