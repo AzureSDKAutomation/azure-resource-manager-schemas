@@ -4970,6 +4970,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_cassandraKeyspaces_throughputSettings"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_cassandraKeyspaces_views"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_cassandraKeyspaces_views_throughputSettings"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.DocumentDB.json#/resourceDefinitions/databaseAccounts_gremlinDatabases"
         },
         {
