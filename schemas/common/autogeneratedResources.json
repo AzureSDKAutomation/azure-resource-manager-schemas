@@ -5966,9 +5966,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.KeyVault.json#/resourceDefinitions/vaults_accessPolicies"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.KeyVault.json#/resourceDefinitions/vaults_keys"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.KeyVault.json#/resourceDefinitions/vaults_privateEndpointConnections"
         },
         {
