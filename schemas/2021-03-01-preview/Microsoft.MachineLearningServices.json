@@ -169,7 +169,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Name for the Batch inference endpoint."
         },
         "properties": {
@@ -252,7 +260,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The identifier for the Batch inference deployment."
         },
         "properties": {
@@ -307,7 +323,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -525,7 +549,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -574,7 +606,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Datastore name."
         },
         "properties": {
@@ -652,7 +692,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -740,7 +788,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The name and identifier for the Job."
         },
         "properties": {
@@ -779,7 +835,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The name and identifier for the LabelingJob."
         },
         "properties": {
@@ -818,7 +882,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -923,7 +995,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Online Endpoint name."
         },
         "properties": {
@@ -1006,7 +1086,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Inference Endpoint Deployment name."
         },
         "properties": {
@@ -2067,10 +2155,10 @@
       "type": "object",
       "oneOf": [
         {
-          "$ref": "#/definitions/DataPathAssetReference"
+          "$ref": "#/definitions/IdAssetReference"
         },
         {
-          "$ref": "#/definitions/IdAssetReference"
+          "$ref": "#/definitions/DataPathAssetReference"
         },
         {
           "$ref": "#/definitions/OutputPathAssetReference"
@@ -4203,13 +4291,13 @@
       "type": "object",
       "oneOf": [
         {
+          "$ref": "#/definitions/TensorFlow"
+        },
+        {
           "$ref": "#/definitions/Mpi"
         },
         {
           "$ref": "#/definitions/PyTorch"
-        },
-        {
-          "$ref": "#/definitions/TensorFlow"
         }
       ],
       "properties": {},
@@ -4299,10 +4387,10 @@
       "type": "object",
       "oneOf": [
         {
-          "$ref": "#/definitions/DockerBuild"
+          "$ref": "#/definitions/DockerImage"
         },
         {
-          "$ref": "#/definitions/DockerImage"
+          "$ref": "#/definitions/DockerBuild"
         }
       ],
       "properties": {
@@ -6268,10 +6356,10 @@
       "type": "object",
       "oneOf": [
         {
-          "$ref": "#/definitions/AutoScaleSettings"
+          "$ref": "#/definitions/ManualScaleSettings"
         },
         {
-          "$ref": "#/definitions/ManualScaleSettings"
+          "$ref": "#/definitions/AutoScaleSettings"
         }
       ],
       "properties": {
@@ -7817,7 +7905,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Name for the Batch inference endpoint."
         },
         "properties": {
@@ -7890,7 +7986,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The identifier for the Batch inference deployment."
         },
         "properties": {
@@ -7945,7 +8049,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -8153,7 +8265,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Datastore name."
         },
         "properties": {
@@ -8192,7 +8312,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -8270,7 +8398,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -8348,7 +8484,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The name and identifier for the Job."
         },
         "properties": {
@@ -8387,7 +8531,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "The name and identifier for the LabelingJob."
         },
         "properties": {
@@ -8426,7 +8578,15 @@
           ]
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Container name."
         },
         "properties": {
@@ -8521,7 +8681,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Online Endpoint name."
         },
         "properties": {
@@ -8594,7 +8762,15 @@
           "description": "The geo-location where the resource lives"
         },
         "name": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,254}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
           "description": "Inference Endpoint Deployment name."
         },
         "properties": {
