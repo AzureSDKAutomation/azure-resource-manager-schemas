@@ -1,0 +1,75 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2021-06-01-preview/Microsoft.Security.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.Security",
+  "description": "Microsoft Security Resource Types",
+  "resourceDefinitions": {},
+  "subscription_resourceDefinitions": {
+    "customRecommendations": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-06-01-preview"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "A description providing additional information on the custom recommendation."
+        },
+        "isEnabled": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A flag that indicates whether this recommendation is enabled or disabled."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the customRecommendation object"
+        },
+        "queryMasked": {
+          "type": "string",
+          "description": "Base 64 encoded KQL Syntax query representing the recommendation results required"
+        },
+        "supportedClouds": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "GCP",
+                  "AWS"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Relevant cloud for the custom recommendation."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/customRecommendations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "type"
+      ],
+      "description": "Microsoft.Security/customRecommendations"
+    }
+  },
+  "definitions": {}
+}
