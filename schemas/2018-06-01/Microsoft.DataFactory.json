@@ -2160,20 +2160,6 @@
           "properties": {},
           "description": "The type of copy behavior for copy sink."
         },
-        "metadata": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MetadataItem"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects)."
-        },
         "type": {
           "type": "string",
           "enum": [
@@ -5784,20 +5770,6 @@
           "properties": {},
           "description": "The type of copy behavior for copy sink."
         },
-        "metadata": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MetadataItem"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects)."
-        },
         "type": {
           "type": "string",
           "enum": [
@@ -7017,11 +6989,6 @@
           ],
           "description": "Unmatched properties from the message are deserialized this collection"
         },
-        "disableMetricsCollection": {
-          "type": "object",
-          "properties": {},
-          "description": "If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean)."
-        },
         "maxConcurrentConnections": {
           "type": "object",
           "properties": {},
@@ -7178,11 +7145,6 @@
             }
           ],
           "description": "Unmatched properties from the message are deserialized this collection"
-        },
-        "disableMetricsCollection": {
-          "type": "object",
-          "properties": {},
-          "description": "If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean)."
         },
         "maxConcurrentConnections": {
           "type": "object",
@@ -18015,22 +17977,6 @@
       ],
       "description": "A copy activity Marketo server source."
     },
-    "MetadataItem": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "object",
-          "properties": {},
-          "description": "Metadata item key name. Type: string (or Expression with resultType string)."
-        },
-        "value": {
-          "type": "object",
-          "properties": {},
-          "description": "Metadata item value. Type: string (or Expression with resultType string)."
-        }
-      },
-      "description": "Specify the name and value of custom metadata item."
-    },
     "MicrosoftAccessLinkedService": {
       "type": "object",
       "properties": {
@@ -26549,11 +26495,6 @@
           ],
           "description": "Unmatched properties from the message are deserialized this collection"
         },
-        "disableMetricsCollection": {
-          "type": "object",
-          "properties": {},
-          "description": "If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean)."
-        },
         "maxConcurrentConnections": {
           "type": "object",
           "properties": {},
@@ -26605,11 +26546,6 @@
           "type": "object",
           "properties": {},
           "description": "The type of copy behavior for copy sink."
-        },
-        "disableMetricsCollection": {
-          "type": "object",
-          "properties": {},
-          "description": "If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean)."
         },
         "maxConcurrentConnections": {
           "type": "object",
