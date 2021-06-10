@@ -7538,9 +7538,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-01-01-preview/Microsoft.Relay.json#/resourceDefinitions/namespaces_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2018-09-01-preview/Microsoft.ResourceGraph.json#/resourceDefinitions/queries"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2015-11-01/Microsoft.Resources.json#/resourceDefinitions/deployments"
         },
         {
