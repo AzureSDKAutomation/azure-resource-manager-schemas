@@ -620,6 +620,17 @@
           "type": "string",
           "description": "Cluster ARM ID of the Namespace."
         },
+        "disableLocalAuth": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This property disables SAS authentication for the Event Hubs namespace."
+        },
         "encryption": {
           "oneOf": [
             {
