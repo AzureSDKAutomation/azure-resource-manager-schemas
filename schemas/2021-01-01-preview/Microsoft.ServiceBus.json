@@ -1587,6 +1587,17 @@
     "SBNamespaceProperties": {
       "type": "object",
       "properties": {
+        "disableLocalAuth": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This property disables SAS authentication for the Service Bus namespace."
+        },
         "encryption": {
           "oneOf": [
             {
