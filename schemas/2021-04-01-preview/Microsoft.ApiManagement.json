@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2021-01-01-preview/Microsoft.ApiManagement.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.ApiManagement.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.ApiManagement",
   "description": "Microsoft ApiManagement Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "identity": {
@@ -86,9 +86,6 @@
               },
               {
                 "$ref": "#/definitions/service_templates_childResource"
-              },
-              {
-                "$ref": "#/definitions/service_eventGridFilters_childResource"
               },
               {
                 "$ref": "#/definitions/service_gateways_childResource"
@@ -198,7 +195,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -270,7 +267,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -319,7 +316,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -381,7 +378,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -430,7 +427,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -479,7 +476,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -533,7 +530,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -580,7 +577,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -617,7 +614,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -664,7 +661,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -713,7 +710,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -762,7 +759,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -811,7 +808,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -848,7 +845,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -897,7 +894,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -946,7 +943,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -987,7 +984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1036,7 +1033,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1085,7 +1082,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1124,7 +1121,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1153,7 +1150,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1196,53 +1193,13 @@
       ],
       "description": "Microsoft.ApiManagement/service/diagnostics"
     },
-    "service_eventGridFilters": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-01-01-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 80,
-          "description": "EventGridFilter identifier."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/EventGridFilterContractProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.ApiManagement/service/eventGridFilters"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.ApiManagement/service/eventGridFilters"
-    },
     "service_gateways": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1299,7 +1256,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1340,7 +1297,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1389,7 +1346,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1430,7 +1387,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1481,7 +1438,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1510,7 +1467,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1564,7 +1521,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1612,7 +1569,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1660,7 +1617,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1716,7 +1673,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1743,7 +1700,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1772,7 +1729,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1820,7 +1777,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1867,7 +1824,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2005,7 +1962,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "type": {
@@ -2027,7 +1984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2087,7 +2044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2116,7 +2073,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2145,7 +2102,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2192,7 +2149,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2229,7 +2186,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2277,7 +2234,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2326,7 +2283,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2388,7 +2345,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2438,7 +2395,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -4140,82 +4097,6 @@
       },
       "description": "Email Template Update Contract properties."
     },
-    "EventGridFilterContractProperties": {
-      "type": "object",
-      "properties": {
-        "filter": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/EventGridFilterDescription"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "EventGridFilter description details."
-        },
-        "provisioningState": {
-          "type": "string",
-          "description": "provisioning State of this eventGridFilter."
-        },
-        "subscriberIdentityInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SubscriberIdentityInfo"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        }
-      }
-    },
-    "EventGridFilterDescription": {
-      "type": "object",
-      "properties": {
-        "includedEventTypes": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "All",
-                  "MicrosoftApiManagementUserCreated",
-                  "MicrosoftApiManagementUserUpdated",
-                  "MicrosoftApiManagementUserDeleted",
-                  "MicrosoftApiManagementSubscriptionCreated",
-                  "MicrosoftApiManagementSubscriptionUpdated",
-                  "MicrosoftApiManagementSubscriptionDeleted",
-                  "MicrosoftApiManagementAPICreated",
-                  "MicrosoftApiManagementAPIUpdated",
-                  "MicrosoftApiManagementAPIDeleted",
-                  "MicrosoftApiManagementAPIReleaseCreated",
-                  "MicrosoftApiManagementAPIReleaseUpdated",
-                  "MicrosoftApiManagementAPIReleaseDeleted",
-                  "MicrosoftApiManagementProductCreated",
-                  "MicrosoftApiManagementProductUpdated",
-                  "MicrosoftApiManagementProductDeleted"
-                ]
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "included Event Types of this eventGridFilter."
-        },
-        "subjectBeginsWith": {
-          "type": "string",
-          "description": "EventGridFilter subjectBeginsWith."
-        },
-        "subjectEndsWith": {
-          "type": "string",
-          "description": "EventGridFilter subjectEndsWith."
-        }
-      },
-      "description": "EventGridFilter description details."
-    },
     "GatewayCertificateAuthorityContractProperties": {
       "type": "object",
       "properties": {
@@ -5532,7 +5413,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5573,7 +5454,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5622,7 +5503,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5671,7 +5552,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5720,7 +5601,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5769,7 +5650,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5810,7 +5691,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5852,7 +5733,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5889,7 +5770,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5931,7 +5812,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5980,7 +5861,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6029,7 +5910,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6078,7 +5959,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6115,7 +5996,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6164,7 +6045,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6213,7 +6094,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6254,7 +6135,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6303,7 +6184,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6352,7 +6233,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6381,7 +6262,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6410,7 +6291,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6453,53 +6334,13 @@
       ],
       "description": "Microsoft.ApiManagement/service/diagnostics"
     },
-    "service_eventGridFilters_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-01-01-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 80,
-          "description": "EventGridFilter identifier."
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/EventGridFilterContractProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "eventGridFilters"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.ApiManagement/service/eventGridFilters"
-    },
     "service_gateways_apis_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6540,7 +6381,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6589,7 +6430,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6630,7 +6471,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6671,7 +6512,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6712,7 +6553,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6741,7 +6582,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6795,7 +6636,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6843,7 +6684,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6891,7 +6732,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6934,7 +6775,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6961,7 +6802,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6990,7 +6831,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7038,7 +6879,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7080,7 +6921,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7203,7 +7044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "type": {
@@ -7225,7 +7066,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7254,7 +7095,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7295,7 +7136,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7324,7 +7165,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7366,7 +7207,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7403,7 +7244,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7451,7 +7292,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7500,7 +7341,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7562,7 +7403,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7612,7 +7453,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7646,31 +7487,6 @@
         "type"
       ],
       "description": "Microsoft.ApiManagement/service/users"
-    },
-    "SubscriberIdentityInfo": {
-      "type": "object",
-      "properties": {
-        "clientApplicationId": {
-          "type": "string",
-          "description": "client Application Id of this eventGridFilter."
-        },
-        "clientAuthorizationSource": {
-          "type": "string",
-          "description": "client Authorization Source of this eventGridFilter."
-        },
-        "clientObjectId": {
-          "type": "string",
-          "description": "client Object Id of this eventGridFilter."
-        },
-        "clientPrincipalId": {
-          "type": "string",
-          "description": "client Principle Id of this eventGridFilter."
-        },
-        "clientTenantId": {
-          "type": "string",
-          "description": "client Tenant Id of this eventGridFilter."
-        }
-      }
     },
     "SubscriptionCreateParameterProperties": {
       "type": "object",
