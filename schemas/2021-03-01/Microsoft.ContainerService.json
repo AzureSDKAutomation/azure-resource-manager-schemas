@@ -250,27 +250,6 @@
       },
       "description": "Settings for upgrading an agentpool"
     },
-    "Components1umhcm8schemasmanagedclusteridentitypropertiesuserassignedidentitiesadditionalproperties": {
-      "type": "object",
-      "properties": {}
-    },
-    "Componentsqit0etschemasmanagedclusterpropertiespropertiesidentityprofileadditionalproperties": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string",
-          "description": "The client id of the user assigned identity."
-        },
-        "objectId": {
-          "type": "string",
-          "description": "The object id of the user assigned identity."
-        },
-        "resourceId": {
-          "type": "string",
-          "description": "The resource id of the user assigned identity."
-        }
-      }
-    },
     "ContainerServiceLinuxProfile": {
       "type": "object",
       "properties": {
@@ -1655,7 +1634,7 @@
             {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/Components1umhcm8schemasmanagedclusteridentitypropertiesuserassignedidentitiesadditionalproperties"
+                "$ref": "#/definitions/ManagedServiceIdentityUserAssignedIdentitiesValue"
               },
               "properties": {}
             },
@@ -2066,7 +2045,7 @@
             {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/Componentsqit0etschemasmanagedclusterpropertiespropertiesidentityprofileadditionalproperties"
+                "$ref": "#/definitions/UserAssignedIdentity"
               },
               "properties": {}
             },
@@ -2435,6 +2414,10 @@
         "adminUsername"
       ],
       "description": "Profile for Windows VMs in the container service cluster."
+    },
+    "ManagedServiceIdentityUserAssignedIdentitiesValue": {
+      "type": "object",
+      "properties": {}
     },
     "PrivateEndpoint": {
       "type": "object",
