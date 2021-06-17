@@ -255,6 +255,20 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ]
+        },
+        "vmssVMList": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VMSSVMInfo"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The list of VM Compliance data for VMSS"
         }
       },
       "description": "Guest configuration assignment properties."
@@ -316,6 +330,11 @@
       "type": "object",
       "properties": {},
       "description": "Information about the VM."
+    },
+    "VMSSVMInfo": {
+      "type": "object",
+      "properties": {},
+      "description": "Information about VMSS VM"
     }
   }
 }
