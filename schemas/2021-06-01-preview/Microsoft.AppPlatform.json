@@ -147,6 +147,17 @@
             ]
           }
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -235,6 +246,17 @@
             }
           ],
           "description": "Sku of Azure Spring Cloud"
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -423,6 +445,38 @@
     }
   },
   "definitions": {
+    "AddonProfile": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether the add-on is enabled or not"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Key-value pairs for configurations of add-on"
+        }
+      },
+      "description": "Deployment addon profile"
+    },
     "ApplicationInsightsAgentVersions": {
       "type": "object",
       "properties": {},
@@ -431,9 +485,20 @@
     "AppResourceProperties": {
       "type": "object",
       "properties": {
-        "activeDeploymentName": {
-          "type": "string",
-          "description": "Name of the active deployment of the App"
+        "addonConfig": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/AddonProfile"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of addons"
         },
         "enableEndToEndTLS": {
           "oneOf": [
@@ -526,6 +591,25 @@
         }
       },
       "description": "Binding resource properties payload"
+    },
+    "BuildResultUserSourceInfo": {
+      "type": "object",
+      "properties": {
+        "buildResultId": {
+          "type": "string",
+          "description": "Resource id of an existing succeeded build result under the same Spring instance."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BuildResult"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Reference to a build result"
     },
     "CertificateProperties": {
       "type": "object",
@@ -736,8 +820,17 @@
         "server": {
           "type": "string",
           "description": "The name of the registry that contains the container image"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Container"
+          ]
         }
       },
+      "required": [
+        "type"
+      ],
       "description": "Custom container payload"
     },
     "CustomDomainProperties": {
@@ -757,6 +850,17 @@
     "DeploymentResourceProperties": {
       "type": "object",
       "properties": {
+        "active": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Indicates whether the Deployment is active"
+        },
         "deploymentSettings": {
           "oneOf": [
             {
@@ -785,6 +889,21 @@
     "DeploymentSettings": {
       "type": "object",
       "properties": {
+        "addonConfig": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/AddonProfile"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Collection of addons"
+        },
         "cpu": {
           "oneOf": [
             {
@@ -812,10 +931,6 @@
           ],
           "description": "Collection of environment variables"
         },
-        "jvmOptions": {
-          "type": "string",
-          "description": "JVM parameter"
-        },
         "memoryInGB": {
           "oneOf": [
             {
@@ -828,10 +943,6 @@
           ],
           "description": "Required Memory size in GB. This should be in range [1, 2] for Basic tier, and in range [1, 8] for Standard tier. This is deprecated starting from API version 2021-06-01-preview. Please use the resourceRequests field to set the the memory size."
         },
-        "netCoreMainEntryPath": {
-          "type": "string",
-          "description": "The path to the .NET executable relative to zip root"
-        },
         "resourceRequests": {
           "oneOf": [
             {
@@ -842,22 +953,6 @@
             }
           ],
           "description": "Deployment resource request payload"
-        },
-        "runtimeVersion": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Java_8",
-                "Java_11",
-                "NetCore_31"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Runtime version."
         }
       },
       "description": "Deployment settings payload"
@@ -971,6 +1066,25 @@
       },
       "description": "Credential of the image registry"
     },
+    "JarUploadedUserSourceInfo": {
+      "type": "object",
+      "properties": {
+        "runtimeVersion": {
+          "type": "string",
+          "description": "Runtime version of the Jar file"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Jar"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Uploaded Jar binary for a deployment"
+    },
     "ManagedIdentityProperties": {
       "type": "object",
       "properties": {
@@ -1057,6 +1171,25 @@
         }
       },
       "description": "Monitoring Setting properties payload"
+    },
+    "NetCoreZipUploadedUserSourceInfo": {
+      "type": "object",
+      "properties": {
+        "netCoreMainEntryPath": {
+          "type": "string",
+          "description": "The path to the .NET executable relative to zip root"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "netCoreZip"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Uploaded Jar binary for a deployment"
     },
     "NetworkProfile": {
       "type": "object",
@@ -1148,6 +1281,25 @@
       },
       "description": "Sku of Azure Spring Cloud"
     },
+    "SourceUploadedUserSourceInfo": {
+      "type": "object",
+      "properties": {
+        "artifactSelector": {
+          "type": "string",
+          "description": "Selector for the artifact to be used for the deployment for multi-module projects. This should be\r\nthe relative path to the target module/project."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Source"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Uploaded Java source code binary for a deployment"
+    },
     "Spring_apps_bindings_childResource": {
       "type": "object",
       "properties": {
@@ -1226,6 +1378,17 @@
           ],
           "description": "App resource properties payload"
         },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -1275,6 +1438,17 @@
             }
           ],
           "description": "Sku of Azure Spring Cloud"
+        },
+        "systemData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SystemData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -1451,6 +1625,64 @@
       ],
       "description": "Microsoft.AppPlatform/Spring/monitoringSettings"
     },
+    "SystemData": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource creation (UTC)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "The identity that created the resource."
+        },
+        "createdByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that created the resource."
+        },
+        "lastModifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of resource last modification (UTC)"
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "The identity that last modified the resource."
+        },
+        "lastModifiedByType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The type of identity that last modified the resource."
+        }
+      },
+      "description": "Metadata pertaining to creation and last modification of the resource."
+    },
     "TemporaryDisk": {
       "type": "object",
       "properties": {
@@ -1474,45 +1706,50 @@
       },
       "description": "Temporary disk payload"
     },
-    "UserSourceInfo": {
+    "UploadedUserSourceInfo": {
       "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/JarUploadedUserSourceInfo"
+        },
+        {
+          "$ref": "#/definitions/SourceUploadedUserSourceInfo"
+        },
+        {
+          "$ref": "#/definitions/NetCoreZipUploadedUserSourceInfo"
+        }
+      ],
       "properties": {
-        "artifactSelector": {
-          "type": "string",
-          "description": "Selector for the artifact to be used for the deployment for multi-module projects. This should be\r\nthe relative path to the target module/project."
-        },
-        "customContainer": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/CustomContainer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Custom container payload"
-        },
         "relativePath": {
           "type": "string",
           "description": "Relative path of the storage which stores the source"
         },
         "type": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Jar",
-                "NetCoreZip",
-                "Source",
-                "Container"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Type of the source uploaded."
+          "type": "string",
+          "enum": [
+            "UploadedUserSourceInfo"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "description": "Source with uploaded location"
+    },
+    "UserSourceInfo": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/UploadedUserSourceInfo"
         },
+        {
+          "$ref": "#/definitions/BuildResultUserSourceInfo"
+        },
+        {
+          "$ref": "#/definitions/CustomContainer"
+        }
+      ],
+      "properties": {
         "version": {
           "type": "string",
           "description": "Version of the source"
