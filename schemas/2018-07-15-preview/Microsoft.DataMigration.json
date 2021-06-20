@@ -450,6 +450,18 @@
           ],
           "description": "Permission group for validations."
         },
+        "isOfflineMigration": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Flag for whether or not the migration is offline"
+        },
         "sourceConnectionInfo": {
           "oneOf": [
             {
@@ -752,6 +764,18 @@
     "ConnectToTargetAzureDbForMySqlTaskInput": {
       "type": "object",
       "properties": {
+        "isOfflineMigration": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Flag for whether or not the migration is offline"
+        },
         "sourceConnectionInfo": {
           "oneOf": [
             {
@@ -1283,6 +1307,67 @@
       ],
       "description": "Properties for the task that gets TDE certificates in Base64 encoded format."
     },
+    "GetUserTablesMySqlTaskInput": {
+      "type": "object",
+      "properties": {
+        "connectionInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MySqlConnectionInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information for connecting to MySQL server"
+        },
+        "selectedDatabases": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of database names to collect tables for"
+        }
+      },
+      "required": [
+        "connectionInfo",
+        "selectedDatabases"
+      ],
+      "description": "Input for the task that collects user tables for the given list of databases"
+    },
+    "GetUserTablesMySqlTaskProperties": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GetUserTablesMySqlTaskInput"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Input for the task that collects user tables for the given list of databases"
+        },
+        "taskType": {
+          "type": "string",
+          "enum": [
+            "GetUserTablesMySql"
+          ]
+        }
+      },
+      "required": [
+        "taskType"
+      ],
+      "description": "Properties for the task that collects user tables for the given list of databases"
+    },
     "GetUserTablesOracleTaskInput": {
       "type": "object",
       "properties": {
@@ -1615,6 +1700,140 @@
         "taskType"
       ],
       "description": "Properties for the task that migrates data between MongoDB data sources"
+    },
+    "MigrateMySqlAzureDbForMySqlOfflineDatabaseInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the database"
+        },
+        "tableMap": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Mapping of source to target tables"
+        },
+        "targetDatabaseName": {
+          "type": "string",
+          "description": "Name of target database. Note: Target database will be truncated before starting migration."
+        }
+      },
+      "description": "Database specific information for offline MySQL to Azure Database for MySQL migration task inputs"
+    },
+    "MigrateMySqlAzureDbForMySqlOfflineTaskInput": {
+      "type": "object",
+      "properties": {
+        "makeSourceServerReadOnly": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Setting to set the source server read only"
+        },
+        "optionalAgentSettings": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Optional parameters for fine tuning the data transfer rate during migration"
+        },
+        "selectedDatabases": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MigrateMySqlAzureDbForMySqlOfflineDatabaseInput"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Databases to migrate"
+        },
+        "sourceConnectionInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MySqlConnectionInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information for connecting to MySQL server"
+        },
+        "startedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Parameter to specify when the migration started"
+        },
+        "targetConnectionInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MySqlConnectionInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Information for connecting to MySQL server"
+        }
+      },
+      "required": [
+        "selectedDatabases",
+        "sourceConnectionInfo",
+        "targetConnectionInfo"
+      ],
+      "description": "Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations"
+    },
+    "MigrateMySqlAzureDbForMySqlOfflineTaskProperties": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/MigrateMySqlAzureDbForMySqlOfflineTaskInput"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations"
+        },
+        "taskType": {
+          "type": "string",
+          "enum": [
+            "Migrate.MySql.AzureDbForMySql"
+          ]
+        }
+      },
+      "required": [
+        "taskType"
+      ],
+      "description": "Properties for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations"
     },
     "MigrateMySqlAzureDbForMySqlSyncDatabaseInput": {
       "type": "object",
@@ -3181,6 +3400,18 @@
     "MySqlConnectionInfo": {
       "type": "object",
       "properties": {
+        "encryptConnection": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": true
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Whether to encrypt the connection"
+        },
         "password": {
           "type": "string",
           "description": "Password credential."
@@ -3419,9 +3650,6 @@
       "type": "object",
       "oneOf": [
         {
-          "$ref": "#/definitions/ConnectToSourceMySqlTaskProperties"
-        },
-        {
           "$ref": "#/definitions/MigrateSchemaSqlServerSqlDbTaskProperties"
         },
         {
@@ -3444,6 +3672,9 @@
         },
         {
           "$ref": "#/definitions/ConnectToSourcePostgreSqlSyncTaskProperties"
+        },
+        {
+          "$ref": "#/definitions/ConnectToSourceMySqlTaskProperties"
         },
         {
           "$ref": "#/definitions/ConnectToSourceOracleSyncTaskProperties"
@@ -3473,6 +3704,9 @@
           "$ref": "#/definitions/GetUserTablesPostgreSqlTaskProperties"
         },
         {
+          "$ref": "#/definitions/GetUserTablesMySqlTaskProperties"
+        },
+        {
           "$ref": "#/definitions/ConnectToTargetSqlMITaskProperties"
         },
         {
@@ -3498,6 +3732,9 @@
         },
         {
           "$ref": "#/definitions/MigrateMySqlAzureDbForMySqlSyncTaskProperties"
+        },
+        {
+          "$ref": "#/definitions/MigrateMySqlAzureDbForMySqlOfflineTaskProperties"
         },
         {
           "$ref": "#/definitions/MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties"
