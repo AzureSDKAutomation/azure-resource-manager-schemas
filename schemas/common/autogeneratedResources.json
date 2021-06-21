@@ -1499,6 +1499,12 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-10-01/Microsoft.Attestation.json#/resourceDefinitions/attestationProviders_privateEndpointConnections"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-06-01-preview/Microsoft.Attestation.json#/resourceDefinitions/attestationProviders"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-06-01-preview/Microsoft.Attestation.json#/resourceDefinitions/attestationProviders_privateEndpointConnections"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2015-01-01/Microsoft.Authorization.Resources.json#/resourceDefinitions/locks"
         },
         {
