@@ -304,7 +304,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -552,7 +554,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -669,7 +673,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -860,7 +866,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -921,7 +929,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -1131,7 +1141,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
@@ -1355,7 +1367,9 @@
                 "Enabled",
                 "Disabling",
                 "Disabled",
-                "Deleting"
+                "Deleting",
+                "Migrating",
+                "Migrated"
               ]
             },
             {
