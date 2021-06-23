@@ -6014,9 +6014,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-09-01/Microsoft.IotCentral.json#/resourceDefinitions/iotApps"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2017-10-01-preview/Microsoft.IoTSpaces.json#/resourceDefinitions/Graph"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2015-06-01/Microsoft.KeyVault.json#/resourceDefinitions/vaults"
         },
         {
