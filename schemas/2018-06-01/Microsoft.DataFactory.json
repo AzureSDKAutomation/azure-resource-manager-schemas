@@ -1548,21 +1548,9 @@
       "type": "object",
       "properties": {
         "avroCompressionCodec": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "none",
-                "deflate",
-                "snappy",
-                "xz",
-                "bzip2"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
+          "type": "object",
+          "properties": {},
+          "description": "The data avroCompressionCodec. Type: string (or Expression with resultType string)."
         },
         "avroCompressionLevel": {
           "oneOf": [
@@ -2312,7 +2300,8 @@
           "description": "SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference."
         },
         "serviceEndpoint": {
-          "type": "string",
+          "type": "object",
+          "properties": {},
           "description": "Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property."
         },
         "servicePrincipalId": {
@@ -20132,20 +20121,9 @@
           "description": "Dataset location."
         },
         "orcCompressionCodec": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "none",
-                "zlib",
-                "snappy",
-                "lzo"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
+          "type": "object",
+          "properties": {},
+          "description": "The data orcCompressionCodec. Type: string (or Expression with resultType string)."
         }
       },
       "required": [
