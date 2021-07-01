@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2021-01-01-preview/Microsoft.ApiManagement.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-04-01-preview/Microsoft.ApiManagement.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.ApiManagement",
   "description": "Microsoft ApiManagement Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "identity": {
@@ -118,9 +118,6 @@
                 "$ref": "#/definitions/service_portalsettings_childResource"
               },
               {
-                "$ref": "#/definitions/service_privateEndpointConnections_childResource"
-              },
-              {
                 "$ref": "#/definitions/service_products_childResource"
               },
               {
@@ -198,7 +195,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -270,7 +267,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -319,7 +316,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -381,7 +378,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -430,7 +427,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -479,7 +476,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -533,7 +530,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -580,7 +577,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -617,7 +614,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -664,7 +661,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -713,7 +710,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -762,7 +759,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -811,7 +808,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -848,7 +845,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -897,7 +894,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -946,7 +943,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -987,7 +984,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1036,7 +1033,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1085,7 +1082,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1124,7 +1121,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1153,7 +1150,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1202,7 +1199,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1259,7 +1256,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1300,7 +1297,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1349,7 +1346,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1390,7 +1387,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1441,7 +1438,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1470,7 +1467,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1524,7 +1521,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1572,7 +1569,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1620,7 +1617,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1676,7 +1673,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1703,7 +1700,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1732,7 +1729,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1780,7 +1777,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1827,7 +1824,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -1965,7 +1962,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "type": {
@@ -1981,52 +1978,13 @@
       ],
       "description": "Microsoft.ApiManagement/service/portalsettings"
     },
-    "service_privateEndpointConnections": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-01-01-preview"
-          ]
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of this private endpoint connection request."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the private endpoint connection."
-        },
-        "privateEndpointConnectionName": {
-          "type": "string",
-          "description": "Private Endpoint Connection Name."
-        },
-        "status": {
-          "type": "string",
-          "description": "Status of a private endpoint connection."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.ApiManagement/service/privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "type"
-      ],
-      "description": "Microsoft.ApiManagement/service/privateEndpointConnections"
-    },
     "service_products": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2086,7 +2044,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2115,7 +2073,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2144,7 +2102,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2191,7 +2149,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2228,7 +2186,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2276,7 +2234,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2325,7 +2283,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2387,7 +2345,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2437,7 +2395,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -2608,14 +2566,15 @@
               "enum": [
                 "http",
                 "soap",
-                "websocket"
+                "websocket",
+                "graphql"
               ]
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Type of API to create. \n * `http` creates a REST API \n * `soap` creates a SOAP pass-through API  \n * `websocket` creates websocket API."
+          "description": "Type of API to create. \n * `http` creates a REST API \n * `soap` creates a SOAP pass-through API  \n * `websocket` creates websocket API \n * `graphql` creates GraphQL API."
         },
         "apiVersion": {
           "type": "string",
@@ -2688,7 +2647,8 @@
                 "openapi",
                 "openapi+json",
                 "openapi-link",
-                "openapi+json-link"
+                "openapi+json-link",
+                "graphql-link"
               ]
             },
             {
@@ -2788,7 +2748,8 @@
               "enum": [
                 "http",
                 "soap",
-                "websocket"
+                "websocket",
+                "graphql"
               ]
             },
             {
@@ -2986,20 +2947,6 @@
           "type": "string",
           "maxLength": 100,
           "description": "Email address from which the notification will be sent."
-        },
-        "privateEndpointConnections": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/RemotePrivateEndpointConnectionWrapper"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "List of Private Endpoint Connections of this service."
         },
         "publicIpAddressId": {
           "type": "string",
@@ -3214,11 +3161,6 @@
         "versioningScheme"
       ],
       "description": "Properties of an API Version Set."
-    },
-    "ArmIdWrapper": {
-      "type": "object",
-      "properties": {},
-      "description": "A wrapper for an ARM resource id"
     },
     "AssociationContractProperties": {
       "type": "object",
@@ -5134,55 +5076,6 @@
       },
       "description": "Sign-up settings contract properties."
     },
-    "PrivateEndpointConnectionProperties": {
-      "type": "object",
-      "properties": {
-        "privateEndpoint": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ArmIdWrapper"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "A wrapper for an ARM resource id"
-        },
-        "privateLinkServiceConnectionState": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateLinkConnectionState"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The state of a private link connection"
-        }
-      },
-      "required": [
-        "privateLinkServiceConnectionState"
-      ],
-      "description": "Properties of the PrivateEndpointConnectProperties."
-    },
-    "PrivateLinkConnectionState": {
-      "type": "object",
-      "properties": {
-        "actionsRequired": {
-          "type": "string",
-          "description": "ActionsRequired for a private link connection"
-        },
-        "description": {
-          "type": "string",
-          "description": "Description of a private link connection"
-        },
-        "status": {
-          "type": "string",
-          "description": "Status of a private link connection"
-        }
-      },
-      "description": "The state of a private link connection"
-    },
     "ProductContractProperties": {
       "type": "object",
       "properties": {
@@ -5272,23 +5165,6 @@
         }
       },
       "description": "User registration delegation settings properties."
-    },
-    "RemotePrivateEndpointConnectionWrapper": {
-      "type": "object",
-      "properties": {
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Properties of the PrivateEndpointConnectProperties."
-        }
-      },
-      "description": "Remote Private Endpoint Connection resource."
     },
     "RepresentationContract": {
       "type": "object",
@@ -5503,14 +5379,8 @@
           "description": "Must be a valid a media type used in a Content-Type header as defined in the RFC 2616. Media type of the schema document (e.g. application/json, application/xml). </br> - `Swagger` Schema use `application/vnd.ms-azure-apim.swagger.definitions+json` </br> - `WSDL` Schema use `application/vnd.ms-azure-apim.xsd+xml` </br> - `OpenApi` Schema use `application/vnd.oai.openapi.components+json` </br> - `WADL Schema` use `application/vnd.ms-azure-apim.wadl.grammars+xml`."
         },
         "document": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SchemaDocumentProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
+          "type": "object",
+          "properties": {},
           "description": "Schema Document Properties."
         }
       },
@@ -5519,28 +5389,13 @@
       ],
       "description": "API Schema create or update contract Properties."
     },
-    "SchemaDocumentProperties": {
-      "type": "object",
-      "properties": {
-        "definitions": {
-          "type": "object",
-          "properties": {},
-          "description": "Types definitions. Used for Swagger/OpenAPI schemas only, null otherwise."
-        },
-        "value": {
-          "type": "string",
-          "description": "Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI."
-        }
-      },
-      "description": "Schema Document Properties."
-    },
     "service_apis_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5581,7 +5436,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5630,7 +5485,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5679,7 +5534,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5728,7 +5583,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5777,7 +5632,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5818,7 +5673,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5860,7 +5715,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5897,7 +5752,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5939,7 +5794,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -5988,7 +5843,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6037,7 +5892,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6086,7 +5941,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6123,7 +5978,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6172,7 +6027,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6221,7 +6076,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6262,7 +6117,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6311,7 +6166,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6360,7 +6215,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6389,7 +6244,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6418,7 +6273,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6467,7 +6322,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6508,7 +6363,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6557,7 +6412,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6598,7 +6453,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6639,7 +6494,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6680,7 +6535,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6709,7 +6564,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6763,7 +6618,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6811,7 +6666,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6859,7 +6714,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6902,7 +6757,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6929,7 +6784,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -6958,7 +6813,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7006,7 +6861,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7048,7 +6903,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7171,7 +7026,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "type": {
@@ -7187,52 +7042,13 @@
       ],
       "description": "Microsoft.ApiManagement/service/portalsettings"
     },
-    "service_privateEndpointConnections_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-01-01-preview"
-          ]
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of this private endpoint connection request."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the private endpoint connection."
-        },
-        "privateEndpointConnectionName": {
-          "type": "string",
-          "description": "Private Endpoint Connection Name."
-        },
-        "status": {
-          "type": "string",
-          "description": "Status of a private endpoint connection."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "type"
-      ],
-      "description": "Microsoft.ApiManagement/service/privateEndpointConnections"
-    },
     "service_products_apis_childResource": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7261,7 +7077,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7302,7 +7118,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7331,7 +7147,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7373,7 +7189,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7410,7 +7226,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7458,7 +7274,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7507,7 +7323,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7569,7 +7385,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
@@ -7619,7 +7435,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-04-01-preview"
           ]
         },
         "name": {
