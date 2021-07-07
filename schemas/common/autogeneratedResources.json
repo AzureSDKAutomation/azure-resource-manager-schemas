@@ -7613,6 +7613,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01/Microsoft.RecoveryServices.Backup.json#/resourceDefinitions/vaults_backupPolicies"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-04-01/Microsoft.RecoveryServices.Backup.json#/resourceDefinitions/vaults_backupstorageconfig"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01/Microsoft.RecoveryServices.Backup.json#/resourceDefinitions/vaults_privateEndpointConnections"
         },
         {
