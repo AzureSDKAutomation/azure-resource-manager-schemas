@@ -851,13 +851,13 @@
             {
               "type": "integer",
               "minimum": 0,
-              "maximum": 20
+              "maximum": 40
             },
             {
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)"
+          "description": "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 40 throughput units. ( '0' if AutoInflateEnabled = true)"
         },
         "zoneRedundant": {
           "oneOf": [
@@ -1590,7 +1590,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "The Event Hubs throughput units, value should be 0 to 20 throughput units."
+          "description": "The Event Hubs throughput units, value should be 0 to 40 throughput units."
         },
         "name": {
           "oneOf": [

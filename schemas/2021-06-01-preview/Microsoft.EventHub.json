@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2021-01-01-preview/Microsoft.EventHub.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-06-01-preview/Microsoft.EventHub.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.EventHub",
   "description": "Microsoft EventHub Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "identity": {
@@ -114,7 +114,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -154,7 +154,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -195,7 +195,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -249,7 +249,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -289,7 +289,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -330,7 +330,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -376,7 +376,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -533,10 +533,6 @@
       },
       "description": "Properties to configure capture description for eventhub"
     },
-    "Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties": {
-      "type": "object",
-      "properties": {}
-    },
     "ConnectionState": {
       "type": "object",
       "properties": {
@@ -619,6 +615,17 @@
         "clusterArmId": {
           "type": "string",
           "description": "Cluster ARM ID of the Namespace."
+        },
+        "disableLocalAuth": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "This property disables SAS authentication for the Event Hubs namespace."
         },
         "encryption": {
           "oneOf": [
@@ -827,7 +834,7 @@
             {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties"
+                "$ref": "#/definitions/UserAssignedIdentity"
               },
               "properties": {}
             },
@@ -874,7 +881,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -914,7 +921,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -955,7 +962,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -995,7 +1002,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -1036,7 +1043,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -1077,7 +1084,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -1118,7 +1125,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-01-01-preview"
+            "2021-06-01-preview"
           ]
         },
         "name": {
@@ -1399,6 +1406,11 @@
         }
       },
       "description": "Properties supplied for Subnet"
+    },
+    "UserAssignedIdentity": {
+      "type": "object",
+      "properties": {},
+      "description": "Recognized Dictionary value."
     },
     "UserAssignedIdentityProperties": {
       "type": "object",
