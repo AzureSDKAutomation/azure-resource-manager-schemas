@@ -671,6 +671,17 @@
           ],
           "description": "If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data)."
         },
+        "recreateApplication": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed and it will result in availability loss."
+        },
         "rollingUpgradeMonitoringPolicy": {
           "oneOf": [
             {
@@ -681,6 +692,10 @@
             }
           ],
           "description": "The policy used for monitoring the application upgrade"
+        },
+        "targetUpgradeDomain": {
+          "type": "string",
+          "description": "The next upgrade domain to be updated during a manual upgrade."
         },
         "upgradeMode": {
           "oneOf": [
