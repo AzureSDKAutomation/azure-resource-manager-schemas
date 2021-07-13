@@ -8111,9 +8111,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2019-08-01/Microsoft.Security.json#/unknown_resourceDefinitions/deviceSecurityGroups"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.Security.json#/resourceDefinitions/locations_jitNetworkAccessPolicies"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2020-01-01/Microsoft.Security.json#/unknown_resourceDefinitions/assessments"
         },
         {

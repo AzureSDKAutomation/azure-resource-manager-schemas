@@ -5,6 +5,45 @@
   "description": "Microsoft Security Resource Types",
   "resourceDefinitions": {},
   "subscription_resourceDefinitions": {
+    "assessmentMetadata": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-06-01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The Assessment Key - Unique key for the assessment type"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SecurityAssessmentMetadataProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes properties of an assessment metadata."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Security/assessmentMetadata"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Security/assessmentMetadata"
+    },
     "settings": {
       "type": "object",
       "oneOf": [
@@ -145,6 +184,181 @@
         "kind"
       ],
       "description": "Represents a data export setting"
+    },
+    "SecurityAssessmentMetadataPartnerData": {
+      "type": "object",
+      "properties": {
+        "partnerName": {
+          "type": "string",
+          "description": "Name of the company of the partner"
+        },
+        "productName": {
+          "type": "string",
+          "description": "Name of the product of the partner that created the assessment"
+        },
+        "secret": {
+          "type": "string",
+          "description": "Secret to authenticate the partner and verify it created the assessment - write only"
+        }
+      },
+      "required": [
+        "partnerName",
+        "secret"
+      ],
+      "description": "Describes the partner that created the assessment"
+    },
+    "SecurityAssessmentMetadataProperties": {
+      "type": "object",
+      "properties": {
+        "assessmentType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "BuiltIn",
+                "CustomPolicy",
+                "CustomerManaged",
+                "VerifiedPartner"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition."
+        },
+        "categories": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Compute",
+                  "Networking",
+                  "Data",
+                  "IdentityAndAccess",
+                  "IoT"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human readable description of the assessment"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User friendly display name of the assessment"
+        },
+        "implementationEffort": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Low",
+                "Moderate",
+                "High"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The implementation effort required to remediate this assessment."
+        },
+        "partnerData": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SecurityAssessmentMetadataPartnerData"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the partner that created the assessment"
+        },
+        "preview": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "True if this assessment is in preview release status"
+        },
+        "remediationDescription": {
+          "type": "string",
+          "description": "Human readable description of what you should do to mitigate this security issue"
+        },
+        "severity": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Low",
+                "Medium",
+                "High"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The severity level of the assessment."
+        },
+        "threats": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "accountBreach",
+                  "dataExfiltration",
+                  "dataSpillage",
+                  "maliciousInsider",
+                  "elevationOfPrivilege",
+                  "threatResistance",
+                  "missingCoverage",
+                  "denialOfService"
+                ]
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ]
+        },
+        "userImpact": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Low",
+                "Moderate",
+                "High"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The user impact of the assessment."
+        }
+      },
+      "required": [
+        "assessmentType",
+        "displayName",
+        "severity"
+      ],
+      "description": "Describes properties of an assessment metadata."
     }
   }
 }
