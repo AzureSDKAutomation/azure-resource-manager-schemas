@@ -6644,9 +6644,6 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-03-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_privateEndpointConnections"
         },
         {
-          "$ref": "https://schema.management.azure.com/schemas/2021-03-01-preview/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces_services"
-        },
-        {
           "$ref": "https://schema.management.azure.com/schemas/2021-04-01/Microsoft.MachineLearningServices.json#/resourceDefinitions/workspaces"
         },
         {
