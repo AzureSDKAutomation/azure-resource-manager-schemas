@@ -2207,6 +2207,18 @@
           "$ref": "https://schema.management.azure.com/schemas/2021-05-01-preview/Microsoft.BotService.json#/resourceDefinitions/botServices_privateEndpointConnections"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-07-09-preview/Microsoft.BotService.json#/resourceDefinitions/botServices"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-07-09-preview/Microsoft.BotService.json#/resourceDefinitions/botServices_channels"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-07-09-preview/Microsoft.BotService.json#/resourceDefinitions/botServices_connections"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-07-09-preview/Microsoft.BotService.json#/resourceDefinitions/botServices_privateEndpointConnections"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-10-01-preview/Microsoft.Cache.Enterprise.json#/resourceDefinitions/redisEnterprise"
         },
         {
