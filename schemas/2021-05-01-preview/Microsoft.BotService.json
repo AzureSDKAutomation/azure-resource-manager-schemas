@@ -506,6 +506,30 @@
           "type": "string",
           "description": "Microsoft App Id for the bot"
         },
+        "msaAppMSIResourceId": {
+          "type": "string",
+          "description": "Microsoft App Managed Identity Resource Id for the bot"
+        },
+        "msaAppTenantId": {
+          "type": "string",
+          "description": "Microsoft App Tenant Id for the bot"
+        },
+        "msaAppType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "UserAssignedMSI",
+                "SingleTenant",
+                "MultiTenant"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Microsoft App Type for the bot."
+        },
         "schemaTransformationVersion": {
           "type": "string",
           "description": "The channel schema transformation version for the bot"
