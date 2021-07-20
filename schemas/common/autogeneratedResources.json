@@ -1580,10 +1580,16 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-03-01/Microsoft.Authorization.Resources.json#/unknown_resourceDefinitions/policyAssignments"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2020-05-01/Microsoft.Authorization.Resources.json#/resourceDefinitions/resourceManagementPrivateLinks"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2020-07-01-preview/Microsoft.Authorization.Resources.json#/unknown_resourceDefinitions/policyExemptions"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-09-01/Microsoft.Authorization.Resources.json#/unknown_resourceDefinitions/policyAssignments"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2021-06-01/Microsoft.Authorization.Resources.json#/unknown_resourceDefinitions/policyAssignments"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2020-06-30-preview/Microsoft.Automanage.json#/resourceDefinitions/accounts"
