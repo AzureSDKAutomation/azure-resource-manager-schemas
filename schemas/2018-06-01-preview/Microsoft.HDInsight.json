@@ -831,7 +831,7 @@
             {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/Componentsc51ht8schemasclusteridentitypropertiesuserassignedidentitiesadditionalproperties"
+                "$ref": "#/definitions/UserAssignedIdentity"
               },
               "properties": {}
             },
@@ -982,15 +982,6 @@
         "type"
       ],
       "description": "Microsoft.HDInsight/clusters/extensions"
-    },
-    "Componentsc51ht8schemasclusteridentitypropertiesuserassignedidentitiesadditionalproperties": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string",
-          "description": "The tenant id of user assigned identity."
-        }
-      }
     },
     "ComputeIsolationProperties": {
       "type": "object",
@@ -1604,6 +1595,16 @@
         }
       },
       "description": "The storage profile."
+    },
+    "UserAssignedIdentity": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant id of user assigned identity."
+        }
+      },
+      "description": "The User Assigned Identity"
     },
     "VirtualNetworkProfile": {
       "type": "object",
