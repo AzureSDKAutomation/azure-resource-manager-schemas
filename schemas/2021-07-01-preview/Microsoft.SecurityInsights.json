@@ -1,0 +1,367 @@
+{
+  "id": "https://schema.management.azure.com/schemas/2021-07-01-preview/Microsoft.SecurityInsights.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.SecurityInsights",
+  "description": "Microsoft SecurityInsights Resource Types",
+  "resourceDefinitions": {},
+  "extension_resourceDefinitions": {
+    "bookmarks": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-07-01-preview"
+          ]
+        },
+        "etag": {
+          "type": "string",
+          "description": "Etag of the azure resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Bookmark ID"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BookmarkProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes bookmark properties"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/bookmarks_relations_childResource"
+              }
+            ]
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.SecurityInsights/bookmarks"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.SecurityInsights/bookmarks"
+    },
+    "bookmarks_relations": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-07-01-preview"
+          ]
+        },
+        "etag": {
+          "type": "string",
+          "description": "Etag of the azure resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Relation Name"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RelationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Relation property bag."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.SecurityInsights/bookmarks/relations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.SecurityInsights/bookmarks/relations"
+    }
+  },
+  "definitions": {
+    "BookmarkProperties": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time the bookmark was created"
+        },
+        "createdBy": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "User information that made some action"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the bookmark"
+        },
+        "entityMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EntityMappings"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes the entity mappings of the bookmark"
+        },
+        "eventTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The bookmark event time"
+        },
+        "incidentInfo": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/IncidentInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Describes related incident information for the bookmark"
+        },
+        "labels": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "List of labels relevant to this bookmark"
+        },
+        "notes": {
+          "type": "string",
+          "description": "The notes of the bookmark"
+        },
+        "query": {
+          "type": "string",
+          "description": "The query of the bookmark."
+        },
+        "queryEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time for the query"
+        },
+        "queryResult": {
+          "type": "string",
+          "description": "The query result of the bookmark."
+        },
+        "queryStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time for the query"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last time the bookmark was updated"
+        },
+        "updatedBy": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UserInfo"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "User information that made some action"
+        }
+      },
+      "required": [
+        "displayName",
+        "query"
+      ],
+      "description": "Describes bookmark properties"
+    },
+    "bookmarks_relations_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2021-07-01-preview"
+          ]
+        },
+        "etag": {
+          "type": "string",
+          "description": "Etag of the azure resource"
+        },
+        "name": {
+          "type": "string",
+          "description": "Relation Name"
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RelationProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Relation property bag."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "relations"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.SecurityInsights/bookmarks/relations"
+    },
+    "EntityFieldMapping": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "Alert V3 identifier"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the identifier"
+        }
+      },
+      "description": "Map identifiers of a single entity"
+    },
+    "EntityMappings": {
+      "type": "object",
+      "properties": {
+        "entityType": {
+          "type": "string",
+          "description": "The entity type"
+        },
+        "fieldMappings": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EntityFieldMapping"
+              }
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Array of fields mapping for that entity type"
+        }
+      },
+      "description": "Describes the entity mappings of a single entity"
+    },
+    "IncidentInfo": {
+      "type": "object",
+      "properties": {
+        "incidentId": {
+          "type": "string",
+          "description": "Incident Id"
+        },
+        "relationName": {
+          "type": "string",
+          "description": "Relation Name"
+        },
+        "severity": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Critical",
+                "High",
+                "Medium",
+                "Low",
+                "Informational"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The severity of the incident."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the incident"
+        }
+      },
+      "description": "Describes related incident information for the bookmark"
+    },
+    "RelationProperties": {
+      "type": "object",
+      "properties": {
+        "relatedResourceId": {
+          "type": "string",
+          "description": "The resource ID of the related resource"
+        }
+      },
+      "required": [
+        "relatedResourceId"
+      ],
+      "description": "Relation property bag."
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The object id of the user."
+        }
+      },
+      "description": "User information that made some action"
+    }
+  }
+}
