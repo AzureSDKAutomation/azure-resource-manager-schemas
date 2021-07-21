@@ -8180,6 +8180,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-08-06-preview/Microsoft.Security.json#/unknown_resourceDefinitions/iotSites"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2021-07-01-preview/Microsoft.Security.json#/resourceDefinitions/securityConnectors"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2015-08-01/Microsoft.ServiceBus.json#/resourceDefinitions/namespaces"
         },
         {
