@@ -165,10 +165,10 @@
           "$ref": "#/definitions/MDATPDataConnector"
         },
         {
-          "$ref": "#/definitions/OfficeDataConnector"
+          "$ref": "#/definitions/TIDataConnector"
         },
         {
-          "$ref": "#/definitions/TIDataConnector"
+          "$ref": "#/definitions/OfficeDataConnector"
         }
       ],
       "properties": {
@@ -1691,9 +1691,6 @@
           "description": "The object id of the user."
         }
       },
-      "required": [
-        "objectId"
-      ],
       "description": "User information that made some action"
     }
   }
