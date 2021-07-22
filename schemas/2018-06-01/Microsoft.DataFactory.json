@@ -743,22 +743,6 @@
       },
       "description": "Execution policy for an activity."
     },
-    "AdditionalColumns": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "object",
-          "properties": {},
-          "description": "Additional column name. Type: string (or Expression with resultType string)."
-        },
-        "value": {
-          "type": "object",
-          "properties": {},
-          "description": "Additional column value. Type: string (or Expression with resultType string)."
-        }
-      },
-      "description": "Specify the column name and value of additional columns."
-    },
     "AmazonMWSLinkedService": {
       "type": "object",
       "properties": {
@@ -1637,18 +1621,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "storeSettings": {
           "oneOf": [
@@ -1803,6 +1778,17 @@
           "type": "object",
           "properties": {},
           "description": "The Azure Batch URI. Type: string (or Expression with resultType string)."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "encryptedCredential": {
           "type": "object",
@@ -2016,6 +2002,17 @@
           "type": "object",
           "properties": {},
           "description": "Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string)."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "encryptedCredential": {
           "type": "object",
@@ -2278,6 +2275,17 @@
           "type": "object",
           "properties": {},
           "description": "The connection string. It is mutually exclusive with sasUri, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "encryptedCredential": {
           "type": "string",
@@ -2714,6 +2722,17 @@
           "properties": {},
           "description": "Required to specify MSI, if using Workspace resource id for databricks REST API. Type: string (or Expression with resultType string)."
         },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "domain": {
           "type": "object",
           "properties": {},
@@ -2920,6 +2939,17 @@
     "AzureDataExplorerLinkedServiceTypeProperties": {
       "type": "object",
       "properties": {
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "database": {
           "type": "object",
           "properties": {},
@@ -2992,18 +3022,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "noTruncation": {
           "type": "object",
@@ -3246,6 +3267,17 @@
           "type": "object",
           "properties": {},
           "description": "Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string)."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "dataLakeStoreUri": {
           "type": "object",
@@ -3754,6 +3786,22 @@
     "AzureFunctionLinkedServiceTypeProperties": {
       "type": "object",
       "properties": {
+        "authentication": {
+          "type": "object",
+          "properties": {},
+          "description": "Type of authentication (Required to specify MSI) used to connect to AzureFunction. Type: string (or Expression with resultType string)."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "encryptedCredential": {
           "type": "object",
           "properties": {},
@@ -3774,6 +3822,11 @@
             }
           ],
           "description": "The base definition of a secret type."
+        },
+        "resourceId": {
+          "type": "object",
+          "properties": {},
+          "description": "Allowed token audiences for azure function."
         }
       },
       "required": [
@@ -3815,6 +3868,17 @@
           "type": "object",
           "properties": {},
           "description": "The base URL of the Azure Key Vault. e.g. https://myakv.vault.azure.net Type: string (or Expression with resultType string)."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         }
       },
       "required": [
@@ -4152,6 +4216,11 @@
             }
           ],
           "description": "The base definition of a secret type."
+        },
+        "authentication": {
+          "type": "object",
+          "properties": {},
+          "description": "Type of authentication (Required to specify MSI) used to connect to AzureML. Type: string (or Expression with resultType string)."
         },
         "encryptedCredential": {
           "type": "object",
@@ -4835,6 +4904,17 @@
           "properties": {},
           "description": "The connection string. Type: string, SecureString or AzureKeyVaultSecretReference."
         },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "encryptedCredential": {
           "type": "object",
           "properties": {},
@@ -4917,6 +4997,17 @@
           "type": "object",
           "properties": {},
           "description": "The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "encryptedCredential": {
           "type": "object",
@@ -5058,6 +5149,17 @@
           "type": "object",
           "properties": {},
           "description": "The connection string. Type: string, SecureString or AzureKeyVaultSecretReference."
+        },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
         },
         "encryptedCredential": {
           "type": "object",
@@ -6375,18 +6477,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -7422,18 +7515,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "batchSize": {
           "type": "object",
@@ -7538,18 +7622,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "detectDatetime": {
           "type": "object",
@@ -7682,6 +7757,50 @@
         "type"
       ],
       "description": "Couchbase server dataset."
+    },
+    "CredentialReference": {
+      "type": "object",
+      "properties": {
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {}
+              },
+              "properties": {}
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Unmatched properties from the message are deserialized this collection"
+        },
+        "referenceName": {
+          "type": "string",
+          "description": "Reference credential name."
+        },
+        "type": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "CredentialReference"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        }
+      },
+      "required": [
+        "referenceName",
+        "type"
+      ],
+      "description": "Credential reference type."
     },
     "CustomActivity": {
       "type": "object",
@@ -9602,18 +9721,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "formatSettings": {
           "oneOf": [
@@ -9802,18 +9912,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "nestingSeparator": {
           "type": "object",
@@ -10346,18 +10447,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -10566,18 +10658,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -10766,8 +10849,7 @@
               "type": "string",
               "enum": [
                 "IntegrationRuntimeReference",
-                "LinkedServiceReference",
-                "CredentialReference"
+                "LinkedServiceReference"
               ]
             },
             {
@@ -10910,18 +10992,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "storeSettings": {
           "oneOf": [
@@ -12325,18 +12398,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "recursive": {
           "type": "object",
@@ -14276,6 +14340,17 @@
           "properties": {},
           "description": "Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created."
         },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "dataNodeSize": {
           "type": "object",
           "properties": {},
@@ -16213,6 +16288,17 @@
           ],
           "description": "Catalog information for managed dedicated integration runtime."
         },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "customSetupScriptProperties": {
           "oneOf": [
             {
@@ -16278,17 +16364,6 @@
             }
           ],
           "description": "License type for bringing your own license scenario."
-        },
-        "managedCredential": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/EntityReference"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The entity reference."
         },
         "packageStores": {
           "oneOf": [
@@ -16665,18 +16740,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "formatSettings": {
           "oneOf": [
@@ -18121,18 +18187,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -18300,18 +18357,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "batchSize": {
           "type": "object",
@@ -18541,18 +18589,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -18683,18 +18722,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "batchSize": {
           "type": "object",
@@ -19243,18 +19273,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "httpRequestTimeout": {
           "type": "object",
@@ -19981,18 +20002,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "oracleReaderQuery": {
           "type": "object",
@@ -20186,18 +20198,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "storeSettings": {
           "oneOf": [
@@ -20420,18 +20423,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "storeSettings": {
           "oneOf": [
@@ -21746,18 +21740,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -22123,6 +22108,17 @@
           "properties": {},
           "description": "Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string)."
         },
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "enableServerCertificateValidation": {
           "type": "object",
           "properties": {},
@@ -22226,18 +22222,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "additionalHeaders": {
           "type": "object",
@@ -22698,18 +22685,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "query": {
           "type": "object",
@@ -27017,18 +26995,9 @@
       ],
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "queryTimeout": {
           "type": "object",
@@ -28039,6 +28008,17 @@
     "WebActivityAuthentication": {
       "type": "object",
       "properties": {
+        "credential": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CredentialReference"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Credential reference type."
+        },
         "password": {
           "oneOf": [
             {
@@ -28081,9 +28061,6 @@
           "description": "TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string)."
         }
       },
-      "required": [
-        "type"
-      ],
       "description": "Web activity authentication properties."
     },
     "WebActivityTypeProperties": {
@@ -28407,18 +28384,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "type": {
           "type": "string",
@@ -28742,18 +28710,9 @@
       "type": "object",
       "properties": {
         "additionalColumns": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdditionalColumns"
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Specifies the additional columns to be added to source data. Type: array of objects (or Expression with resultType array of objects)."
+          "type": "object",
+          "properties": {},
+          "description": "Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects)."
         },
         "formatSettings": {
           "oneOf": [
