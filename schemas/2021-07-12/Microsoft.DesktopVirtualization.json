@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2021-05-13-preview/Microsoft.DesktopVirtualization.json#",
+  "id": "https://schema.management.azure.com/schemas/2021-07-12/Microsoft.DesktopVirtualization.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.DesktopVirtualization",
   "description": "Microsoft DesktopVirtualization Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "identity": {
@@ -90,17 +90,6 @@
             }
           ]
         },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
         "tags": {
           "oneOf": [
             {
@@ -137,7 +126,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "name": {
@@ -156,17 +145,6 @@
             }
           ],
           "description": "Schema for Application properties."
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -189,7 +167,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "identity": {
@@ -254,13 +232,7 @@
           "items": {
             "oneOf": [
               {
-                "$ref": "#/definitions/hostPools_sessionHostConfigurations_childResource"
-              },
-              {
                 "$ref": "#/definitions/hostPools_msixPackages_childResource"
-              },
-              {
-                "$ref": "#/definitions/hostPools_privateEndpointConnections_childResource"
               }
             ]
           }
@@ -274,17 +246,6 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ]
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "tags": {
           "oneOf": [
@@ -322,7 +283,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "name": {
@@ -342,17 +303,6 @@
           ],
           "description": "Schema for MSIX Package properties."
         },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
         "type": {
           "type": "string",
           "enum": [
@@ -368,109 +318,13 @@
       ],
       "description": "Microsoft.DesktopVirtualization/hostPools/msixPackages"
     },
-    "hostPools_privateEndpointConnections": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the private endpoint connection associated with the Azure resource"
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections"
-    },
-    "hostPools_sessionHostConfigurations": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^.*/default$"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ]
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SessionHostConfigurationProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Session host configurations of HostPool."
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations"
-    },
     "scalingPlans": {
       "type": "object",
       "properties": {
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "identity": {
@@ -540,17 +394,6 @@
             }
           ]
         },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
         "tags": {
           "oneOf": [
             {
@@ -587,7 +430,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "identity": {
@@ -647,16 +490,6 @@
           ],
           "description": "Schema for Workspace properties."
         },
-        "resources": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/definitions/workspaces_privateEndpointConnections_childResource"
-              }
-            ]
-          }
-        },
         "sku": {
           "oneOf": [
             {
@@ -666,17 +499,6 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ]
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "tags": {
           "oneOf": [
@@ -707,45 +529,6 @@
         "type"
       ],
       "description": "Microsoft.DesktopVirtualization/workspaces"
-    },
-    "workspaces_privateEndpointConnections": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the private endpoint connection associated with the Azure resource"
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections"
     }
   },
   "definitions": {
@@ -803,7 +586,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "name": {
@@ -822,17 +605,6 @@
             }
           ],
           "description": "Schema for Application properties."
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
         },
         "type": {
           "type": "string",
@@ -939,74 +711,6 @@
       ],
       "description": "Schema for Application properties."
     },
-    "CredentialsProperties": {
-      "type": "object",
-      "properties": {
-        "domainAdmin": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/KeyVaultCredentialProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Credentials kept in the keyvault."
-        },
-        "localAdmin": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/KeyVaultCredentialProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Credentials kept in the keyvault."
-        }
-      },
-      "description": "Credentials needed to create the virtual machine."
-    },
-    "DomainInfoProperties": {
-      "type": "object",
-      "properties": {
-        "credentials": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/CredentialsProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Credentials needed to create the virtual machine."
-        },
-        "joinType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "ActiveDirectory",
-                "AzureActiveDirectory"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of domain join done by the virtual machine."
-        },
-        "mdmProviderGuid": {
-          "type": "string",
-          "description": "The MDM Provider GUID used during MDM enrollment for Azure AD joined virtual machines."
-        },
-        "name": {
-          "type": "string",
-          "description": "The domain a virtual machine connected to a hostpool will join."
-        }
-      },
-      "description": "Domain configurations of session hosts."
-    },
     "HostPoolProperties": {
       "type": "object",
       "properties": {
@@ -1107,21 +811,6 @@
           ],
           "description": "The type of preferred application group type, default to Desktop Application Group."
         },
-        "publicNetworkAccess": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Enabled",
-                "Disabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints."
-        },
         "registrationInfo": {
           "oneOf": [
             {
@@ -1143,17 +832,6 @@
             }
           ],
           "description": "The ring number of HostPool."
-        },
-        "sessionHostComponentUpdateConfiguration": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SessionHostComponentUpdateConfigurationProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The session host configuration for updating agent, monitoring agent, and stack component."
         },
         "ssoadfsAuthority": {
           "type": "string",
@@ -1224,7 +902,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2021-05-13-preview"
+            "2021-07-12"
           ]
         },
         "name": {
@@ -1244,17 +922,6 @@
           ],
           "description": "Schema for MSIX Package properties."
         },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
         "type": {
           "type": "string",
           "enum": [
@@ -1269,215 +936,6 @@
         "type"
       ],
       "description": "Microsoft.DesktopVirtualization/hostPools/msixPackages"
-    },
-    "hostPools_privateEndpointConnections_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the private endpoint connection associated with the Azure resource"
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections"
-    },
-    "hostPools_sessionHostConfigurations_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "enum": [
-            "default"
-          ]
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SessionHostConfigurationProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Session host configurations of HostPool."
-        },
-        "systemData": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SystemData"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Metadata pertaining to creation and last modification of the resource."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "sessionHostConfigurations"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations"
-    },
-    "ImageInfoProperties": {
-      "type": "object",
-      "properties": {
-        "customId": {
-          "type": "string",
-          "description": "The resource id of the custom image or shared image. Image type must be CustomImage."
-        },
-        "marketPlaceInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MarketPlaceInfoProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Image configurations of HostPool."
-        },
-        "storageBlobUri": {
-          "type": "string",
-          "description": "The uri to the storage blob which contains the VHD. Image type must be StorageBlob."
-        },
-        "type": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Gallery",
-                "StorageBlob",
-                "CustomImage"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of image session hosts use in the hostpool."
-        }
-      },
-      "description": "Image configurations of session host in a HostPool."
-    },
-    "KeyVaultCredentialProperties": {
-      "type": "object",
-      "properties": {
-        "passwordKeyVaultResourceId": {
-          "type": "string",
-          "description": "The keyvault resource id to the keyvault secrets."
-        },
-        "passwordSecretName": {
-          "type": "string",
-          "description": "The keyvault secret name the password is stored in."
-        },
-        "userName": {
-          "type": "string",
-          "description": "The user name to the account."
-        }
-      },
-      "description": "Credentials kept in the keyvault."
-    },
-    "MaintenanceWindowProperties": {
-      "type": "object",
-      "properties": {
-        "dayOfWeek": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Day of the week."
-        },
-        "hour": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The update start hour of the day. (0 - 23)"
-        }
-      },
-      "description": "Maintenance window starting hour and day of week."
-    },
-    "MarketPlaceInfoProperties": {
-      "type": "object",
-      "properties": {
-        "exactVersion": {
-          "type": "string",
-          "description": "The exact version of the image."
-        },
-        "offer": {
-          "type": "string",
-          "description": "The offer of the image."
-        },
-        "publisher": {
-          "type": "string",
-          "description": "The publisher of the image."
-        },
-        "sku": {
-          "type": "string",
-          "description": "The sku of the image."
-        }
-      },
-      "description": "Image configurations of HostPool."
     },
     "MigrationRequestProperties": {
       "type": "object",
@@ -1659,89 +1117,6 @@
         }
       },
       "description": "Schema for MSIX Package properties."
-    },
-    "PrivateEndpoint": {
-      "type": "object",
-      "properties": {},
-      "description": "The Private Endpoint resource."
-    },
-    "PrivateEndpointConnectionProperties": {
-      "type": "object",
-      "properties": {
-        "privateEndpoint": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpoint"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The Private Endpoint resource."
-        },
-        "privateLinkServiceConnectionState": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateLinkServiceConnectionState"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "A collection of information about the state of the connection between service consumer and provider."
-        },
-        "provisioningState": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Succeeded",
-                "Creating",
-                "Deleting",
-                "Failed"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The provisioning state of the private endpoint connection resource."
-        }
-      },
-      "required": [
-        "privateLinkServiceConnectionState"
-      ],
-      "description": "Properties of the PrivateEndpointConnectProperties."
-    },
-    "PrivateLinkServiceConnectionState": {
-      "type": "object",
-      "properties": {
-        "actionsRequired": {
-          "type": "string",
-          "description": "A message indicating if changes on the service provider require any updates on the consumer."
-        },
-        "description": {
-          "type": "string",
-          "description": "The reason for approval/rejection of the connection."
-        },
-        "status": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Pending",
-                "Approved",
-                "Rejected"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
-        }
-      },
-      "description": "A collection of information about the state of the connection between service consumer and provider."
     },
     "RegistrationInfo": {
       "type": "object",
@@ -2164,219 +1539,6 @@
       },
       "description": "Scaling plan schedule."
     },
-    "SecondaryWindowProperties": {
-      "type": "object",
-      "properties": {
-        "daysOfWeek": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Sunday",
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday"
-                ]
-              }
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Set of days of the week on which this schedule is active."
-        },
-        "hour": {
-          "oneOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The update start hour of the day. (0 - 23)"
-        }
-      },
-      "description": "Secondary maintenance windows is a list of days at one specific hour. Maintenance windows are 2 hours long. We try to exercise this only when the primary window update fails."
-    },
-    "SessionHostComponentUpdateConfigurationProperties": {
-      "type": "object",
-      "properties": {
-        "maintenanceType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Default",
-                "TenantAdminControlled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of maintenance for session host components."
-        },
-        "maintenanceWindowTimeZone": {
-          "type": "string",
-          "description": "Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true."
-        },
-        "primaryWindow": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/MaintenanceWindowProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Maintenance window starting hour and day of week."
-        },
-        "secondaryWindow": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/SecondaryWindowProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Secondary maintenance windows is a list of days at one specific hour. Maintenance windows are 2 hours long. We try to exercise this only when the primary window update fails."
-        },
-        "useSessionHostLocalTime": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Whether to use localTime of the virtual machine."
-        }
-      },
-      "description": "The session host configuration for updating agent, monitoring agent, and stack component."
-    },
-    "SessionHostConfigurationProperties": {
-      "type": "object",
-      "properties": {
-        "diskType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Standard_LRS",
-                "Premium_LRS",
-                "StandardSSD_LRS",
-                "UltraSSD_LRS"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The disk type used by virtual machine in hostpool session host."
-        },
-        "domainInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/DomainInfoProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Domain configurations of session hosts."
-        },
-        "imageInfo": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ImageInfoProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Image configurations of session host in a HostPool."
-        },
-        "vmCustomConfigurationParameterUri": {
-          "type": "string",
-          "description": "The uri to the storage blob containing the parameter file to be run on the virtual machine after provisioning."
-        },
-        "vmCustomConfigurationUri": {
-          "type": "string",
-          "description": "The uri to the storage blob containing the arm template to be run on the virtual machine after provisioning."
-        },
-        "vmSizeId": {
-          "type": "string",
-          "description": "The id of the size of a virtual machine connected to a hostpool."
-        }
-      },
-      "description": "Session host configurations of HostPool."
-    },
-    "SystemData": {
-      "type": "object",
-      "properties": {
-        "createdAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The timestamp of resource creation (UTC)."
-        },
-        "createdBy": {
-          "type": "string",
-          "description": "The identity that created the resource."
-        },
-        "createdByType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of identity that created the resource."
-        },
-        "lastModifiedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The timestamp of resource last modification (UTC)"
-        },
-        "lastModifiedBy": {
-          "type": "string",
-          "description": "The identity that last modified the resource."
-        },
-        "lastModifiedByType": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "The type of identity that last modified the resource."
-        }
-      },
-      "description": "Metadata pertaining to creation and last modification of the resource."
-    },
     "WorkspaceProperties": {
       "type": "object",
       "properties": {
@@ -2401,63 +1563,9 @@
         "friendlyName": {
           "type": "string",
           "description": "Friendly name of Workspace."
-        },
-        "publicNetworkAccess": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Enabled",
-                "Disabled"
-              ]
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints."
         }
       },
       "description": "Schema for Workspace properties."
-    },
-    "workspaces_privateEndpointConnections_childResource": {
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "type": "string",
-          "enum": [
-            "2021-05-13-preview"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the private endpoint connection associated with the Azure resource"
-        },
-        "properties": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/PrivateEndpointConnectionProperties"
-            },
-            {
-              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
-            }
-          ],
-          "description": "Properties of the PrivateEndpointConnectProperties."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "privateEndpointConnections"
-          ]
-        }
-      },
-      "required": [
-        "apiVersion",
-        "name",
-        "properties",
-        "type"
-      ],
-      "description": "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections"
     }
   }
 }
